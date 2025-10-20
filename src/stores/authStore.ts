@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { SessionMember, Authority } from '../types';
+import { memberAPI } from '../api/member';
 
 interface AuthState {
   user: SessionMember | null;
@@ -28,7 +29,15 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   setLoading: (isLoading) => set({ isLoading }),
   setError: (error) => set({ error }),
   
-  logout: () => set({ user: null, isAuthenticated: false, error: null }),
+  logout: async () => {
+    try {
+      await memberAPI.deleteMember();
+    } catch (error) {
+      console.error('로그아웃 API 호출 실패:', error);
+    } finally {
+      set({ user: null, isAuthenticated: false, error: null });
+    }
+  },
   
   hasAuthority: (authority) => {
     const { user } = get();

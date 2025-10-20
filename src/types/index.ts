@@ -24,6 +24,13 @@ export interface MemberRegisterDto {
   name: string;
 }
 
+export interface MemberResponseDto {
+  id: number;
+  email: string;
+  name: string;
+  isDeleted: boolean;
+}
+
 export interface MemberNameUpdateDto {
   name: string;
 }
@@ -87,12 +94,16 @@ export interface Category {
 
 // 주문 관련 타입
 export interface OrderRequestDto {
+  memberId: number;
+  paymentMethod: string;
+  paymentAmount: number;
+  deliveryCost: number;
   orderDetails: OrderDetailRequestDto[];
 }
 
 export interface OrderDetailRequestDto {
   productId: number;
-  quantity: number;
+  productCount: number;
 }
 
 export interface OrderResponseDto {

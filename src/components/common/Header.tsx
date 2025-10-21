@@ -69,102 +69,45 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
         )}
 
         <div className="header-actions">
-          {showNav ? (
-            <>
-              <Link to="/cart" className="header-cart-link" title="장바구니">
-                <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                <span className="header-cart-badge">0</span>
-              </Link>
-
-              {isAuthenticated ? (
-                <div className="header-user-menu">
-                  <button className="header-user-button">
-                    <div className="header-user-avatar">
-                      <svg className="header-user-avatar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <span className="header-user-name">{user?.name}님</span>
-                    <svg className="header-user-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  
-                  <div className="header-dropdown">
-                    <div className="header-dropdown-content">
-                      <Link to="/mypage" className="header-dropdown-link">
-                        <svg className="header-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        마이페이지
-                      </Link>
-                      <Link to="/orders" className="header-dropdown-link">
-                        <svg className="header-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                        주문 내역
-                      </Link>
-                      <hr className="header-dropdown-divider" />
-                      <button onClick={handleLogout} className="header-dropdown-button">
-                        <svg className="header-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                        </svg>
-                        로그아웃
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <Link to="/login" className="header-auth-link">로그인</Link>
-                  <Link to="/register" className="header-register-button">회원가입</Link>
-                </>
-              )}
-            </>
-          ) : (
-            <>
-              <div className="header-action-item">
-                <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="header-action-text hidden-lg">마이페이지</span>
-              </div>
-              <div className="header-action-item">
-                <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                <span className="header-action-text hidden-lg">찜목록</span>
-              </div>
-              <div className="header-action-item">
-                <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                <span className="header-action-text hidden-lg">장바구니</span>
-              </div>
-              <Link to="/login" className="header-action-item">
-                <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                </svg>
-                <span className="header-action-text hidden-lg">로그인</span>
-              </Link>
-            </>
-          )}
+          <div className="header-action-item">
+            <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span className="header-action-text hidden-lg">마이페이지</span>
+          </div>
+          <div className="header-action-item">
+            <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span className="header-action-text hidden-lg">찜목록</span>
+          </div>
+          <div className="header-action-item">
+            <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span className="header-action-text hidden-lg">장바구니</span>
+          </div>
+          <Link to="/login" className="header-action-item">
+            <svg className="header-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
+            <span className="header-action-text hidden-lg">로그인</span>
+          </Link>
         </div>
       </div>
 
       {showNav && (
         <div className="header-nav">
           <nav className="header-nav-list">
-            <Link to="/products" className="header-nav-link">전체 상품</Link>
-            <Link to="/products?category=electronics" className="header-nav-link">전자제품</Link>
-            <Link to="/products?category=fashion" className="header-nav-link">패션</Link>
-            <Link to="/products?category=home" className="header-nav-link">홈&리빙</Link>
-            <Link to="/products?category=food" className="header-nav-link">식품</Link>
-            <Link to="/products?category=beauty" className="header-nav-link">뷰티</Link>
-            <Link to="/products?category=sports" className="header-nav-link">스포츠</Link>
-            <Link to="/products?category=books" className="header-nav-link">도서</Link>
+            <Link to="/products" className="header-nav-link header-nav-link-active">인기</Link>
+            <Link to="/products?category=chicken" className="header-nav-link">치킨</Link>
+            <Link to="/products?category=pizza" className="header-nav-link">피자</Link>
+            <Link to="/products?category=korean" className="header-nav-link">한식</Link>
+            <Link to="/products?category=chinese" className="header-nav-link">중식</Link>
+            <Link to="/products?category=western" className="header-nav-link">양식</Link>
+            <Link to="/products?category=japanese" className="header-nav-link">일식</Link>
+            <Link to="/products?category=bunsik" className="header-nav-link">분식</Link>
+            <Link to="/products?category=cafe" className="header-nav-link">카페</Link>
           </nav>
         </div>
       )}

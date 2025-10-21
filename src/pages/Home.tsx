@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { productAPI } from '../api/product';
 import { ProductResponseDto } from '../types';
+import Header from '../components/common/Header';
 
 const Home: React.FC = () => {
   const [allProducts, setAllProducts] = useState<ProductResponseDto[]>([]);
@@ -204,6 +205,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       {loading ? (
         <div className="text-center py-32">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4">

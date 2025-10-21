@@ -55,7 +55,7 @@ const App: React.FC = () => {
       <AuthInitializer />
       <Routes>
         {/* 공개 라우트 */}
-        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Layout><ProductList /></Layout>} />

@@ -1,23 +1,32 @@
 .header-banner {
-  background-color: #000000;
-  height: 32px;
+  width: 1512px;
+  height: 40px;
+  background: black;
+  position: relative;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Nanum Gothic', sans-serif;
 }
 
 .header-banner-text {
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: 600;
+  width: 400px;
+  height: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 .header-banner-discount {
-  color: #ef4444;
-  font-weight: 700;
+  color: #FF0000;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
 }
 
 .header-banner-icon {
@@ -27,14 +36,15 @@
 }
 
 .header-main {
-  background-color: #ffffff;
-  height: 64px;
+  width: 1512px;
+  height: 80px;
+  background: white;
+  position: relative;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 29px;
-  border-bottom: 1px solid #e5e7eb;
-  font-family: 'Nanum Gothic', sans-serif;
+  padding: 0 20px;
 }
 
 .header-logo {

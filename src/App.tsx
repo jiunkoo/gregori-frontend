@@ -57,7 +57,7 @@ const App: React.FC = () => {
       <Routes>
         {/* 공개 라우트 */}
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Layout><Login /></Layout>} />
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Layout><ProductList /></Layout>} />
         <Route path="/products/:productId" element={<Layout><ProductDetail /></Layout>} />

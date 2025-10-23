@@ -2,21 +2,14 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { memberAPI } from '../../api/member';
 import Header from '../../components/common/Header';
-import { DropdownIcon } from '../../components/icons/SocialIcons';
 import '../../styles/register.css';
 
 const Register = () => {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const [agreements, setAgreements] = useState({
-    allAgree: false,
-    ageAgree: false,
-    termsAgree: false,
-    privacyAgree: false,
-  });
 
   const [formData, setFormData] = useState({
     email: '',
@@ -31,23 +24,6 @@ const Register = () => {
   const [isVerificationVerified, setIsVerificationVerified] = useState(false);
   const [verificationCode, setVerificationCode] = useState('');
 
-  const handleAgreementChange = (type: string) => {
-    if (type === 'allAgree') {
-      const newValue = !agreements.allAgree;
-      setAgreements({
-        allAgree: newValue,
-        ageAgree: newValue,
-        termsAgree: newValue,
-        privacyAgree: newValue,
-      });
-    } else {
-      setAgreements(prev => ({
-        ...prev,
-        [type]: !prev[type as keyof typeof prev],
-        allAgree: false,
-      }));
-    }
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -128,287 +104,254 @@ const Register = () => {
   };
 
   const renderAgreementStep = () => (
-    <div className="auth-container">
+    <div className="register-page">
       <Header />
+      
+      {/* 좌우 회색 박스 */}
+      <div className="register-side-boxes">
+        <div className="register-side-box register-side-box-left"></div>
+        <div className="register-side-box register-side-box-right"></div>
+      </div>
 
-      <div className="auth-layout">
-        <div className="auth-side-panel"></div>
-        
-        <div className="agreement-container">
-          <div className="p-6">
-            <div className="text-left mb-6">
-              <h1 className="agreement-title">
-                환영합니다!<br />
-                GREGORI에 가입하시려면<br />
-                서비스 이용약관에 동의해 주세요.
-              </h1>
-            </div>
+      {/* 환영문구 섹션 */}
+      <div className="register-welcome">
+        <h1 className="register-welcome-title">
+          환영합니다!<br/>
+          GREGORI에 가입하시려면 서비스 이용약관에 동의해 주세요.
+        </h1>
+      </div>
 
-            <div className="agreement-list">
-              <div className="agreement-item">
-                <input
-                  type="checkbox"
-                  id="allAgree"
-                  checked={agreements.allAgree}
-                  onChange={() => handleAgreementChange('allAgree')}
-                  className="agreement-checkbox-main"
-                />
-                <label htmlFor="allAgree" className="agreement-label-main">
-                  약관 전체 동의하기(선택 동의 포함)
-                </label>
-              </div>
+      {/* 약관 전체 동의하기 */}
+      <div className="register-agreement-all">
+        <div className="register-agreement-checkbox">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect 
+              x="0.25" 
+              y="0.25" 
+              width="18.8939" 
+              height="19.5" 
+              rx="4.75" 
+              fill="#E8E8E8" 
+              stroke="#747474" 
+              strokeWidth="0.5"
+            />
+          </svg>
+        </div>
+        <div className="register-agreement-text">
+          약관 전체 동의하기(선택 동의 포함)
+        </div>
+      </div>
 
-              <div className="agreement-item-nested">
-                <div className="agreement-item">
-                  <button
-                    onClick={() => handleAgreementChange('ageAgree')}
-                    className="agreement-checkbox-button"
-                  >
-                    <svg 
-                      className={`agreement-checkbox-icon ${agreements.ageAgree ? 'agreement-checkbox-icon-checked' : 'agreement-checkbox-icon-unchecked'}`}
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </button>
-                  <label 
-                    htmlFor="ageAgree" 
-                    className="agreement-label"
-                    onClick={() => handleAgreementChange('ageAgree')}
-                  >
-                    [필수] 만 14세 이상입니다.
-                  </label>
-                </div>
-
-                <div className="agreement-item">
-                  <button
-                    onClick={() => handleAgreementChange('termsAgree')}
-                    className="agreement-checkbox-button"
-                  >
-                    <svg 
-                      className={`agreement-checkbox-icon ${agreements.termsAgree ? 'agreement-checkbox-icon-checked' : 'agreement-checkbox-icon-unchecked'}`}
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </button>
-                  <label 
-                    htmlFor="termsAgree" 
-                    className="agreement-label"
-                    onClick={() => handleAgreementChange('termsAgree')}
-                  >
-                    [필수] 이용약관 동의 <span className="agreement-link">자세히</span>
-                  </label>
-                </div>
-
-                <div className="agreement-item">
-                  <button
-                    onClick={() => handleAgreementChange('privacyAgree')}
-                    className="agreement-checkbox-button"
-                  >
-                    <svg 
-                      className={`agreement-checkbox-icon ${agreements.privacyAgree ? 'agreement-checkbox-icon-checked' : 'agreement-checkbox-icon-unchecked'}`}
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </button>
-                  <label 
-                    htmlFor="privacyAgree" 
-                    className="agreement-label"
-                    onClick={() => handleAgreementChange('privacyAgree')}
-                  >
-                    [필수] 개인정보처리방침 동의 <span className="agreement-link">자세히</span>
-                  </label>
-                </div>
-              </div>
-            </div>
+      {/* 약관 항목들 */}
+      <div className="register-agreement-items">
+        <div className="register-agreement-item">
+          <div className="register-agreement-checkbox">
+            <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path 
+                d="M1.90908 9L5.00657 11.3957C5.43962 11.7307 6.06149 11.6551 6.40176 11.2262L14.5151 1" 
+                stroke="#E8E8E8" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
-
-          <div className="button-section button-section-bottom">
-            <button
-              onClick={() => {
-                if (agreements.ageAgree && agreements.termsAgree && agreements.privacyAgree) {
-                  setCurrentStep(2);
-                } else {
-                  setError('필수 약관에 모두 동의해주세요.');
-                }
-              }}
-              disabled={!agreements.ageAgree || !agreements.termsAgree || !agreements.privacyAgree}
-              className="button-primary"
-            >
-              동의하고 가입하기
-            </button>
+          <div className="register-agreement-text">
+            [필수] 만 14세 이상입니다.
           </div>
         </div>
-        
-        <div className="auth-side-panel"></div>
+
+        <div className="register-agreement-item">
+          <div className="register-agreement-checkbox">
+            <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path 
+                d="M1.90908 9L5.00657 11.3957C5.43962 11.7307 6.06149 11.6551 6.40176 11.2262L14.5151 1" 
+                stroke="#E8E8E8" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div className="register-agreement-text">
+            [필수] 이용약관 동의 <span className="register-agreement-link">자세히</span>
+          </div>
+        </div>
+
+        <div className="register-agreement-item">
+          <div className="register-agreement-checkbox">
+            <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path 
+                d="M1.90908 9L5.00657 11.3957C5.43962 11.7307 6.06149 11.6551 6.40176 11.2262L14.5151 1" 
+                stroke="#0B87F0" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div className="register-agreement-text">
+            약관 전체 동의하기(선택 동의 포함)
+          </div>
+        </div>
+      </div>
+
+      {/* 동의하고 가입하기 버튼 */}
+      <div className="register-submit-section">
+        <div className="register-submit-text">동의하고 가입하기</div>
       </div>
     </div>
   );
 
   const renderRegisterForm = () => (
-    <div className="auth-container">
+    <div className="register-page">
       <Header />
+      
+      {/* 좌우 회색 박스 */}
+      <div className="register-side-boxes">
+        <div className="register-side-box register-side-box-left"></div>
+        <div className="register-side-box register-side-box-right"></div>
+      </div>
 
-      <div className="auth-layout">
-        <div className="auth-side-panel"></div>
-        
-        <div className="auth-form-container">
-          <div className="auth-form-content">
-            <div className="form-title-section">
-              <h1 className="form-title">회원가입</h1>
-              <p className="form-subtitle">GREGORI에 오신 것을 환영합니다!</p>
-            </div>
-
-            {error && <div className="error-message">{error}</div>}
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="label-standard">이메일</label>
-                <div className="email-input-group">
-                  <input
-                    type="text"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="input-flex"
-                    placeholder="이메일"
-                    required
-                  />
-                  <span className="email-separator">@</span>
-                  <div className="select-wrapper">
-                    <select
-                      name="emailDomain"
-                      value={formData.emailDomain}
-                      onChange={handleInputChange}
-                      className="select-standard"
-                    >
-                      <option value="gmail.com">gmail.com</option>
-                      <option value="naver.com">naver.com</option>
-                      <option value="daum.net">daum.net</option>
-                      <option value="yahoo.com">yahoo.com</option>
-                    </select>
-                    <div className="select-icon-wrapper">
-                      <DropdownIcon />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label className="label-standard">비밀번호</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="input-standard"
-                  placeholder="비밀번호"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="label-standard">비밀번호 확인</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  className="input-standard"
-                  placeholder="비밀번호 확인"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="label-standard">이름</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="input-standard"
-                  placeholder="이름"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="label-standard">휴대폰 번호</label>
-                <div className="flex space-x-2">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="input-flex"
-                    placeholder="휴대폰 번호"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={handleSendVerification}
-                    disabled={isVerificationSent}
-                    className="button-secondary"
-                  >
-                    {isVerificationSent ? '전송완료' : '인증번호 전송'}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="label-standard">인증번호</label>
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={verificationCode}
-                    onChange={(e) => setVerificationCode(e.target.value)}
-                    className="input-flex disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="인증번호"
-                    disabled={!isVerificationSent}
-                  />
-                  <button
-                    type="button"
-                    onClick={handleVerifyCode}
-                    disabled={isVerificationVerified || !isVerificationSent}
-                    className="button-secondary"
-                  >
-                    {isVerificationVerified ? '인증완료' : '인증번호 확인'}
-                  </button>
-                </div>
-              </div>
-            </form>
+      {/* 회원가입 폼 영역 */}
+      <div className="register-container">
+        <div className="register-form-content">
+          <div className="register-form-title">
+            <h1>회원가입</h1>
+            <p>GREGORI에 오신 것을 환영합니다!</p>
           </div>
 
-          <div className="button-section button-section-register">
+          {error && <div className="register-error-message">{error}</div>}
+
+          <form onSubmit={handleSubmit} className="register-form">
+            <div className="register-form-group">
+              <label className="register-form-label">이메일</label>
+              <div className="register-email-group">
+                <input
+                  type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="register-form-input"
+                  placeholder="이메일"
+                  required
+                />
+                <span className="register-email-separator">@</span>
+                <select
+                  name="emailDomain"
+                  value={formData.emailDomain}
+                  onChange={handleInputChange}
+                  className="register-form-select"
+                >
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="daum.net">daum.net</option>
+                  <option value="yahoo.com">yahoo.com</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="register-form-group">
+              <label className="register-form-label">비밀번호</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                className="register-form-input"
+                placeholder="비밀번호"
+                required
+              />
+            </div>
+
+            <div className="register-form-group">
+              <label className="register-form-label">비밀번호 확인</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                className="register-form-input"
+                placeholder="비밀번호 확인"
+                required
+              />
+            </div>
+
+            <div className="register-form-group">
+              <label className="register-form-label">이름</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="register-form-input"
+                placeholder="이름"
+                required
+              />
+            </div>
+
+            <div className="register-form-group">
+              <label className="register-form-label">휴대폰 번호</label>
+              <div className="register-phone-group">
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="register-form-input"
+                  placeholder="휴대폰 번호"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={handleSendVerification}
+                  disabled={isVerificationSent}
+                  className="register-verify-button"
+                >
+                  {isVerificationSent ? '전송완료' : '인증번호 전송'}
+                </button>
+              </div>
+            </div>
+
+            <div className="register-form-group">
+              <label className="register-form-label">인증번호</label>
+              <div className="register-phone-group">
+                <input
+                  type="text"
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value)}
+                  className="register-form-input"
+                  placeholder="인증번호"
+                  disabled={!isVerificationSent}
+                />
+                <button
+                  type="button"
+                  onClick={handleVerifyCode}
+                  disabled={isVerificationVerified || !isVerificationSent}
+                  className="register-verify-button"
+                >
+                  {isVerificationVerified ? '인증완료' : '인증번호 확인'}
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div className="register-form-submit">
             <button
               onClick={handleSubmit}
               disabled={isLoading || !isVerificationVerified}
-              className="button-primary"
+              className="register-submit-button"
             >
               {isLoading ? '처리중...' : '회원가입'}
             </button>
             
-            <div className="login-link-section">
-              <p className="login-link-text">
+            <div className="register-login-link">
+              <p>
                 이미 계정이 있으신가요?{' '}
-                <Link to="/login" className="login-link">
+                <Link to="/login" className="register-login-link-text">
                   로그인하기
                 </Link>
               </p>
             </div>
           </div>
         </div>
-
-        <div className="auth-side-panel"></div>
       </div>
     </div>
   );

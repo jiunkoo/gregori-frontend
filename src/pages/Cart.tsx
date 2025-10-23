@@ -10,7 +10,7 @@ interface CartItem {
 }
 
 const Cart: React.FC = () => {
-  const { isAuthenticated, user } = useAuthStore();
+  const { } = useAuthStore();
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -87,23 +87,15 @@ const Cart: React.FC = () => {
     return cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
   };
 
-  const getTotalItems = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
-  };
 
   const handleCheckout = () => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
-    }
-
     if (cartItems.length === 0) {
       alert('장바구니가 비어있습니다.');
       return;
     }
 
-    // 주문 확인 페이지로 이동
-    navigate('/order-confirm', { 
+    // 주문 페이지로 이동 (로그인 체크 생략)
+    navigate('/order', { 
       state: { 
         items: cartItems,
         totalAmount: getTotalPrice() 
@@ -289,7 +281,7 @@ const Cart: React.FC = () => {
             <div className="cart-order-buttons">
               <button className="cart-order-button-secondary" onClick={() => navigate('/products')}>계속 쇼핑하기</button>
               <button className="cart-order-button-primary" onClick={handleCheckout}>
-                {isAuthenticated ? '바로 주문하기' : '로그인 후 주문하기'}
+                바로 주문하기
               </button>
             </div>
           </div>

@@ -11,6 +11,7 @@ import MyPage from './pages/MyPage';
 import Cart from './pages/Cart';
 import OrderComplete from './pages/OrderComplete';
 import OrderConfirm from './pages/OrderConfirm';
+import Order from './pages/Order';
 import { useAuthStore } from './stores/authStore';
 import { memberAPI } from './api/member';
 
@@ -61,6 +62,7 @@ const App: React.FC = () => {
         <Route path="/products" element={<Layout><ProductList /></Layout>} />
         <Route path="/products/:productId" element={<Layout><ProductDetail /></Layout>} />
         <Route path="/cart" element={<Layout><Cart /></Layout>} />
+        <Route path="/order" element={<Layout><Order /></Layout>} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
         <Route path="/order-complete" element={<OrderComplete />} />
         

@@ -1,0 +1,725 @@
+/* 주문 페이지 스타일 */
+.order-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: white;
+  overflow: hidden;
+}
+
+
+.order-container {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* 진행 단계 */
+.order-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 12px;
+}
+
+.order-progress-item {
+  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.84px;
+  color: #747474;
+}
+
+.order-progress-item.active {
+  color: black;
+  font-weight: 700;
+}
+
+.order-progress-divider {
+  width: 12px;
+  height: 20px;
+}
+
+/* 섹션 공통 스타일 */
+.order-section {
+  margin-bottom: 40px;
+}
+
+.order-section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.order-section-title {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.72px;
+  color: black;
+}
+
+.order-section-divider {
+  width: 100%;
+  height: 5px;
+  background: black;
+  margin-bottom: 30px;
+}
+
+.order-section-divider-light {
+  width: 100%;
+  height: 1px;
+  background: #E8E8E8;
+  margin: 30px 0;
+}
+
+/* 주문 상품 정보 */
+.order-products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-product-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.order-product-image {
+  width: 120px;
+  height: 120px;
+  background: #F3F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-product-brand {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+  text-decoration: underline;
+}
+
+.order-product-name {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: black;
+}
+
+.order-product-option {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-product-price {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #FF5252;
+}
+
+/* 주문자 정보 */
+.order-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-user-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-user-label {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+  min-width: 120px;
+}
+
+.order-user-value {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-user-edit {
+  width: 60px;
+  height: 40px;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.order-user-edit-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+/* 배송지 정보 */
+.order-shipping-options {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.order-shipping-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-shipping-radio {
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.order-shipping-radio.selected::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background: #0B87F0;
+  border-radius: 50%;
+}
+
+.order-shipping-label {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-shipping-button {
+  width: 120px;
+  height: 40px;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.order-shipping-button-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-shipping-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-shipping-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-shipping-label-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-shipping-input {
+  width: 100%;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  padding: 0 15px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.order-shipping-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.order-shipping-checkbox {
+  width: 25px;
+  height: 25px;
+  border: 2px solid black;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.order-shipping-checkbox.checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 13px;
+  background: url("data:image/svg+xml,%3Csvg width='15' height='13' viewBox='0 0 15 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+}
+
+.order-shipping-checkbox-label {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-shipping-select {
+  width: 100%;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  padding: 0 15px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 쿠폰/마일리지 */
+.order-coupon-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-coupon-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-coupon-label {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+  min-width: 120px;
+}
+
+.order-coupon-input {
+  width: 210px;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  padding: 0 15px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.order-coupon-dropdown {
+  width: 1209px;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  padding: 0 15px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.order-coupon-dropdown-text {
+  color: black;
+}
+
+.order-coupon-dropdown-text.disabled {
+  color: #747474;
+}
+
+.order-coupon-dropdown-arrow {
+  width: 16px;
+  height: 10px;
+}
+
+.order-coupon-button {
+  width: 120px;
+  height: 50px;
+  background: #E8E8E8;
+  border: 1px solid #747474;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.order-coupon-button-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #747474;
+}
+
+.order-miles-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-miles-label {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+  min-width: 120px;
+}
+
+.order-miles-input {
+  width: 210px;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  padding: 0 15px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.order-miles-button {
+  width: 120px;
+  height: 50px;
+  background: #E8E8E8;
+  border: 1px solid #747474;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.order-miles-button-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #747474;
+}
+
+.order-miles-info-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-miles-info-text.gray {
+  color: #747474;
+}
+
+.order-question-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* 결제 상세 */
+.order-payment-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-payment-label {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-payment-label.total {
+  font-weight: 700;
+}
+
+.order-payment-amount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.order-payment-amount-text {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-payment-amount-text.large {
+  font-size: 32px;
+  font-weight: 900;
+  color: #FF5252;
+}
+
+.order-payment-amount-currency {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-payment-amount-currency.large {
+  color: #FF5252;
+}
+
+/* 결제 방법 */
+.order-payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.order-payment-method-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.order-payment-method-button {
+  width: 210px;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.order-payment-method-button.selected {
+  background: black;
+  color: white;
+}
+
+.order-payment-method-button-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-payment-method-button.selected .order-payment-method-button-text {
+  color: white;
+}
+
+.order-payment-method-dropdown {
+  width: 100%;
+  height: 50px;
+  background: white;
+  border: 1px solid black;
+  padding: 0 15px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.order-payment-method-dropdown-text {
+  color: black;
+}
+
+.order-payment-method-dropdown-arrow {
+  width: 16px;
+  height: 10px;
+}
+
+.order-payment-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.order-payment-benefit {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #E8E8E8;
+  border: 1px solid #747474;
+}
+
+.order-payment-benefit-button {
+  width: 70px;
+  height: 40px;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.order-payment-benefit-button-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-payment-benefit-text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.order-payment-benefit-arrow {
+  width: 10px;
+  height: 16px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+/* 주문동의 */
+.order-agreement {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-agreement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.order-agreement-checkbox {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #747474;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.order-agreement-checkbox.checked {
+  border-color: black;
+}
+
+.order-agreement-checkbox.checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.1998 11.2001L5.23289 14.2249C5.66159 14.5464 6.26752 14.4729 6.60685 14.0582L16.7998 1.6001' stroke='%23747474' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+}
+
+.order-agreement-text {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: black;
+  line-height: 1.4;
+}
+
+.order-agreement-text.small {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.order-agreement-link {
+  color: black;
+  text-decoration: underline;
+}
+
+.order-agreement-link:hover {
+  color: #0B87F0;
+}
+
+/* 결제 버튼 */
+.order-payment-button {
+  width: 400px;
+  height: 80px;
+  background: black;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 40px auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+}
+
+.order-payment-button-text {
+  color: white;
+  font-size: 36px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.08px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .order-container {
+    padding: 20px 10px;
+  }
+  
+  .order-progress {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .order-progress-item {
+    font-size: 20px;
+  }
+  
+  .order-payment-method-row {
+    flex-direction: column;
+  }
+  
+  .order-payment-method-button {
+    width: 100%;
+  }
+  
+  .order-payment-button {
+    width: 100%;
+    max-width: 400px;
+  }
+}

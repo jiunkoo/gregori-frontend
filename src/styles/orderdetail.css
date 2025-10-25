@@ -1,0 +1,541 @@
+/* 주문 상세 화면 스타일 */
+
+.orderdetail-wrapper {
+  background-color: white;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.orderdetail-container {
+  width: 1512px;
+  margin: 0 auto;
+  display: flex;
+  gap: 69px;
+  padding: 0;
+}
+
+/* 좌측 사이드바 */
+.orderdetail-sidebar {
+  width: 200px;
+  background: white;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.orderdetail-user-info {
+  padding: 34px 0;
+}
+
+.orderdetail-brand {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.96px;
+}
+
+.orderdetail-nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.72px;
+  padding: 34px 0 0 0;
+}
+
+.orderdetail-nav-divider {
+  width: 200px;
+  height: 5px;
+  background: #000;
+  margin: 20px 0;
+}
+
+.orderdetail-nav-item {
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.60px;
+  padding: 20px 0;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.orderdetail-nav-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* 기본 정보 영역 */
+.orderdetail-content {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 등급 영역 */
+.orderdetail-grade-section {
+  background: #000;
+  width: 1200px;
+  height: 200px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+.orderdetail-grade-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  position: relative;
+}
+
+.orderdetail-grade-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.orderdetail-grade-label {
+  font-size: 24px;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 2.40px;
+  text-align: left;
+}
+
+.orderdetail-grade-value {
+  font-size: 64px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 6.40px;
+  text-align: left;
+}
+
+.orderdetail-grade-arrow {
+  width: 10px;
+  height: 20px;
+}
+
+.orderdetail-grade-divider {
+  width: 1px;
+  height: 200px;
+  background: #E8E8E8;
+}
+
+.orderdetail-grade-benefit {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.orderdetail-grade-benefit-button {
+  background: transparent;
+  border: 1px solid white;
+  padding: 8px 16px;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.orderdetail-grade-benefit-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 주문 상세 섹션 */
+.orderdetail-section {
+  background: white;
+  border: 1px solid #E8E8E8;
+}
+
+.orderdetail-section-header {
+  padding: 24px 0;
+}
+
+.orderdetail-section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.72px;
+}
+
+.orderdetail-section-divider {
+  width: 100%;
+  height: 1px;
+  background: #E8E8E8;
+  margin: 0;
+}
+
+/* 주문 진행 단계 */
+.orderdetail-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  gap: 20px;
+}
+
+.orderdetail-progress-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.orderdetail-progress-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #E8E8E8;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 1.20px;
+}
+
+.orderdetail-progress-item.active .orderdetail-progress-circle {
+  background: #000;
+  color: white;
+}
+
+.orderdetail-progress-label {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.60px;
+  text-align: center;
+}
+
+.orderdetail-progress-arrow {
+  width: 19px;
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg width='19' height='40' viewBox='0 0 19 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0.419727L0 4.36716C0 4.63559 0.0908408 4.88823 0.239819 5.04612L14.4691 19.999L0.239819 34.9519C0.0908408 35.1098 0 35.3624 0 35.6308L0 39.5783C0 39.9204 0.268889 40.1204 0.461471 39.9204L18.1245 21.3622C18.764 20.6885 18.764 19.3095 18.1245 18.6411L0.461471 0.0828781C0.268889 -0.122387 0 0.0776176 0 0.419727Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+}
+
+/* 주문 정보 */
+.orderdetail-order-info {
+  padding: 20px 0;
+}
+
+.orderdetail-order-date {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.orderdetail-order-date-value,
+.orderdetail-order-number {
+  font-weight: 700;
+}
+
+/* 주문 상품 상세 */
+.orderdetail-order-detail {
+  display: flex;
+  align-items: center;
+  padding: 32px 0;
+  gap: 20px;
+}
+
+.orderdetail-order-product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.orderdetail-order-image {
+  width: 120px;
+  height: 120px;
+  background: #F3F2F2;
+  object-fit: cover;
+}
+
+.orderdetail-order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.orderdetail-order-brand {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-decoration: underline;
+}
+
+.orderdetail-order-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+
+.orderdetail-order-option {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.orderdetail-order-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+.orderdetail-order-quantity {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  min-width: 60px;
+}
+
+.orderdetail-order-shipping {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  min-width: 100px;
+}
+
+.orderdetail-order-status {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  min-width: 100px;
+}
+
+.orderdetail-order-delivery {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  min-width: 120px;
+}
+
+.orderdetail-order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.orderdetail-order-action-button {
+  width: 120px;
+  height: 50px;
+  border: 1px solid #000;
+  background: white;
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.orderdetail-order-action-button:hover {
+  background: #f8f9fa;
+}
+
+/* 주문자 정보 */
+.orderdetail-customer-info {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orderdetail-customer-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.orderdetail-customer-label {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  min-width: 120px;
+}
+
+.orderdetail-customer-value {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+/* 배송지 정보 */
+.orderdetail-shipping-info {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orderdetail-shipping-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.orderdetail-shipping-label {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  min-width: 120px;
+}
+
+.orderdetail-shipping-value {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  flex: 1;
+}
+
+.orderdetail-shipping-change-button {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #000;
+  background: white;
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.orderdetail-shipping-change-button:hover {
+  background: #f8f9fa;
+}
+
+/* 결제 정보 */
+.orderdetail-payment-info {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orderdetail-payment-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.orderdetail-payment-label {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  min-width: 120px;
+}
+
+.orderdetail-payment-value {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+/* 주의사항 */
+.orderdetail-notice {
+  padding: 20px 0;
+}
+
+.orderdetail-notice-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5;
+}
+
+/* 영수증 */
+.orderdetail-receipt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.orderdetail-receipt-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.orderdetail-receipt-button {
+  width: 140px;
+  height: 50px;
+  background: #000;
+  border: 1px solid #000;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.orderdetail-receipt-button:hover {
+  background: #333;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1512px) {
+  .orderdetail-container {
+    width: 100%;
+    padding: 0 20px;
+    gap: 20px;
+  }
+  
+  .orderdetail-content {
+    width: calc(100% - 220px);
+  }
+  
+  .orderdetail-grade-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .orderdetail-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .orderdetail-sidebar {
+    width: 100%;
+  }
+  
+  .orderdetail-content {
+    width: 100%;
+  }
+  
+  .orderdetail-progress {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .orderdetail-progress-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .orderdetail-order-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .orderdetail-order-actions {
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,430 @@
+/* 주문 확인 화면 스타일 */
+.order-confirm-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 40px 0;
+}
+
+.order-confirm-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 진행 단계 */
+.order-confirm-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.order-confirm-progress-item {
+  font-size: 28px;
+  font-weight: 400;
+  color: #747474;
+  letter-spacing: 0.84px;
+}
+
+.order-confirm-progress-item.active {
+  font-weight: 700;
+  color: #000;
+}
+
+.order-confirm-progress-divider {
+  width: 12px;
+  height: 20px;
+}
+
+/* 섹션 공통 스타일 */
+.order-confirm-section {
+  background: white;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-confirm-section-header {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-confirm-section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.72px;
+}
+
+.order-confirm-section-divider {
+  height: 5px;
+  background: #000;
+  margin: 0 32px;
+}
+
+.order-confirm-section-divider-light {
+  height: 1px;
+  background: #E8E8E8;
+  margin: 20px 32px;
+}
+
+/* 주문 상품 정보 */
+.order-confirm-products {
+  padding: 32px;
+}
+
+.order-confirm-product-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.order-confirm-product-item:last-child {
+  border-bottom: none;
+}
+
+.order-confirm-product-image {
+  width: 120px;
+  height: 120px;
+  background: #F3F2F2;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.order-confirm-product-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.order-confirm-product-brand {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-decoration: underline;
+  margin-bottom: 8px;
+}
+
+.order-confirm-product-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.order-confirm-product-option {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.order-confirm-product-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+.order-confirm-product-quantity {
+  display: flex;
+  align-items: baseline;
+  margin-right: 20px;
+}
+
+.order-confirm-product-quantity-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}
+
+.order-confirm-product-quantity-unit {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.order-confirm-product-status {
+  text-align: right;
+}
+
+.order-confirm-product-status-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* 주문자 정보 */
+.order-confirm-user-info {
+  padding: 32px;
+}
+
+.order-confirm-user-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-confirm-user-item:last-child {
+  margin-bottom: 0;
+}
+
+.order-confirm-user-label {
+  width: 120px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.order-confirm-user-value {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+/* 배송지 정보 */
+.order-confirm-shipping-info {
+  padding: 32px;
+}
+
+.order-confirm-shipping-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.order-confirm-shipping-item:last-child {
+  margin-bottom: 0;
+}
+
+.order-confirm-shipping-label {
+  width: 120px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin-right: 20px;
+}
+
+.order-confirm-shipping-value {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin-right: 20px;
+}
+
+.order-confirm-shipping-edit {
+  background: white;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.order-confirm-shipping-edit:hover {
+  background: #f8f9fa;
+}
+
+.order-confirm-shipping-edit-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+/* 결제 정보 */
+.order-confirm-payment-info {
+  padding: 32px;
+}
+
+.order-confirm-payment-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-confirm-payment-item:last-child {
+  margin-bottom: 0;
+}
+
+.order-confirm-payment-label {
+  width: 120px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.order-confirm-payment-value {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.order-confirm-receipt-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  border-top: 1px solid #E8E8E8;
+}
+
+.order-confirm-receipt-label {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.order-confirm-receipt-button {
+  background: #000;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.order-confirm-receipt-button:hover {
+  background: #333;
+}
+
+.order-confirm-receipt-button-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+}
+
+.order-confirm-notice {
+  padding: 32px;
+  border-top: 1px solid #E8E8E8;
+}
+
+.order-confirm-notice-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5;
+}
+
+/* 하단 버튼 */
+.order-confirm-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.order-confirm-button {
+  width: 280px;
+  height: 60px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.order-confirm-button-secondary {
+  background: white;
+  border: 1px solid #747474;
+}
+
+.order-confirm-button-secondary:hover {
+  background: #f8f9fa;
+}
+
+.order-confirm-button-primary {
+  background: #000;
+  border: 1px solid #000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+}
+
+.order-confirm-button-primary:hover {
+  background: #333;
+}
+
+.order-confirm-button-text {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.84px;
+}
+
+.order-confirm-button-secondary .order-confirm-button-text {
+  color: #000;
+}
+
+.order-confirm-button-primary .order-confirm-button-text {
+  color: white;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .order-confirm-container {
+    padding: 0 16px;
+  }
+  
+  .order-confirm-progress {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .order-confirm-progress-item {
+    font-size: 20px;
+  }
+  
+  .order-confirm-section-header {
+    padding: 20px 16px;
+  }
+  
+  .order-confirm-section-title {
+    font-size: 20px;
+  }
+  
+  .order-confirm-section-divider {
+    margin: 0 16px;
+  }
+  
+  .order-confirm-products,
+  .order-confirm-user-info,
+  .order-confirm-shipping-info,
+  .order-confirm-payment-info {
+    padding: 20px 16px;
+  }
+  
+  .order-confirm-product-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .order-confirm-product-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 0;
+  }
+  
+  .order-confirm-product-info {
+    margin-right: 0;
+  }
+  
+  .order-confirm-product-quantity,
+  .order-confirm-product-status {
+    align-self: flex-end;
+  }
+  
+  .order-confirm-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .order-confirm-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}

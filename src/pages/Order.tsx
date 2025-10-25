@@ -136,8 +136,18 @@ const Order: React.FC = () => {
       amounts
     });
 
-    // 주문 완료 페이지로 이동
-    navigate('/order-complete');
+    // 주문 확인 페이지로 이동
+    navigate('/order-confirm', {
+      state: {
+        orderData,
+        ordererInfo,
+        shippingInfo,
+        couponInfo,
+        paymentMethod,
+        agreements,
+        amounts
+      }
+    });
   };
 
   const handleAgreementChange = (type: keyof typeof agreements, checked: boolean) => {

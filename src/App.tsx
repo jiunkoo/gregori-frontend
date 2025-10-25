@@ -7,6 +7,8 @@ import Register from './pages/auth/Register';
 import ProductList from './pages/products/ProductList';
 import ProductDetail from './pages/products/ProductDetail';
 import OrderList from './pages/orders/OrderList';
+import OrderListPage from './pages/OrderList';
+import OrderDetail from './pages/OrderDetail';
 import MyPage from './pages/MyPage';
 import Cart from './pages/Cart';
 import OrderComplete from './pages/OrderComplete';
@@ -65,6 +67,9 @@ const App: React.FC = () => {
         <Route path="/order" element={<Layout><Order /></Layout>} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
         <Route path="/order-complete" element={<OrderComplete />} />
+        <Route path="/mypage" element={<Layout><MyPage /></Layout>} />
+        <Route path="/orderlist" element={<Layout><OrderListPage /></Layout>} />
+        <Route path="/orderdetail" element={<Layout><OrderDetail /></Layout>} />
         
         {/* 인증이 필요한 라우트 */}
         <Route 
@@ -72,14 +77,6 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <Layout><OrderList /></Layout>
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/mypage" 
-          element={
-            <ProtectedRoute>
-              <Layout><MyPage /></Layout>
             </ProtectedRoute>
           } 
         />

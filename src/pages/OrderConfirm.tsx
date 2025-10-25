@@ -1,256 +1,264 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../stores/authStore';
-import { orderAPI } from '../api/order';
-import { ProductResponseDto, OrderRequestDto } from '../types';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout/Layout';
+import '../styles/order-confirm.css';
+
+interface CartItem {
+  product: {
+    sellerId: number;
+    categoryName: string;
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    sellerName: string;
+    categoryId: number;
+    stock: number;
+    createdAt: string;
+    updatedAt: string;
+  };
+  quantity: number;
+}
+
+interface OrderData {
+  items: CartItem[];
+  totalAmount: number;
+}
 
 interface OrderConfirmData {
-  productName?: string;
-  quantity?: number;
-  price?: number;
-  items?: { product: ProductResponseDto; quantity: number }[];
-  totalAmount: number;
+  orderData: OrderData;
+  ordererInfo: {
+    name: string;
+    phone: string;
+    email: string;
+  };
+  shippingInfo: {
+    type: string;
+    name: string;
+    recipient: string;
+    address: string;
+    detailAddress: string;
+    phone1: string;
+    phone2: string;
+    request: string;
+    setAsDefault: boolean;
+  };
+  couponInfo: {
+    bonusCoupon: string;
+    brandCoupon: string;
+    miles: number;
+    milesUsed: number;
+  };
+  paymentMethod: string;
+  agreements: {
+    all: boolean;
+    personalInfo: boolean;
+    thirdParty: boolean;
+    payment: boolean;
+  };
+  amounts: {
+    totalProductAmount: number;
+    discountAmount: number;
+    shippingFee: number;
+    couponDiscount: number;
+    milesDiscount: number;
+    finalAmount: number;
+  };
 }
 
 const OrderConfirm: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useAuthStore();
-  const [orderData, setOrderData] = useState<OrderConfirmData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [orderLoading, setOrderLoading] = useState(false);
+  const orderConfirmData = location.state as OrderConfirmData;
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
-    }
-
-    const orderFromState = location.state as OrderConfirmData;
-    if (orderFromState) {
-      setOrderData(orderFromState);
-      setLoading(false);
-    } else {
-      navigate('/');
-    }
-  }, [isAuthenticated, navigate, location.state]);
+  // 주문 정보가 없으면 홈으로 리다이렉트
+  if (!orderConfirmData) {
+    navigate('/');
+    return null;
+  }
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ko-KR').format(price);
   };
 
-  const handleConfirmOrder = async () => {
-    if (!orderData || !user) return;
-
-    setOrderLoading(true);
-    try {
-      const orderRequestData: OrderRequestDto = {
-        memberId: user.id,
-        paymentMethod: 'CARD',
-        paymentAmount: orderData.totalAmount,
-        deliveryCost: 0,
-        orderDetails: orderData.items ? 
-          orderData.items.map(item => ({
-            productId: item.product.id,
-            productCount: item.quantity,
-          })) :
-          [{
-            productId: 1, // 임시 - 실제로는 상품 ID가 필요
-            productCount: orderData.quantity || 1,
-          }]
-      };
-
-      await orderAPI.createOrder(orderRequestData);
-      
-      // 주문 완료 페이지로 이동
-      navigate('/order-complete', { 
-        state: { 
-          success: true,
-          productName: orderData.productName,
-          quantity: orderData.quantity,
-          items: orderData.items?.map(item => ({ name: item.product.name, quantity: item.quantity })),
-          amount: orderData.totalAmount
-        } 
-      });
-    } catch (error: any) {
-      alert(error.response?.data?.message || '주문에 실패했습니다.');
-    } finally {
-      setOrderLoading(false);
-    }
+  const handleContinueShopping = () => {
+    navigate('/');
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center py-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 mb-4">
-              <svg className="animate-spin h-8 w-8 text-white" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </div>
-            <p className="text-gray-600">주문 정보를 불러오는 중...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const handleOrderInquiry = () => {
+    navigate('/orders');
+  };
 
-  if (!orderData) {
-    return null;
-  }
+  const handlePrintReceipt = () => {
+    window.print();
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-primary-600 flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">주문 확인</h1>
-            <p className="text-gray-600">주문 정보를 확인하고 결제를 진행해주세요.</p>
+    <Layout>
+      <div className="order-confirm-wrapper">
+        <div className="order-confirm-container">
+          {/* 진행 단계 */}
+          <div className="order-confirm-progress">
+            <span className="order-confirm-progress-item">01 장바구니</span>
+            <svg className="order-confirm-progress-divider" viewBox="0 0 12 20" fill="none">
+              <path fillRule="evenodd" clipRule="evenodd" d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z" fill="black"/>
+            </svg>
+            <span className="order-confirm-progress-item">02 주문</span>
+            <svg className="order-confirm-progress-divider" viewBox="0 0 12 20" fill="none">
+              <path fillRule="evenodd" clipRule="evenodd" d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z" fill="black"/>
+            </svg>
+            <span className="order-confirm-progress-item active">03 주문 확인</span>
           </div>
-        </div>
-      </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* 주문 상품 */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white shadow-soft p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">주문 상품</h2>
-              
-              <div className="space-y-4">
-                {orderData.items ? (
-                  orderData.items.map((item, index) => (
-                    <div key={index} className="flex items-center space-x-4 p-4 border border-gray-200">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-gray-900">{item.product.name}</h3>
-                        <p className="text-sm text-gray-500">수량: {item.quantity}개</p>
-                        <p className="text-sm text-gray-500">판매자: {item.product.sellerName}</p>
-                      </div>
-                      
-                      <div className="text-right">
-                        <p className="font-semibold text-gray-900">₩{formatPrice(item.product.price * item.quantity)}</p>
-                      </div>
-                    </div>
-                  ))
-                ) : orderData.productName ? (
-                  <div className="flex items-center space-x-4 p-4 border border-gray-200">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900">{orderData.productName}</h3>
-                      <p className="text-sm text-gray-500">수량: {orderData.quantity}개</p>
-                    </div>
-                    
-                    <div className="text-right">
-                      <p className="font-semibold text-gray-900">₩{formatPrice((orderData.price || 0) * (orderData.quantity || 1))}</p>
+          {/* 1. 주문 상품 정보 */}
+          <div className="order-confirm-section">
+            <div className="order-confirm-section-header">
+              <div className="order-confirm-section-title">주문 상품 정보</div>
+            </div>
+            <div className="order-confirm-section-divider"></div>
+            
+            <div className="order-confirm-products">
+              {orderConfirmData.orderData.items.map((item) => (
+                <div key={item.product.id} className="order-confirm-product-item">
+                  <div className="order-confirm-product-image">
+                    <svg width="120" height="120" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="order-confirm-product-info">
+                    <div className="order-confirm-product-brand">{item.product.sellerName}</div>
+                    <div className="order-confirm-product-name">{item.product.name}</div>
+                    <div className="order-confirm-product-option">옵션: [사이즈] M, [색상] Navy</div>
+                    <div className="order-confirm-product-price">
+                      {formatPrice(Math.floor(item.product.price * 0.8 * item.quantity))}원
                     </div>
                   </div>
-                ) : null}
-              </div>
+                  <div className="order-confirm-product-quantity">
+                    <span className="order-confirm-product-quantity-number">{item.quantity}</span>
+                    <span className="order-confirm-product-quantity-unit">개</span>
+                  </div>
+                  <div className="order-confirm-product-status">
+                    <div className="order-confirm-product-status-text">결제 완료</div>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* 배송 정보 */}
-            <div className="bg-white shadow-soft p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">배송 정보</h2>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <span className="text-gray-600">받는 사람</span>
-                  <span className="font-medium text-gray-900">{user?.name}</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <span className="text-gray-600">연락처</span>
-                  <span className="font-medium text-gray-900">{user?.email}</span>
-                </div>
-                <div className="flex justify-between items-center py-3">
-                  <span className="text-gray-600">배송지</span>
-                  <span className="font-medium text-gray-900">기본 배송지</span>
-                </div>
+          {/* 2. 주문자 정보 */}
+          <div className="order-confirm-section">
+            <div className="order-confirm-section-header">
+              <div className="order-confirm-section-title">주문자 정보</div>
+            </div>
+            <div className="order-confirm-section-divider"></div>
+            
+            <div className="order-confirm-user-info">
+              <div className="order-confirm-user-item">
+                <div className="order-confirm-user-label">이름</div>
+                <div className="order-confirm-user-value">{orderConfirmData.ordererInfo.name}</div>
+              </div>
+              <div className="order-confirm-user-item">
+                <div className="order-confirm-user-label">연락처</div>
+                <div className="order-confirm-user-value">{orderConfirmData.ordererInfo.phone}</div>
+              </div>
+              <div className="order-confirm-user-item">
+                <div className="order-confirm-user-label">이메일</div>
+                <div className="order-confirm-user-value">{orderConfirmData.ordererInfo.email}</div>
               </div>
             </div>
           </div>
 
-          {/* 결제 정보 */}
-          <div className="lg:col-span-1">
-            <div className="bg-white shadow-soft p-6 sticky top-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">결제 정보</h2>
-              
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">상품 금액</span>
-                  <span className="font-medium">₩{formatPrice(orderData.totalAmount)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">배송비</span>
-                  <span className="font-medium text-success-600">무료</span>
-                </div>
-                <hr className="border-gray-200" />
-                <div className="flex justify-between text-lg font-bold">
-                  <span>총 결제 금액</span>
-                  <span className="text-primary-600">₩{formatPrice(orderData.totalAmount)}</span>
+          {/* 3. 배송지 정보 */}
+          <div className="order-confirm-section">
+            <div className="order-confirm-section-header">
+              <div className="order-confirm-section-title">배송지 정보</div>
+            </div>
+            <div className="order-confirm-section-divider"></div>
+            
+            <div className="order-confirm-shipping-info">
+              <div className="order-confirm-shipping-item">
+                <div className="order-confirm-shipping-label">수령인</div>
+                <div className="order-confirm-shipping-value">Koubit</div>
+              </div>
+              <div className="order-confirm-shipping-item">
+                <div className="order-confirm-shipping-label">휴대폰번호</div>
+                <div className="order-confirm-shipping-value">010-1111-1111</div>
+              </div>
+              <div className="order-confirm-shipping-item">
+                <div className="order-confirm-shipping-label">배송지</div>
+                <div className="order-confirm-shipping-value">00000 한양시 조선구 고려동 11-1 신라아파트 111동 111호</div>
+                <div className="order-confirm-shipping-edit">
+                  <div className="order-confirm-shipping-edit-text">배송지 정보 변경</div>
                 </div>
               </div>
+              <div className="order-confirm-shipping-item">
+                <div className="order-confirm-shipping-label">배송 요청사항</div>
+                <div className="order-confirm-shipping-value">파손 위험이 있으니 주의해서 취급 부탁드립니다.</div>
+              </div>
+            </div>
+          </div>
 
-              {/* 결제 방법 */}
-              <div className="mb-6">
-                <h3 className="font-semibold text-gray-900 mb-3">결제 방법</h3>
-                <div className="space-y-2">
-                  <label className="flex items-center p-3 border border-gray-200 cursor-pointer">
-                    <input type="radio" name="payment" value="card" defaultChecked className="mr-3" />
-                    <span className="text-gray-700">신용카드</span>
-                  </label>
-                </div>
+          {/* 4. 결제 정보 */}
+          <div className="order-confirm-section">
+            <div className="order-confirm-section-header">
+              <div className="order-confirm-section-title">결제 정보</div>
+            </div>
+            <div className="order-confirm-section-divider"></div>
+            
+            <div className="order-confirm-payment-info">
+              <div className="order-confirm-payment-item">
+                <div className="order-confirm-payment-label">결제 방법</div>
+                <div className="order-confirm-payment-value">카카오페이</div>
               </div>
-              
-              <div className="space-y-3">
-                <button
-                  onClick={handleConfirmOrder}
-                  disabled={orderLoading}
-                  className="w-full bg-primary-600 text-white py-4 px-6 hover:bg-primary-700 transition-all duration-200 font-semibold text-lg shadow-soft disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {orderLoading ? (
-                    <div className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      결제 처리 중...
-                    </div>
-                  ) : (
-                    `₩${formatPrice(orderData.totalAmount)} 결제하기`
-                  )}
-                </button>
-                
-                <button
-                  onClick={() => navigate(-1)}
-                  className="w-full bg-gray-100 text-gray-700 py-3 px-6 hover:bg-gray-200 transition-all duration-200 font-semibold text-center"
-                >
-                  이전으로
-                </button>
+              <div className="order-confirm-payment-item">
+                <div className="order-confirm-payment-label">주문 상태</div>
+                <div className="order-confirm-payment-value">결제 완료</div>
               </div>
+              <div className="order-confirm-payment-item">
+                <div className="order-confirm-payment-label">주문 접수 일시</div>
+                <div className="order-confirm-payment-value">2023-01-01 18:00 PM</div>
+              </div>
+              <div className="order-confirm-payment-item">
+                <div className="order-confirm-payment-label">결제 완료 일시</div>
+                <div className="order-confirm-payment-value">2023-01-01 18:00 PM</div>
+              </div>
+              <div className="order-confirm-payment-item">
+                <div className="order-confirm-payment-label">배송비</div>
+                <div className="order-confirm-payment-value">{formatPrice(orderConfirmData.amounts.shippingFee)}원</div>
+              </div>
+              <div className="order-confirm-payment-item">
+                <div className="order-confirm-payment-label">결제 금액</div>
+                <div className="order-confirm-payment-value">{formatPrice(orderConfirmData.amounts.finalAmount)}원</div>
+              </div>
+            </div>
+
+            <div className="order-confirm-receipt-section">
+              <div className="order-confirm-receipt-label">영수증</div>
+              <div className="order-confirm-receipt-button" onClick={handlePrintReceipt}>
+                <div className="order-confirm-receipt-button-text">영수증 출력</div>
+              </div>
+            </div>
+
+            <div className="order-confirm-notice">
+              <div className="order-confirm-notice-text">
+                * 상품이 품절되는 경우 주문이 자동으로 취소되며, 주문하신 분의 SMS와 이메일로 관련 안내를 발송해드립니다.<br/>
+                * 상세 내역은 마이페이지에서 확인하실 수 있습니다.
+              </div>
+            </div>
+          </div>
+
+          {/* 5. 하단 버튼 */}
+          <div className="order-confirm-buttons">
+            <div className="order-confirm-button order-confirm-button-secondary" onClick={handleContinueShopping}>
+              <div className="order-confirm-button-text">계속 쇼핑하기</div>
+            </div>
+            <div className="order-confirm-button order-confirm-button-primary" onClick={handleOrderInquiry}>
+              <div className="order-confirm-button-text">주문/배송 조회</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

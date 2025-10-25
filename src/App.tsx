@@ -6,14 +6,13 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ProductList from './pages/products/ProductList';
 import ProductDetail from './pages/products/ProductDetail';
-import OrderList from './pages/orders/OrderList';
-import OrderListPage from './pages/OrderList';
-import OrderDetail from './pages/OrderDetail';
+import OrderListPage from './pages/orders/OrderList';
+import OrderDetail from './pages/orders/OrderDetail';
 import MyPage from './pages/MyPage';
 import Cart from './pages/Cart';
-import OrderComplete from './pages/OrderComplete';
-import OrderConfirm from './pages/OrderConfirm';
-import Order from './pages/Order';
+import OrderComplete from './pages/orders/OrderComplete';
+import OrderConfirm from './pages/orders/OrderConfirm';
+import Order from './pages/orders/Order';
 import { useAuthStore } from './stores/authStore';
 import { memberAPI } from './api/member';
 
@@ -76,7 +75,7 @@ const App: React.FC = () => {
           path="/orders" 
           element={
             <ProtectedRoute>
-              <Layout><OrderList /></Layout>
+              <Layout><OrderListPage /></Layout>
             </ProtectedRoute>
           } 
         />

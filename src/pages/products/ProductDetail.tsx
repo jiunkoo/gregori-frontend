@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { productAPI } from '../../api/product';
 import { useAuthStore } from '../../stores/authStore';
 import { ProductResponseDto } from '../../types';
+import Icon from '../../components/icons/SvgIcon';
 import '../../styles/product-detail.css';
 
 const ProductDetail: React.FC = () => {
@@ -122,14 +123,10 @@ const ProductDetail: React.FC = () => {
       <div className="product-detail-wrapper">
         <div className="product-detail-container">
           <div className="product-detail-error">
-            <svg className="product-detail-error-icon">
-              <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <Icon name="error" size={24} className="product-detail-error-icon" />
             <p className="product-detail-error-text">상품을 찾을 수 없습니다.</p>
             <Link to="/" className="product-detail-error-button">
-              <svg className="product-detail-back-icon">
-                <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
+              <Icon name="arrowLeft" size={20} className="product-detail-back-icon" />
               홈으로 돌아가기
             </Link>
           </div>
@@ -144,13 +141,9 @@ const ProductDetail: React.FC = () => {
         <div className="product-detail-header">
           <nav className="product-detail-breadcrumb">
             <Link to="/">홈</Link>
-            <svg className="product-detail-breadcrumb-arrow">
-              <path d="M9 5l7 7-7 7" />
-            </svg>
+            <Icon name="arrowRight" size={16} className="product-detail-breadcrumb-arrow" />
             <Link to="/">상품</Link>
-            <svg className="product-detail-breadcrumb-arrow">
-              <path d="M9 5l7 7-7 7" />
-            </svg>
+            <Icon name="arrowRight" size={16} className="product-detail-breadcrumb-arrow" />
             <span>{product.name}</span>
           </nav>
         </div>
@@ -159,9 +152,7 @@ const ProductDetail: React.FC = () => {
           <div className="product-detail-image-section">
             <div className="product-detail-image">
               <div className="product-detail-image-placeholder">
-                <svg className="product-detail-image-placeholder-icon">
-                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+                <Icon name="image" size={120} className="product-detail-image-placeholder-icon" />
                 <p>이미지 준비중</p>
               </div>
               <div className="product-detail-image-dots">
@@ -171,14 +162,10 @@ const ProductDetail: React.FC = () => {
               </div>
               <div className="product-detail-image-nav">
                 <button className="product-detail-nav-button">
-                  <svg className="product-detail-nav-left-icon">
-                    <path d="M11.3374 0.629166L1.15217 10L11.3374 19.3492L10.8988 20L0 10L10.9059 4.76837e-07L11.3374 0.629166Z"/>
-                  </svg>
+                  <Icon name="arrowLeft" size={20} className="product-detail-nav-left-icon" />
                 </button>
                 <button className="product-detail-nav-button">
-                  <svg className="product-detail-nav-right-icon">
-                    <path d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z"/>
-                  </svg>
+                  <Icon name="arrowRight" size={20} className="product-detail-nav-right-icon" />
                 </button>
               </div>
             </div>
@@ -192,23 +179,14 @@ const ProductDetail: React.FC = () => {
                 className="product-detail-wishlist-button"
                 onClick={handleWishlistToggle}
               >
-                <svg className="product-detail-wishlist-icon">
-                  <path 
-                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    fill={isWishlisted ? "#FF5252" : "none"}
-                    stroke={isWishlisted ? "#FF5252" : "currentColor"}
-                    strokeWidth="1.5"
-                  />
-                </svg>
+                <Icon name="heart" size={24} className="product-detail-wishlist-icon" color={isWishlisted ? "#FF5252" : "currentColor"} />
               </button>
             </div>
             
             <div className="product-detail-rating">
               <div className="product-detail-stars">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="product-detail-star">
-                    <path d="M10.9993 1L7.9428 7.56716L1 8.6269L6.02945 13.8027L4.8272 21L10.9993 17.5364L17.1727 21L15.9793 13.8027L21 8.6269L14.0956 7.56716L10.9993 1Z"/>
-                  </svg>
+                  <Icon key={i} name="star" size={20} className="product-detail-star" />
                 ))}
               </div>
               <span className="product-detail-review-link">+500 리뷰 보기</span>
@@ -217,10 +195,7 @@ const ProductDetail: React.FC = () => {
             <div className="product-detail-price-section">
               <div className="product-detail-price">{formatPrice(product.price)}원</div>
               <button className="product-detail-coupon-button">
-                <svg className="product-detail-coupon-icon">
-                  <path d="M15 17.5L14.2929 18.2071L15 18.9142L15.7071 18.2071L15 17.5ZM16 6.25C16 5.69772 15.5523 5.25 15 5.25C14.4477 5.25 14 5.69772 14 6.25L15 6.25L16 6.25ZM8.75 11.25L8.04289 11.9571L14.2929 18.2071L15 17.5L15.7071 16.7929L9.45711 10.5429L8.75 11.25ZM15 17.5L15.7071 18.2071L21.9571 11.9571L21.25 11.25L20.5429 10.5429L14.2929 16.7929L15 17.5ZM15 17.5L16 17.5L16 6.25L15 6.25L14 6.25L14 17.5L15 17.5Z"/>
-                  <path d="M6.25 20L6.25 21.25C6.25 22.6307 7.36929 23.75 8.75 23.75L21.25 23.75C22.6307 23.75 23.75 22.6307 23.75 21.25V20"/>
-                </svg>
+                <Icon name="coupon" size={24} className="product-detail-coupon-icon" />
                 쿠폰 받기
               </button>
             </div>
@@ -245,15 +220,11 @@ const ProductDetail: React.FC = () => {
                   onClick={() => handleDiscountToggle('productDiscount')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="1" y="1" width="23" height="23" rx="4" fill="white" stroke={discountStates.productDiscount ? "black" : "#BABABA"} strokeWidth="2"/>
-                    </svg>
+                    <Icon name="checkbox" size={25} color={discountStates.productDiscount ? "black" : "#BABABA"} />
                   </div>
                   {discountStates.productDiscount && (
                     <div className="product-detail-checkbox-check">
-                      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="check" size={15} color="black" />
                     </div>
                   )}
                 </button>
@@ -268,24 +239,17 @@ const ProductDetail: React.FC = () => {
                   onClick={() => handleDiscountToggle('couponDiscount1')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="1" y="1" width="23" height="23" rx="4" fill="white" stroke={discountStates.couponDiscount1 ? "black" : "#BABABA"} strokeWidth="2"/>
-                    </svg>
+                    <Icon name="checkbox" size={25} color={discountStates.couponDiscount1 ? "black" : "#BABABA"} />
                   </div>
                   {discountStates.couponDiscount1 && (
                     <div className="product-detail-checkbox-check">
-                      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="check" size={15} color="black" />
                     </div>
                   )}
                 </button>
                 <div className="product-detail-coupon-item">
                   <button className="product-detail-coupon-download">
-                    <svg className="product-detail-coupon-icon">
-                      <path d="M11.25 13.125L10.5429 13.8321L11.25 14.5392L11.9571 13.8321L11.25 13.125ZM12.25 4.6875C12.25 4.13522 11.8023 3.6875 11.25 3.6875C10.6977 3.6875 10.25 4.13522 10.25 4.6875L11.25 4.6875L12.25 4.6875ZM6.5625 8.4375L5.85539 9.14461L10.5429 13.8321L11.25 13.125L11.9571 12.4179L7.26961 7.73039L6.5625 8.4375ZM11.25 13.125L11.9571 13.8321L16.6446 9.14461L15.9375 8.4375L15.2304 7.73039L10.5429 12.4179L11.25 13.125ZM11.25 13.125L12.25 13.125L12.25 4.6875L11.25 4.6875L10.25 4.6875L10.25 13.125L11.25 13.125Z"/>
-                      <path d="M4.6875 15L4.6875 15.9375C4.6875 16.973 5.52697 17.8125 6.5625 17.8125L15.9375 17.8125C16.973 17.8125 17.8125 16.973 17.8125 15.9375V15"/>
-                    </svg>
+                    <Icon name="download" size={24} className="product-detail-coupon-icon" />
                     받기
                   </button>
                   <span className="product-detail-coupon-name">GREEN 회원 5% 할인 쿠폰</span>
@@ -300,24 +264,17 @@ const ProductDetail: React.FC = () => {
                   onClick={() => handleDiscountToggle('couponDiscount2')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="1" y="1" width="23" height="23" rx="4" fill="white" stroke={discountStates.couponDiscount2 ? "black" : "#BABABA"} strokeWidth="2"/>
-                    </svg>
+                    <Icon name="checkbox" size={25} color={discountStates.couponDiscount2 ? "black" : "#BABABA"} />
                   </div>
                   {discountStates.couponDiscount2 && (
                     <div className="product-detail-checkbox-check">
-                      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="check" size={15} color="black" />
                     </div>
                   )}
                 </button>
                 <div className="product-detail-coupon-item">
                   <button className="product-detail-coupon-download">
-                    <svg className="product-detail-coupon-icon">
-                      <path d="M11.25 13.125L10.5429 13.8321L11.25 14.5392L11.9571 13.8321L11.25 13.125ZM12.25 4.6875C12.25 4.13522 11.8023 3.6875 11.25 3.6875C10.6977 3.6875 10.25 4.13522 10.25 4.6875L11.25 4.6875L12.25 4.6875ZM6.5625 8.4375L5.85539 9.14461L10.5429 13.8321L11.25 13.125L11.9571 12.4179L7.26961 7.73039L6.5625 8.4375ZM11.25 13.125L11.9571 13.8321L16.6446 9.14461L15.9375 8.4375L15.2304 7.73039L10.5429 12.4179L11.25 13.125ZM11.25 13.125L12.25 13.125L12.25 4.6875L11.25 4.6875L10.25 4.6875L10.25 13.125L11.25 13.125Z"/>
-                      <path d="M4.6875 15L4.6875 15.9375C4.6875 16.973 5.52697 17.8125 6.5625 17.8125L15.9375 17.8125C16.973 17.8125 17.8125 16.973 17.8125 15.9375V15"/>
-                    </svg>
+                    <Icon name="download" size={24} className="product-detail-coupon-icon" />
                     받기
                   </button>
                   <span className="product-detail-coupon-name">추석맞이 10% 할인 쿠폰</span>
@@ -332,15 +289,11 @@ const ProductDetail: React.FC = () => {
                   onClick={() => handleDiscountToggle('paymentDiscount1')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="1" y="1" width="23" height="23" rx="4" fill="white" stroke={discountStates.paymentDiscount1 ? "black" : "#BABABA"} strokeWidth="2"/>
-                    </svg>
+                    <Icon name="checkbox" size={25} color={discountStates.paymentDiscount1 ? "black" : "#BABABA"} />
                   </div>
                   {discountStates.paymentDiscount1 && (
                     <div className="product-detail-checkbox-check">
-                      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="check" size={15} color="black" />
                     </div>
                   )}
                 </button>
@@ -355,15 +308,11 @@ const ProductDetail: React.FC = () => {
                   onClick={() => handleDiscountToggle('paymentDiscount2')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="1" y="1" width="23" height="23" rx="4" fill="white" stroke={discountStates.paymentDiscount2 ? "black" : "#BABABA"} strokeWidth="2"/>
-                    </svg>
+                    <Icon name="checkbox" size={25} color={discountStates.paymentDiscount2 ? "black" : "#BABABA"} />
                   </div>
                   {discountStates.paymentDiscount2 && (
                     <div className="product-detail-checkbox-check">
-                      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L4.23309 11.4248C4.66178 11.7463 5.26772 11.6728 5.60705 11.2581L14 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="check" size={15} color="black" />
                     </div>
                   )}
                 </button>
@@ -396,9 +345,7 @@ const ProductDetail: React.FC = () => {
               <div className="product-detail-option-group">
                 <div className="product-detail-option-header" onClick={() => setSizeOpen(!sizeOpen)}>
                   <span className="product-detail-option-title">Size</span>
-                  <svg className={`product-detail-option-arrow ${sizeOpen ? 'open' : ''}`}>
-                    <path d="M0.503332 7.62939e-06L8 8.14821L15.4793 7.62939e-06L16 0.350901L8 9.06995L-4.76837e-07 0.345232L0.503332 7.62939e-06Z"/>
-                  </svg>
+                  <Icon name="dropdownArrow" size={16} className={`product-detail-option-arrow ${sizeOpen ? 'open' : ''}`} />
                 </div>
                 <div className={`product-detail-option-items ${sizeOpen ? 'open' : ''}`}>
                   {sizes.map((size) => (
@@ -422,9 +369,7 @@ const ProductDetail: React.FC = () => {
               <div className="product-detail-option-group">
                 <div className={`product-detail-option-header ${!selectedSize ? 'disabled' : ''}`} onClick={() => selectedSize && setColorOpen(!colorOpen)}>
                   <span className="product-detail-option-title">Color{selectedColor ? ` - ${selectedColor}` : ''}</span>
-                  <svg className={`product-detail-option-arrow ${colorOpen ? 'open' : ''}`}>
-                    <path d="M0.503332 7.62939e-06L8 8.14821L15.4793 7.62939e-06L16 0.350901L8 9.06995L-4.76837e-07 0.345232L0.503332 7.62939e-06Z"/>
-                  </svg>
+                  <Icon name="dropdownArrow" size={16} className={`product-detail-option-arrow ${colorOpen ? 'open' : ''}`} />
                 </div>
                 <div className={`product-detail-option-items ${colorOpen && selectedSize ? 'open' : ''}`}>
                   {colors.map((color) => (
@@ -453,22 +398,15 @@ const ProductDetail: React.FC = () => {
                   <span className="product-detail-cart-option">{selectedSize} / {selectedColor}</span>
                   <div className="product-detail-cart-controls">
                     <button className="product-detail-cart-button" onClick={() => handleQuantityChange(-1)}>
-                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.5 15L7.5 15" stroke="#33363F" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="minus" size={30} color="#33363F" />
                     </button>
                     <div className="product-detail-cart-quantity">{quantity}</div>
                     <button className="product-detail-cart-button" onClick={() => handleQuantityChange(1)}>
-                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5L15 22.5" stroke="#33363F" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M22.5 15L7.5 15" stroke="#33363F" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
+                      <Icon name="plus" size={30} color="#33363F" />
                     </button>
                   </div>
                   <span className="product-detail-cart-price">{formatPrice(product.price)}원</span>
-                  <svg className="product-detail-cart-remove">
-                    <path d="M10 0C4.4775 0 0 4.4775 0 10C0 15.5225 4.4775 20 10 20C15.5225 20 20 15.5225 20 10C20 4.4775 15.5225 0 10 0ZM13.4592 14.9525L10.0067 11.5342L6.57583 15L5.04833 13.4725L8.46833 10.0083L5 6.57583L6.5275 5.04833L9.99 8.46667L13.4117 5L14.9525 6.54083L11.5358 9.99167L15 13.4117L13.4592 14.9525Z"/>
-                  </svg>
+                  <Icon name="close" size={20} className="product-detail-cart-remove" />
                 </div>
               </div>
             )}

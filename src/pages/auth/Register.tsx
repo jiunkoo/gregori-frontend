@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { memberAPI } from '../../api/member';
 import Header from '../../components/common/Header';
+import Icon from '../../components/icons/SvgIcon';
 import '../../styles/register.css';
 
 const Register = () => {
@@ -124,18 +125,7 @@ const Register = () => {
       {/* 약관 전체 동의하기 */}
       <div className="register-agreement-all">
         <div className="register-agreement-checkbox">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect 
-              x="0.25" 
-              y="0.25" 
-              width="18.8939" 
-              height="19.5" 
-              rx="4.75" 
-              fill="#E8E8E8" 
-              stroke="#747474" 
-              strokeWidth="0.5"
-            />
-          </svg>
+          <Icon name="checkbox" size={20} />
         </div>
         <div className="register-agreement-text">
           약관 전체 동의하기(선택 동의 포함)
@@ -146,14 +136,7 @@ const Register = () => {
       <div className="register-agreement-items">
         <div className="register-agreement-item">
           <div className="register-agreement-checkbox">
-            <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path 
-                d="M1.90908 9L5.00657 11.3957C5.43962 11.7307 6.06149 11.6551 6.40176 11.2262L14.5151 1" 
-                stroke="#E8E8E8" 
-                strokeWidth="2" 
-                strokeLinecap="round"
-              />
-            </svg>
+            <Icon name="check" size={16} color="#E8E8E8" />
           </div>
           <div className="register-agreement-text">
             [필수] 만 14세 이상입니다.
@@ -162,14 +145,7 @@ const Register = () => {
 
         <div className="register-agreement-item">
           <div className="register-agreement-checkbox">
-            <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path 
-                d="M1.90908 9L5.00657 11.3957C5.43962 11.7307 6.06149 11.6551 6.40176 11.2262L14.5151 1" 
-                stroke="#E8E8E8" 
-                strokeWidth="2" 
-                strokeLinecap="round"
-              />
-            </svg>
+            <Icon name="check" size={16} color="#E8E8E8" />
           </div>
           <div className="register-agreement-text">
             [필수] 이용약관 동의 <span className="register-agreement-link">자세히</span>
@@ -178,14 +154,7 @@ const Register = () => {
 
         <div className="register-agreement-item">
           <div className="register-agreement-checkbox">
-            <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path 
-                d="M1.90908 9L5.00657 11.3957C5.43962 11.7307 6.06149 11.6551 6.40176 11.2262L14.5151 1" 
-                stroke="#0B87F0" 
-                strokeWidth="2" 
-                strokeLinecap="round"
-              />
-            </svg>
+            <Icon name="check" size={16} color="#0B87F0" />
           </div>
           <div className="register-agreement-text">
             약관 전체 동의하기(선택 동의 포함)

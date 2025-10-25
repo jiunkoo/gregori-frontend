@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../stores/authStore';
+import { useAuthStore } from '../../stores/authStore';
+import Icon from '../../components/icons/SvgIcon';
 
 interface OrderCompleteData {
   success: boolean;
@@ -54,10 +55,7 @@ const OrderComplete: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4">
-              <svg className="animate-spin h-8 w-8 text-white" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
+              <Icon name="loading" size={32} className="animate-spin text-white" />
             </div>
             <p className="text-gray-600">주문 정보를 불러오는 중...</p>
           </div>
@@ -77,9 +75,7 @@ const OrderComplete: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <div className="w-20 h-20 bg-success-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+              <Icon name="check" size={40} className="text-white" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">주문이 완료되었습니다!</h1>
             <p className="text-gray-600">주문이 성공적으로 처리되었습니다.</p>
@@ -100,9 +96,7 @@ const OrderComplete: React.FC = () => {
                   orderData.items.map((item, index) => (
                     <div key={index} className="flex items-center space-x-4 p-4 border border-gray-200 rounded-xl">
                       <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+                        <Icon name="image" size={32} className="text-gray-400" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
@@ -114,9 +108,7 @@ const OrderComplete: React.FC = () => {
                 ) : orderData.productName ? (
                   <div className="flex items-center space-x-4 p-4 border border-gray-200 rounded-xl">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
+                      <Icon name="image" size={32} className="text-gray-400" />
                     </div>
                     
                     <div className="flex-1 min-w-0">

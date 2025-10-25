@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Icon from '../../components/icons/SvgIcon';
 import { orderAPI } from '../../api/order';
 import { OrderResponseDto, OrderDetailStatus } from '../../types';
+import '../../styles/orderlist.css';
 
-const OrderList: React.FC = () => {
+const OrderList = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
 
   useEffect(() => {
     fetchOrders();
@@ -32,22 +34,6 @@ const OrderList: React.FC = () => {
     return new Date(dateString).toLocaleDateString('ko-KR');
   };
 
-  const getStatusColor = (status: OrderDetailStatus) => {
-    switch (status) {
-      case OrderDetailStatus.PAYMENT_PENDING:
-        return 'text-yellow-600 bg-yellow-100';
-      case OrderDetailStatus.PAYMENT_COMPLETED:
-        return 'text-blue-600 bg-blue-100';
-      case OrderDetailStatus.SHIPPING:
-        return 'text-purple-600 bg-purple-100';
-      case OrderDetailStatus.DELIVERED:
-        return 'text-green-600 bg-green-100';
-      case OrderDetailStatus.PAYMENT_CANCELED:
-        return 'text-red-600 bg-red-100';
-      default:
-        return 'text-gray-600 bg-gray-100';
-    }
-  };
 
   const getStatusText = (status: OrderDetailStatus) => {
     switch (status) {
@@ -68,88 +54,145 @@ const OrderList: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="text-lg">로딩 중...</div>
+      <div className="orderlist-wrapper">
+        <div className="orderlist-container">
+          <div className="orderlist-content">
+            <div className="flex justify-center items-center h-64">
+              <div className="text-lg">로딩 중...</div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">주문 목록</h1>
-      </div>
-
-      {orders.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-lg mb-4">주문 내역이 없습니다.</p>
-          <Link
-            to="/products"
-            className="inline-block bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700"
-          >
-            상품 둘러보기
-          </Link>
+    <div className="orderlist-wrapper">
+      <div className="orderlist-container">
+        {/* 좌측 내비게이션 바 */}
+        <div className="orderlist-sidebar">
+          <div className="orderlist-user-info">
+            <div className="orderlist-brand">KOUBIT</div>
+          </div>
+          
+          <div className="orderlist-nav-title">나의 쇼핑 정보</div>
+          <div className="orderlist-nav-divider"></div>
+          
+          <Link to="/orderlist" className="orderlist-nav-item">주문배송조회</Link>
+          <Link to="/orderlist" className="orderlist-nav-item">취소/교환/반품 내역</Link>
+          <Link to="/orderlist" className="orderlist-nav-item">상품 리뷰</Link>
+          
+          <div className="orderlist-nav-title">나의 계정 설정</div>
+          <div className="orderlist-nav-divider"></div>
+          
+          <Link to="/mypage" className="orderlist-nav-item">회원정보수정</Link>
+          <Link to="/mypage" className="orderlist-nav-item">멤버십 등급</Link>
+          <Link to="/mypage" className="orderlist-nav-item">쿠폰</Link>
+          <Link to="/mypage" className="orderlist-nav-item">마일리지</Link>
+          
+          <div className="orderlist-nav-title">고객센터</div>
+          <div className="orderlist-nav-divider"></div>
+          
+          <Link to="/orderlist" className="orderlist-nav-item">1:1 문의내역</Link>
+          <Link to="/orderlist" className="orderlist-nav-item">상품 Q&A내역</Link>
+          <Link to="/orderlist" className="orderlist-nav-item">공지사항</Link>
+          <Link to="/orderlist" className="orderlist-nav-item">FAQ</Link>
+          <Link to="/orderlist" className="orderlist-nav-item">고객의 소리</Link>
         </div>
-      ) : (
-        <div className="space-y-6">
-          {orders.map((order) => (
-            <div key={order.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      주문번호: {order.id}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      주문일: {formatDate(order.createdAt)}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-lg font-bold text-primary-600">
-                      총 금액: {formatPrice(order.totalAmount)}원
-                    </p>
-                  </div>
-                </div>
 
-                <div className="border-t pt-4">
-                  <h4 className="font-medium text-gray-900 mb-3">주문 상품</h4>
-                  <div className="space-y-3">
-                    {order.orderDetails.map((detail) => (
-                      <div key={detail.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-md">
-                        <div className="flex-1">
-                          <p className="font-medium text-gray-900">{detail.productName}</p>
-                          <p className="text-sm text-gray-500">
-                            수량: {detail.quantity}개 | 단가: {formatPrice(detail.price)}원
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(detail.status)}`}>
-                            {getStatusText(detail.status)}
-                          </span>
-                          <p className="text-sm font-medium text-gray-900 mt-1">
-                            {formatPrice(detail.price * detail.quantity)}원
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-4 flex justify-end space-x-3">
-                  <Link
-                    to={`/orders/${order.id}`}
-                    className="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700"
-                  >
-                    상세보기
-                  </Link>
-                </div>
+        {/* 기본 정보 영역 */}
+        <div className="orderlist-content">
+          {/* 등급 영역 */}
+          <div className="orderlist-grade-section">
+            <div className="orderlist-grade-item">
+              <div className="orderlist-grade-content">
+                <div className="orderlist-grade-label">멤버십 등급</div>
+                <div className="orderlist-grade-value">GREEN</div>
               </div>
+              <Icon name="arrowRight" size={10} className="orderlist-grade-arrow" color="white" />
             </div>
-          ))}
+            <div className="orderlist-grade-divider"></div>
+            <div className="orderlist-grade-item">
+              <div className="orderlist-grade-content">
+                <div className="orderlist-grade-label">사용가능쿠폰</div>
+                <div className="orderlist-grade-value">4</div>
+              </div>
+              <Icon name="arrowRight" size={10} className="orderlist-grade-arrow" color="white" />
+            </div>
+            <div className="orderlist-grade-divider"></div>
+            <div className="orderlist-grade-item">
+              <div className="orderlist-grade-content">
+                <div className="orderlist-grade-label">마일리지</div>
+                <div className="orderlist-grade-value">0</div>
+              </div>
+              <Icon name="arrowRight" size={10} className="orderlist-grade-arrow" color="white" />
+            </div>
+            <div className="orderlist-grade-benefit">
+              <div className="orderlist-grade-benefit-button">할인 혜택 보기</div>
+            </div>
+          </div>
+
+          {/* 주문 상품 정보 섹션 */}
+          <div className="orderlist-section">
+            <div className="orderlist-section-header">
+              <div className="orderlist-section-title">주문 상품 정보</div>
+            </div>
+            <div className="orderlist-section-divider"></div>
+            
+            {orders.length === 0 ? (
+              <div className="orderlist-empty">
+                <div className="orderlist-empty-text">주문 내역이 없습니다.</div>
+                <Link to="/products" className="orderlist-empty-button">
+                  상품 둘러보기
+                </Link>
+              </div>
+            ) : (
+              <div className="orderlist-orders">
+                {orders.map((order) => (
+                  <div key={order.id} className="orderlist-order-item">
+                    {/* 주문 정보 */}
+                    <div className="orderlist-order-info">
+                      <div className="orderlist-order-date">
+                        주문일자 <span className="orderlist-order-date-value">{formatDate(order.createdAt)}</span>     주문번호 <span className="orderlist-order-number">{order.id}</span>
+                      </div>
+                    </div>
+                    <div className="orderlist-section-divider"></div>
+                    
+                    {/* 주문 상품 상세 */}
+                    <Link to={`/orderdetail/${order.id}`} className="orderlist-order-detail">
+                      {order.orderDetails.map((detail) => (
+                        <div key={detail.id} className="orderlist-order-product">
+                          <div className="orderlist-order-image">
+                            <Icon name="image" size={120} />
+                          </div>
+                          <div className="orderlist-order-info">
+                            <div className="orderlist-order-brand">브랜드</div>
+                            <div className="orderlist-order-name">{detail.productName}</div>
+                            <div className="orderlist-order-option">옵션: [사이즈] M, [색상] Navy</div>
+                            <div className="orderlist-order-price">{formatPrice(detail.price)}원</div>
+                          </div>
+                          
+                          <div className="orderlist-order-quantity">{detail.quantity}개</div>
+                          <div className="orderlist-order-shipping">배송비 <br/>3,000원</div>
+                          <div className="orderlist-order-status">{getStatusText(detail.status)}</div>
+                          <div className="orderlist-order-delivery">2023.01.31 이내<br/>출고 예정</div>
+                        </div>
+                      ))}
+                      
+                      <div className="orderlist-order-actions">
+                        <button className="orderlist-order-action-button">취소 접수</button>
+                        <button className="orderlist-order-action-button">1:1 문의</button>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default OrderList; 
+export default OrderList;

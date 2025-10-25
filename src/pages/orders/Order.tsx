@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ProductResponseDto } from '../types';
-import '../styles/order.css';
+import { ProductResponseDto } from '../../types';
+import Icon from '../../components/icons/SvgIcon';
+import '../../styles/order.css';
 
 interface CartItem {
   product: ProductResponseDto;
@@ -172,13 +173,9 @@ const Order: React.FC = () => {
         {/* 진행 단계 */}
         <div className="order-progress">
           <span className="order-progress-item">01 장바구니</span>
-          <svg className="order-progress-divider" viewBox="0 0 12 20" fill="none">
-            <path fillRule="evenodd" clipRule="evenodd" d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z" fill="black"/>
-          </svg>
+          <Icon name="progressDivider" size={12} className="order-progress-divider" color="black" />
           <span className="order-progress-item active">02 주문</span>
-          <svg className="order-progress-divider" viewBox="0 0 12 20" fill="none">
-            <path fillRule="evenodd" clipRule="evenodd" d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z" fill="black"/>
-          </svg>
+          <Icon name="progressDivider" size={12} className="order-progress-divider" color="black" />
           <span className="order-progress-item">03 주문 확인</span>
         </div>
 
@@ -193,9 +190,7 @@ const Order: React.FC = () => {
             {orderData.items.map((item) => (
               <div key={item.product.id} className="order-product-item">
                 <div className="order-product-image">
-                  <svg width="60" height="60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
+                  <Icon name="image" size={60} />
                 </div>
                 <div className="order-product-info">
                   <div className="order-product-brand">{item.product.sellerName}</div>
@@ -246,11 +241,7 @@ const Order: React.FC = () => {
         <div className="order-section">
           <div className="order-section-header">
             <div className="order-section-title">배송지 정보</div>
-            <svg className="order-question-icon" viewBox="0 0 30 30" fill="none">
-              <circle cx="15" cy="15" r="11.25" stroke="#33363F" strokeWidth="2"/>
-              <circle cx="15" cy="22.5" r="0.625" fill="#33363F" stroke="#33363F"/>
-              <path d="M15 20V18.2264C15 17.0461 15.7553 15.9982 16.875 15.625C17.9947 15.2518 18.75 14.2039 18.75 13.0236V12.3821C18.75 10.3762 17.1238 8.75 15.1179 8.75H15C12.9289 8.75 11.25 10.4289 11.25 12.5" stroke="#33363F" strokeWidth="2"/>
-            </svg>
+            <Icon name="question" size={30} className="order-question-icon" color="#33363F" />
           </div>
           <div className="order-section-divider"></div>
           
@@ -319,11 +310,7 @@ const Order: React.FC = () => {
         <div className="order-section">
           <div className="order-section-header">
             <div className="order-section-title">쿠폰/마일리지</div>
-            <svg className="order-question-icon" viewBox="0 0 30 30" fill="none">
-              <circle cx="15" cy="15" r="11.25" stroke="#33363F" strokeWidth="2"/>
-              <circle cx="15" cy="22.5" r="0.625" fill="#33363F" stroke="#33363F"/>
-              <path d="M15 20V18.2264C15 17.0461 15.7553 15.9982 16.875 15.625C17.9947 15.2518 18.75 14.2039 18.75 13.0236V12.3821C18.75 10.3762 17.1238 8.75 15.1179 8.75H15C12.9289 8.75 11.25 10.4289 11.25 12.5" stroke="#33363F" strokeWidth="2"/>
-            </svg>
+            <Icon name="question" size={30} className="order-question-icon" color="#33363F" />
           </div>
           <div className="order-section-divider"></div>
           
@@ -332,18 +319,14 @@ const Order: React.FC = () => {
               <div className="order-coupon-label">보너스 쿠폰</div>
               <div className="order-coupon-dropdown">
                 <div className="order-coupon-dropdown-text">{couponInfo.bonusCoupon}</div>
-                <svg className="order-coupon-dropdown-arrow" viewBox="0 0 16 10" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M0.503332 -0.000114441L8 8.14809L15.4793 -0.000114441L16 0.350779L8 9.06982L0 0.34511L0.503332 -0.000114441Z" fill="black"/>
-                </svg>
+                <Icon name="dropdownArrow" size={16} className="order-coupon-dropdown-arrow" color="black" />
               </div>
             </div>
             <div className="order-coupon-item">
               <div className="order-coupon-label">브랜드 쿠폰</div>
               <div className="order-coupon-dropdown">
                 <div className="order-coupon-dropdown-text disabled">{couponInfo.brandCoupon}</div>
-                <svg className="order-coupon-dropdown-arrow" viewBox="0 0 16 10" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M0.503332 -0.000114441L8 8.14809L15.4793 -0.000114441L16 0.350779L8 9.06982L0 0.34511L0.503332 -0.000114441Z" fill="#747474"/>
-                </svg>
+                <Icon name="dropdownArrow" size={16} className="order-coupon-dropdown-arrow" color="#747474" />
               </div>
             </div>
             <div className="order-miles-info">
@@ -357,11 +340,7 @@ const Order: React.FC = () => {
                 사용 가능 <span className="order-miles-info-text">{couponInfo.milesUsed}</span>p / 
                 <span className="order-miles-info-text gray"> 보유 0p</span>
               </div>
-              <svg className="order-question-icon" viewBox="0 0 30 30" fill="none">
-                <circle cx="15" cy="15" r="11.25" stroke="#33363F" strokeWidth="2"/>
-                <circle cx="15" cy="22.5" r="0.625" fill="#33363F" stroke="#33363F"/>
-                <path d="M15 20V18.2264C15 17.0461 15.7553 15.9982 16.875 15.625C17.9947 15.2518 18.75 14.2039 18.75 13.0236V12.3821C18.75 10.3762 17.1238 8.75 15.1179 8.75H15C12.9289 8.75 11.25 10.4289 11.25 12.5" stroke="#33363F" strokeWidth="2"/>
-              </svg>
+              <Icon name="question" size={30} className="order-question-icon" color="#33363F" />
             </div>
           </div>
         </div>
@@ -470,9 +449,7 @@ const Order: React.FC = () => {
             {paymentMethod === 'credit-card' && (
               <div className="order-payment-method-dropdown">
                 <div className="order-payment-method-dropdown-text">카드사를 선택해주세요.</div>
-                <svg className="order-payment-method-dropdown-arrow" viewBox="0 0 16 10" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M0.503332 -0.000114441L8 8.14809L15.4793 -0.000114441L16 0.350779L8 9.06982L0 0.34511L0.503332 -0.000114441Z" fill="black"/>
-                </svg>
+                <Icon name="dropdownArrow" size={16} className="order-payment-method-dropdown-arrow" color="black" />
               </div>
             )}
 
@@ -482,18 +459,14 @@ const Order: React.FC = () => {
                   <div className="order-payment-benefit-button-text">혜택</div>
                 </div>
                 <div className="order-payment-benefit-text">[토스페이] 생애 첫 결제 1만원 이상 3천 토스페이 포인트 적립</div>
-                <svg className="order-payment-benefit-arrow" viewBox="0 0 10 16" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M0.00037384 15.4967L8.14858 8L0.00037384 0.520667L0.351267 0L9.07031 8L0.345598 16L0.00037384 15.4967Z" fill="black"/>
-                </svg>
+                <Icon name="arrowRightSmall" size={10} className="order-payment-benefit-arrow" color="black" />
               </div>
               <div className="order-payment-benefit">
                 <div className="order-payment-benefit-button">
                   <div className="order-payment-benefit-button-text">혜택</div>
                 </div>
                 <div className="order-payment-benefit-text">[카카오페이] 12만원 이상 6천원 즉시할인</div>
-                <svg className="order-payment-benefit-arrow" viewBox="0 0 10 16" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M0.00037384 15.4967L8.14858 8L0.00037384 0.520667L0.351267 0L9.07031 8L0.345598 16L0.00037384 15.4967Z" fill="black"/>
-                </svg>
+                <Icon name="arrowRightSmall" size={10} className="order-payment-benefit-arrow" color="black" />
               </div>
             </div>
           </div>

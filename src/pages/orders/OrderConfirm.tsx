@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Layout from '../components/Layout/Layout';
-import '../styles/order-confirm.css';
+import Layout from '../../components/Layout/Layout';
+import Icon from '../../components/icons/SvgIcon';
+import '../../styles/order-confirm.css';
 
 interface CartItem {
   product: {
@@ -100,13 +101,9 @@ const OrderConfirm: React.FC = () => {
           {/* 진행 단계 */}
           <div className="order-confirm-progress">
             <span className="order-confirm-progress-item">01 장바구니</span>
-            <svg className="order-confirm-progress-divider" viewBox="0 0 12 20" fill="none">
-              <path fillRule="evenodd" clipRule="evenodd" d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z" fill="black"/>
-            </svg>
+            <Icon name="progressDivider" size={12} className="order-confirm-progress-divider" color="black" />
             <span className="order-confirm-progress-item">02 주문</span>
-            <svg className="order-confirm-progress-divider" viewBox="0 0 12 20" fill="none">
-              <path fillRule="evenodd" clipRule="evenodd" d="M0.0004673 19.3708L10.1857 10L0.0004673 0.650833L0.439083 0L11.3379 10L0.431997 20L0.0004673 19.3708Z" fill="black"/>
-            </svg>
+            <Icon name="progressDivider" size={12} className="order-confirm-progress-divider" color="black" />
             <span className="order-confirm-progress-item active">03 주문 확인</span>
           </div>
 
@@ -121,9 +118,7 @@ const OrderConfirm: React.FC = () => {
               {orderConfirmData.orderData.items.map((item) => (
                 <div key={item.product.id} className="order-confirm-product-item">
                   <div className="order-confirm-product-image">
-                    <svg width="120" height="120" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
+                    <Icon name="image" size={120} />
                   </div>
                   <div className="order-confirm-product-info">
                     <div className="order-confirm-product-brand">{item.product.sellerName}</div>

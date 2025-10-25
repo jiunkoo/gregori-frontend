@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { memberAPI } from '@/api/member';
-import Header from '@/components/common/Header';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/register.css';
+import { memberAPI } from '@api/member';
+import Header from '@components/common/Header';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/register.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -11,26 +11,24 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-
   const [formData, setFormData] = useState({
     email: '',
     emailDomain: 'gmail.com',
     password: '',
     confirmPassword: '',
     name: '',
-    phone: '',
+    phone: ''
   });
 
   const [isVerificationSent, setIsVerificationSent] = useState(false);
   const [isVerificationVerified, setIsVerificationVerified] = useState(false);
   const [verificationCode, setVerificationCode] = useState('');
 
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -39,7 +37,7 @@ const Register = () => {
       setError('휴대폰 번호를 입력해주세요.');
       return;
     }
-    
+
     try {
       setIsLoading(true);
       setIsVerificationSent(true);
@@ -56,7 +54,7 @@ const Register = () => {
       setError('인증번호를 입력해주세요.');
       return;
     }
-    
+
     try {
       setIsLoading(true);
       setIsVerificationVerified(true);
@@ -93,9 +91,9 @@ const Register = () => {
       await memberAPI.register({
         email: fullEmail,
         password: formData.password,
-        name: formData.name,
+        name: formData.name
       });
-      
+
       navigate('/login', { state: { message: '회원가입이 완료되었습니다.' } });
     } catch (error: any) {
       setError(error.response?.data?.message || '회원가입에 실패했습니다.');
@@ -107,7 +105,7 @@ const Register = () => {
   const renderAgreementStep = () => (
     <div className="register-page">
       <Header />
-      
+
       {/* 좌우 회색 박스 */}
       <div className="register-side-boxes">
         <div className="register-side-box register-side-box-left"></div>
@@ -172,7 +170,7 @@ const Register = () => {
   const renderRegisterForm = () => (
     <div className="register-page">
       <Header />
-      
+
       {/* 좌우 회색 박스 */}
       <div className="register-side-boxes">
         <div className="register-side-box register-side-box-left"></div>
@@ -310,7 +308,7 @@ const Register = () => {
             >
               {isLoading ? '처리중...' : '회원가입'}
             </button>
-            
+
             <div className="register-login-link">
               <p>
                 이미 계정이 있으신가요?{' '}

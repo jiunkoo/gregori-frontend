@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { productAPI } from '@/api/product';
-import { ProductResponseDto } from '@/types';
-import Header from '@/components/common/Header';
-import '@/styles/home.css';
+import { productAPI } from '@api/product';
+import { ProductResponseDto } from '@models';
+import Header from '@components/common/Header';
+import '@styles/home.css';
 
 const CATEGORIES = [
   { id: 1, name: '인기', key: 'popular' },
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const data = await productAPI.getProducts({ 
+      const data = await productAPI.getProducts({
         sorter: 'CREATED_AT_DESC' as any,
         page: 1
       });
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
   return (
     <div className="home-wrapper">
       <Header showSearch={true} showNav={true} />
-      
+
       <div className="main-content">
         <aside className="sidebar">
           <h2 className="sidebar-title">BEST</h2>

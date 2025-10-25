@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '@/stores/authStore';
-import Icon from '@/components/icons/SvgIcon';
+import { useAuthStore } from '@stores/authStore';
+import Icon from '@components/icons/SvgIcon';
 
 interface OrderCompleteData {
   success: boolean;
@@ -90,7 +90,7 @@ const OrderComplete: React.FC = () => {
             {/* 주문 상세 */}
             <div className="bg-white rounded-2xl shadow-soft p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">주문 상세</h2>
-              
+
               <div className="space-y-4">
                 {orderData.items ? (
                   orderData.items.map((item, index) => (
@@ -98,7 +98,7 @@ const OrderComplete: React.FC = () => {
                       <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
                         <Icon name="image" size={32} className="text-gray-400" />
                       </div>
-                      
+
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-900">{item.name}</h3>
                         <p className="text-sm text-gray-500">수량: {item.quantity}개</p>
@@ -110,7 +110,7 @@ const OrderComplete: React.FC = () => {
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Icon name="image" size={32} className="text-gray-400" />
                     </div>
-                    
+
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-gray-900">{orderData.productName}</h3>
                       <p className="text-sm text-gray-500">수량: {orderData.quantity}개</p>
@@ -123,7 +123,7 @@ const OrderComplete: React.FC = () => {
             {/* 배송 정보 */}
             <div className="bg-white rounded-2xl shadow-soft p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">배송 정보</h2>
-              
+
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
                   <span className="text-gray-600">주문자</span>
@@ -147,7 +147,7 @@ const OrderComplete: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-soft p-6 sticky top-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">주문 요약</h2>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between">
                   <span className="text-gray-600">상품 금액</span>
@@ -163,7 +163,7 @@ const OrderComplete: React.FC = () => {
                   <span className="text-primary-600">₩{formatPrice(orderData.amount || 0)}</span>
                 </div>
               </div>
-              
+
               <div className="space-y-3">
                 <Link
                   to="/mypage"
@@ -220,4 +220,4 @@ const OrderComplete: React.FC = () => {
   );
 };
 
-export default OrderComplete; 
+export default OrderComplete;

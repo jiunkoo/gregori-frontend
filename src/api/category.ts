@@ -1,5 +1,5 @@
-import api from '@/api/axios';
-import { CategoryRequestDto, Category } from '@/types';
+import api from '@api/axios';
+import { CategoryRequestDto, Category } from '@models';
 
 export const categoryAPI = {
   // 카테고리 생성 (관리자만)
@@ -30,5 +30,5 @@ export const categoryAPI = {
   getCategories: async (page?: number) => {
     const response = await api.get<Category[]>('/category', { params: { page } });
     return response.data;
-  },
-}; 
+  }
+};

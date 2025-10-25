@@ -162,4 +162,4 @@ export interface SellerResponseDto {
   phone: string;
   createdAt: string;
   updatedAt: string;
-} 
+}

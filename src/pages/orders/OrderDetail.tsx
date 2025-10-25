@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/orderdetail.css';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/orderdetail.css';
 
 const OrderDetail = () => {
   return (
@@ -11,25 +11,25 @@ const OrderDetail = () => {
           <div className="orderdetail-user-info">
             <div className="orderdetail-brand">KOUBIT</div>
           </div>
-          
+
           <div className="orderdetail-nav-title">나의 쇼핑 정보</div>
           <div className="orderdetail-nav-divider"></div>
-          
+
           <Link to="/orderlist" className="orderdetail-nav-item">주문배송조회</Link>
           <Link to="/orderlist" className="orderdetail-nav-item">취소/교환/반품 내역</Link>
           <Link to="/orderlist" className="orderdetail-nav-item">상품 리뷰</Link>
-          
+
           <div className="orderdetail-nav-title">나의 계정 설정</div>
           <div className="orderdetail-nav-divider"></div>
-          
+
           <Link to="/mypage" className="orderdetail-nav-item">회원정보수정</Link>
           <Link to="/mypage" className="orderdetail-nav-item">멤버십 등급</Link>
           <Link to="/mypage" className="orderdetail-nav-item">쿠폰</Link>
           <Link to="/mypage" className="orderdetail-nav-item">마일리지</Link>
-          
+
           <div className="orderdetail-nav-title">고객센터</div>
           <div className="orderdetail-nav-divider"></div>
-          
+
           <Link to="/orderlist" className="orderdetail-nav-item">1:1 문의내역</Link>
           <Link to="/orderlist" className="orderdetail-nav-item">상품 Q&A내역</Link>
           <Link to="/orderlist" className="orderdetail-nav-item">공지사항</Link>
@@ -75,7 +75,7 @@ const OrderDetail = () => {
               <div className="orderdetail-section-title">주문 상세 내역</div>
             </div>
             <div className="orderdetail-section-divider"></div>
-            
+
             {/* 주문 상태 진행 단계 */}
             <div className="orderdetail-progress">
               <div className="orderdetail-progress-item">
@@ -116,7 +116,7 @@ const OrderDetail = () => {
               <div className="orderdetail-section-title">주문 상품 정보</div>
             </div>
             <div className="orderdetail-section-divider"></div>
-            
+
             {/* 주문 정보 */}
             <div className="orderdetail-order-info">
               <div className="orderdetail-order-date">
@@ -124,7 +124,7 @@ const OrderDetail = () => {
               </div>
             </div>
             <div className="orderdetail-section-divider"></div>
-            
+
             {/* 주문 상품 상세 */}
             <div className="orderdetail-order-detail">
               <div className="orderdetail-order-product">
@@ -136,12 +136,12 @@ const OrderDetail = () => {
                   <div className="orderdetail-order-price">324,240원</div>
                 </div>
               </div>
-              
+
               <div className="orderdetail-order-quantity">1개</div>
               <div className="orderdetail-order-shipping">배송비 <br/>3,000원</div>
               <div className="orderdetail-order-status">결제 완료</div>
               <div className="orderdetail-order-delivery">2023.01.31 이내<br/>출고 예정</div>
-              
+
               <div className="orderdetail-order-actions">
                 <button className="orderdetail-order-action-button">취소 접수</button>
                 <button className="orderdetail-order-action-button">1:1 문의</button>
@@ -160,12 +160,12 @@ const OrderDetail = () => {
                   <div className="orderdetail-order-price">648,480원</div>
                 </div>
               </div>
-              
+
               <div className="orderdetail-order-quantity">2개</div>
               <div className="orderdetail-order-shipping">배송비 <br/>3,000원</div>
               <div className="orderdetail-order-status">결제 완료</div>
               <div className="orderdetail-order-delivery">2023.01.31 이내<br/>출고 예정</div>
-              
+
               <div className="orderdetail-order-actions">
                 <button className="orderdetail-order-action-button">취소 접수</button>
                 <button className="orderdetail-order-action-button">1:1 문의</button>
@@ -179,7 +179,7 @@ const OrderDetail = () => {
               <div className="orderdetail-section-title">주문자 정보</div>
             </div>
             <div className="orderdetail-section-divider"></div>
-            
+
             <div className="orderdetail-customer-info">
               <div className="orderdetail-customer-item">
                 <div className="orderdetail-customer-label">수령인</div>
@@ -202,7 +202,7 @@ const OrderDetail = () => {
               <div className="orderdetail-section-title">배송지 정보</div>
             </div>
             <div className="orderdetail-section-divider"></div>
-            
+
             <div className="orderdetail-shipping-info">
               <div className="orderdetail-shipping-item">
                 <div className="orderdetail-shipping-label">수령인</div>
@@ -230,7 +230,7 @@ const OrderDetail = () => {
               <div className="orderdetail-section-title">결제 정보</div>
             </div>
             <div className="orderdetail-section-divider"></div>
-            
+
             <div className="orderdetail-payment-info">
               <div className="orderdetail-payment-item">
                 <div className="orderdetail-payment-label">결제 방법</div>

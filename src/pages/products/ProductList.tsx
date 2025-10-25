@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { productAPI } from '@/api/product';
-import { ProductResponseDto, Sorter } from '@/types';
-import Icon from '@/components/icons/SvgIcon';
+import { productAPI } from '@api/product';
+import { ProductResponseDto, Sorter } from '@models';
+import Icon from '@components/icons/SvgIcon';
 
 const ProductList: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -18,7 +18,7 @@ const ProductList: React.FC = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const productList = await productAPI.getProducts({ 
+        const productList = await productAPI.getProducts({
           sorter: sortBy,
           keyword: searchQuery || undefined,
           categoryId: categoryFilter ? getCategoryId(categoryFilter) : undefined
@@ -112,7 +112,7 @@ const ProductList: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                {searchQuery ? `"${searchQuery}" 검색 결과` : 
+                {searchQuery ? `"${searchQuery}" 검색 결과` :
                  categoryFilter ? `${getCategoryName(getCategoryId(categoryFilter) || 0)}` : '상품 목록'}
               </h1>
               <p className="text-gray-600">
@@ -120,15 +120,15 @@ const ProductList: React.FC = () => {
                 {searchQuery && <span className="ml-2">(검색어: "{searchQuery}")</span>}
               </p>
             </div>
-            
+
             <div className="flex items-center gap-4">
               {/* View Mode Toggle */}
               <div className="flex items-center bg-gray-100 rounded-xl p-1">
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`p-2 rounded-lg transition-all duration-200 ${
-                    viewMode === 'grid' 
-                      ? 'bg-white text-primary-600 shadow-soft' 
+                    viewMode === 'grid'
+                      ? 'bg-white text-primary-600 shadow-soft'
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
@@ -137,15 +137,15 @@ const ProductList: React.FC = () => {
                 <button
                   onClick={() => setViewMode('list')}
                   className={`p-2 rounded-lg transition-all duration-200 ${
-                    viewMode === 'list' 
-                      ? 'bg-white text-primary-600 shadow-soft' 
+                    viewMode === 'list'
+                      ? 'bg-white text-primary-600 shadow-soft'
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
                   <Icon name="list" size={20} />
                 </button>
               </div>
-              
+
               {/* Sort Dropdown */}
               <div className="relative">
                 <select
@@ -284,4 +284,4 @@ const ProductList: React.FC = () => {
   );
 };
 
-export default ProductList; 
+export default ProductList;

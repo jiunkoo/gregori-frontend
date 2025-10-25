@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ProductResponseDto } from '@/types';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/order.css';
+import { ProductResponseDto } from '@models';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/order.css';
 
 interface CartItem {
   product: ProductResponseDto;
@@ -22,12 +22,12 @@ const Order: React.FC = () => {
       {
         product: {
           sellerId: 1,
-          categoryName: "액세서리",
+          categoryName: '액세서리',
           id: 1,
-          name: "DIGITAL WATCH",
+          name: 'DIGITAL WATCH',
           price: 810600,
-          description: "고급 디지털 워치",
-          sellerName: "Apple",
+          description: '고급 디지털 워치',
+          sellerName: 'Apple',
           categoryId: 1,
           stock: 100,
           createdAt: new Date().toISOString(),
@@ -38,12 +38,12 @@ const Order: React.FC = () => {
       {
         product: {
           sellerId: 1,
-          categoryName: "액세서리",
+          categoryName: '액세서리',
           id: 2,
-          name: "DIGITAL WATCH",
+          name: 'DIGITAL WATCH',
           price: 405300,
-          description: "고급 디지털 워치",
-          sellerName: "Banana",
+          description: '고급 디지털 워치',
+          sellerName: 'Banana',
           categoryId: 1,
           stock: 50,
           createdAt: new Date().toISOString(),
@@ -101,9 +101,9 @@ const Order: React.FC = () => {
     const shippingFee = 6000;
     const couponDiscount = 243180; // 쿠폰 할인
     const milesDiscount = couponInfo.milesUsed;
-    
+
     const finalAmount = totalProductAmount - discountAmount - couponDiscount - milesDiscount + shippingFee;
-    
+
     return {
       totalProductAmount,
       discountAmount,
@@ -122,7 +122,7 @@ const Order: React.FC = () => {
 
   const handlePayment = () => {
     if (!agreements.all) {
-      alert('모든 약관에 동의해주세요.');
+      console.warn('모든 약관에 동의해주세요.');
       return;
     }
 
@@ -166,7 +166,6 @@ const Order: React.FC = () => {
     }
   };
 
-
   return (
     <div className="order-wrapper">
         <div className="order-container">
@@ -185,7 +184,7 @@ const Order: React.FC = () => {
             <div className="order-section-title">주문 상품 정보</div>
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-products">
             {orderData.items.map((item) => (
               <div key={item.product.id} className="order-product-item">
@@ -211,7 +210,7 @@ const Order: React.FC = () => {
             <div className="order-section-title">주문자 정보</div>
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-user-info">
             <div className="order-user-item">
               <div className="order-user-label">이름</div>
@@ -244,15 +243,15 @@ const Order: React.FC = () => {
             <Icon name="question" size={30} className="order-question-icon" color="#33363F" />
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-shipping-options">
             <div className="order-shipping-option">
-              <div className={`order-shipping-radio ${shippingInfo.type === 'default' ? 'selected' : ''}`} 
+              <div className={`order-shipping-radio ${shippingInfo.type === 'default' ? 'selected' : ''}`}
                    onClick={() => setShippingInfo({...shippingInfo, type: 'default'})}></div>
               <div className="order-shipping-label">기본 배송지</div>
             </div>
             <div className="order-shipping-option">
-              <div className={`order-shipping-radio ${shippingInfo.type === 'new' ? 'selected' : ''}`} 
+              <div className={`order-shipping-radio ${shippingInfo.type === 'new' ? 'selected' : ''}`}
                    onClick={() => setShippingInfo({...shippingInfo, type: 'new'})}></div>
               <div className="order-shipping-label">신규 배송지</div>
             </div>
@@ -313,7 +312,7 @@ const Order: React.FC = () => {
             <Icon name="question" size={30} className="order-question-icon" color="#33363F" />
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-coupon-section">
             <div className="order-coupon-item">
               <div className="order-coupon-label">보너스 쿠폰</div>
@@ -331,13 +330,13 @@ const Order: React.FC = () => {
             </div>
             <div className="order-miles-info">
               <div className="order-miles-label">마일리지</div>
-              <input type="number" className="order-miles-input" value={couponInfo.milesUsed} 
+              <input type="number" className="order-miles-input" value={couponInfo.milesUsed}
                      onChange={(e) => setCouponInfo({...couponInfo, milesUsed: parseInt(e.target.value) || 0})} />
               <div className="order-miles-button">
                 <div className="order-miles-button-text">모두 사용</div>
               </div>
               <div className="order-miles-info-text">
-                사용 가능 <span className="order-miles-info-text">{couponInfo.milesUsed}</span>p / 
+                사용 가능 <span className="order-miles-info-text">{couponInfo.milesUsed}</span>p /
                 <span className="order-miles-info-text gray"> 보유 0p</span>
               </div>
               <Icon name="question" size={30} className="order-question-icon" color="#33363F" />
@@ -351,7 +350,7 @@ const Order: React.FC = () => {
             <div className="order-section-title">결제 상세</div>
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-payment-detail">
             <div className="order-payment-item">
               <div className="order-payment-label">총 상품금액</div>
@@ -398,7 +397,7 @@ const Order: React.FC = () => {
             <div className="order-section-title">결제 방법</div>
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-payment-methods">
             <div className="order-payment-method-row">
               <div className={`order-payment-method-button ${paymentMethod === 'credit-card' ? 'selected' : ''}`}
@@ -426,7 +425,7 @@ const Order: React.FC = () => {
                 <div className="order-payment-method-button-text">삼성페이</div>
               </div>
             </div>
-            
+
             <div className="order-payment-method-row">
               <div className={`order-payment-method-button ${paymentMethod === 'samsung2' ? 'selected' : ''}`}
                    onClick={() => setPaymentMethod('samsung2')}>
@@ -478,7 +477,7 @@ const Order: React.FC = () => {
             <div className="order-section-title">주문동의</div>
           </div>
           <div className="order-section-divider"></div>
-          
+
           <div className="order-agreement">
             <div className="order-agreement-item">
               <div className={`order-agreement-checkbox ${agreements.all ? 'checked' : ''}`}

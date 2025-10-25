@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,13 +8,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@/components': path.resolve(__dirname, './src/components'),
-      '@/pages': path.resolve(__dirname, './src/pages'),
-      '@/constants': path.resolve(__dirname, './src/constants'),
-      '@/types': path.resolve(__dirname, './src/types'),
-      '@/api': path.resolve(__dirname, './src/api'),
-      '@/stores': path.resolve(__dirname, './src/stores'),
-      '@/styles': path.resolve(__dirname, './src/styles')
+      '@components': path.resolve(__dirname, './src/components'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@models': path.resolve(__dirname, './src/models'),
+      '@models/*': path.resolve(__dirname, './src/models/*'),
+      '@api': path.resolve(__dirname, './src/api'),
+      '@stores': path.resolve(__dirname, './src/stores'),
+      '@styles': path.resolve(__dirname, './src/styles')
     }
   },
   server: {
@@ -25,19 +26,19 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         secure: false,
-        configure: (proxy, options) => {
-          proxy.on('error', (err, req, res) => {
+        configure: (proxy, _options) => {
+          proxy.on('error', (err, _req, _res) => {
             console.log('❌ Proxy Error:', err);
           });
-          proxy.on('proxyReq', (proxyReq, req, res) => {
+          proxy.on('proxyReq', (proxyReq, req, _res) => {
             console.log('📤 Proxy Request:', {
               method: req.method,
               originalUrl: req.url,
               targetPath: proxyReq.path,
-              target: 'http://localhost:8080' + proxyReq.path
+              target: `http://localhost:8080${proxyReq.path}`
             });
           });
-          proxy.on('proxyRes', (proxyRes, req, res) => {
+          proxy.on('proxyRes', (proxyRes, req, _res) => {
             console.log('📥 Proxy Response:', {
               statusCode: proxyRes.statusCode,
               statusMessage: proxyRes.statusMessage,
@@ -45,8 +46,8 @@ export default defineConfig({
               headers: proxyRes.headers
             });
           });
-        },
+        }
       }
     }
   }
-}) 
+});

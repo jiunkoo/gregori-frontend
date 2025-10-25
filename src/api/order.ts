@@ -1,5 +1,5 @@
-import api from '@/api/axios';
-import { OrderRequestDto, OrderResponseDto, OrderDetailStatusUpdateDto } from '@/types';
+import api from '@api/axios';
+import { OrderRequestDto, OrderResponseDto, OrderDetailStatusUpdateDto } from '@models';
 
 export const orderAPI = {
   // 주문 생성
@@ -30,5 +30,5 @@ export const orderAPI = {
   getOrders: async (page?: number) => {
     const response = await api.get<OrderResponseDto[]>('/order', { params: { page } });
     return response.data;
-  },
-}; 
+  }
+};

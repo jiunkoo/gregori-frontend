@@ -4,8 +4,8 @@ const api = axios.create({
   baseURL: 'http://localhost:8080',
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/json',
-  },
+    'Content-Type': 'application/json'
+  }
 });
 
 // 요청 인터셉터
@@ -46,7 +46,7 @@ api.interceptors.response.use(
       url: error.config?.url,
       data: error.response?.data
     });
-    
+
     if (error.response?.status === 401) {
       // 인증 실패 시 로그인 페이지로 리다이렉트
       window.location.href = '/login';
@@ -55,4 +55,4 @@ api.interceptors.response.use(
   }
 );
 
-export default api; 
+export default api;

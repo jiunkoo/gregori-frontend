@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Icon from '@/components/icons/SvgIcon';
-import { UI_CONSTANTS } from '@/constants/ui';
-import '@/styles/header.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Icon from "@components/icons/SvgIcon";
+import { UI_CONSTANTS } from "@constants/ui";
+import "@styles/header.css";
 
 interface HeaderProps {
   showSearch?: boolean;
   showNav?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+const Header: React.FC<HeaderProps> = ({
+  showSearch = true,
+  showNav = false,
+}) => {
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <>
       <div className="header-banner">
         <div className="header-banner-text">
-          {UI_CONSTANTS.BANNER.PREFIX} <span className="header-banner-discount">{UI_CONSTANTS.BANNER.DISCOUNT}</span> {UI_CONSTANTS.BANNER.SUFFIX}
-          <Icon name="arrow" size={20} className="header-banner-icon" />
+          {UI_CONSTANTS.BANNER.PREFIX}
+          &nbsp;
+          <span className="header-banner-discount">
+            {UI_CONSTANTS.BANNER.DISCOUNT}
+          </span>
+          &nbsp;
+          {UI_CONSTANTS.BANNER.SUFFIX}
+          <Icon
+            name="arrowRight"
+            size={20}
+            className="header-banner-icon-arrow-right"
+          />
         </div>
       </div>
 
@@ -26,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
         <Link to="/" className="header-logo">
           <div className="header-logo-text">{UI_CONSTANTS.LOGO.TEXT}</div>
         </Link>
-        
+
         {showSearch && (
           <div className="header-search-container">
             <div className="header-search-wrapper">
@@ -52,23 +64,32 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
           {UI_CONSTANTS.ACTIONS.map((action) => {
             if (action.path) {
               return (
-                <Link 
+                <Link
                   key={action.name}
-                  to={action.path} 
+                  to={action.path}
                   className="header-action-item"
                 >
-                  <Icon name={action.name} size={24} className="header-action-icon" />
-                  <span className="header-action-text hidden-lg">{action.text}</span>
+                  <Icon
+                    name={action.name}
+                    size={24}
+                    className="header-action-icon"
+                  />
+                  <span className="header-action-text hidden-lg">
+                    {action.text}
+                  </span>
                 </Link>
               );
             } else {
               return (
-                <div 
-                  key={action.name}
-                  className="header-action-item"
-                >
-                  <Icon name={action.name} size={24} className="header-action-icon" />
-                  <span className="header-action-text hidden-lg">{action.text}</span>
+                <div key={action.name} className="header-action-item">
+                  <Icon
+                    name={action.name}
+                    size={24}
+                    className="header-action-icon"
+                  />
+                  <span className="header-action-text hidden-lg">
+                    {action.text}
+                  </span>
                 </div>
               );
             }
@@ -80,10 +101,12 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
         <div className="header-nav">
           <nav className="header-nav-list">
             {UI_CONSTANTS.NAV_MENU.map((item, index) => (
-              <Link 
+              <Link
                 key={item.label}
-                to={item.path} 
-                className={`header-nav-link ${index === 0 ? 'header-nav-link-active' : ''}`}
+                to={item.path}
+                className={`header-nav-link ${
+                  index === 0 ? "header-nav-link-active" : ""
+                }`}
               >
                 {item.label}
               </Link>

@@ -1,5 +1,5 @@
-import api from '@/api/axios';
-import { AuthSignInDto } from '@/types';
+import api from '@api/axios';
+import { AuthSignInDto } from '@models';
 
 export const authAPI = {
   // 로그인
@@ -12,5 +12,5 @@ export const authAPI = {
   signOut: async () => {
     const response = await api.post('/auth/signout');
     return response.data;
-  },
-}; 
+  }
+};

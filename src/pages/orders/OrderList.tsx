@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '@/components/icons/SvgIcon';
-import { orderAPI } from '@/api/order';
-import { OrderResponseDto, OrderDetailStatus } from '@/types';
-import '@/styles/orderlist.css';
+import Icon from '@components/icons/SvgIcon';
+import { orderAPI } from '@api/order';
+import { OrderResponseDto, OrderDetailStatus } from '@models';
+import '@styles/orderlist.css';
 
 const OrderList = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);
@@ -33,7 +33,6 @@ const OrderList = () => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('ko-KR');
   };
-
 
   const getStatusText = (status: OrderDetailStatus) => {
     switch (status) {
@@ -74,25 +73,25 @@ const OrderList = () => {
           <div className="orderlist-user-info">
             <div className="orderlist-brand">KOUBIT</div>
           </div>
-          
+
           <div className="orderlist-nav-title">나의 쇼핑 정보</div>
           <div className="orderlist-nav-divider"></div>
-          
+
           <Link to="/orderlist" className="orderlist-nav-item">주문배송조회</Link>
           <Link to="/orderlist" className="orderlist-nav-item">취소/교환/반품 내역</Link>
           <Link to="/orderlist" className="orderlist-nav-item">상품 리뷰</Link>
-          
+
           <div className="orderlist-nav-title">나의 계정 설정</div>
           <div className="orderlist-nav-divider"></div>
-          
+
           <Link to="/mypage" className="orderlist-nav-item">회원정보수정</Link>
           <Link to="/mypage" className="orderlist-nav-item">멤버십 등급</Link>
           <Link to="/mypage" className="orderlist-nav-item">쿠폰</Link>
           <Link to="/mypage" className="orderlist-nav-item">마일리지</Link>
-          
+
           <div className="orderlist-nav-title">고객센터</div>
           <div className="orderlist-nav-divider"></div>
-          
+
           <Link to="/orderlist" className="orderlist-nav-item">1:1 문의내역</Link>
           <Link to="/orderlist" className="orderlist-nav-item">상품 Q&A내역</Link>
           <Link to="/orderlist" className="orderlist-nav-item">공지사항</Link>
@@ -138,7 +137,7 @@ const OrderList = () => {
               <div className="orderlist-section-title">주문 상품 정보</div>
             </div>
             <div className="orderlist-section-divider"></div>
-            
+
             {orders.length === 0 ? (
               <div className="orderlist-empty">
                 <div className="orderlist-empty-text">주문 내역이 없습니다.</div>
@@ -157,7 +156,7 @@ const OrderList = () => {
                       </div>
                     </div>
                     <div className="orderlist-section-divider"></div>
-                    
+
                     {/* 주문 상품 상세 */}
                     <Link to={`/orderdetail/${order.id}`} className="orderlist-order-detail">
                       {order.orderDetails.map((detail) => (
@@ -171,14 +170,14 @@ const OrderList = () => {
                             <div className="orderlist-order-option">옵션: [사이즈] M, [색상] Navy</div>
                             <div className="orderlist-order-price">{formatPrice(detail.price)}원</div>
                           </div>
-                          
+
                           <div className="orderlist-order-quantity">{detail.quantity}개</div>
                           <div className="orderlist-order-shipping">배송비 <br/>3,000원</div>
                           <div className="orderlist-order-status">{getStatusText(detail.status)}</div>
                           <div className="orderlist-order-delivery">2023.01.31 이내<br/>출고 예정</div>
                         </div>
                       ))}
-                      
+
                       <div className="orderlist-order-actions">
                         <button className="orderlist-order-action-button">취소 접수</button>
                         <button className="orderlist-order-action-button">1:1 문의</button>

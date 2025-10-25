@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuthStore } from '@/stores/authStore';
-import { authAPI } from '@/api/auth';
-import { memberAPI } from '@/api/member';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/login.css';
+import { useAuthStore } from '@stores/authStore';
+import { authAPI } from '@api/auth';
+import { memberAPI } from '@api/member';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/login.css';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
-  
+
   const navigate = useNavigate();
   const { setUser, setError: setAuthError } = useAuthStore();
 
@@ -22,7 +22,7 @@ const Login: React.FC = () => {
 
     try {
       await authAPI.signIn(formData);
-      
+
       try {
         const userInfo = await memberAPI.getMember();
         setUser(userInfo);
@@ -32,10 +32,10 @@ const Login: React.FC = () => {
           id: 0,
           email: formData.email,
           name: '사용자',
-          authority: 'GENERAL_MEMBER' as any,
+          authority: 'GENERAL_MEMBER' as any
         });
       }
-      
+
       navigate('/');
     } catch (err: any) {
       setError(err.response?.data?.message || '로그인에 실패했습니다.');
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
                 required
               />
             </div>
-            
+
             <div className="login-input-container">
               <input
                 type="password"
@@ -86,8 +86,8 @@ const Login: React.FC = () => {
 
         {/* 3. 로그인 버튼 섹션 */}
         <div className="login-button-section">
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="login-button"
             onClick={handleSubmit}
             disabled={isLoading}
@@ -101,13 +101,13 @@ const Login: React.FC = () => {
         {/* 4. 자동로그인, 이메일/비밀번호 찾기 섹션 */}
         <div className="login-options-section">
           <div className="login-auto-login">
-            <div 
+            <div
               className={`login-checkbox ${autoLogin ? 'checked' : ''}`}
               onClick={() => setAutoLogin(!autoLogin)}
             ></div>
             <span className="login-auto-login-text">자동 로그인</span>
           </div>
-          
+
           <div className="login-find-links">
             <button className="login-find-link">이메일 찾기</button>
             <div className="login-divider"></div>

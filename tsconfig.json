@@ -18,13 +18,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/components/*": ["src/components/*"],
-      "@/pages/*": ["src/pages/*"],
-      "@/constants/*": ["src/constants/*"],
-      "@/types/*": ["src/types/*"],
-      "@/api/*": ["src/api/*"],
-      "@/stores/*": ["src/stores/*"],
-      "@/styles/*": ["src/styles/*"]
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@constants/*": ["src/constants/*"],
+      "@models": ["src/models"],
+      "@models/*": ["src/models/*"],
+      "@api/*": ["src/api/*"],
+      "@stores/*": ["src/stores/*"],
+      "@styles/*": ["src/styles/*"]
     },
 
     /* Linting */

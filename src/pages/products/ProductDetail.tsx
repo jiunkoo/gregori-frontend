@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { productAPI } from '@/api/product';
-import { useAuthStore } from '@/stores/authStore';
-import { ProductResponseDto } from '@/types';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/product-detail.css';
+import { productAPI } from '@api/product';
+import { useAuthStore } from '@stores/authStore';
+import { ProductResponseDto } from '@models';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/product-detail.css';
 
 const ProductDetail: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
-  
+
   const [product, setProduct] = useState<ProductResponseDto | null>(null);
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>('');
@@ -35,7 +35,7 @@ const ProductDetail: React.FC = () => {
 
   const fetchProduct = async () => {
     if (!productId) return;
-    
+
     setLoading(true);
     try {
       const data = await productAPI.getProduct(parseInt(productId));
@@ -88,13 +88,13 @@ const ProductDetail: React.FC = () => {
 
     if (!product) return;
 
-    navigate('/order-confirm', { 
-      state: { 
-        productName: product.name, 
-        quantity: quantity, 
+    navigate('/order-confirm', {
+      state: {
+        productName: product.name,
+        quantity,
         price: product.price,
-        totalAmount: product.price * quantity 
-      } 
+        totalAmount: product.price * quantity
+      }
     });
   };
 
@@ -175,14 +175,14 @@ const ProductDetail: React.FC = () => {
             <div className="product-detail-line"></div>
             <div className="product-detail-title">
               <h1>{product.name}</h1>
-              <button 
+              <button
                 className="product-detail-wishlist-button"
                 onClick={handleWishlistToggle}
               >
-                <Icon name="heart" size={24} className="product-detail-wishlist-icon" color={isWishlisted ? "#FF5252" : "currentColor"} />
+                <Icon name="heart" size={24} className="product-detail-wishlist-icon" color={isWishlisted ? '#FF5252' : 'currentColor'} />
               </button>
             </div>
-            
+
             <div className="product-detail-rating">
               <div className="product-detail-stars">
                 {[...Array(5)].map((_, i) => (
@@ -199,11 +199,11 @@ const ProductDetail: React.FC = () => {
                 쿠폰 받기
               </button>
             </div>
-            
+
             <div className="product-detail-points">4,053p(1%) 적립</div>
-            
+
             <div className="product-detail-divider"></div>
-            
+
             <div className="product-detail-member-price">
               <span>회원님의 구매 가능 가격</span>
               <div className="product-detail-member-price-value">
@@ -211,16 +211,16 @@ const ProductDetail: React.FC = () => {
                 <span className="product-detail-member-price-amount">324,240원</span>
               </div>
             </div>
-            
+
             <div className="product-detail-discount-section">
               <div className="product-detail-discount-item">
                 <span className="product-detail-discount-label">상품 할인</span>
-                <button 
+                <button
                   className="product-detail-discount-checkbox"
                   onClick={() => handleDiscountToggle('productDiscount')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <Icon name="checkbox" size={25} color={discountStates.productDiscount ? "black" : "#BABABA"} />
+                    <Icon name="checkbox" size={25} color={discountStates.productDiscount ? 'black' : '#BABABA'} />
                   </div>
                   {discountStates.productDiscount && (
                     <div className="product-detail-checkbox-check">
@@ -234,12 +234,12 @@ const ProductDetail: React.FC = () => {
 
               <div className="product-detail-discount-item">
                 <span className="product-detail-discount-label">쿠폰 할인</span>
-                <button 
+                <button
                   className="product-detail-discount-checkbox"
                   onClick={() => handleDiscountToggle('couponDiscount1')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <Icon name="checkbox" size={25} color={discountStates.couponDiscount1 ? "black" : "#BABABA"} />
+                    <Icon name="checkbox" size={25} color={discountStates.couponDiscount1 ? 'black' : '#BABABA'} />
                   </div>
                   {discountStates.couponDiscount1 && (
                     <div className="product-detail-checkbox-check">
@@ -259,12 +259,12 @@ const ProductDetail: React.FC = () => {
 
               <div className="product-detail-discount-item">
                 <span className="product-detail-discount-label">쿠폰 할인</span>
-                <button 
+                <button
                   className="product-detail-discount-checkbox"
                   onClick={() => handleDiscountToggle('couponDiscount2')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <Icon name="checkbox" size={25} color={discountStates.couponDiscount2 ? "black" : "#BABABA"} />
+                    <Icon name="checkbox" size={25} color={discountStates.couponDiscount2 ? 'black' : '#BABABA'} />
                   </div>
                   {discountStates.couponDiscount2 && (
                     <div className="product-detail-checkbox-check">
@@ -284,12 +284,12 @@ const ProductDetail: React.FC = () => {
 
               <div className="product-detail-discount-item">
                 <span className="product-detail-discount-label">결제수단 할인</span>
-                <button 
+                <button
                   className="product-detail-discount-checkbox"
                   onClick={() => handleDiscountToggle('paymentDiscount1')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <Icon name="checkbox" size={25} color={discountStates.paymentDiscount1 ? "black" : "#BABABA"} />
+                    <Icon name="checkbox" size={25} color={discountStates.paymentDiscount1 ? 'black' : '#BABABA'} />
                   </div>
                   {discountStates.paymentDiscount1 && (
                     <div className="product-detail-checkbox-check">
@@ -303,12 +303,12 @@ const ProductDetail: React.FC = () => {
 
               <div className="product-detail-discount-item">
                 <span className="product-detail-discount-label">결제수단 할인</span>
-                <button 
+                <button
                   className="product-detail-discount-checkbox"
                   onClick={() => handleDiscountToggle('paymentDiscount2')}
                 >
                   <div className="product-detail-checkbox-box">
-                    <Icon name="checkbox" size={25} color={discountStates.paymentDiscount2 ? "black" : "#BABABA"} />
+                    <Icon name="checkbox" size={25} color={discountStates.paymentDiscount2 ? 'black' : '#BABABA'} />
                   </div>
                   {discountStates.paymentDiscount2 && (
                     <div className="product-detail-checkbox-check">
@@ -349,8 +349,8 @@ const ProductDetail: React.FC = () => {
                 </div>
                 <div className={`product-detail-option-items ${sizeOpen ? 'open' : ''}`}>
                   {sizes.map((size) => (
-                    <div 
-                      key={size} 
+                    <div
+                      key={size}
                       className={`product-detail-option-item ${selectedSize === size ? 'selected' : ''}`}
                       onClick={() => {
                         setSelectedSize(size);
@@ -373,8 +373,8 @@ const ProductDetail: React.FC = () => {
                 </div>
                 <div className={`product-detail-option-items ${colorOpen && selectedSize ? 'open' : ''}`}>
                   {colors.map((color) => (
-                    <div 
-                      key={color} 
+                    <div
+                      key={color}
                       className={`product-detail-option-item ${selectedColor === color ? 'selected' : ''}`}
                       onClick={() => {
                         if (selectedSize) {
@@ -419,14 +419,14 @@ const ProductDetail: React.FC = () => {
             )}
 
             <div className="product-detail-order-buttons">
-              <button 
+              <button
                 className="product-detail-order-button"
                 disabled={!selectedSize || !selectedColor}
               >
                 장바구니 담기
               </button>
-              <button 
-                className="product-detail-order-button primary" 
+              <button
+                className="product-detail-order-button primary"
                 onClick={handleOrder}
                 disabled={!selectedSize || !selectedColor}
               >
@@ -440,4 +440,4 @@ const ProductDetail: React.FC = () => {
   );
 };
 
-export default ProductDetail; 
+export default ProductDetail;

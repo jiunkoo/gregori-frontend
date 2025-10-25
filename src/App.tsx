@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from '@/components/Layout/Layout';
-import Home from '@/pages/Home';
-import Login from '@/pages/auth/Login';
-import Register from '@/pages/auth/Register';
-import ProductList from '@/pages/products/ProductList';
-import ProductDetail from '@/pages/products/ProductDetail';
-import OrderListPage from '@/pages/orders/OrderList';
-import OrderDetail from '@/pages/orders/OrderDetail';
-import MyPage from '@/pages/MyPage';
-import Cart from '@/pages/Cart';
-import OrderComplete from '@/pages/orders/OrderComplete';
-import OrderConfirm from '@/pages/orders/OrderConfirm';
-import Order from '@/pages/orders/Order';
-import { useAuthStore } from '@/stores/authStore';
-import { memberAPI } from '@/api/member';
+import Layout from '@components/Layout/Layout';
+import Home from '@pages/Home';
+import Login from '@pages/auth/Login';
+import Register from '@pages/auth/Register';
+import ProductList from '@pages/products/ProductList';
+import ProductDetail from '@pages/products/ProductDetail';
+import OrderListPage from '@pages/orders/OrderList';
+import OrderDetail from '@pages/orders/OrderDetail';
+import MyPage from '@pages/MyPage';
+import Cart from '@pages/Cart';
+import OrderComplete from '@pages/orders/OrderComplete';
+import OrderConfirm from '@pages/orders/OrderConfirm';
+import Order from '@pages/orders/Order';
+import { useAuthStore } from '@stores/authStore';
+import { memberAPI } from '@api/member';
 
 // 인증이 필요한 라우트를 위한 래퍼 컴포넌트
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuthStore();
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  
+
   return <>{children}</>;
 };
 
@@ -69,17 +69,17 @@ const App: React.FC = () => {
         <Route path="/mypage" element={<Layout><MyPage /></Layout>} />
         <Route path="/orderlist" element={<Layout><OrderListPage /></Layout>} />
         <Route path="/orderdetail" element={<Layout><OrderDetail /></Layout>} />
-        
+
         {/* 인증이 필요한 라우트 */}
-        <Route 
-          path="/orders" 
+        <Route
+          path="/orders"
           element={
             <ProtectedRoute>
               <Layout><OrderListPage /></Layout>
             </ProtectedRoute>
-          } 
+          }
         />
-        
+
         {/* 404 페이지 */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -87,4 +87,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App; 
+export default App;

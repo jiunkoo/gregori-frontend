@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { SessionMember, Authority } from '@/types';
-import { memberAPI } from '@/api/member';
+import { SessionMember, Authority } from '@models';
+import { memberAPI } from '@api/member';
 
 interface AuthState {
   user: SessionMember | null;
@@ -28,7 +28,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   setUser: (user) => set({ user, isAuthenticated: !!user }),
   setLoading: (isLoading) => set({ isLoading }),
   setError: (error) => set({ error }),
-  
+
   logout: async () => {
     try {
       await memberAPI.deleteMember();
@@ -38,11 +38,11 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       set({ user: null, isAuthenticated: false, error: null });
     }
   },
-  
+
   hasAuthority: (authority) => {
     const { user } = get();
     if (!user) return false;
-    
+
     switch (authority) {
       case Authority.ADMIN_MEMBER:
         return user.authority === Authority.ADMIN_MEMBER;
@@ -53,5 +53,5 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       default:
         return false;
     }
-  },
-})); 
+  }
+}));

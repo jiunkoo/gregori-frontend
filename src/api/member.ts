@@ -1,5 +1,5 @@
-import api from '@/api/axios';
-import { MemberRegisterDto, MemberNameUpdateDto, MemberPasswordUpdateDto } from '@/types';
+import api from '@api/axios';
+import { MemberRegisterDto, MemberNameUpdateDto, MemberPasswordUpdateDto } from '@models';
 
 export const memberAPI = {
   // 회원가입
@@ -30,5 +30,5 @@ export const memberAPI = {
   deleteMember: async () => {
     const response = await api.delete('/member');
     return response.data;
-  },
-}; 
+  }
+};

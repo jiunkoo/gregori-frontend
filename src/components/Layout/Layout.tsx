@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '@/components/common/Header';
-import '@/styles/layout.css';
+import Header from '@components/common/Header';
+import '@styles/layout.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,4 +17,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default Layout; 
+export default Layout;

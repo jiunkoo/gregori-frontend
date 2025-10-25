@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/mypage.css';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/mypage.css';
 
 const MyPage: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const MyPage: React.FC = () => {
             <div className="mypage-user-info">
               <div className="mypage-user-name">KOUBIT</div>
             </div>
-            
+
             {/* 나의 쇼핑 정보 */}
             <div className="mypage-nav-section">
               <div className="mypage-nav-title">나의 쇼핑 정보</div>
@@ -88,7 +88,7 @@ const MyPage: React.FC = () => {
                 </Link>
               </div>
               <div className="mypage-section-divider"></div>
-              
+
               <div className="mypage-order-item">
                 <div className="mypage-order-date">2023.01.01</div>
                 <div className="mypage-order-info">
@@ -111,11 +111,11 @@ const MyPage: React.FC = () => {
                 </div>
               </div>
               <div className="mypage-section-divider"></div>
-              
+
               <div className="mypage-wishlist-tab">
                 <div className="mypage-wishlist-tab-item">상품</div>
               </div>
-              
+
               <div className="mypage-wishlist-grid">
                 {[1, 2, 3, 4, 5, 6].map((item) => (
                   <div key={item} className="mypage-wishlist-item">
@@ -138,7 +138,7 @@ const MyPage: React.FC = () => {
                 <div className="mypage-section-title">브랜드</div>
               </div>
               <div className="mypage-section-divider"></div>
-              
+
               <div className="mypage-brand-empty">
                 <div className="mypage-brand-empty-text">브랜드 찜 내역이 없습니다.</div>
               </div>

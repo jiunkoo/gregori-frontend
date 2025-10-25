@@ -1,5 +1,5 @@
-import api from '@/api/axios';
-import { SellerRegisterDto, SellerUpdateDto, SellerResponseDto } from '@/types';
+import api from '@api/axios';
+import { SellerRegisterDto, SellerUpdateDto, SellerResponseDto } from '@models';
 
 export const sellerAPI = {
   // 판매자 등록
@@ -30,5 +30,5 @@ export const sellerAPI = {
   getSellers: async (page?: number) => {
     const response = await api.get<SellerResponseDto[]>('/seller', { params: { page } });
     return response.data;
-  },
-}; 
+  }
+};

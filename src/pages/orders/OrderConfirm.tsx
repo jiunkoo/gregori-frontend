@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Layout from '@/components/Layout/Layout';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/order-confirm.css';
+import Layout from '@components/Layout/Layout';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/order-confirm.css';
 
 interface CartItem {
   product: {
@@ -113,7 +113,7 @@ const OrderConfirm: React.FC = () => {
               <div className="order-confirm-section-title">주문 상품 정보</div>
             </div>
             <div className="order-confirm-section-divider"></div>
-            
+
             <div className="order-confirm-products">
               {orderConfirmData.orderData.items.map((item) => (
                 <div key={item.product.id} className="order-confirm-product-item">
@@ -146,7 +146,7 @@ const OrderConfirm: React.FC = () => {
               <div className="order-confirm-section-title">주문자 정보</div>
             </div>
             <div className="order-confirm-section-divider"></div>
-            
+
             <div className="order-confirm-user-info">
               <div className="order-confirm-user-item">
                 <div className="order-confirm-user-label">이름</div>
@@ -169,7 +169,7 @@ const OrderConfirm: React.FC = () => {
               <div className="order-confirm-section-title">배송지 정보</div>
             </div>
             <div className="order-confirm-section-divider"></div>
-            
+
             <div className="order-confirm-shipping-info">
               <div className="order-confirm-shipping-item">
                 <div className="order-confirm-shipping-label">수령인</div>
@@ -199,7 +199,7 @@ const OrderConfirm: React.FC = () => {
               <div className="order-confirm-section-title">결제 정보</div>
             </div>
             <div className="order-confirm-section-divider"></div>
-            
+
             <div className="order-confirm-payment-info">
               <div className="order-confirm-payment-item">
                 <div className="order-confirm-payment-label">결제 방법</div>

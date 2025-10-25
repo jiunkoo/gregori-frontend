@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '@/stores/authStore';
-import { ProductResponseDto } from '@/types';
-import Icon from '@/components/icons/SvgIcon';
-import '@/styles/cart.css';
+import { ProductResponseDto } from '@models';
+import Icon from '@components/icons/SvgIcon';
+import '@styles/cart.css';
 
 interface CartItem {
   product: ProductResponseDto;
@@ -11,7 +10,6 @@ interface CartItem {
 }
 
 const Cart: React.FC = () => {
-  const { } = useAuthStore();
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,12 +20,12 @@ const Cart: React.FC = () => {
       {
         product: {
           sellerId: 1,
-          categoryName: "액세서리",
+          categoryName: '액세서리',
           id: 1,
-          name: "DIGITAL WATCH",
+          name: 'DIGITAL WATCH',
           price: 810600,
-          description: "고급 디지털 워치",
-          sellerName: "Apple",
+          description: '고급 디지털 워치',
+          sellerName: 'Apple',
           categoryId: 1,
           stock: 100,
           createdAt: new Date().toISOString(),
@@ -38,12 +36,12 @@ const Cart: React.FC = () => {
       {
         product: {
           sellerId: 1,
-          categoryName: "액세서리",
+          categoryName: '액세서리',
           id: 2,
-          name: "DIGITAL WATCH",
+          name: 'DIGITAL WATCH',
           price: 405300,
-          description: "고급 디지털 워치",
-          sellerName: "Banana",
+          description: '고급 디지털 워치',
+          sellerName: 'Banana',
           categoryId: 1,
           stock: 50,
           createdAt: new Date().toISOString(),
@@ -59,9 +57,9 @@ const Cart: React.FC = () => {
 
   const updateQuantity = (productId: number, newQuantity: number) => {
     if (newQuantity < 1) return;
-    
-    const updatedItems = cartItems.map(item => 
-      item.product.id === productId 
+
+    const updatedItems = cartItems.map(item =>
+      item.product.id === productId
         ? { ...item, quantity: newQuantity }
         : item
     );
@@ -88,19 +86,18 @@ const Cart: React.FC = () => {
     return cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
   };
 
-
   const handleCheckout = () => {
     if (cartItems.length === 0) {
-      alert('장바구니가 비어있습니다.');
+      console.warn('장바구니가 비어있습니다.');
       return;
     }
 
     // 주문 페이지로 이동 (로그인 체크 생략)
-    navigate('/order', { 
-      state: { 
+    navigate('/order', {
+      state: {
         items: cartItems,
-        totalAmount: getTotalPrice() 
-      } 
+        totalAmount: getTotalPrice()
+      }
     });
   };
 
@@ -212,7 +209,7 @@ const Cart: React.FC = () => {
               <button className="cart-action-button">품절 상품 삭제</button>
               <div className="cart-notice">* 장바구니는 접속 종료 후 60일 동안 보관됩니다.</div>
             </div>
-            
+
             <div className="cart-summary">
               <div className="cart-summary-content">
                 <div className="cart-summary-item">
@@ -269,4 +266,4 @@ const Cart: React.FC = () => {
   );
 };
 
-export default Cart; 
+export default Cart;

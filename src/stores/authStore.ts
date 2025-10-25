@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { SessionMember, Authority } from '../types';
-import { memberAPI } from '../api/member';
+import { SessionMember, Authority } from '@/types';
+import { memberAPI } from '@/api/member';
 
 interface AuthState {
   user: SessionMember | null;

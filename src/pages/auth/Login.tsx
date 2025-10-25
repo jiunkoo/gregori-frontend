@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuthStore } from '../../stores/authStore';
-import { authAPI } from '../../api/auth';
-import { memberAPI } from '../../api/member';
-import Icon from '../../components/icons/SvgIcon';
-import '../../styles/login.css';
+import { useAuthStore } from '@/stores/authStore';
+import { authAPI } from '@/api/auth';
+import { memberAPI } from '@/api/member';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/login.css';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });

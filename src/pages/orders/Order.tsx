@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ProductResponseDto } from '../../types';
-import Icon from '../../components/icons/SvgIcon';
-import '../../styles/order.css';
+import { ProductResponseDto } from '@/types';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/order.css';
 
 interface CartItem {
   product: ProductResponseDto;

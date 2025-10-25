@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { memberAPI } from '../../api/member';
-import Header from '../../components/common/Header';
-import Icon from '../../components/icons/SvgIcon';
-import '../../styles/register.css';
+import { memberAPI } from '@/api/member';
+import Header from '@/components/common/Header';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/register.css';
 
 const Register = () => {
   const navigate = useNavigate();

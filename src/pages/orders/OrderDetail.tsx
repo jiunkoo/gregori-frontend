@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Icon from '../../components/icons/SvgIcon';
-import '../../styles/orderdetail.css';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/orderdetail.css';
 
 const OrderDetail = () => {
   return (

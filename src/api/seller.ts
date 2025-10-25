@@ -1,5 +1,5 @@
-import api from './axios';
-import { SellerRegisterDto, SellerUpdateDto, SellerResponseDto } from '../types';
+import api from '@/api/axios';
+import { SellerRegisterDto, SellerUpdateDto, SellerResponseDto } from '@/types';
 
 export const sellerAPI = {
   // 판매자 등록

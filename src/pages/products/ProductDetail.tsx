@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { productAPI } from '../../api/product';
-import { useAuthStore } from '../../stores/authStore';
-import { ProductResponseDto } from '../../types';
-import Icon from '../../components/icons/SvgIcon';
-import '../../styles/product-detail.css';
+import { productAPI } from '@/api/product';
+import { useAuthStore } from '@/stores/authStore';
+import { ProductResponseDto } from '@/types';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/product-detail.css';
 
 const ProductDetail: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();

@@ -23,7 +23,7 @@ export const UI_CONSTANTS = {
   
   ACTIONS: [
     { name: "user", text: "마이페이지", path: "/mypage" },
-    { name: "heart", text: "찜목록", path: null },
+    { name: "heart", text: "찜목록", path: "" },
     { name: "cart", text: "장바구니", path: "/cart" },
     { name: "login", text: "로그인", path: "/login" }
   ]

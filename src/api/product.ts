@@ -1,5 +1,5 @@
-import api from './axios';
-import { ProductCreateDto, ProductUpdateDto, ProductResponseDto, Sorter } from '../types';
+import api from '@/api/axios';
+import { ProductCreateDto, ProductUpdateDto, ProductResponseDto, Sorter } from '@/types';
 
 export const productAPI = {
   // 상품 생성

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '../icons/SvgIcon';
-import { UI_CONSTANTS } from '../../constants/ui';
-import '../../styles/header.css';
+import Icon from '@/components/icons/SvgIcon';
+import { UI_CONSTANTS } from '@/constants/ui';
+import '@/styles/header.css';
 
 interface HeaderProps {
   showSearch?: boolean;
@@ -50,17 +50,28 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
 
         <div className="header-actions">
           {UI_CONSTANTS.ACTIONS.map((action) => {
-            const ActionComponent = action.path ? Link : 'div';
-            return (
-              <ActionComponent 
-                key={action.name}
-                to={action.path} 
-                className="header-action-item"
-              >
-                <Icon name={action.name} size={24} className="header-action-icon" />
-                <span className="header-action-text hidden-lg">{action.text}</span>
-              </ActionComponent>
-            );
+            if (action.path) {
+              return (
+                <Link 
+                  key={action.name}
+                  to={action.path} 
+                  className="header-action-item"
+                >
+                  <Icon name={action.name} size={24} className="header-action-icon" />
+                  <span className="header-action-text hidden-lg">{action.text}</span>
+                </Link>
+              );
+            } else {
+              return (
+                <div 
+                  key={action.name}
+                  className="header-action-item"
+                >
+                  <Icon name={action.name} size={24} className="header-action-icon" />
+                  <span className="header-action-text hidden-lg">{action.text}</span>
+                </div>
+              );
+            }
           })}
         </div>
       </div>

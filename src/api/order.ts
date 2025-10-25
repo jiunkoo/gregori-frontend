@@ -1,5 +1,5 @@
-import api from './axios';
-import { OrderRequestDto, OrderResponseDto, OrderDetailStatusUpdateDto } from '../types';
+import api from '@/api/axios';
+import { OrderRequestDto, OrderResponseDto, OrderDetailStatusUpdateDto } from '@/types';
 
 export const orderAPI = {
   // 주문 생성

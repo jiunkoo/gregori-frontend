@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../stores/authStore';
-import Icon from '../../components/icons/SvgIcon';
+import { useAuthStore } from '@/stores/authStore';
+import Icon from '@/components/icons/SvgIcon';
 
 interface OrderCompleteData {
   success: boolean;

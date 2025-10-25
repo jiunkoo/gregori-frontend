@@ -1,5 +1,5 @@
-import api from './axios';
-import { MemberRegisterDto, MemberNameUpdateDto, MemberPasswordUpdateDto } from '../types';
+import api from '@/api/axios';
+import { MemberRegisterDto, MemberNameUpdateDto, MemberPasswordUpdateDto } from '@/types';
 
 export const memberAPI = {
   // 회원가입

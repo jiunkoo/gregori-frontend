@@ -1,5 +1,5 @@
-import api from './axios';
-import { CategoryRequestDto, Category } from '../types';
+import api from '@/api/axios';
+import { CategoryRequestDto, Category } from '@/types';
 
 export const categoryAPI = {
   // 카테고리 생성 (관리자만)

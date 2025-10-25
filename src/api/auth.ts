@@ -1,5 +1,5 @@
-import api from './axios';
-import { AuthSignInDto } from '../types';
+import api from '@/api/axios';
+import { AuthSignInDto } from '@/types';
 
 export const authAPI = {
   // 로그인

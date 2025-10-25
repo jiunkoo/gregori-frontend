@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '../../components/icons/SvgIcon';
-import { orderAPI } from '../../api/order';
-import { OrderResponseDto, OrderDetailStatus } from '../../types';
-import '../../styles/orderlist.css';
+import Icon from '@/components/icons/SvgIcon';
+import { orderAPI } from '@/api/order';
+import { OrderResponseDto, OrderDetailStatus } from '@/types';
+import '@/styles/orderlist.css';
 
 const OrderList = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);

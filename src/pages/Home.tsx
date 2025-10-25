@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { productAPI } from '../api/product';
-import { ProductResponseDto } from '../types';
-import Header from '../components/common/Header';
-import '../styles/home.css';
+import { productAPI } from '@/api/product';
+import { ProductResponseDto } from '@/types';
+import Header from '@/components/common/Header';
+import '@/styles/home.css';
 
 const CATEGORIES = [
   { id: 1, name: '인기', key: 'popular' },

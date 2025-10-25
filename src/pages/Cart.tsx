@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../stores/authStore';
-import { ProductResponseDto } from '../types';
-import Icon from '../components/icons/SvgIcon';
-import '../styles/cart.css';
+import { useAuthStore } from '@/stores/authStore';
+import { ProductResponseDto } from '@/types';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/cart.css';
 
 interface CartItem {
   product: ProductResponseDto;

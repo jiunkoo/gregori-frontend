@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { productAPI } from '../../api/product';
-import { ProductResponseDto, Sorter } from '../../types';
-import Icon from '../../components/icons/SvgIcon';
+import { productAPI } from '@/api/product';
+import { ProductResponseDto, Sorter } from '@/types';
+import Icon from '@/components/icons/SvgIcon';
 
 const ProductList: React.FC = () => {
   const [searchParams] = useSearchParams();

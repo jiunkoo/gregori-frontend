@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import Home from './pages/Home';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import ProductList from './pages/products/ProductList';
-import ProductDetail from './pages/products/ProductDetail';
-import OrderListPage from './pages/orders/OrderList';
-import OrderDetail from './pages/orders/OrderDetail';
-import MyPage from './pages/MyPage';
-import Cart from './pages/Cart';
-import OrderComplete from './pages/orders/OrderComplete';
-import OrderConfirm from './pages/orders/OrderConfirm';
-import Order from './pages/orders/Order';
-import { useAuthStore } from './stores/authStore';
-import { memberAPI } from './api/member';
+import Layout from '@/components/Layout/Layout';
+import Home from '@/pages/Home';
+import Login from '@/pages/auth/Login';
+import Register from '@/pages/auth/Register';
+import ProductList from '@/pages/products/ProductList';
+import ProductDetail from '@/pages/products/ProductDetail';
+import OrderListPage from '@/pages/orders/OrderList';
+import OrderDetail from '@/pages/orders/OrderDetail';
+import MyPage from '@/pages/MyPage';
+import Cart from '@/pages/Cart';
+import OrderComplete from '@/pages/orders/OrderComplete';
+import OrderConfirm from '@/pages/orders/OrderConfirm';
+import Order from '@/pages/orders/Order';
+import { useAuthStore } from '@/stores/authStore';
+import { memberAPI } from '@/api/member';
 
 // 인증이 필요한 라우트를 위한 래퍼 컴포넌트
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {

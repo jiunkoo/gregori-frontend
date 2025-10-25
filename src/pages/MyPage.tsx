@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '../components/icons/SvgIcon';
-import '../styles/mypage.css';
+import Icon from '@/components/icons/SvgIcon';
+import '@/styles/mypage.css';
 
 const MyPage: React.FC = () => {
   return (

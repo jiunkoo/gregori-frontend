@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '../icons/SvgIcon';
+import { UI_CONSTANTS } from '../../constants/ui';
 import '../../styles/header.css';
 
 interface HeaderProps {
@@ -16,14 +17,14 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
     <>
       <div className="header-banner">
         <div className="header-banner-text">
-          GREGORI 신규 회원 <span className="header-banner-discount">20%</span> 파격 할인 쿠폰
+          {UI_CONSTANTS.BANNER.PREFIX} <span className="header-banner-discount">{UI_CONSTANTS.BANNER.DISCOUNT}</span> {UI_CONSTANTS.BANNER.SUFFIX}
           <Icon name="arrow" size={20} className="header-banner-icon" />
         </div>
       </div>
 
       <div className="header-main">
         <Link to="/" className="header-logo">
-          <div className="header-logo-text">GREGORI</div>
+          <div className="header-logo-text">{UI_CONSTANTS.LOGO.TEXT}</div>
         </Link>
         
         {showSearch && (
@@ -48,37 +49,34 @@ const Header: React.FC<HeaderProps> = ({ showSearch = true, showNav = false }) =
         )}
 
         <div className="header-actions">
-          <Link to="/mypage" className="header-action-item">
-            <Icon name="user" size={24} className="header-action-icon" />
-            <span className="header-action-text hidden-lg">마이페이지</span>
-          </Link>
-          <div className="header-action-item">
-            <Icon name="heart" size={24} className="header-action-icon" />
-            <span className="header-action-text hidden-lg">찜목록</span>
-          </div>
-          <Link to="/cart" className="header-action-item">
-            <Icon name="cart" size={24} className="header-action-icon" />
-            <span className="header-action-text hidden-lg">장바구니</span>
-          </Link>
-          <Link to="/login" className="header-action-item">
-            <Icon name="login" size={24} className="header-action-icon" />
-            <span className="header-action-text hidden-lg">로그인</span>
-          </Link>
+          {UI_CONSTANTS.ACTIONS.map((action) => {
+            const ActionComponent = action.path ? Link : 'div';
+            return (
+              <ActionComponent 
+                key={action.name}
+                to={action.path} 
+                className="header-action-item"
+              >
+                <Icon name={action.name} size={24} className="header-action-icon" />
+                <span className="header-action-text hidden-lg">{action.text}</span>
+              </ActionComponent>
+            );
+          })}
         </div>
       </div>
 
       {showNav && (
         <div className="header-nav">
           <nav className="header-nav-list">
-            <Link to="/products" className="header-nav-link header-nav-link-active">인기</Link>
-            <Link to="/products?category=chicken" className="header-nav-link">치킨</Link>
-            <Link to="/products?category=pizza" className="header-nav-link">피자</Link>
-            <Link to="/products?category=korean" className="header-nav-link">한식</Link>
-            <Link to="/products?category=chinese" className="header-nav-link">중식</Link>
-            <Link to="/products?category=western" className="header-nav-link">양식</Link>
-            <Link to="/products?category=japanese" className="header-nav-link">일식</Link>
-            <Link to="/products?category=bunsik" className="header-nav-link">분식</Link>
-            <Link to="/products?category=cafe" className="header-nav-link">카페</Link>
+            {UI_CONSTANTS.NAV_MENU.map((item, index) => (
+              <Link 
+                key={item.label}
+                to={item.path} 
+                className={`header-nav-link ${index === 0 ? 'header-nav-link-active' : ''}`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}

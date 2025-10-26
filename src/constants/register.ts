@@ -11,7 +11,6 @@ export const REGISTER_CONSTANTS = {
   },
   FORM: {
     TITLE: "회원가입",
-    SUBTITLE: "GREGORI에 오신 것을 환영합니다!",
     EMAIL_LABEL: "이메일",
     EMAIL_PLACEHOLDER: "이메일",
     PASSWORD_LABEL: "비밀번호",

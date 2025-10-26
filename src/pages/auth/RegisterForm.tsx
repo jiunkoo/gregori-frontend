@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { memberAPI } from "@api";
 import { REGISTER_CONSTANTS } from "@constants";
+import Icon from "@components/icons/SvgIcon";
 import "@styles/register-form.css";
 
 const RegisterForm: React.FC = () => {
@@ -116,7 +117,6 @@ const RegisterForm: React.FC = () => {
     <div className="register-form-container">
       <div className="register-form-title">
         <h1>{REGISTER_CONSTANTS.FORM.TITLE}</h1>
-        <p>{REGISTER_CONSTANTS.FORM.SUBTITLE}</p>
       </div>
 
       {error && <div className="register-form-error-message">{error}</div>}
@@ -258,15 +258,17 @@ const RegisterForm: React.FC = () => {
         </div>
       </form>
 
-      <div className="register-form-submit">
+      <div className="register-form-submit-section">
         <button
+          className="register-form-submit-button"
           onClick={handleSubmit}
           disabled={isLoading || !isVerificationVerified}
-          className="register-form-submit-button"
         >
-          {isLoading
-            ? REGISTER_CONSTANTS.FORM.SUBMIT_LOADING
-            : REGISTER_CONSTANTS.FORM.SUBMIT_BUTTON}
+          <span className="register-form-submit-text">
+            {isLoading
+              ? REGISTER_CONSTANTS.FORM.SUBMIT_LOADING
+              : REGISTER_CONSTANTS.FORM.SUBMIT_BUTTON}
+          </span>
         </button>
 
         <div className="register-form-login-link">

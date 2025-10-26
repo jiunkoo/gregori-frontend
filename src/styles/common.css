@@ -31,4 +31,6 @@
   --color-red-error-bg: #fee2e2;
   --color-red-error-border: #f87171;
   --color-red-error-text: #991b1b;
+
+  --icon-arrow-down: url("../components/icons/arrow-down.svg");
 }

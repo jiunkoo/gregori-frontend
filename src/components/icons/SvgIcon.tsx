@@ -122,6 +122,23 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
+    // 아래쪽 화살표 (arrowRight를 90도 회전)
+    arrowDown: (
+      <svg
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        style={iconStyle}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    ),
+
     // Google 아이콘
     google: (
       <svg viewBox="0 0 24 24" style={iconStyle}>

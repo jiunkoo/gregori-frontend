@@ -42,17 +42,21 @@ const Header: React.FC<HeaderProps> = ({
         {showSearch && (
           <div className="header-search-container">
             <div className="header-search-wrapper">
-              <input
-                type="text"
-                placeholder={showNav ? "상품을 검색해보세요..." : "검색"}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="header-search-input"
-              />
               <div className="header-search-icon-wrapper">
                 <Icon name="google" size={32} className="header-google-icon" />
                 <div className="header-search-divider"></div>
               </div>
+              <input
+                type="text"
+                placeholder={
+                  showNav
+                    ? HEADER_CONSTANTS.SEARCH.PLACEHOLDER_WITH_NAV
+                    : HEADER_CONSTANTS.SEARCH.PLACEHOLDER_WITHOUT_NAV
+                }
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="header-search-input"
+              />
               <button type="submit" className="header-search-button">
                 <Icon name="search" size={24} className="header-search-icon" />
               </button>

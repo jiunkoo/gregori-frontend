@@ -1,4 +1,4 @@
-export const UI_CONSTANTS = {
+export const HEADER_CONSTANTS = {
   BANNER: {
     PREFIX: 'GREGORI 신규 회원',
     DISCOUNT: '20%',

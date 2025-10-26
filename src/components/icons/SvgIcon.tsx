@@ -178,14 +178,14 @@ const Icon: React.FC<IconProps> = ({
       <svg
         fill="none"
         stroke="currentColor"
-        viewBox="0 0 24 24"
+        viewBox="0 0 12 8"
         style={iconStyle}
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M5 13l4 4L19 7"
+          d="M1 4L4 7L11 1"
         />
       </svg>
     ),

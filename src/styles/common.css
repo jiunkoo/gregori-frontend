@@ -8,4 +8,11 @@
   --font-weight-bold: 700;
   --font-weight-extra-bold: 800;
   --font-weight-black: 900;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-light: #f2f2f2;
+  --color-gray-medium: #747474;
+  --color-blue-facebook: #0078ff;
+  --color-yellow-kakao: #fae407;
 }

@@ -1,70 +1,45 @@
-/* 로그인 페이지 스타일 */
 .login-wrapper {
-  width: 1512px;
+  width: 100%;
   height: 982px;
-  background: white;
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
 }
 
-/* 좌우 회색 박스 */
 .login-side-box {
-  width: 550px;
-  height: 857px;
-  background: #E8E8E8;
-  position: absolute;
+  display: none;
 }
 
-.login-side-box.left {
-  left: 0;
-  top: 125px;
-}
-
-.login-side-box.right {
-  right: 0;
-  top: 125px;
-}
-
-/* 로그인 폼 컨테이너 */
 .login-container {
-  width: 320px;
-  height: 600px;
-  background: white;
-  padding: 0;
-  position: absolute;
-  left: 596px;
-  top: 190px;
-  z-index: 10;
+  width: 40%;
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* 1. 로그인 제목 섹션 */
 .login-title {
   width: 100%;
-  margin-bottom: 30px;
+  margin: 1.5rem 0;
 }
 
 .login-title-text {
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: black;
-  letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-family: "Roboto";
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
+  letter-spacing: 0.125rem;
   margin: 0;
 }
 
-/* 2. 이메일/비밀번호 입력 섹션 */
 .login-input-section {
   width: 100%;
-  margin-bottom: 20px;
+  margin: 1rem 0;
 }
 
 .login-input-container {
   width: 100%;
-  height: 40px;
-  background: white;
-  border: 0.5px solid black;
-  margin-bottom: 10px;
+  height: 2.5rem;
+  border: 0.03125rem solid var(--color-black);
+  margin: 0.5rem 0;
   display: flex;
   align-items: center;
 }
@@ -74,22 +49,21 @@
   height: 100%;
   border: none;
   outline: none;
-  padding: 0 15px;
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  padding: 0 0.9375rem;
+  font-size: 1rem;
+  font-family: "Roboto";
   background: transparent;
 }
 
-/* 3. 로그인 버튼 섹션 */
 .login-button-section {
   width: 100%;
-  margin-bottom: 20px;
+  margin: 1rem 0;
 }
 
 .login-button {
   width: 100%;
-  height: 60px;
-  background: black;
+  height: 3.75rem;
+  background: var(--color-black);
   border: none;
   cursor: pointer;
   display: flex;
@@ -98,16 +72,15 @@
 }
 
 .login-button-text {
-  font-size: 28px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: white;
+  font-size: 1.75rem;
+  font-family: "Roboto";
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
 }
 
-/* 4. 자동로그인, 이메일/비밀번호 찾기 섹션 */
 .login-options-section {
   width: 100%;
-  margin-bottom: 20px;
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -116,127 +89,111 @@
 .login-auto-login {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
+}
+
+.login-auto-login-text {
+  font-size: 0.875rem;
+  font-family: "Roboto";
+  font-weight: var(--font-weight-normal);
+  color: var(--color-black);
 }
 
 .login-checkbox {
-  width: 21px;
-  height: 20px;
-  background: #E8E8E8;
-  border: 0.5px solid #747474;
+  width: 1.3125rem;
+  height: 1.25rem;
+  background: var(--color-white);
+  border: 0.03125rem solid var(--color-black);
   cursor: pointer;
 }
 
 .login-checkbox.checked {
-  background: black;
-  border-color: black;
-  position: relative;
-}
-
-.login-checkbox.checked::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 8px;
-  background: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L4 7L11 1' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
-}
-
-.login-auto-login-text {
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: black;
+  background: var(--color-black);
+  border-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-find-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 0.625rem;
 }
 
 .login-find-link {
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: #747474;
+  font-size: 0.875rem;
+  font-family: "Roboto";
+  font-weight: var(--font-weight-normal);
+  color: var(--color-black);
   text-decoration: none;
   cursor: pointer;
 }
 
 .login-find-link:hover {
-  color: black;
+  color: var(--color-black);
 }
 
 .login-divider {
-  width: 1px;
-  height: 15px;
-  background: #747474;
+  width: 0.0625rem;
+  height: 0.9375rem;
+  background: var(--color-black);
 }
 
-/* 5. 소셜 로그인 섹션 */
 .login-social-section {
   width: 100%;
-  margin-bottom: 20px;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .login-social-button {
   width: 100%;
-  height: 50px;
-  border: none;
+  height: 3.125rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   position: relative;
 }
 
 .login-social-button.facebook {
-  background: #0078FF;
+  background: var(--color-blue-facebook);
 }
 
 .login-social-button.kakao {
-  background: #FAE407;
+  background: var(--color-yellow-kakao);
 }
 
 .login-social-button.google {
-  background: #F2F2F2;
+  background: var(--color-gray-light);
 }
 
 .login-social-icon {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  left: 15px;
+  margin: 0 0.5rem;
 }
 
 .login-social-text {
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: black;
+  font-size: 1rem;
+  font-family: "Roboto";
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
 }
 
 .login-social-button.facebook .login-social-text {
-  color: white;
+  color: var(--color-white);
 }
 
-/* 6. 가입하기 섹션 */
 .login-signup-section {
   width: 100%;
 }
 
 .login-signup-button {
   width: 100%;
-  height: 60px;
-  background: white;
-  border: 0.5px solid #747474;
+  height: 3.75rem;
+  margin: 4rem 0;
+  border: 0.03125rem solid var(--color-gray-medium);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -244,61 +201,8 @@
 }
 
 .login-signup-text {
-  font-size: 28px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: black;
-}
-
-/* 반응형 */
-@media (max-width: 1600px) {
-  .login-wrapper {
-    width: 100%;
-    max-width: 1512px;
-    height: auto;
-    min-height: 100vh;
-    padding: 20px;
-  }
-  
-  .login-side-box {
-    display: none;
-  }
-  
-  .login-container {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .login-options-section {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
-  
-  .login-find-links {
-    align-self: flex-end;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-container {
-    padding: 10px;
-  }
-  
-  .login-title-text {
-    font-size: 18px;
-  }
-  
-  .login-button-text,
-  .login-signup-text {
-    font-size: 24px;
-  }
-  
-  .login-social-text {
-    font-size: 14px;
-  }
+  font-size: 1.75rem;
+  font-family: "Roboto";
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
 }

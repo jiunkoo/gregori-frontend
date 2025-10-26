@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@components/icons/SvgIcon";
-import { UI_CONSTANTS } from "@constants/ui";
+import { HEADER_CONSTANTS } from "@constants/header";
 import "@styles/header.css";
 
 interface HeaderProps {
@@ -19,13 +19,13 @@ const Header: React.FC<HeaderProps> = ({
     <>
       <div className="header-banner">
         <div className="header-banner-text">
-          {UI_CONSTANTS.BANNER.PREFIX}
+          {HEADER_CONSTANTS.BANNER.PREFIX}
           &nbsp;
           <span className="header-banner-discount">
-            {UI_CONSTANTS.BANNER.DISCOUNT}
+            {HEADER_CONSTANTS.BANNER.DISCOUNT}
           </span>
           &nbsp;
-          {UI_CONSTANTS.BANNER.SUFFIX}
+          {HEADER_CONSTANTS.BANNER.SUFFIX}
           <Icon
             name="arrowRight"
             size={20}
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({
 
       <div className="header-main">
         <Link to="/" className="header-logo">
-          <div className="header-logo-text">{UI_CONSTANTS.LOGO.TEXT}</div>
+          <div className="header-logo-text">{HEADER_CONSTANTS.LOGO.TEXT}</div>
         </Link>
 
         {showSearch && (
@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({
         )}
 
         <div className="header-actions">
-          {UI_CONSTANTS.ACTIONS.map((action) => {
+          {HEADER_CONSTANTS.ACTIONS.map((action) => {
             if (action.path) {
               return (
                 <Link
@@ -100,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({
       {showNav && (
         <div className="header-nav">
           <nav className="header-nav-list">
-            {UI_CONSTANTS.NAV_MENU.map((item, index) => (
+            {HEADER_CONSTANTS.NAV_MENU.map((item, index) => (
               <Link
                 key={item.label}
                 to={item.path}

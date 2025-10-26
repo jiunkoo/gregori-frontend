@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useAuthStore } from "@stores/authStore";
-import { authAPI } from "@api/auth";
-import { memberAPI } from "@api/member";
-import Icon from "@components/icons/SvgIcon";
-import { LOGIN_CONSTANTS } from "@constants/login";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@stores";
+import { authAPI, memberAPI } from "@api";
+import { Layout, Icon } from "@components";
+import { LOGIN_CONSTANTS } from "@constants";
 import "@styles/login.css";
 
 const Login: React.FC = () => {
@@ -49,7 +48,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <Layout showNav={false}>
       <div className="login-container">
         <div className="login-title">
           <h1 className="login-title-text">{LOGIN_CONSTANTS.TITLE}</h1>
@@ -163,11 +162,14 @@ const Login: React.FC = () => {
         </div>
 
         <div className="login-signup-section">
-          <Link to="/register" className="login-signup-button">
+          <button
+            onClick={() => navigate("/register")}
+            className="login-signup-button"
+          >
             <span className="login-signup-text">
               {LOGIN_CONSTANTS.SIGNUP_TEXT}
             </span>
-          </Link>
+          </button>
         </div>
 
         {error && (
@@ -176,7 +178,7 @@ const Login: React.FC = () => {
           </div>
         )}
       </div>
-    </div>
+    </Layout>
   );
 };
 

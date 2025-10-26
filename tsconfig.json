@@ -18,13 +18,17 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@components": ["src/components"],
       "@components/*": ["src/components/*"],
-      "@pages/*": ["src/pages/*"],
+      "@api": ["src/api"],
+      "@api/*": ["src/api/*"],
+      "@constants": ["src/constants"],
       "@constants/*": ["src/constants/*"],
+      "@stores": ["src/stores"],
+      "@stores/*": ["src/stores/*"],
+      "@pages/*": ["src/pages/*"],
       "@models": ["src/models"],
       "@models/*": ["src/models/*"],
-      "@api/*": ["src/api/*"],
-      "@stores/*": ["src/stores/*"],
       "@styles/*": ["src/styles/*"]
     },
 
@@ -36,4 +40,4 @@
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
-} 
+}

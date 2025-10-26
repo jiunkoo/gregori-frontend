@@ -1,0 +1,102 @@
+.register-agreement-container {
+  width: 40%;
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.register-agreement-title {
+  margin: 1.5rem 0;
+}
+
+.register-agreement-title-text {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-black);
+  color: var(--color-black);
+}
+
+.register-agreement-all {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.register-agreement-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--color-white);
+  border: 0.03125rem solid var(--color-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-agreement-checkbox.checked {
+  background: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.register-agreement-text {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-normal);
+  color: var(--color-black);
+}
+
+.register-agreement-items {
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.register-agreement-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+.register-agreement-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-agreement-link:hover {
+  color: var(--color-blue-link);
+}
+
+.register-agreement-submit-section {
+  margin: 1rem 0;
+}
+
+.register-agreement-submit-button {
+  width: 100%;
+  height: 3.75rem;
+  margin: 16rem 0;
+  background: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-agreement-submit-button:disabled {
+  background: var(--color-gray-lighter);
+  cursor: not-allowed;
+}
+
+.register-agreement-submit-text {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+}
+
+.register-agreement-error-message {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: var(--color-red-error-bg);
+  border: 0.0625rem solid var(--color-red-error-border);
+  color: var(--color-red-error-text);
+  font-size: 0.875rem;
+}

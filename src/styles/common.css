@@ -1,4 +1,7 @@
 :root {
+  --font-family-primary: "Roboto";
+  --font-family-secondary: "Nanum Gothic";
+
   --font-weight-thin: 100;
   --font-weight-extra-light: 200;
   --font-weight-light: 300;
@@ -15,4 +18,17 @@
   --color-gray-medium: #747474;
   --color-blue-facebook: #0078ff;
   --color-yellow-kakao: #fae407;
+
+  --color-gray-subtle: #4b5563;
+  --color-gray-border: #6b7280;
+  --color-gray-background: #f3f4f6;
+  --color-gray-disabled: #9ca3af;
+  --color-gray-dark: #1f2937;
+  --color-gray-lighter: #d1d5db;
+  --color-gray-inactive: #e8e8e8;
+  --color-blue-link: #0b87f0;
+  --color-blue-hover: #2563eb;
+  --color-red-error-bg: #fee2e2;
+  --color-red-error-border: #f87171;
+  --color-red-error-text: #991b1b;
 }

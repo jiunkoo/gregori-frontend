@@ -1,0 +1,178 @@
+.register-form-container {
+  width: 40%;
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.register-form-title {
+  margin: 1.5rem 0;
+}
+
+.register-form-title h1 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-black);
+  color: var(--color-black);
+}
+
+.register-form-title p {
+  font-size: 1rem;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.register-form-label {
+  /* display: block; */
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-subtle);
+}
+
+.register-form-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--color-black);
+  outline: none;
+  font-size: 14px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.register-form-input:focus {
+  box-shadow: 0 0 0 2px var(--color-gray-border);
+}
+
+.register-form-input:disabled {
+  background-color: var(--color-gray-background);
+  cursor: not-allowed;
+}
+
+.register-form-email-group {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.register-form-email-separator {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  color: var(--color-gray-border);
+  font-size: 16px;
+}
+
+.register-form-select {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--color-black);
+  outline: none;
+  background-color: var(--color-white);
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.register-form-select:focus {
+  box-shadow: 0 0 0 2px var(--color-gray-border);
+}
+
+.register-form-phone-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.register-form-verify-button {
+  height: 40px;
+  padding: 0 16px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.register-form-verify-button:hover:not(:disabled) {
+  background-color: var(--color-gray-dark);
+}
+
+.register-form-verify-button:disabled {
+  background-color: var(--color-gray-disabled);
+  cursor: not-allowed;
+}
+
+.register-form-error-message {
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: var(--color-red-error-bg);
+  border: 1px solid var(--color-red-error-border);
+  color: var(--color-red-error-text);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.register-form-submit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.register-form-submit-button {
+  width: 100%;
+  height: 50px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.register-form-submit-button:hover:not(:disabled) {
+  background-color: var(--color-gray-dark);
+}
+
+.register-form-submit-button:disabled {
+  background-color: var(--color-gray-disabled);
+  cursor: not-allowed;
+}
+
+.register-form-login-link {
+  text-align: center;
+}
+
+.register-form-login-link p {
+  color: var(--color-gray-subtle);
+  font-size: 14px;
+}
+
+.register-form-login-link-text {
+  color: var(--color-black);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.register-form-login-link-text:hover {
+  color: var(--color-gray-dark);
+}

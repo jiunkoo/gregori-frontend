@@ -1,96 +1,69 @@
-.home-wrapper {
-  min-height: 100vh;
-  background: white;
-  font-family: "Nanum Gothic", sans-serif;
-}
-
-.main-content {
-  display: flex;
-  max-width: 1512px;
-  margin: 0 auto;
-  padding-top: 40px;
-}
-
-.products-section {
-  flex: 1;
-  padding: 0 34px 40px 0;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.products-container {
+  padding: 1.5625rem;
+  column-count: 3;
+  column-gap: 0;
+  font-size: 0;
 }
 
 .product-card {
-  display: block;
-  overflow: hidden;
-  background: #f3f2f2;
+  display: inline-block;
+  width: 100%;
   transition: transform 0.3s ease;
 }
 
 .product-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
 
 .product-image {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.product-card:nth-child(1) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
 .product-card:nth-child(1) .product-image {
-  height: 629px;
+  height: 22rem;
 }
 
-.product-card:nth-child(2) .product-image,
+.product-card:nth-child(2) .product-image {
+  height: 30rem;
+}
+
 .product-card:nth-child(3) .product-image {
-  height: 312px;
+  height: 18rem;
 }
 
-.product-card:nth-child(4) .product-image,
-.product-card:nth-child(5) .product-image,
+.product-card:nth-child(4) .product-image {
+  height: 26rem;
+}
+
+.product-card:nth-child(5) .product-image {
+  height: 20rem;
+}
+
 .product-card:nth-child(6) .product-image {
-  height: 297px;
-}
-
-.product-card:nth-child(7) {
-  grid-column: span 2;
+  height: 28rem;
 }
 
 .product-card:nth-child(7) .product-image {
-  height: 312px;
+  height: 24rem;
 }
 
-.product-card:nth-child(8) .product-image,
-.product-card:nth-child(9) .product-image,
+.product-card:nth-child(8) .product-image {
+  height: 19rem;
+}
+
+.product-card:nth-child(9) .product-image {
+  height: 27rem;
+}
+
 .product-card:nth-child(10) .product-image {
-  height: 297px;
-}
-
-.product-card:nth-child(11) {
-  grid-column: span 2;
+  height: 21rem;
 }
 
 .product-card:nth-child(11) .product-image {
-  height: 312px;
+  height: 29rem;
 }
 
 .product-card:nth-child(12) .product-image {
-  height: 297px;
-}
-
-.empty-products {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
-  font-size: 18px;
-  color: #666;
+  height: 23rem;
 }

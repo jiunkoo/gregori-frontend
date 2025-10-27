@@ -207,23 +207,34 @@ const Home: React.FC = () => {
       selectedCategory={selectedCategory}
       onCategoryChange={setSelectedCategory}
     >
-      <main className="products-section">
-        <div className="products-grid">
-          {products.map((product) => (
+      <div className="products-container">
+        {products.map((product, index) => {
+          const images = [
+            "/images/products/pasta1_tomato1.jpg",
+            "/images/products/pasta2_cream1.jpg",
+            "/images/products/pasta3_oil1.jpg",
+            "/images/products/pasta3_oil2.jpg",
+            "/images/products/pasta4_meat1.jpg",
+            "/images/products/pasta4_meat2.jpg",
+            "/images/main_pasta.jpg",
+          ];
+          const imageSrc = images[index % images.length];
+
+          return (
             <Link
               key={product.id}
               to={`/products/${product.id}`}
               className="product-card"
             >
               <img
-                src="/images/main_pasta.jpg"
+                src={imageSrc}
                 alt={product.name}
                 className="product-image"
               />
             </Link>
-          ))}
-        </div>
-      </main>
+          );
+        })}
+      </div>
     </Layout>
   );
 };

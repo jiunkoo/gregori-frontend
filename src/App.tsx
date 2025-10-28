@@ -45,7 +45,6 @@ const AuthInitializer: React.FC = () => {
         const userInfo = await memberAPI.getMember();
         setUser(userInfo);
       } catch (error) {
-        // 로그인되지 않은 상태이므로 아무것도 하지 않음
         console.log("로그인되지 않은 상태");
       } finally {
         setLoading(false);
@@ -63,7 +62,6 @@ const App: React.FC = () => {
     <Router>
       <AuthInitializer />
       <Routes>
-        {/* 공개 라우트 */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -75,14 +73,7 @@ const App: React.FC = () => {
             </Layout>
           }
         />
-        <Route
-          path="/products/:productId"
-          element={
-            <Layout>
-              <ProductDetail />
-            </Layout>
-          }
-        />
+        <Route path="/products/:productId" element={<ProductDetail />} />
         <Route
           path="/cart"
           element={

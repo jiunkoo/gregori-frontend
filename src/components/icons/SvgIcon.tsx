@@ -105,6 +105,23 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
+    // 왼쪽 화살표 아이콘 (배너)
+    arrowLeft: (
+      <svg
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        style={iconStyle}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    ),
+
     // 오른쪽 화살표 아이콘 (배너)
     arrowRight: (
       <svg

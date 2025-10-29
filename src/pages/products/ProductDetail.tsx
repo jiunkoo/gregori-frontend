@@ -265,7 +265,7 @@ const ProductDetail: React.FC = () => {
                   <Icon
                     key={i}
                     name="star"
-                    size={20}
+                    size={24}
                     className="product-detail-star"
                   />
                 ))}
@@ -281,12 +281,12 @@ const ProductDetail: React.FC = () => {
                 {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
               </div>
               <button className="product-detail-coupon-button">
+                {PRODUCT_DETAIL_CONSTANTS.COUPON.GET_COUPON}
                 <Icon
-                  name="coupon"
-                  size={24}
+                  name="download"
+                  size={32}
                   className="product-detail-coupon-icon"
                 />
-                {PRODUCT_DETAIL_CONSTANTS.COUPON.GET_COUPON}
               </button>
             </div>
 
@@ -358,8 +358,6 @@ const ProductDetail: React.FC = () => {
               />
             </div>
 
-            <div className="product-detail-divider"></div>
-
             <div className="product-detail-shipping">
               <div className="product-detail-shipping-item">
                 <span className="product-detail-shipping-label">
@@ -384,7 +382,7 @@ const ProductDetail: React.FC = () => {
               </div>
             </div>
 
-            <div className="product-detail-divider"></div>
+            {/* <div className="product-detail-divider"></div> */}
 
             <div className="product-detail-options">
               <div className="product-detail-option-group">

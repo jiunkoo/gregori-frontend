@@ -509,6 +509,29 @@ const Icon: React.FC<IconProps> = ({
         />
       </svg>
     ),
+
+    // 다운로드 아이콘 (쿠폰 받기용)
+    download: (
+      <svg
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 30 30"
+        style={iconStyle}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={0.1}
+          d="M15 17.5L14.2929 18.2071L15 18.9142L15.7071 18.2071L15 17.5ZM16 6.25C16 5.69772 15.5523 5.25 15 5.25C14.4477 5.25 14 5.69772 14 6.25L15 6.25L16 6.25ZM8.75 11.25L8.04289 11.9571L14.2929 18.2071L15 17.5L15.7071 16.7929L9.45711 10.5429L8.75 11.25ZM15 17.5L15.7071 18.2071L21.9571 11.9571L21.25 11.25L20.5429 10.5429L14.2929 16.7929L15 17.5ZM15 17.5L16 17.5L16 6.25L15 6.25L14 6.25L14 17.5L15 17.5Z"
+          fill="currentColor"
+        />
+        <path
+          d="M6.25 20L6.25 21.25C6.25 22.6307 7.36929 23.75 8.75 23.75L21.25 23.75C22.6307 23.75 23.75 22.6307 23.75 21.25V20"
+          stroke="currentColor"
+          strokeWidth={2}
+        />
+      </svg>
+    ),
   };
 
   return <span className={className}>{icons[name] || null}</span>;

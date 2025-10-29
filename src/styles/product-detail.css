@@ -163,17 +163,13 @@
   margin-bottom: 20px;
 }
 
-.product-detail-divider {
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-gray-200);
-  margin: 20px 0;
-}
-
 .product-detail-member-price {
   display: flex;
   justify-content: space-between;
   font-size: 24px;
+  border-top: 1px solid var(--color-gray-200);
+  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .product-detail-member-price-value {
@@ -200,7 +196,7 @@
 
 .product-detail-discount-item {
   display: grid;
-  grid-template-columns: 120px 25px 1fr auto;
+  grid-template-columns: 120px 50px 1fr auto;
   align-items: center;
   gap: 16px;
   padding: 16px 0;
@@ -219,20 +215,16 @@
 }
 
 .product-detail-discount-checkbox {
-  width: 25px;
-  height: 25px;
-  border: none;
-  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0;
+  grid-column: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  cursor: pointer;
+  background: transparent;
+  border: none;
   padding: 0;
-  transition: all 0.2s ease;
-  margin: 0;
-  position: relative;
-  grid-column: 2;
 }
 
 .product-detail-discount-name {
@@ -281,8 +273,15 @@
 
 .product-detail-shipping {
   border-bottom: 1px solid var(--color-gray-200);
-  /* gap: 8px; */
-  /* margin-bottom: 20px; */
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.product-detail-shipping-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0 0 16px 0;
 }
 
 .product-detail-shipping-item {
@@ -312,60 +311,46 @@
 
 .product-detail-options {
   margin-bottom: 30px;
+  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .product-detail-option-group {
   margin-bottom: 20px;
 }
 
-.product-detail-option-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border: 0.5px solid var(--color-gray-800);
-  background-color: var(--color-white);
-  margin-bottom: 10px;
-}
-
-.product-detail-option-header.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* 1 */
-/* 2 */
-/* 3 */
-
-.product-detail-option-items {
-  display: none;
-  border: 0.5px solid var(--color-gray-800);
-  background-color: var(--color-white);
-}
-
-.product-detail-option-items.open {
+.product-detail-option-label {
   display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-black);
+  margin-bottom: 8px;
 }
 
-.product-detail-option-item {
-  display: flex;
-  align-items: center;
-  padding: 15px var(--spacing-md);
-  border-bottom: 1px solid var(--color-gray-200);
+.product-detail-option-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: var(--color-white);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: border-color 0.2s;
 }
 
-.product-detail-option-item:hover {
-  background-color: var(--color-bg-light);
+.product-detail-option-select:hover {
+  border-color: var(--color-gray-400);
 }
 
-.product-detail-option-item:last-child {
-  border-bottom: none;
+.product-detail-option-select:focus {
+  outline: none;
+  border-color: var(--color-black);
 }
 
-.product-detail-option-item.selected {
-  background-color: #e8e8e8;
+.product-detail-option-select:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-400);
+  cursor: not-allowed;
 }
 
 /* 잠시 구획 나누기 */

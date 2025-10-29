@@ -532,6 +532,61 @@ const Icon: React.FC<IconProps> = ({
         />
       </svg>
     ),
+
+    // 체크박스 아이콘 (비체크 상태)
+    checkbox: (
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={iconStyle}
+      >
+        <rect
+          x="1"
+          y="1"
+          width="28"
+          height="28"
+          rx="4"
+          ry="4"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+        />
+      </svg>
+    ),
+
+    // 체크박스 아이콘 (체크 상태)
+    checkboxChecked: (
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={iconStyle}
+      >
+        <rect
+          x="1"
+          y="1"
+          width="28"
+          height="28"
+          rx="4"
+          ry="4"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+        />
+        <path
+          d="M6 15L12 21L24 9"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   };
 
   return <span className={className}>{icons[name] || null}</span>;

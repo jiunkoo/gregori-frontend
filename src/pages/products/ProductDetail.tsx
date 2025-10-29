@@ -35,8 +35,8 @@ const DiscountItem: React.FC<{
     <button className="product-detail-discount-checkbox" onClick={onToggle}>
       <Icon
         name={isChecked ? "checkboxChecked" : "checkbox"}
-        size={30}
-        color={isChecked ? "black" : "#747474"}
+        size={28}
+        color={isChecked ? "var(--color-black)" : "var(--color-gray-medium)"}
       />
     </button>
     {hasDownload ? (
@@ -83,6 +83,8 @@ const ProductDetail: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [sizeOpen, setSizeOpen] = useState(false);
+  const [colorOpen, setColorOpen] = useState(false);
   const [discountStates, setDiscountStates] = useState({
     productDiscount: true,
     couponDiscount1: false,
@@ -372,47 +374,89 @@ const ProductDetail: React.FC = () => {
               </div>
             </div>
 
-            {/* <div className="product-detail-divider"></div> */}
-
             <div className="product-detail-options">
               <div className="product-detail-option-group">
-                <label className="product-detail-option-label">
-                  {PRODUCT_DETAIL_CONSTANTS.OPTIONS.SIZE_LABEL}
-                </label>
-                <select
-                  className="product-detail-option-select"
-                  value={selectedSize}
-                  onChange={(e) => {
-                    setSelectedSize(e.target.value);
-                    if (!selectedColor) setSelectedColor(colors[0]);
-                  }}
+                <div
+                  className="product-detail-option-header"
+                  onClick={() => setSizeOpen(!sizeOpen)}
                 >
-                  <option value="">사이즈를 선택하세요</option>
+                  <span className="product-detail-option-label">
+                    {PRODUCT_DETAIL_CONSTANTS.OPTIONS.SIZE_LABEL}
+                  </span>
+                  <Icon
+                    name="dropdownArrow"
+                    size={16}
+                    className={`product-detail-option-arrow ${
+                      sizeOpen ? "open" : ""
+                    }`}
+                  />
+                </div>
+                <div
+                  className={`product-detail-option-items ${
+                    sizeOpen ? "open" : ""
+                  }`}
+                >
                   {sizes.map((size) => (
-                    <option key={size} value={size}>
-                      {size}
-                    </option>
+                    <div
+                      key={size}
+                      className={`product-detail-option-item ${
+                        selectedSize === size ? "selected" : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedSize(size);
+                        if (!selectedColor) setSelectedColor(colors[0]);
+                        setSizeOpen(false);
+                      }}
+                    >
+                      <span className="product-detail-option-text">{size}</span>
+                    </div>
                   ))}
-                </select>
+                </div>
               </div>
 
               <div className="product-detail-option-group">
-                <label className="product-detail-option-label">
-                  {PRODUCT_DETAIL_CONSTANTS.OPTIONS.COLOR_LABEL}
-                </label>
-                <select
-                  className="product-detail-option-select"
-                  value={selectedColor}
-                  onChange={(e) => setSelectedColor(e.target.value)}
-                  disabled={!selectedSize}
+                <div
+                  className={`product-detail-option-header ${
+                    !selectedSize ? "disabled" : ""
+                  }`}
+                  onClick={() => selectedSize && setColorOpen(!colorOpen)}
                 >
-                  <option value="">색상을 선택하세요</option>
+                  <span className="product-detail-option-label">
+                    {PRODUCT_DETAIL_CONSTANTS.OPTIONS.COLOR_LABEL}
+                    {selectedColor ? ` - ${selectedColor}` : ""}
+                  </span>
+                  <Icon
+                    name="dropdownArrow"
+                    size={16}
+                    className={`product-detail-option-arrow ${
+                      colorOpen ? "open" : ""
+                    }`}
+                  />
+                </div>
+                <div
+                  className={`product-detail-option-items ${
+                    colorOpen && selectedSize ? "open" : ""
+                  }`}
+                >
                   {colors.map((color) => (
-                    <option key={color} value={color}>
-                      {color}
-                    </option>
+                    <div
+                      key={color}
+                      className={`product-detail-option-item ${
+                        selectedColor === color ? "selected" : ""
+                      }`}
+                      onClick={() => {
+                        if (selectedSize) {
+                          setSelectedColor(color);
+                          setColorOpen(false);
+                        }
+                      }}
+                    >
+                      <span className="product-detail-option-text">
+                        {color}
+                      </span>
+                    </div>
                   ))}
-                </select>
+                </div>
               </div>
             </div>
 
@@ -459,13 +503,15 @@ const ProductDetail: React.FC = () => {
                     />
                   </div>
                 </div>
-
+                <div className="product-detail-line"></div>
                 <div className="product-detail-total">
                   <span className="product-detail-total-label">
                     {PRODUCT_DETAIL_CONSTANTS.CART.TOTAL_LABEL}
                   </span>
                   <span className="product-detail-total-price">
-                    {formatPrice(product.price * quantity)}
+                    <span className="product-detail-total-amount">
+                      {formatPrice(product.price * quantity)}
+                    </span>
                     {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
                   </span>
                 </div>

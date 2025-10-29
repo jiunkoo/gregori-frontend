@@ -55,20 +55,5 @@
   --color-bg-light: #f5f5f5;
   --color-border: #bababa;
 
-  /* 간격 변수 */
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-lg: 20px;
-  --spacing-xl: 24px;
-  --spacing-2xl: 40px;
-
-  /* 폰트 크기 변수 */
-  --font-size-xs: 12px;
-  --font-size-sm: 16px;
-  --font-size-md: 20px;
-  --font-size-lg: 32px;
-  --font-size-xl: 36px;
-
   --icon-arrow-down: url("../components/icons/arrow-down.svg");
 }

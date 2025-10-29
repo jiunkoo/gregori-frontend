@@ -78,9 +78,7 @@ const Header: React.FC<HeaderProps> = ({
                     size={24}
                     className="header-action-icon"
                   />
-                  <span className="header-action-text hidden-lg">
-                    {action.text}
-                  </span>
+                  <span className="header-action-text">{action.text}</span>
                 </Link>
               );
             } else {
@@ -91,9 +89,7 @@ const Header: React.FC<HeaderProps> = ({
                     size={24}
                     className="header-action-icon"
                   />
-                  <span className="header-action-text hidden-lg">
-                    {action.text}
-                  </span>
+                  <span className="header-action-text">{action.text}</span>
                 </div>
               );
             }

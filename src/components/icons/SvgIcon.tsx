@@ -37,122 +37,264 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 사용자 아이콘
+    // 사용자 아이콘 (마이페이지)
     user: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        viewBox="0 0 20 20"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
         style={iconStyle}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-        />
+        <g
+          id="Page-1"
+          stroke="none"
+          strokeWidth="1"
+          fill="none"
+          fillRule="evenodd"
+        >
+          <g
+            id="Dribbble-Light-Preview"
+            transform="translate(-420.000000, -2159.000000)"
+            fill="currentColor"
+          >
+            <g id="icons" transform="translate(56.000000, 160.000000)">
+              <path
+                d="M374,2009 C371.794,2009 370,2007.206 370,2005 C370,2002.794 371.794,2001 374,2001 C376.206,2001 378,2002.794 378,2005 C378,2007.206 376.206,2009 374,2009 M377.758,2009.673 C379.124,2008.574 380,2006.89 380,2005 C380,2001.686 377.314,1999 374,1999 C370.686,1999 368,2001.686 368,2005 C368,2006.89 368.876,2008.574 370.242,2009.673 C366.583,2011.048 364,2014.445 364,2019 L366,2019 C366,2014 369.589,2011 374,2011 C378.411,2011 382,2014 382,2019 L384,2019 C384,2014.445 381.417,2011.048 377.758,2009.673"
+                id="profile-[#1335]"
+              ></path>
+            </g>
+          </g>
+        </g>
       </svg>
     ),
 
     // 하트 아이콘 (찜목록)
     heart: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
         style={iconStyle}
       >
-        <path
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-        />
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            fill="currentColor"
+            fillRule="evenodd"
+            d="M7.24689,2.24696 C5.58979,0.593179 2.90579,0.594203 1.24997,2.25003 C-0.406886,3.90688 -0.406891,6.59317 1.24996,8.25002 L7.99996,15.0001 L14.75,8.25003 C16.4068,6.59317 16.4068,3.90688 14.75,2.25003 C13.0942,0.594273 10.4104,0.593172 8.75327,2.24673 L7.99996,3.00003 L7.24689,2.24696 Z M7.99996,12.1716 L13.3358,6.83581 C14.2116,5.96001 14.2116,4.54005 13.3358,3.66424 C12.46,2.78843 11.04,2.78843 10.1642,3.66424 L7.99996,5.82846 L5.83575,3.66425 C4.95995,2.78844 3.53999,2.78844 2.66418,3.66425 C1.78837,4.54005 1.78837,5.96001 2.66417,6.83581 L7.99996,12.1716 Z"
+          ></path>
+        </g>
       </svg>
     ),
 
     // 장바구니 아이콘
     cart: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        version="1.1"
+        id="Capa_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 490.875 490.875"
+        xmlSpace="preserve"
         style={iconStyle}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-        />
+        <g>
+          <g>
+            <g>
+              <path
+                d="M451.611,178.111h-31.244c3.668,20.593-5.14,42.301-23.979,53.957c-8.325,5.146-17.877,7.869-27.635,7.869 c-18.359,0-35.082-9.312-44.729-24.912c-6.822-11.033-9.033-24.246-6.75-36.915h-143.67c2.273,12.669,0.063,25.881-6.758,36.922 c-9.639,15.592-26.362,24.904-44.721,24.904c-9.765,0-19.316-2.723-27.646-7.869c-18.835-11.656-27.646-33.364-23.974-53.957 H39.263C17.575,178.11,0,195.685,0,217.373c0,21.676,17.575,39.25,39.263,39.25h4.331l28.793,175.116 c3.019,18.319,18.847,31.771,37.423,31.771h271.254c18.575,0,34.403-13.452,37.42-31.771l28.784-175.114h4.343 c21.686,0,39.264-17.576,39.264-39.251C490.875,195.686,473.295,178.111,451.611,178.111z M167.419,418.083 c-1.186,0.174-2.36,0.266-3.523,0.266c-11.459,0-21.503-8.391-23.269-20.069l-16.306-108.682 c-1.931-12.87,6.931-24.861,19.801-26.792c12.886-1.875,24.853,6.931,26.792,19.793l16.31,108.692 C189.155,404.157,180.289,416.151,167.419,418.083z M268.997,394.782c0,13.018-10.541,23.564-23.552,23.564 c-13.016,0-23.552-10.549-23.552-23.564V286.093c0-13.004,10.537-23.553,23.552-23.553c13.011,0,23.552,10.549,23.552,23.553 V394.782z M366.561,289.596l-16.317,108.682c-1.754,11.68-11.797,20.069-23.256,20.069c-1.168,0-2.338-0.091-3.527-0.266 c-12.869-1.931-21.732-13.926-19.801-26.792l16.307-108.692c1.938-12.87,13.857-21.732,26.791-19.794 C359.625,264.734,368.49,276.727,366.561,289.596z"
+                fill="currentColor"
+              ></path>
+              <path
+                d="M102.748,218.713c6.037,3.74,12.748,5.521,19.379,5.521c12.341,0,24.407-6.199,31.362-17.464 c6.415-10.375,6.967-22.646,2.739-33.151l69.947-113.048c6.321-10.222,3.16-23.611-7.062-29.944 c-3.566-2.203-7.522-3.263-11.423-3.263c-7.286,0-14.402,3.661-18.528,10.324l-69.924,113.048 c-11.282,0.906-22.02,6.86-28.435,17.232C80.086,185.283,85.449,208.003,102.748,218.713z"
+                fill="currentColor"
+              ></path>
+              <path
+                d="M334.652,173.619c-4.228,10.505-3.688,22.776,2.729,33.151c6.967,11.266,19.021,17.464,31.373,17.464 c6.629,0,13.332-1.781,19.379-5.521c17.299-10.71,22.65-33.431,11.937-50.745c-6.398-10.372-17.146-16.326-28.418-17.232 L301.7,37.688c-4.114-6.664-11.231-10.324-18.519-10.324c-3.899,0-7.855,1.06-11.427,3.263 c-10.218,6.333-13.354,19.722-7.058,29.944L334.652,173.619z"
+                fill="currentColor"
+              ></path>
+            </g>
+          </g>
+        </g>
       </svg>
     ),
 
     // 로그인 아이콘
     login: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        height="200px"
+        width="200px"
+        version="1.1"
+        id="_x32_"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 512 512"
+        xmlSpace="preserve"
         style={iconStyle}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-        />
+        <g>
+          <polygon
+            points="237.61,331.547 271.554,365.5 347.11,289.946 381.054,256 347.11,222.054 271.554,146.5 237.61,180.453 289.164,232 0,232 0,280 289.164,280 "
+            fill="currentColor"
+          ></polygon>
+          <polygon
+            points="464,0 416,0 192,0 144,0 96,0 96,48 96,80 96,160 144,160 160,160 160,64 448,64 448,448 160,448 160,352 144,352 96,352 96,432 96,464 96,512 144,512 192,512 416,512 464,512 512,512 512,464 512,416 512,96 512,48 512,0 "
+            fill="currentColor"
+          ></polygon>
+        </g>
       </svg>
     ),
 
-    // 왼쪽 화살표 아이콘 (배너)
+    // 왼쪽 화살표 아이콘
     arrowLeft: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
         style={iconStyle}
       >
-        <path
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 19l-7-7 7-7"
-        />
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <g id="layer1" transform="rotate(45 1254.793 524.438)">
+            <path
+              style={{
+                fill: "currentColor",
+                fillOpacity: 1,
+                fillRule: "evenodd",
+                stroke: "none",
+                strokeWidth: "1px",
+                strokeLinecap: "butt",
+                strokeLinejoin: "miter",
+                strokeOpacity: 1,
+              }}
+              d="M15.464 1044.409v-1.997h-9v-9h-2v11z"
+              id="path4179"
+            ></path>
+          </g>
+        </g>
       </svg>
     ),
 
-    // 오른쪽 화살표 아이콘 (배너)
+    // 오른쪽 화살표 아이콘
     arrowRight: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
         style={iconStyle}
       >
-        <path
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5l7 7-7 7"
-        />
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <g id="layer1" transform="rotate(45 1254.793 524.438)">
+            <path
+              style={{
+                fill: "currentColor",
+                fillOpacity: 1,
+                fillRule: "evenodd",
+                stroke: "none",
+                strokeWidth: "1px",
+                strokeLinecap: "butt",
+                strokeLinejoin: "miter",
+                strokeOpacity: 1,
+              }}
+              d="M11.532 1048.341H9.536v-9h-9v-2h11z"
+              id="path4179"
+            ></path>
+          </g>
+        </g>
       </svg>
     ),
 
-    // 아래쪽 화살표 (arrowRight를 90도 회전)
+    // 아래쪽 화살표
     arrowDown: (
       <svg
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        viewBox="0 -4.5 20 20"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
         style={iconStyle}
       >
-        <path
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M19 9l-7 7-7-7"
-        />
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <g
+            id="Page-1"
+            stroke="none"
+            strokeWidth="1"
+            fill="none"
+            fillRule="evenodd"
+          >
+            <g
+              id="Dribbble-Light-Preview"
+              transform="translate(-180.000000, -6684.000000)"
+              fill="currentColor"
+            >
+              <g id="icons" transform="translate(56.000000, 160.000000)">
+                <path
+                  d="M144,6525.39 L142.594,6524 L133.987,6532.261 L133.069,6531.38 L133.074,6531.385 L125.427,6524.045 L124,6525.414 C126.113,6527.443 132.014,6533.107 133.987,6535 C135.453,6533.594 134.024,6534.965 144,6525.39"
+                  id="arrow_down-[#339]"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    ),
+
+    // 위쪽 화살표
+    arrowUp: (
+      <svg
+        viewBox="0 -4.5 20 20"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        style={iconStyle}
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <g
+            id="Page-1"
+            stroke="none"
+            strokeWidth="1"
+            fill="none"
+            fillRule="evenodd"
+          >
+            <g
+              id="Dribbble-Light-Preview"
+              transform="translate(-140.000000, -6683.000000)"
+              fill="currentColor"
+            >
+              <g id="icons" transform="translate(56.000000, 160.000000)">
+                <path
+                  d="M84,6532.61035 L85.4053672,6534 L94.0131154,6525.73862 L94.9311945,6526.61986 L94.9261501,6526.61502 L102.573446,6533.95545 L104,6532.58614 C101.8864,6530.55736 95.9854722,6524.89321 94.0131154,6523 C92.5472155,6524.40611 93.9757869,6523.03486 84,6532.61035"
+                  id="arrow_up-[#340]"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </g>
       </svg>
     ),
 
@@ -238,6 +380,32 @@ const Icon: React.FC<IconProps> = ({
           strokeWidth={2}
           d="M6 18L18 6M6 6l12 12"
         />
+      </svg>
+    ),
+
+    // 삭제 아이콘 (원형 X)
+    remove: (
+      <svg
+        fill="currentColor"
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 24 24"
+        xmlSpace="preserve"
+        style={iconStyle}
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <style type="text/css">{`.st0{fill:none;}`}</style>
+          <path d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z M16.9,15.5l-1.4,1.4L12,13.4l-3.5,3.5l-1.4-1.4l3.5-3.5 L7.1,8.5l1.4-1.4l3.5,3.5l3.5-3.5l1.4,1.4L13.4,12L16.9,15.5z"></path>
+          <rect className="st0" width="24" height="24"></rect>
+        </g>
       </svg>
     ),
 
@@ -427,18 +595,6 @@ const Icon: React.FC<IconProps> = ({
           fillRule="evenodd"
           clipRule="evenodd"
           d="M0.503332 -0.000114441L8 8.14809L15.4793 -0.000114441L16 0.350779L8 9.06982L0 0.34511L0.503332 -0.000114441Z"
-          fill="currentColor"
-        />
-      </svg>
-    ),
-
-    // 오른쪽 화살표 (작은)
-    arrowRightSmall: (
-      <svg viewBox="0 0 10 16" fill="none" style={iconStyle}>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M0.00037384 15.4967L8.14858 8L0.00037384 0.520667L0.351267 0L9.07031 8L0.345598 16L0.00037384 15.4967Z"
           fill="currentColor"
         />
       </svg>

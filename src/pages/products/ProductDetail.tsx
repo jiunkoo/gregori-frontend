@@ -497,8 +497,8 @@ const ProductDetail: React.FC = () => {
                       {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
                     </span>
                     <Icon
-                      name="close"
-                      size={20}
+                      name="remove"
+                      size={28}
                       className="product-detail-cart-remove"
                     />
                   </div>

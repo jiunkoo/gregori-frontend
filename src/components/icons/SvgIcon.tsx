@@ -743,6 +743,82 @@ const Icon: React.FC<IconProps> = ({
         />
       </svg>
     ),
+
+    // Plus Circle 아이콘
+    plusCircle: (
+      <svg
+        fill="currentColor"
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 24 24"
+        xmlSpace="preserve"
+        style={iconStyle}
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <style type="text/css">{`.st0{fill:none;}`}</style>
+          <path d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z M13,17.9h-2V13H6.1v-2H11V6.1h2V11h4.9v2H13V17.9z"></path>
+          <rect className="st0" width="24" height="24"></rect>
+        </g>
+      </svg>
+    ),
+
+    // Minus Circle 아이콘
+    minusCircle: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={iconStyle}
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM18 11H6V13H18V11Z"
+            fill="currentColor"
+          ></path>
+        </g>
+      </svg>
+    ),
+
+    // Equal Circle 아이콘
+    equalCircle: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={iconStyle}
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM6 11H18V9H6V11ZM6 15H18V13H6V15Z"
+            fill="currentColor"
+          ></path>
+        </g>
+      </svg>
+    ),
   };
 
   return <span className={className}>{icons[name] || null}</span>;

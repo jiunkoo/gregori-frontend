@@ -3,4 +3,5 @@ export { REGISTER_CONSTANTS } from "./register";
 export { CATEGORIES, CATEGORY_CONSTANTS } from "./category";
 export { PRODUCT_DETAIL_CONSTANTS, COLORS } from "./productDetail";
 export { CART_CONSTANTS } from "./cart";
+export { ORDER_CONSTANTS } from "./order";
 export type { Category } from "./category";

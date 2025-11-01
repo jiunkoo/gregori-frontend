@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Layout from "@components/Layout";
 import Home from "@pages/Home";
 import Login from "@pages/auth/Login";
 import Register from "@pages/auth/Register";
@@ -65,59 +64,22 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/products"
-          element={
-            <Layout>
-              <ProductList />
-            </Layout>
-          }
-        />
+        <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
-        <Route
-          path="/order"
-          element={
-            <Layout>
-              <Order />
-            </Layout>
-          }
-        />
+        <Route path="/order" element={<Order />} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
         <Route path="/order-complete" element={<OrderComplete />} />
-        <Route
-          path="/mypage"
-          element={
-            <Layout>
-              <MyPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/orderlist"
-          element={
-            <Layout>
-              <OrderListPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/orderdetail"
-          element={
-            <Layout>
-              <OrderDetail />
-            </Layout>
-          }
-        />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/orderlist" element={<OrderListPage />} />
+        <Route path="/orderdetail" element={<OrderDetail />} />
 
         {/* 인증이 필요한 라우트 */}
         <Route
           path="/orders"
           element={
             <ProtectedRoute>
-              <Layout>
-                <OrderListPage />
-              </Layout>
+              <OrderListPage />
             </ProtectedRoute>
           }
         />

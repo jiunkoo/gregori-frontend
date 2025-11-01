@@ -384,7 +384,7 @@ const ProductDetail: React.FC = () => {
                     {PRODUCT_DETAIL_CONSTANTS.OPTIONS.SIZE_LABEL}
                   </span>
                   <Icon
-                    name="dropdownArrow"
+                    name="arrowDown"
                     size={16}
                     className={`product-detail-option-arrow ${
                       sizeOpen ? "open" : ""
@@ -426,7 +426,7 @@ const ProductDetail: React.FC = () => {
                     {selectedColor ? ` - ${selectedColor}` : ""}
                   </span>
                   <Icon
-                    name="dropdownArrow"
+                    name="arrowDown"
                     size={16}
                     className={`product-detail-option-arrow ${
                       colorOpen ? "open" : ""

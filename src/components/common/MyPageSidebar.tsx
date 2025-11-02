@@ -14,7 +14,6 @@ const MyPageSidebar: React.FC = () => {
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.SHOPPING_INFO}
         </div>
-        <div className="mypage-nav-divider"></div>
         <div className="mypage-nav-item">
           {MYPAGE_CONSTANTS.NAV_ITEMS.ORDER_DELIVERY}
         </div>
@@ -31,7 +30,6 @@ const MyPageSidebar: React.FC = () => {
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.ACCOUNT_SETTINGS}
         </div>
-        <div className="mypage-nav-divider"></div>
         <div className="mypage-nav-item">
           {MYPAGE_CONSTANTS.NAV_ITEMS.MEMBER_INFO_EDIT}
         </div>
@@ -51,7 +49,6 @@ const MyPageSidebar: React.FC = () => {
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.CUSTOMER_SERVICE}
         </div>
-        <div className="mypage-nav-divider"></div>
         <div className="mypage-nav-item">
           {MYPAGE_CONSTANTS.NAV_ITEMS.INQUIRY}
         </div>

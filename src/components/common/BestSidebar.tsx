@@ -14,7 +14,6 @@ const BestSidebar: React.FC<BestSidebarProps> = ({
   return (
     <aside className="best-sidebar">
       <h2 className="best-sidebar-title">{CATEGORY_CONSTANTS.TITLE}</h2>
-      <div className="best-sidebar-divider"></div>
       <ul className="category-list">
         {CATEGORIES.map((category) => (
           <li key={category.id}>

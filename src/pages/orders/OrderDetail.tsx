@@ -1,280 +1,419 @@
-import { Link } from 'react-router-dom';
-import Icon from '@components/icons/SvgIcon';
-import '@styles/orderdetail.css';
+import Icon from "@components/icons/SvgIcon";
+import Layout from "@components/Layout";
+import { ORDERDETAIL_CONSTANTS } from "@constants";
+import "@styles/orderdetail.css";
 
 const OrderDetail = () => {
   return (
-    <div className="orderdetail-wrapper">
+    <Layout showMyPageSidebar={true}>
       <div className="orderdetail-container">
-        {/* 좌측 내비게이션 바 */}
-        <div className="orderdetail-sidebar">
-          <div className="orderdetail-user-info">
-            <div className="orderdetail-brand">KOUBIT</div>
+        <div className="orderdetail-grade-section">
+          <div className="orderdetail-grade-item orderdetail-grade-item-standard">
+            <div className="orderdetail-grade-header">
+              <div className="orderdetail-grade-label">
+                {MYPAGE_CONSTANTS.GRADE.LABEL}
+              </div>
+              <Icon
+                name="arrowRight"
+                size={20}
+                className="orderdetail-grade-header-arrow"
+                color="white"
+              />
+            </div>
+            <div className="orderdetail-grade-footer">
+              <div className="orderdetail-grade-value">
+                {MYPAGE_CONSTANTS.GRADE.VALUE}
+              </div>
+              <div className="orderdetail-grade-benefit-button">
+                {MYPAGE_CONSTANTS.GRADE.BENEFIT_BUTTON}
+              </div>
+            </div>
           </div>
-
-          <div className="orderdetail-nav-title">나의 쇼핑 정보</div>
-          <div className="orderdetail-nav-divider"></div>
-
-          <Link to="/orderlist" className="orderdetail-nav-item">주문배송조회</Link>
-          <Link to="/orderlist" className="orderdetail-nav-item">취소/교환/반품 내역</Link>
-          <Link to="/orderlist" className="orderdetail-nav-item">상품 리뷰</Link>
-
-          <div className="orderdetail-nav-title">나의 계정 설정</div>
-          <div className="orderdetail-nav-divider"></div>
-
-          <Link to="/mypage" className="orderdetail-nav-item">회원정보수정</Link>
-          <Link to="/mypage" className="orderdetail-nav-item">멤버십 등급</Link>
-          <Link to="/mypage" className="orderdetail-nav-item">쿠폰</Link>
-          <Link to="/mypage" className="orderdetail-nav-item">마일리지</Link>
-
-          <div className="orderdetail-nav-title">고객센터</div>
-          <div className="orderdetail-nav-divider"></div>
-
-          <Link to="/orderlist" className="orderdetail-nav-item">1:1 문의내역</Link>
-          <Link to="/orderlist" className="orderdetail-nav-item">상품 Q&A내역</Link>
-          <Link to="/orderlist" className="orderdetail-nav-item">공지사항</Link>
-          <Link to="/orderlist" className="orderdetail-nav-item">FAQ</Link>
-          <Link to="/orderlist" className="orderdetail-nav-item">고객의 소리</Link>
+          <div className="orderdetail-grade-item orderdetail-grade-item-standard">
+            <div className="orderdetail-grade-header">
+              <div className="orderdetail-grade-label">
+                {MYPAGE_CONSTANTS.GRADE.COUPON_LABEL}
+              </div>
+              <Icon
+                name="arrowRight"
+                size={20}
+                className="orderdetail-grade-header-arrow"
+                color="white"
+              />
+            </div>
+            <div className="orderdetail-grade-footer">
+              <div className="orderdetail-grade-value">4</div>
+            </div>
+          </div>
+          <div className="orderdetail-grade-item orderdetail-grade-item-standard">
+            <div className="orderdetail-grade-header">
+              <div className="orderdetail-grade-label">
+                {MYPAGE_CONSTANTS.GRADE.MILEAGE_LABEL}
+              </div>
+              <Icon
+                name="arrowRight"
+                size={20}
+                className="orderdetail-grade-header-arrow"
+                color="white"
+              />
+            </div>
+            <div className="orderdetail-grade-footer">
+              <div className="orderdetail-grade-value">0</div>
+            </div>
+          </div>
         </div>
 
-        {/* 기본 정보 영역 */}
-        <div className="orderdetail-content">
-          {/* 등급 영역 */}
-          <div className="orderdetail-grade-section">
-            <div className="orderdetail-grade-item">
-              <div className="orderdetail-grade-content">
-                <div className="orderdetail-grade-label">멤버십 등급</div>
-                <div className="orderdetail-grade-value">GREEN</div>
-              </div>
-              <Icon name="arrowRight" size={10} className="orderdetail-grade-arrow" color="white" />
-            </div>
-            <div className="orderdetail-grade-divider"></div>
-            <div className="orderdetail-grade-item">
-              <div className="orderdetail-grade-content">
-                <div className="orderdetail-grade-label">사용가능쿠폰</div>
-                <div className="orderdetail-grade-value">4</div>
-              </div>
-              <Icon name="arrowRight" size={10} className="orderdetail-grade-arrow" color="white" />
-            </div>
-            <div className="orderdetail-grade-divider"></div>
-            <div className="orderdetail-grade-item">
-              <div className="orderdetail-grade-content">
-                <div className="orderdetail-grade-label">마일리지</div>
-                <div className="orderdetail-grade-value">0</div>
-              </div>
-              <Icon name="arrowRight" size={10} className="orderdetail-grade-arrow" color="white" />
-            </div>
-            <div className="orderdetail-grade-benefit">
-              <div className="orderdetail-grade-benefit-button">할인 혜택 보기</div>
+        <div className="orderdetail-section">
+          <div className="orderdetail-section-header">
+            <div className="orderdetail-section-title">
+              {ORDERDETAIL_CONSTANTS.SECTION.ORDER_DETAIL}
             </div>
           </div>
 
-          {/* 주문 상세 내역 섹션 */}
-          <div className="orderdetail-section">
-            <div className="orderdetail-section-header">
-              <div className="orderdetail-section-title">주문 상세 내역</div>
+          <div className="orderdetail-progress">
+            <div className="orderdetail-progress-item">
+              <div className="orderdetail-progress-circle">0</div>
+              <div className="orderdetail-progress-label">
+                {ORDERDETAIL_CONSTANTS.PROGRESS.PAYMENT_PENDING}
+              </div>
             </div>
-            <div className="orderdetail-section-divider"></div>
-
-            {/* 주문 상태 진행 단계 */}
-            <div className="orderdetail-progress">
-              <div className="orderdetail-progress-item">
-                <div className="orderdetail-progress-circle">0</div>
-                <div className="orderdetail-progress-label">입금대기</div>
+            <Icon
+              name="arrowRight"
+              size={30}
+              className="orderdetail-progress-arrow"
+              color="black"
+            />
+            <div className="orderdetail-progress-item active">
+              <div className="orderdetail-progress-circle">1</div>
+              <div className="orderdetail-progress-label">
+                {ORDERDETAIL_CONSTANTS.PROGRESS.PAYMENT_COMPLETED}
               </div>
-              <div className="orderdetail-progress-arrow"></div>
-              <div className="orderdetail-progress-item active">
-                <div className="orderdetail-progress-circle">1</div>
-                <div className="orderdetail-progress-label">결제완료</div>
+            </div>
+            <Icon
+              name="arrowRight"
+              size={30}
+              className="orderdetail-progress-arrow"
+              color="black"
+            />
+            <div className="orderdetail-progress-item">
+              <div className="orderdetail-progress-circle">0</div>
+              <div className="orderdetail-progress-label">
+                {ORDERDETAIL_CONSTANTS.PROGRESS.PRODUCT_PREPARING}
               </div>
-              <div className="orderdetail-progress-arrow"></div>
-              <div className="orderdetail-progress-item">
-                <div className="orderdetail-progress-circle">0</div>
-                <div className="orderdetail-progress-label">상품준비중</div>
+            </div>
+            <Icon
+              name="arrowRight"
+              size={30}
+              className="orderdetail-progress-arrow"
+              color="black"
+            />
+            <div className="orderdetail-progress-item">
+              <div className="orderdetail-progress-circle">0</div>
+              <div className="orderdetail-progress-label">
+                {ORDERDETAIL_CONSTANTS.PROGRESS.SHIPPING_START}
               </div>
-              <div className="orderdetail-progress-arrow"></div>
-              <div className="orderdetail-progress-item">
-                <div className="orderdetail-progress-circle">0</div>
-                <div className="orderdetail-progress-label">배송시작</div>
+            </div>
+            <Icon
+              name="arrowRight"
+              size={30}
+              className="orderdetail-progress-arrow"
+              color="black"
+            />
+            <div className="orderdetail-progress-item">
+              <div className="orderdetail-progress-circle">0</div>
+              <div className="orderdetail-progress-label">
+                {ORDERDETAIL_CONSTANTS.PROGRESS.SHIPPING}
               </div>
-              <div className="orderdetail-progress-arrow"></div>
-              <div className="orderdetail-progress-item">
-                <div className="orderdetail-progress-circle">0</div>
-                <div className="orderdetail-progress-label">배송중</div>
-              </div>
-              <div className="orderdetail-progress-arrow"></div>
-              <div className="orderdetail-progress-item">
-                <div className="orderdetail-progress-circle">0</div>
-                <div className="orderdetail-progress-label">배송완료</div>
+            </div>
+            <Icon
+              name="arrowRight"
+              size={30}
+              className="orderdetail-progress-arrow"
+              color="black"
+            />
+            <div className="orderdetail-progress-item">
+              <div className="orderdetail-progress-circle">0</div>
+              <div className="orderdetail-progress-label">
+                {ORDERDETAIL_CONSTANTS.PROGRESS.DELIVERED}
               </div>
             </div>
           </div>
+        </div>
 
-          {/* 주문 상품 정보 섹션 */}
-          <div className="orderdetail-section">
-            <div className="orderdetail-section-header">
-              <div className="orderdetail-section-title">주문 상품 정보</div>
+        <div className="orderdetail-section">
+          <div className="orderdetail-section-header">
+            <div className="orderdetail-section-title">
+              {ORDERDETAIL_CONSTANTS.SECTION.ORDER_PRODUCT}
             </div>
-            <div className="orderdetail-section-divider"></div>
+          </div>
 
-            {/* 주문 정보 */}
-            <div className="orderdetail-order-info">
-              <div className="orderdetail-order-date">
-                주문일자 <span className="orderdetail-order-date-value">2023-01-01</span>     주문번호 <span className="orderdetail-order-number">ORD20230101-1111111</span>
+          <div className="orderdetail-order-header">
+            <div className="orderdetail-order-date">
+              {ORDERDETAIL_CONSTANTS.ORDER.DATE_LABEL}{" "}
+              <span className="orderdetail-order-date-value">
+                {ORDERDETAIL_CONSTANTS.ORDER.DATE_VALUE}
+              </span>{" "}
+              {ORDERDETAIL_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
+              <span className="orderdetail-order-number">
+                {ORDERDETAIL_CONSTANTS.ORDER.NUMBER_VALUE}
+              </span>
+            </div>
+          </div>
+
+          <div className="orderdetail-order-detail">
+            <div className="orderdetail-order-product">
+              <div className="orderdetail-order-image">
+                <Icon name="image" size={60} />
               </div>
-            </div>
-            <div className="orderdetail-section-divider"></div>
-
-            {/* 주문 상품 상세 */}
-            <div className="orderdetail-order-detail">
-              <div className="orderdetail-order-product">
-                <img className="orderdetail-order-image" src="/images/products/watch.jpg" alt="DIGITAL WATCH" />
-                <div className="orderdetail-order-info">
-                  <div className="orderdetail-order-brand">Apple</div>
-                  <div className="orderdetail-order-name">DIGITAL WATCH</div>
-                  <div className="orderdetail-order-option">옵션: [사이즈] M, [색상] Navy</div>
-                  <div className="orderdetail-order-price">324,240원</div>
+              <div className="orderdetail-order-info">
+                <div className="orderdetail-order-brand">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.BRAND_1}
+                </div>
+                <div className="orderdetail-order-name">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.NAME}
+                </div>
+                <div className="orderdetail-order-option">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.OPTION}
+                </div>
+                <div className="orderdetail-order-price">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.PRICE_1}
                 </div>
               </div>
 
-              <div className="orderdetail-order-quantity">1개</div>
-              <div className="orderdetail-order-shipping">배송비 <br/>3,000원</div>
-              <div className="orderdetail-order-status">결제 완료</div>
-              <div className="orderdetail-order-delivery">2023.01.31 이내<br/>출고 예정</div>
-
-              <div className="orderdetail-order-actions">
-                <button className="orderdetail-order-action-button">취소 접수</button>
-                <button className="orderdetail-order-action-button">1:1 문의</button>
+              <div className="orderdetail-order-quantity">
+                {ORDERDETAIL_CONSTANTS.PRODUCT.QUANTITY_1}
+              </div>
+              <div className="orderdetail-order-shipping">
+                {ORDERDETAIL_CONSTANTS.SHIPPING.LABEL} <br />
+                {ORDERDETAIL_CONSTANTS.SHIPPING.FEE}
+              </div>
+              <div className="orderdetail-order-status">
+                {ORDERDETAIL_CONSTANTS.STATUS.PAYMENT_COMPLETED}
+              </div>
+              <div className="orderdetail-order-delivery">
+                {ORDERDETAIL_CONSTANTS.SHIPPING.EXPECTED_DATE}
+                <br />
+                {ORDERDETAIL_CONSTANTS.SHIPPING.STATUS}
               </div>
             </div>
 
-            {/* 두 번째 주문 상품 */}
-            <div className="orderdetail-section-divider"></div>
-            <div className="orderdetail-order-detail">
-              <div className="orderdetail-order-product">
-                <img className="orderdetail-order-image" src="/images/products/watch.jpg" alt="DIGITAL WATCH" />
-                <div className="orderdetail-order-info">
-                  <div className="orderdetail-order-brand">Banana</div>
-                  <div className="orderdetail-order-name">DIGITAL WATCH</div>
-                  <div className="orderdetail-order-option">옵션: [사이즈] M, [색상] Navy</div>
-                  <div className="orderdetail-order-price">648,480원</div>
+            <div className="orderdetail-order-actions">
+              <button className="orderdetail-order-action-button">
+                {ORDERDETAIL_CONSTANTS.BUTTONS.CANCEL}
+              </button>
+              <button className="orderdetail-order-action-button">
+                {ORDERDETAIL_CONSTANTS.BUTTONS.INQUIRY}
+              </button>
+            </div>
+          </div>
+
+          <div className="orderdetail-order-detail">
+            <div className="orderdetail-order-product">
+              <div className="orderdetail-order-image">
+                <Icon name="image" size={60} />
+              </div>
+              <div className="orderdetail-order-info">
+                <div className="orderdetail-order-brand">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.BRAND_2}
+                </div>
+                <div className="orderdetail-order-name">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.NAME}
+                </div>
+                <div className="orderdetail-order-option">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.OPTION}
+                </div>
+                <div className="orderdetail-order-price">
+                  {ORDERDETAIL_CONSTANTS.PRODUCT.PRICE_2}
                 </div>
               </div>
 
-              <div className="orderdetail-order-quantity">2개</div>
-              <div className="orderdetail-order-shipping">배송비 <br/>3,000원</div>
-              <div className="orderdetail-order-status">결제 완료</div>
-              <div className="orderdetail-order-delivery">2023.01.31 이내<br/>출고 예정</div>
+              <div className="orderdetail-order-quantity">
+                {ORDERDETAIL_CONSTANTS.PRODUCT.QUANTITY_2}
+              </div>
+              <div className="orderdetail-order-shipping">
+                {ORDERDETAIL_CONSTANTS.SHIPPING.LABEL} <br />
+                {ORDERDETAIL_CONSTANTS.SHIPPING.FEE}
+              </div>
+              <div className="orderdetail-order-status">
+                {ORDERDETAIL_CONSTANTS.STATUS.PAYMENT_COMPLETED}
+              </div>
+              <div className="orderdetail-order-delivery">
+                {ORDERDETAIL_CONSTANTS.SHIPPING.EXPECTED_DATE}
+                <br />
+                {ORDERDETAIL_CONSTANTS.SHIPPING.STATUS}
+              </div>
+            </div>
 
-              <div className="orderdetail-order-actions">
-                <button className="orderdetail-order-action-button">취소 접수</button>
-                <button className="orderdetail-order-action-button">1:1 문의</button>
+            <div className="orderdetail-order-actions">
+              <button className="orderdetail-order-action-button">
+                {ORDERDETAIL_CONSTANTS.BUTTONS.CANCEL}
+              </button>
+              <button className="orderdetail-order-action-button">
+                {ORDERDETAIL_CONSTANTS.BUTTONS.INQUIRY}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="orderdetail-section">
+          <div className="orderdetail-section-header">
+            <div className="orderdetail-section-title">
+              {ORDERDETAIL_CONSTANTS.SECTION.CUSTOMER}
+            </div>
+          </div>
+
+          <div className="orderdetail-customer-info">
+            <div className="orderdetail-customer-item">
+              <div className="orderdetail-customer-label">
+                {ORDERDETAIL_CONSTANTS.CUSTOMER.RECIPIENT}
+              </div>
+              <div className="orderdetail-customer-value">
+                {ORDERDETAIL_CONSTANTS.CUSTOMER.RECIPIENT_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-customer-item">
+              <div className="orderdetail-customer-label">
+                {ORDERDETAIL_CONSTANTS.CUSTOMER.PHONE}
+              </div>
+              <div className="orderdetail-customer-value">
+                {ORDERDETAIL_CONSTANTS.CUSTOMER.PHONE_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-customer-item">
+              <div className="orderdetail-customer-label">
+                {ORDERDETAIL_CONSTANTS.CUSTOMER.EMAIL}
+              </div>
+              <div className="orderdetail-customer-value">
+                {ORDERDETAIL_CONSTANTS.CUSTOMER.EMAIL_VALUE}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="orderdetail-section">
+          <div className="orderdetail-section-header">
+            <div className="orderdetail-section-title">
+              {ORDERDETAIL_CONSTANTS.SECTION.SHIPPING}
+            </div>
+          </div>
+          <div className="orderdetail-section-divider"></div>
+
+          <div className="orderdetail-shipping-info">
+            <div className="orderdetail-shipping-item">
+              <div className="orderdetail-shipping-label">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.RECIPIENT}
+              </div>
+              <div className="orderdetail-shipping-value">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.RECIPIENT_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-shipping-item">
+              <div className="orderdetail-shipping-label">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.PHONE}
+              </div>
+              <div className="orderdetail-shipping-value">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.PHONE_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-shipping-item">
+              <div className="orderdetail-shipping-label">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.ADDRESS}
+              </div>
+              <div className="orderdetail-shipping-value">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.ADDRESS_VALUE}
+              </div>
+              <button className="orderdetail-shipping-change-button">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.CHANGE_BUTTON}
+              </button>
+            </div>
+            <div className="orderdetail-shipping-item">
+              <div className="orderdetail-shipping-label">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.REQUEST}
+              </div>
+              <div className="orderdetail-shipping-value">
+                {ORDERDETAIL_CONSTANTS.SHIPPING_INFO.REQUEST_VALUE}
               </div>
             </div>
           </div>
 
-          {/* 주문자 정보 섹션 */}
-          <div className="orderdetail-section">
-            <div className="orderdetail-section-header">
-              <div className="orderdetail-section-title">주문자 정보</div>
-            </div>
-            <div className="orderdetail-section-divider"></div>
-
-            <div className="orderdetail-customer-info">
-              <div className="orderdetail-customer-item">
-                <div className="orderdetail-customer-label">수령인</div>
-                <div className="orderdetail-customer-value">Koubit</div>
-              </div>
-              <div className="orderdetail-customer-item">
-                <div className="orderdetail-customer-label">휴대폰번호</div>
-                <div className="orderdetail-customer-value">010-1***-1***</div>
-              </div>
-              <div className="orderdetail-customer-item">
-                <div className="orderdetail-customer-label">이메일</div>
-                <div className="orderdetail-customer-value">j*******@g*******.com</div>
-              </div>
-            </div>
-          </div>
-
-          {/* 배송지 정보 섹션 */}
-          <div className="orderdetail-section">
-            <div className="orderdetail-section-header">
-              <div className="orderdetail-section-title">배송지 정보</div>
-            </div>
-            <div className="orderdetail-section-divider"></div>
-
-            <div className="orderdetail-shipping-info">
-              <div className="orderdetail-shipping-item">
-                <div className="orderdetail-shipping-label">수령인</div>
-                <div className="orderdetail-shipping-value">Koubit</div>
-              </div>
-              <div className="orderdetail-shipping-item">
-                <div className="orderdetail-shipping-label">휴대폰번호</div>
-                <div className="orderdetail-shipping-value">010-1111-1111</div>
-              </div>
-              <div className="orderdetail-shipping-item">
-                <div className="orderdetail-shipping-label">배송지</div>
-                <div className="orderdetail-shipping-value">00000 한양시 조선구 고려동 11-1 신라아파트 111동 111호</div>
-                <button className="orderdetail-shipping-change-button">배송지 정보 변경</button>
-              </div>
-              <div className="orderdetail-shipping-item">
-                <div className="orderdetail-shipping-label">배송 요청사항</div>
-                <div className="orderdetail-shipping-value">파손 위험이 있으니 주의해서 취급 부탁드립니다.</div>
-              </div>
-            </div>
-          </div>
-
-          {/* 결제 정보 섹션 */}
-          <div className="orderdetail-section">
-            <div className="orderdetail-section-header">
-              <div className="orderdetail-section-title">결제 정보</div>
-            </div>
-            <div className="orderdetail-section-divider"></div>
-
-            <div className="orderdetail-payment-info">
-              <div className="orderdetail-payment-item">
-                <div className="orderdetail-payment-label">결제 방법</div>
-                <div className="orderdetail-payment-value">카카오페이</div>
-              </div>
-              <div className="orderdetail-payment-item">
-                <div className="orderdetail-payment-label">주문 상태</div>
-                <div className="orderdetail-payment-value">결제 완료</div>
-              </div>
-              <div className="orderdetail-payment-item">
-                <div className="orderdetail-payment-label">주문 접수 일시</div>
-                <div className="orderdetail-payment-value">2023-01-01 18:00 PM</div>
-              </div>
-              <div className="orderdetail-payment-item">
-                <div className="orderdetail-payment-label">결제 완료 일시</div>
-                <div className="orderdetail-payment-value">2023-01-01 18:00 PM</div>
-              </div>
-              <div className="orderdetail-payment-item">
-                <div className="orderdetail-payment-label">배송비</div>
-                <div className="orderdetail-payment-value">6,000원</div>
-              </div>
-              <div className="orderdetail-payment-item">
-                <div className="orderdetail-payment-label">결제 금액</div>
-                <div className="orderdetail-payment-value">978,720원</div>
-              </div>
-            </div>
-          </div>
-
-          {/* 주의사항 */}
           <div className="orderdetail-notice">
             <div className="orderdetail-notice-text">
-              * 상품이 품절되는 경우 주문이 자동으로 취소되며, 주문하신 분의 SMS와 이메일로 관련 안내를 발송해드립니다.<br/>
-              * 상세 내역은 마이페이지에서 확인하실 수 있습니다.
+              {ORDERDETAIL_CONSTANTS.NOTICE.TEXT_1}
+              <br />
+              {ORDERDETAIL_CONSTANTS.NOTICE.TEXT_2}
             </div>
           </div>
+        </div>
 
-          {/* 영수증 섹션 */}
-          <div className="orderdetail-receipt">
-            <div className="orderdetail-receipt-text">영수증</div>
-            <button className="orderdetail-receipt-button">영수증 출력</button>
+        <div className="orderdetail-section">
+          <div className="orderdetail-section-header">
+            <div className="orderdetail-section-title">
+              {ORDERDETAIL_CONSTANTS.SECTION.PAYMENT}
+            </div>
+          </div>
+          <div className="orderdetail-section-divider"></div>
+
+          <div className="orderdetail-payment-info">
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.METHOD}
+              </div>
+              <div className="orderdetail-payment-value">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.METHOD_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.ORDER_STATUS}
+              </div>
+              <div className="orderdetail-payment-value">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.STATUS_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.ORDER_DATE}
+              </div>
+              <div className="orderdetail-payment-value">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.ORDER_DATE_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.PAYMENT_DATE}
+              </div>
+              <div className="orderdetail-payment-value">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.PAYMENT_DATE_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.SHIPPING_FEE}
+              </div>
+              <div className="orderdetail-payment-value">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.SHIPPING_FEE_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.TOTAL_AMOUNT}
+              </div>
+              <div className="orderdetail-payment-value">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.TOTAL_AMOUNT_VALUE}
+              </div>
+            </div>
+            <div className="orderdetail-payment-item">
+              <div className="orderdetail-payment-label">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.RECEIPT}
+              </div>
+              <button className="orderdetail-receipt-button">
+                {ORDERDETAIL_CONSTANTS.PAYMENT.RECEIPT_BUTTON}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

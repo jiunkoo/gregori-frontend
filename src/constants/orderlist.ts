@@ -42,4 +42,3 @@ export const ORDERLIST_CONSTANTS = {
     INQUIRY: "1:1 문의",
   },
 };
-

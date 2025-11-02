@@ -71,8 +71,8 @@
 }
 
 .cart-item-image {
-  width: 9.375rem;
-  height: 9.375rem;
+  width: 7.5rem;
+  height: 7.5rem;
   background-color: var(--color-gray-card-bg);
   display: flex;
   align-items: center;

@@ -53,7 +53,7 @@
   font-size: 20px;
   font-weight: 400;
   color: #000;
-  letter-spacing: 0.60px;
+  letter-spacing: 0.6px;
   padding: 20px 0;
   text-decoration: none;
   transition: background-color 0.2s;
@@ -102,7 +102,7 @@
   font-size: 24px;
   font-weight: 300;
   color: white;
-  letter-spacing: 2.40px;
+  letter-spacing: 2.4px;
   text-align: left;
 }
 
@@ -110,7 +110,7 @@
   font-size: 64px;
   font-weight: 700;
   color: white;
-  letter-spacing: 6.40px;
+  letter-spacing: 6.4px;
   text-align: left;
 }
 
@@ -122,7 +122,7 @@
 .orderdetail-grade-divider {
   width: 1px;
   height: 200px;
-  background: #E8E8E8;
+  background: #e8e8e8;
 }
 
 .orderdetail-grade-benefit {
@@ -150,7 +150,7 @@
 /* 주문 상세 섹션 */
 .orderdetail-section {
   background: white;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
 }
 
 .orderdetail-section-header {
@@ -167,7 +167,7 @@
 .orderdetail-section-divider {
   width: 100%;
   height: 1px;
-  background: #E8E8E8;
+  background: #e8e8e8;
   margin: 0;
 }
 
@@ -192,7 +192,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: #E8E8E8;
+  background: #e8e8e8;
   border: 1px solid #000;
   display: flex;
   align-items: center;
@@ -200,7 +200,7 @@
   font-size: 40px;
   font-weight: 700;
   color: #000;
-  letter-spacing: 1.20px;
+  letter-spacing: 1.2px;
 }
 
 .orderdetail-progress-item.active .orderdetail-progress-circle {
@@ -212,14 +212,15 @@
   font-size: 20px;
   font-weight: 400;
   color: #000;
-  letter-spacing: 0.60px;
+  letter-spacing: 0.6px;
   text-align: center;
 }
 
 .orderdetail-progress-arrow {
   width: 19px;
   height: 40px;
-  background: url("data:image/svg+xml,%3Csvg width='19' height='40' viewBox='0 0 19 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0.419727L0 4.36716C0 4.63559 0.0908408 4.88823 0.239819 5.04612L14.4691 19.999L0.239819 34.9519C0.0908408 35.1098 0 35.3624 0 35.6308L0 39.5783C0 39.9204 0.268889 40.1204 0.461471 39.9204L18.1245 21.3622C18.764 20.6885 18.764 19.3095 18.1245 18.6411L0.461471 0.0828781C0.268889 -0.122387 0 0.0776176 0 0.419727Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
+  background: url("data:image/svg+xml,%3Csvg width='19' height='40' viewBox='0 0 19 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0.419727L0 4.36716C0 4.63559 0.0908408 4.88823 0.239819 5.04612L14.4691 19.999L0.239819 34.9519C0.0908408 35.1098 0 35.3624 0 35.6308L0 39.5783C0 39.9204 0.268889 40.1204 0.461471 39.9204L18.1245 21.3622C18.764 20.6885 18.764 19.3095 18.1245 18.6411L0.461471 0.0828781C0.268889 -0.122387 0 0.0776176 0 0.419727Z' fill='black'/%3E%3C/svg%3E")
+    no-repeat center;
   background-size: contain;
 }
 
@@ -257,7 +258,7 @@
 .orderdetail-order-image {
   width: 120px;
   height: 120px;
-  background: #F3F2F2;
+  background: #f3f2f2;
   object-fit: cover;
 }
 
@@ -494,11 +495,11 @@
     padding: 0 20px;
     gap: 20px;
   }
-  
+
   .orderdetail-content {
     width: calc(100% - 220px);
   }
-  
+
   .orderdetail-grade-section {
     width: 100%;
   }
@@ -509,30 +510,30 @@
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .orderdetail-sidebar {
     width: 100%;
   }
-  
+
   .orderdetail-content {
     width: 100%;
   }
-  
+
   .orderdetail-progress {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .orderdetail-progress-arrow {
     transform: rotate(90deg);
   }
-  
+
   .orderdetail-order-detail {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
-  
+
   .orderdetail-order-actions {
     flex-direction: row;
     width: 100%;

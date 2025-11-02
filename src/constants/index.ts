@@ -6,4 +6,5 @@ export { CART_CONSTANTS } from "./cart";
 export { ORDER_CONSTANTS } from "./order";
 export { ORDER_CONFIRM_CONSTANTS } from "./order-confirm";
 export { MYPAGE_CONSTANTS } from "./mypage";
+export { ORDERLIST_CONSTANTS } from "./orderlist";
 export type { Category } from "./category";

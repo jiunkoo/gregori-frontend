@@ -11,7 +11,7 @@ const OrderDetail = () => {
           <div className="orderdetail-grade-item orderdetail-grade-item-standard">
             <div className="orderdetail-grade-header">
               <div className="orderdetail-grade-label">
-                {MYPAGE_CONSTANTS.GRADE.LABEL}
+                {ORDERDETAIL_CONSTANTS.GRADE.LABEL}
               </div>
               <Icon
                 name="arrowRight"
@@ -22,17 +22,17 @@ const OrderDetail = () => {
             </div>
             <div className="orderdetail-grade-footer">
               <div className="orderdetail-grade-value">
-                {MYPAGE_CONSTANTS.GRADE.VALUE}
+                {ORDERDETAIL_CONSTANTS.GRADE.VALUE}
               </div>
               <div className="orderdetail-grade-benefit-button">
-                {MYPAGE_CONSTANTS.GRADE.BENEFIT_BUTTON}
+                {ORDERDETAIL_CONSTANTS.GRADE.BENEFIT_BUTTON}
               </div>
             </div>
           </div>
           <div className="orderdetail-grade-item orderdetail-grade-item-standard">
             <div className="orderdetail-grade-header">
               <div className="orderdetail-grade-label">
-                {MYPAGE_CONSTANTS.GRADE.COUPON_LABEL}
+                {ORDERDETAIL_CONSTANTS.GRADE.COUPON_LABEL}
               </div>
               <Icon
                 name="arrowRight"
@@ -48,7 +48,7 @@ const OrderDetail = () => {
           <div className="orderdetail-grade-item orderdetail-grade-item-standard">
             <div className="orderdetail-grade-header">
               <div className="orderdetail-grade-label">
-                {MYPAGE_CONSTANTS.GRADE.MILEAGE_LABEL}
+                {ORDERDETAIL_CONSTANTS.GRADE.MILEAGE_LABEL}
               </div>
               <Icon
                 name="arrowRight"

@@ -1,4 +1,11 @@
 export const ORDERDETAIL_CONSTANTS = {
+  GRADE: {
+    LABEL: "멤버십 등급",
+    VALUE: "GREEN",
+    BENEFIT_BUTTON: "할인 혜택 보기",
+    COUPON_LABEL: "사용가능쿠폰",
+    MILEAGE_LABEL: "마일리지",
+  },
   SECTION: {
     ORDER_DETAIL: "주문 상세 내역",
     ORDER_PRODUCT: "주문 상품 정보",

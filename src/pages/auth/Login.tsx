@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "@stores";
+
 import { authAPI, memberAPI } from "@api";
 import { Layout, Icon } from "@components";
 import { LOGIN_CONSTANTS } from "@constants";
+import { useAuthStore } from "@stores";
 import "@styles/login.css";
 
-const Login: React.FC = () => {
+const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +16,17 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const { setUser, setError: setAuthError } = useAuthStore();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const getCheckboxClassName = () => {
+    const classes = ["login__checkbox"];
+    if (autoLogin) classes.push("login__checkbox--checked");
+    return classes.join(" ");
+  };
+
+  const getSocialButtonClassName = (type: "facebook" | "kakao" | "google") => {
+    return `login__social-button login__social-button--${type}`;
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
@@ -47,137 +58,124 @@ const Login: React.FC = () => {
     }
   };
 
+  const socialButtons = [
+    {
+      type: "facebook" as const,
+      iconName: "facebook",
+      color: "white",
+      text: LOGIN_CONSTANTS.SOCIAL_LOGIN.FACEBOOK,
+    },
+    {
+      type: "kakao" as const,
+      iconName: "kakao",
+      color: "#3A1C1E",
+      text: LOGIN_CONSTANTS.SOCIAL_LOGIN.KAKAO,
+    },
+    {
+      type: "google" as const,
+      iconName: "googleSocial",
+      color: "white",
+      text: LOGIN_CONSTANTS.SOCIAL_LOGIN.GOOGLE,
+    },
+  ];
+
   return (
     <Layout showNav={false}>
-      <div className="login-container">
-        <div className="login-title">
-          <h1 className="login-title-text">{LOGIN_CONSTANTS.TITLE}</h1>
-        </div>
+      <main className="login">
+        <h1 className="login__title">{LOGIN_CONSTANTS.TITLE}</h1>
 
-        <div className="login-input-section">
-          <form onSubmit={handleSubmit}>
-            <div className="login-input-container">
-              <input
-                type="email"
-                className="login-input"
-                placeholder={LOGIN_CONSTANTS.EMAIL_PLACEHOLDER}
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                required
-              />
-            </div>
+        <form onSubmit={handleSubmit} className="login__form">
+          <label className="login__field">
+            <input
+              type="email"
+              className="login__input"
+              placeholder={LOGIN_CONSTANTS.EMAIL_PLACEHOLDER}
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              required
+            />
+          </label>
 
-            <div className="login-input-container">
-              <input
-                type="password"
-                className="login-input"
-                placeholder={LOGIN_CONSTANTS.PASSWORD_PLACEHOLDER}
-                value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
-                required
-              />
-            </div>
-          </form>
-        </div>
+          <label className="login__field">
+            <input
+              type="password"
+              className="login__input"
+              placeholder={LOGIN_CONSTANTS.PASSWORD_PLACEHOLDER}
+              value={formData.password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
+              required
+            />
+          </label>
 
-        <div className="login-button-section">
-          <button
-            type="submit"
-            className="login-button"
-            onClick={handleSubmit}
-            disabled={isLoading}
-          >
-            <span className="login-button-text">
-              {isLoading
-                ? LOGIN_CONSTANTS.BUTTON_LOADING_TEXT
-                : LOGIN_CONSTANTS.BUTTON_TEXT}
-            </span>
+          <button type="submit" className="login__submit" disabled={isLoading}>
+            {isLoading
+              ? LOGIN_CONSTANTS.BUTTON_LOADING_TEXT
+              : LOGIN_CONSTANTS.BUTTON_TEXT}
           </button>
-        </div>
+        </form>
 
-        <div className="login-options-section">
-          <div className="login-auto-login">
-            <div
-              className={`login-checkbox ${autoLogin ? "checked" : ""}`}
+        <div className="login__options">
+          <label className="login__auto-login">
+            <button
+              type="button"
+              className={getCheckboxClassName()}
               onClick={() => setAutoLogin(!autoLogin)}
+              aria-label="자동 로그인"
             >
               {autoLogin && <Icon name="check" size={12} color="white" />}
-            </div>
-            <span className="login-auto-login-text">
+            </button>
+            <span className="login__auto-login-label">
               {LOGIN_CONSTANTS.AUTO_LOGIN_TEXT}
             </span>
-          </div>
+          </label>
 
-          <div className="login-find-links">
-            <button className="login-find-link">
+          <nav className="login__help">
+            <button type="button" className="login__help-link">
               {LOGIN_CONSTANTS.FIND_EMAIL_TEXT}
             </button>
-            <div className="login-divider"></div>
-            <button className="login-find-link">
+            <span className="login__divider" aria-hidden="true"></span>
+            <button type="button" className="login__help-link">
               {LOGIN_CONSTANTS.FIND_PASSWORD_TEXT}
             </button>
-          </div>
+          </nav>
         </div>
 
-        <div className="login-social-section">
-          <button className="login-social-button facebook">
-            <Icon
-              name="facebook"
-              size={28}
-              className="login-social-icon"
-              color="white"
-            />
-            <span className="login-social-text">
-              {LOGIN_CONSTANTS.SOCIAL_LOGIN.FACEBOOK}
-            </span>
-          </button>
-
-          <button className="login-social-button kakao">
-            <Icon
-              name="kakao"
-              size={28}
-              className="login-social-icon"
-              color="#3A1C1E"
-            />
-            <span className="login-social-text">
-              {LOGIN_CONSTANTS.SOCIAL_LOGIN.KAKAO}
-            </span>
-          </button>
-
-          <button className="login-social-button google">
-            <Icon
-              name="googleSocial"
-              size={28}
-              className="login-social-icon"
-              color="white"
-            />
-            <span className="login-social-text">
-              {LOGIN_CONSTANTS.SOCIAL_LOGIN.GOOGLE}
-            </span>
-          </button>
+        <div className="login__social">
+          {socialButtons.map((button) => (
+            <button
+              key={button.type}
+              type="button"
+              className={getSocialButtonClassName(button.type)}
+            >
+              <Icon
+                name={button.iconName}
+                size={28}
+                className="login__social-icon"
+                color={button.color}
+              />
+              <span className="login__social-label">{button.text}</span>
+            </button>
+          ))}
         </div>
 
-        <div className="login-signup-section">
-          <button
-            onClick={() => navigate("/register")}
-            className="login-signup-button"
-          >
-            <span className="login-signup-text">
-              {LOGIN_CONSTANTS.SIGNUP_TEXT}
-            </span>
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => navigate("/register")}
+          className="login__signup"
+        >
+          {LOGIN_CONSTANTS.SIGNUP_TEXT}
+        </button>
 
         {error && (
-          <div style={{ color: "red", marginTop: "20px", textAlign: "center" }}>
+          <div className="login__error" role="alert">
             {error}
           </div>
         )}
-      </div>
+      </main>
     </Layout>
   );
 };

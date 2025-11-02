@@ -1,124 +1,134 @@
-.login-container {
+.login {
   width: 40%;
-  position: relative;
   margin: 0 auto;
   padding: 1rem;
 }
 
-.login-title {
+.login__title {
   margin: 1.5rem 0;
-}
-
-.login-title-text {
   font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
   letter-spacing: 0.125rem;
 }
 
-.login-input-section {
+.login__form {
   margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.login-input-container {
+.login__field {
   height: 2.5rem;
   border: 0.03125rem solid var(--color-black);
-  margin: 0.5rem 0;
   display: flex;
   align-items: center;
 }
 
-.login-input {
+.login__input {
+  width: 100%;
   padding: 0 0.9375rem;
   font-size: 1rem;
   background: transparent;
+  border: none;
+  outline: none;
 }
 
-.login-button-section {
-  margin: 1rem 0;
-}
-
-.login-button {
+.login__submit {
   width: 100%;
   height: 3.75rem;
+  margin-top: 0.5rem;
   background: var(--color-black);
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.login-button-text {
   font-size: 1.75rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
 }
 
-.login-options-section {
+.login__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login__options {
   margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.login-auto-login {
+.login__auto-login {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
-.login-auto-login-text {
+.login__checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  background: var(--color-white);
+  border: 0.03125rem solid var(--color-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__checkbox--checked {
+  background: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.login__auto-login-label {
   font-size: 0.875rem;
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.login-checkbox {
-  width: 1.25rem;
-  height: 1.25rem;
-  background: var(--color-white);
-  border: 0.03125rem solid var(--color-black);
-  cursor: pointer;
-}
-
-.login-checkbox.checked {
-  background: var(--color-black);
-  border-color: var(--color-black);
-}
-
-.login-find-links {
+.login__help {
   display: flex;
   align-items: center;
   gap: 0.625rem;
 }
 
-.login-find-link {
+.login__help-link {
+  background: transparent;
+  border: none;
   font-size: 0.875rem;
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
-  text-decoration: none;
   cursor: pointer;
+  padding: 0;
 }
 
-.login-find-link:hover {
+.login__help-link:hover {
   font-weight: var(--font-weight-bold);
 }
 
-.login-divider {
+.login__divider {
   width: 0.0625rem;
   height: 0.9375rem;
   background: var(--color-black);
 }
 
-.login-social-section {
+.login__social {
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
 }
 
-.login-social-button {
+.login__social-button {
+  width: 100%;
   height: 3.125rem;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -126,49 +136,53 @@
   position: relative;
 }
 
-.login-social-button.facebook {
+.login__social-button--facebook {
   background: var(--color-blue-facebook);
 }
 
-.login-social-button.kakao {
+.login__social-button--kakao {
   background: var(--color-yellow-kakao);
 }
 
-.login-social-button.google {
+.login__social-button--google {
   background: var(--color-gray-light);
 }
 
-.login-social-icon {
+.login__social-icon {
   margin: 0 0.5rem;
 }
 
-.login-social-text {
+.login__social-label {
   font-size: 1rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
 }
 
-.login-social-button.facebook .login-social-text {
+.login__social-button--facebook .login__social-label {
   color: var(--color-white);
 }
 
-.login-signup-section {
-  margin: 1rem 0;
-}
-
-.login-signup-button {
+.login__signup {
   width: 100%;
   height: 3.75rem;
-  margin: 4rem 0;
+  margin: 4rem 0 1rem;
   border: 0.03125rem solid var(--color-gray-medium);
+  background: transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.login-signup-text {
   font-size: 1.75rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
+}
+
+.login__error {
+  margin-top: 1.25rem;
+  padding: 0.75rem;
+  text-align: center;
+  color: var(--color-red-error-text, red);
+  background-color: var(--color-red-error-bg, #fee);
+  border: 0.0625rem solid var(--color-red-error-border, #fcc);
+  border-radius: 0.25rem;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, BestSidebar } from "@components";
+import { Header, BestSidebar, MyPageSidebar } from "@components";
 import "@styles/layout.css";
 
 interface LayoutProps {
@@ -8,6 +8,7 @@ interface LayoutProps {
   showBestSidebar?: boolean;
   selectedCategory?: number;
   onCategoryChange?: (categoryId: number) => void;
+  showMyPageSidebar?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -16,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({
   showBestSidebar = false,
   selectedCategory,
   onCategoryChange,
+  showMyPageSidebar = false,
 }) => {
   return (
     <div className="layout-container">
@@ -26,6 +28,11 @@ const Layout: React.FC<LayoutProps> = ({
             selectedCategory={selectedCategory}
             onCategoryChange={onCategoryChange}
           />
+          {children}
+        </div>
+      ) : showMyPageSidebar ? (
+        <div className="layout-content-with-sidebar">
+          <MyPageSidebar />
           {children}
         </div>
       ) : (

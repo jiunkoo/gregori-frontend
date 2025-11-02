@@ -1,0 +1,87 @@
+/* 좌측 내비게이션 바 */
+.mypage-sidebar {
+  width: 200px;
+  background: white;
+  padding: 0;
+  height: fit-content;
+}
+
+.mypage-user-info {
+  padding: 0 34px 20px;
+  border-bottom: 5px solid #000;
+}
+
+.mypage-user-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.96px;
+}
+
+.mypage-nav-section {
+  padding: 20px 0;
+}
+
+.mypage-nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.72px;
+  padding: 0 34px;
+  margin-bottom: 10px;
+}
+
+.mypage-nav-divider {
+  height: 1px;
+  background: #e8e8e8;
+  margin: 0 34px 20px;
+}
+
+.mypage-nav-item {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.6px;
+  padding: 10px 34px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.mypage-nav-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .mypage-sidebar {
+    width: 100%;
+  }
+
+  .mypage-nav-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .mypage-nav-title {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .mypage-nav-item {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    border: 1px solid #e8e8e8;
+  }
+}
+
+@media (max-width: 480px) {
+  .mypage-nav-section {
+    flex-direction: column;
+  }
+
+  .mypage-nav-item {
+    min-width: auto;
+  }
+}

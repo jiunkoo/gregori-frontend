@@ -1,177 +1,182 @@
-.mypage-container {
-  width: 100%;
-  position: relative;
+.mypage {
+  width: var(--width-full);
   margin: 0 auto;
-  padding: 1.5625rem;
+  padding: var(--padding-lg);
 }
 
-.mypage-grade-section {
+.mypage__grade-section {
   position: relative;
   display: grid;
   grid-template-columns: 5fr 2.5fr 2.5fr;
   background: var(--color-black);
-  height: 12.5rem;
+  height: var(--height-grade-section);
 }
 
-.mypage-grade-item {
+.mypage__grade-item {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1.25rem;
-  border-right: 1px solid var(--color-gray-inactive);
+  gap: var(--margin-lg);
+  padding: var(--margin-lg);
+  border-right: var(--border-width-thin) solid var(--color-gray-inactive);
 }
 
-.mypage-grade-item-standard {
+.mypage__grade-item--standard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.mypage-grade-header {
+.mypage__grade-header {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: var(--spacing-sm);
 }
 
-.mypage-grade-label {
-  font-size: 1.5rem;
+.mypage__grade-label {
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-light);
   color: var(--color-white);
-  letter-spacing: 0.0625rem;
+  letter-spacing: var(--letter-spacing-base);
 }
 
-.mypage-grade-footer {
+.mypage__grade-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: var(--width-full);
 }
 
-.mypage-grade-value {
-  font-size: 4rem;
+.mypage__grade-value {
+  font-size: var(--font-size-grade-value);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
-  letter-spacing: 0.375rem;
+  letter-spacing: var(--letter-spacing-grade-value);
 }
 
-.mypage-grade-benefit-button {
-  border: 1px solid var(--color-white);
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+.mypage__grade-benefit-button {
+  border: var(--border-width-thin) solid var(--color-white);
+  padding: var(--gap-xs) var(--spacing-base);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-white);
+  background: transparent;
+  cursor: pointer;
 }
 
-.mypage-section {
+.mypage__section {
   background: var(--color-white);
   overflow: hidden;
-  margin: 2.5rem 0;
-  /* border-bottom: 1px solid var(--color-gray-inactive); */
+  margin: var(--margin-section) 0;
 }
 
-.mypage-section-header {
-  padding: 1.25rem;
+.mypage__section-header {
+  padding: var(--margin-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 0.3125rem solid var(--color-black);
-  border-bottom: 1px solid var(--color-gray-inactive);
+  border-top: var(--border-width-thick) solid var(--color-black);
+  border-bottom: var(--border-width-thin) solid var(--color-gray-inactive);
 }
 
-.mypage-section-title {
-  font-size: 1.5rem;
+.mypage__section-title {
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.0625rem;
+  letter-spacing: var(--letter-spacing-base);
 }
 
-.mypage-section-more {
+.mypage__section-more {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--gap-xs);
+  text-decoration: none;
+  color: inherit;
 }
 
-.mypage-section-more-text {
-  font-size: 1.25rem;
+.mypage__section-more-text {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.mypage-order-item {
-  padding: 1.25rem;
+.mypage__order-item {
+  padding: var(--margin-lg);
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  border-bottom: 1px solid var(--color-gray-inactive);
+  gap: var(--margin-lg);
+  border-bottom: var(--border-width-thin) solid var(--color-gray-inactive);
 }
 
-.mypage-order-date {
-  font-size: 1.25rem;
+.mypage__order-date {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
-  min-width: 7.5rem;
+  min-width: var(--width-order-date);
 }
 
-.mypage-order-info {
+.mypage__order-info {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.mypage-order-product {
-  font-size: 1.25rem;
+.mypage__order-product {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
 }
 
-.mypage-order-price {
-  font-size: 1.25rem;
+.mypage__order-price {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   margin-left: auto;
 }
 
-.mypage-order-image {
-  width: 5rem;
-  height: 5rem;
+.mypage__order-image {
+  width: var(--size-order-image);
+  height: var(--size-order-image);
   background: var(--color-gray-card-bg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.mypage-wishlist-tab-item {
-  padding: 1.25rem;
-  font-size: 1.25rem;
+.mypage__wishlist-tab-item {
+  padding: var(--margin-lg);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: 0.0625rem;
+  letter-spacing: var(--letter-spacing-base);
 }
 
-.mypage-wishlist-grid {
-  padding: 1.25rem;
+.mypage__wishlist-grid {
+  padding: var(--margin-lg);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
-  gap: 1.25rem;
-  border-bottom: 1px solid var(--color-gray-inactive);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--size-wishlist-image), 1fr)
+  );
+  gap: var(--margin-lg);
+  border-bottom: var(--border-width-thin) solid var(--color-gray-inactive);
 }
 
-.mypage-wishlist-item {
+.mypage__wishlist-item {
   display: flex;
   flex-direction: column;
 }
 
-.mypage-wishlist-image {
-  width: 7.5rem;
-  height: 7.5rem;
+.mypage__wishlist-image {
+  width: var(--size-wishlist-image);
+  height: var(--size-wishlist-image);
   background: var(--color-gray-card-bg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.mypage-wishlist-item-empty-text {
-  font-size: 1.25rem;
+.mypage__wishlist-item-empty-text {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.0625rem;
-  padding: 1.25rem;
+  letter-spacing: var(--letter-spacing-base);
+  padding: var(--margin-lg);
   text-align: center;
-  border-bottom: 1px solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-thin) solid var(--color-gray-inactive);
 }

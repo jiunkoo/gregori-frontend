@@ -116,4 +116,12 @@
   --height-image-6xl: 28rem;
   --height-image-7xl: 29rem;
   --height-image-8xl: 30rem;
+
+  --height-grade-section: 12.5rem;
+  --font-size-grade-value: 4rem;
+  --letter-spacing-grade-value: 0.375rem;
+  --margin-section: 2.5rem;
+  --width-order-date: 7.5rem;
+  --size-order-image: 5rem;
+  --size-wishlist-image: 7.5rem;
 }

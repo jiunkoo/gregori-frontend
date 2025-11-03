@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+
 import { productAPI } from "@api/product";
 import { useAuthStore } from "@stores/authStore";
 import { ProductResponseDto } from "@models";
-import Icon from "@components/icons/SvgIcon";
-import Layout from "@components/Layout";
+import { Icon, Layout } from "@components";
 import { PRODUCT_DETAIL_CONSTANTS, COLORS } from "@constants";
 import "@styles/product-detail.css";
 
-// 할인 아이템 컴포넌트
-const DiscountItem: React.FC<{
+interface DiscountItemProps {
   label: string;
   isChecked: boolean;
   onToggle: () => void;
@@ -19,7 +18,9 @@ const DiscountItem: React.FC<{
   downloadText?: string;
   hasDetails?: boolean;
   detailsText?: string;
-}> = ({
+}
+
+const DiscountItem = ({
   label,
   isChecked,
   onToggle,
@@ -29,10 +30,14 @@ const DiscountItem: React.FC<{
   downloadText,
   hasDetails,
   detailsText,
-}) => (
-  <div className="product-detail-discount-item">
-    <span className="product-detail-discount-label">{label}</span>
-    <button className="product-detail-discount-checkbox" onClick={onToggle}>
+}: DiscountItemProps) => (
+  <div className="product-detail__discount-item">
+    <span className="product-detail__discount-label">{label}</span>
+    <button
+      type="button"
+      className="product-detail__discount-checkbox"
+      onClick={onToggle}
+    >
       <Icon
         name={isChecked ? "checkboxChecked" : "checkbox"}
         size={28}
@@ -40,32 +45,30 @@ const DiscountItem: React.FC<{
       />
     </button>
     {hasDownload ? (
-      <div className="product-detail-coupon-item">
-        <button className="product-detail-coupon-download">
+      <div className="product-detail__coupon-item">
+        <button type="button" className="product-detail__coupon-download">
           <Icon
             name="download"
             size={24}
-            className="product-detail-coupon-icon"
+            className="product-detail__coupon-icon"
           />
           {downloadText}
         </button>
-        <span className="product-detail-coupon-name">{name}</span>
+        <span className="product-detail__coupon-name">{name}</span>
       </div>
     ) : (
-      <span className="product-detail-discount-name">
+      <span className="product-detail__discount-name">
         {name}
         {hasDetails && (
-          <span
-            style={{ color: COLORS.DETAILS_LINK, textDecoration: "underline" }}
-          >
+          <span className="product-detail__discount-details">
             {detailsText}
           </span>
         )}
       </span>
     )}
     <span
-      className={`product-detail-discount-amount ${
-        !isChecked ? "disabled" : ""
+      className={`product-detail__discount-amount ${
+        !isChecked ? "product-detail__discount-amount--disabled" : ""
       }`}
     >
       {amount}
@@ -73,7 +76,7 @@ const DiscountItem: React.FC<{
   </div>
 );
 
-const ProductDetail: React.FC = () => {
+const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
@@ -175,15 +178,14 @@ const ProductDetail: React.FC = () => {
   if (loading) {
     return (
       <Layout>
-        {" "}
-        <div className="product-detail-container">
-          <div className="product-detail-loading">
-            <div className="product-detail-loading-spinner"></div>
-            <p className="product-detail-loading-text">
+        <main className="product-detail">
+          <div className="product-detail__loading">
+            <div className="product-detail__loading-spinner"></div>
+            <p className="product-detail__loading-text">
               {PRODUCT_DETAIL_CONSTANTS.LOADING.MESSAGE}
             </p>
           </div>
-        </div>
+        </main>
       </Layout>
     );
   }
@@ -191,115 +193,116 @@ const ProductDetail: React.FC = () => {
   if (!product) {
     return (
       <Layout>
-        <div className="product-detail-container">
-          <div className="product-detail-error">
+        <main className="product-detail">
+          <div className="product-detail__error">
             <Icon
               name="error"
               size={24}
-              className="product-detail-error-icon"
+              className="product-detail__error-icon"
             />
-            <p className="product-detail-error-text">
+            <p className="product-detail__error-text">
               {PRODUCT_DETAIL_CONSTANTS.ERROR.PRODUCT_NOT_FOUND}
             </p>
-            <Link to="/" className="product-detail-error-button">
+            <Link to="/" className="product-detail__error-button">
               <Icon
                 name="arrowLeft"
                 size={20}
-                className="product-detail-back-icon"
+                className="product-detail__back-icon"
               />
               {PRODUCT_DETAIL_CONSTANTS.NAVIGATION.BACK_TO_HOME}
             </Link>
           </div>
-        </div>
+        </main>
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <div className="product-detail-container">
-        <div className="product-detail-main">
-          <div className="product-detail-image-section">
-            <button className="product-detail-nav-button">
+      <main className="product-detail">
+        <div className="product-detail__main">
+          <div className="product-detail__image-section">
+            <button type="button" className="product-detail__nav-button">
               <Icon name="arrowLeft" size={20} />
             </button>
-            <div className="product-detail-image-content">
-              <div className="product-detail-image-dots">
-                <div className="product-detail-dot active"></div>
-                <div className="product-detail-dot"></div>
-                <div className="product-detail-dot"></div>
+            <div className="product-detail__image-content">
+              <div className="product-detail__image-dots">
+                <div className="product-detail__dot product-detail__dot--active"></div>
+                <div className="product-detail__dot"></div>
+                <div className="product-detail__dot"></div>
               </div>
             </div>
-            <button className="product-detail-nav-button">
+            <button type="button" className="product-detail__nav-button">
               <Icon name="arrowRight" size={20} />
             </button>
           </div>
 
-          <div className="product-detail-info-section">
-            <div className="product-detail-line"></div>
-            <div className="product-detail-title">
+          <div className="product-detail__info-section">
+            <div className="product-detail__line"></div>
+            <div className="product-detail__title">
               <h1>{product.name}</h1>
               <button
-                className="product-detail-wishlist-button"
+                type="button"
+                className="product-detail__wishlist-button"
                 onClick={handleWishlistToggle}
               >
                 <Icon
                   name="heart"
                   size={36}
-                  className="product-detail-wishlist-icon"
+                  className="product-detail__wishlist-icon"
                   color={isWishlisted ? COLORS.WISHLIST_ACTIVE : "currentColor"}
                 />
               </button>
             </div>
 
-            <div className="product-detail-rating">
-              <div className="product-detail-stars">
+            <div className="product-detail__rating">
+              <div className="product-detail__stars">
                 {[...Array(5)].map((_, i) => (
                   <Icon
                     key={i}
                     name="star"
                     size={24}
-                    className="product-detail-star"
+                    className="product-detail__star"
                   />
                 ))}
               </div>
-              <span className="product-detail-review-link">
+              <span className="product-detail__review-link">
                 {PRODUCT_DETAIL_CONSTANTS.REVIEW.LINK_TEXT}
               </span>
             </div>
 
-            <div className="product-detail-price-section">
-              <div className="product-detail-price">
+            <div className="product-detail__price-section">
+              <div className="product-detail__price">
                 {formatPrice(product.price)}
                 {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
               </div>
-              <button className="product-detail-coupon-button">
+              <button type="button" className="product-detail__coupon-button">
                 {PRODUCT_DETAIL_CONSTANTS.COUPON.GET_COUPON}
                 <Icon
                   name="download"
                   size={32}
-                  className="product-detail-coupon-icon"
+                  className="product-detail__coupon-icon"
                 />
               </button>
             </div>
 
-            <div className="product-detail-points">
+            <div className="product-detail__points">
               {PRODUCT_DETAIL_CONSTANTS.PRICE.POINTS_TEXT}
             </div>
 
-            <div className="product-detail-member-price">
+            <div className="product-detail__member-price">
               <span>{PRODUCT_DETAIL_CONSTANTS.PRICE.MEMBER_PRICE_LABEL}</span>
-              <div className="product-detail-member-price-value">
-                <span className="product-detail-discount-percent">
+              <div className="product-detail__member-price-value">
+                <span className="product-detail__discount-percent">
                   {PRODUCT_DETAIL_CONSTANTS.PRICE.DISCOUNT_PERCENT}
                 </span>
-                <span className="product-detail-member-price-amount">
+                <span className="product-detail__member-price-amount">
                   {PRODUCT_DETAIL_CONSTANTS.PRICE.MEMBER_PRICE_AMOUNT}
                 </span>
               </div>
             </div>
 
-            <div className="product-detail-discount-section">
+            <div className="product-detail__discount-section">
               <DiscountItem
                 label={PRODUCT_DETAIL_CONSTANTS.DISCOUNT.PRODUCT_DISCOUNT}
                 isChecked={discountStates.productDiscount}
@@ -349,24 +352,24 @@ const ProductDetail: React.FC = () => {
               />
             </div>
 
-            <div className="product-detail-shipping">
-              <h3 className="product-detail-shipping-title">배송정보</h3>
-              <div className="product-detail-shipping-item">
-                <span className="product-detail-shipping-label">
+            <div className="product-detail__shipping">
+              <h3 className="product-detail__shipping-title">배송정보</h3>
+              <div className="product-detail__shipping-item">
+                <span className="product-detail__shipping-label">
                   {PRODUCT_DETAIL_CONSTANTS.SHIPPING.LABEL}
                 </span>
-                <div className="product-detail-shipping-content">
+                <div className="product-detail__shipping-content">
                   {PRODUCT_DETAIL_CONSTANTS.SHIPPING.FREE_SHIPPING_TEXT}
                   <br />
                   {PRODUCT_DETAIL_CONSTANTS.SHIPPING.ISLAND_SHIPPING_TEXT}
                 </div>
               </div>
-              <div className="product-detail-shipping-item">
-                <span className="product-detail-shipping-label">
+              <div className="product-detail__shipping-item">
+                <span className="product-detail__shipping-label">
                   {PRODUCT_DETAIL_CONSTANTS.SHIPPING.SCHEDULE_LABEL}
                 </span>
-                <div className="product-detail-shipping-content">
-                  <span className="product-detail-shipping-highlight">
+                <div className="product-detail__shipping-content">
+                  <span className="product-detail__shipping-highlight">
                     {PRODUCT_DETAIL_CONSTANTS.SHIPPING.DELIVERY_TIME}
                   </span>{" "}
                   {PRODUCT_DETAIL_CONSTANTS.SHIPPING.DELIVERY_TIME_TEXT}
@@ -374,33 +377,35 @@ const ProductDetail: React.FC = () => {
               </div>
             </div>
 
-            <div className="product-detail-options">
-              <div className="product-detail-option-group">
+            <div className="product-detail__options">
+              <div className="product-detail__option-group">
                 <div
-                  className="product-detail-option-header"
+                  className="product-detail__option-header"
                   onClick={() => setSizeOpen(!sizeOpen)}
                 >
-                  <span className="product-detail-option-label">
+                  <span className="product-detail__option-label">
                     {PRODUCT_DETAIL_CONSTANTS.OPTIONS.SIZE_LABEL}
                   </span>
                   <Icon
                     name="arrowDown"
                     size={16}
-                    className={`product-detail-option-arrow ${
-                      sizeOpen ? "open" : ""
+                    className={`product-detail__option-arrow ${
+                      sizeOpen ? "product-detail__option-arrow--open" : ""
                     }`}
                   />
                 </div>
                 <div
-                  className={`product-detail-option-items ${
-                    sizeOpen ? "open" : ""
+                  className={`product-detail__option-items ${
+                    sizeOpen ? "product-detail__option-items--open" : ""
                   }`}
                 >
                   {sizes.map((size) => (
                     <div
                       key={size}
-                      className={`product-detail-option-item ${
-                        selectedSize === size ? "selected" : ""
+                      className={`product-detail__option-item ${
+                        selectedSize === size
+                          ? "product-detail__option-item--selected"
+                          : ""
                       }`}
                       onClick={() => {
                         setSelectedSize(size);
@@ -408,41 +413,49 @@ const ProductDetail: React.FC = () => {
                         setSizeOpen(false);
                       }}
                     >
-                      <span className="product-detail-option-text">{size}</span>
+                      <span className="product-detail__option-text">
+                        {size}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="product-detail-option-group">
+              <div className="product-detail__option-group">
                 <div
-                  className={`product-detail-option-header ${
-                    !selectedSize ? "disabled" : ""
+                  className={`product-detail__option-header ${
+                    !selectedSize
+                      ? "product-detail__option-header--disabled"
+                      : ""
                   }`}
                   onClick={() => selectedSize && setColorOpen(!colorOpen)}
                 >
-                  <span className="product-detail-option-label">
+                  <span className="product-detail__option-label">
                     {PRODUCT_DETAIL_CONSTANTS.OPTIONS.COLOR_LABEL}
                     {selectedColor ? ` - ${selectedColor}` : ""}
                   </span>
                   <Icon
                     name="arrowDown"
                     size={16}
-                    className={`product-detail-option-arrow ${
-                      colorOpen ? "open" : ""
+                    className={`product-detail__option-arrow ${
+                      colorOpen ? "product-detail__option-arrow--open" : ""
                     }`}
                   />
                 </div>
                 <div
-                  className={`product-detail-option-items ${
-                    colorOpen && selectedSize ? "open" : ""
+                  className={`product-detail__option-items ${
+                    colorOpen && selectedSize
+                      ? "product-detail__option-items--open"
+                      : ""
                   }`}
                 >
                   {colors.map((color) => (
                     <div
                       key={color}
-                      className={`product-detail-option-item ${
-                        selectedColor === color ? "selected" : ""
+                      className={`product-detail__option-item ${
+                        selectedColor === color
+                          ? "product-detail__option-item--selected"
+                          : ""
                       }`}
                       onClick={() => {
                         if (selectedSize) {
@@ -451,7 +464,7 @@ const ProductDetail: React.FC = () => {
                         }
                       }}
                     >
-                      <span className="product-detail-option-text">
+                      <span className="product-detail__option-text">
                         {color}
                       </span>
                     </div>
@@ -462,14 +475,15 @@ const ProductDetail: React.FC = () => {
 
             {selectedSize && selectedColor && (
               <>
-                <div className="product-detail-cart-section">
-                  <div className="product-detail-cart-item">
-                    <span className="product-detail-cart-option">
+                <div className="product-detail__cart-section">
+                  <div className="product-detail__cart-item">
+                    <span className="product-detail__cart-option">
                       {selectedSize} / {selectedColor}
                     </span>
-                    <div className="product-detail-cart-controls">
+                    <div className="product-detail__cart-controls">
                       <button
-                        className="product-detail-cart-button"
+                        type="button"
+                        className="product-detail__cart-button"
                         onClick={() => handleQuantityChange(-1)}
                       >
                         <Icon
@@ -478,11 +492,12 @@ const ProductDetail: React.FC = () => {
                           color={COLORS.ICON_DEFAULT}
                         />
                       </button>
-                      <div className="product-detail-cart-quantity">
+                      <div className="product-detail__cart-quantity">
                         {quantity}
                       </div>
                       <button
-                        className="product-detail-cart-button"
+                        type="button"
+                        className="product-detail__cart-button"
                         onClick={() => handleQuantityChange(1)}
                       >
                         <Icon
@@ -492,24 +507,24 @@ const ProductDetail: React.FC = () => {
                         />
                       </button>
                     </div>
-                    <span className="product-detail-cart-price">
+                    <span className="product-detail__cart-price">
                       {formatPrice(product.price)}
                       {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
                     </span>
                     <Icon
                       name="remove"
                       size={28}
-                      className="product-detail-cart-remove"
+                      className="product-detail__cart-remove"
                     />
                   </div>
                 </div>
-                <div className="product-detail-line"></div>
-                <div className="product-detail-total">
-                  <span className="product-detail-total-label">
+                <div className="product-detail__line"></div>
+                <div className="product-detail__total">
+                  <span className="product-detail__total-label">
                     {PRODUCT_DETAIL_CONSTANTS.CART.TOTAL_LABEL}
                   </span>
-                  <span className="product-detail-total-price">
-                    <span className="product-detail-total-amount">
+                  <span className="product-detail__total-price">
+                    <span className="product-detail__total-amount">
                       {formatPrice(product.price * quantity)}
                     </span>
                     {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
@@ -518,15 +533,17 @@ const ProductDetail: React.FC = () => {
               </>
             )}
 
-            <div className="product-detail-order-buttons">
+            <div className="product-detail__order-buttons">
               <button
-                className="product-detail-order-button"
+                type="button"
+                className="product-detail__order-button"
                 disabled={!selectedSize || !selectedColor}
               >
                 {PRODUCT_DETAIL_CONSTANTS.CART.ADD_TO_CART}
               </button>
               <button
-                className="product-detail-order-button primary"
+                type="button"
+                className="product-detail__order-button product-detail__order-button--primary"
                 onClick={handleOrder}
                 disabled={!selectedSize || !selectedColor}
               >
@@ -535,7 +552,7 @@ const ProductDetail: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </Layout>
   );
 };

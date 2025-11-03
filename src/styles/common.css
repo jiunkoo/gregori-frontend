@@ -137,4 +137,35 @@
   --width-order-date: 7.5rem;
   --size-order-image: 5rem;
   --size-wishlist-image: 7.5rem;
+
+  /* Product Detail specific values */
+  --padding-product-detail: 1.5625rem;
+  --padding-info-section: 2rem;
+  --width-nav-button: 1.875rem;
+  --height-nav-button: 2.5rem;
+  --gap-stars: 0.25rem;
+  --padding-coupon-button: 0.5rem 0.5rem 0.5rem 1rem;
+  --padding-coupon-download: 0.125rem 0.5rem 0.125rem 0.25rem;
+  --padding-option-header: 0.625rem 1rem;
+  --letter-spacing-option: 0.1rem;
+  --padding-option-item: 0.9375rem 1rem;
+  --width-cart-button: 1.875rem;
+  --height-cart-button: 1.875rem;
+  --letter-spacing-cart: 0.1rem;
+  --gap-total-price: 0.25rem;
+
+  /* Font sizes */
+  --font-size-product-title: 2.25rem;
+  --font-size-product-md: 1.25rem;
+  --font-size-product-xs: 0.75rem;
+
+  /* Letter spacing */
+  --letter-spacing-product-label: 0.1rem;
+  --letter-spacing-product-quantity: 0.125rem;
+  --letter-spacing-product-total-label: 0.03rem;
+  --letter-spacing-product-total-amount: 0.045rem;
+  --letter-spacing-product-button: 0.0525rem;
+
+  /* Border width */
+  --border-width-product-thin: 0.03125rem;
 }

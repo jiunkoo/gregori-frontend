@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import { productAPI } from "@api/product";
 import { ProductResponseDto } from "@models";
-import Layout from "@components/Layout";
+import { Layout } from "@components";
 import "@styles/home.css";
 
 const DUMMY_PRODUCTS: ProductResponseDto[] = [
@@ -164,7 +165,7 @@ const DUMMY_PRODUCTS: ProductResponseDto[] = [
   },
 ];
 
-const Home: React.FC = () => {
+const Home = () => {
   const [products, setProducts] = useState<ProductResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(1);
@@ -192,10 +193,12 @@ const Home: React.FC = () => {
   if (loading) {
     return (
       <Layout showNav={true}>
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p className="loading-text">상품을 불러오는 중...</p>
-        </div>
+        <main className="home">
+          <div className="home__loading">
+            <div className="home__loading-spinner"></div>
+            <p className="home__loading-text">상품을 불러오는 중...</p>
+          </div>
+        </main>
       </Layout>
     );
   }
@@ -207,34 +210,36 @@ const Home: React.FC = () => {
       selectedCategory={selectedCategory}
       onCategoryChange={setSelectedCategory}
     >
-      <div className="products-container">
-        {products.map((product, index) => {
-          const images = [
-            "/images/products/pasta1_tomato1.jpg",
-            "/images/products/pasta2_cream1.jpg",
-            "/images/products/pasta3_oil1.jpg",
-            "/images/products/pasta3_oil2.jpg",
-            "/images/products/pasta4_meat1.jpg",
-            "/images/products/pasta4_meat2.jpg",
-            "/images/main_pasta.jpg",
-          ];
-          const imageSrc = images[index % images.length];
+      <main className="home">
+        <div className="home__products">
+          {products.map((product, index) => {
+            const images = [
+              "/images/products/pasta1_tomato1.jpg",
+              "/images/products/pasta2_cream1.jpg",
+              "/images/products/pasta3_oil1.jpg",
+              "/images/products/pasta3_oil2.jpg",
+              "/images/products/pasta4_meat1.jpg",
+              "/images/products/pasta4_meat2.jpg",
+              "/images/main_pasta.jpg",
+            ];
+            const imageSrc = images[index % images.length];
 
-          return (
-            <Link
-              key={product.id}
-              to={`/products/${product.id}`}
-              className="product-card"
-            >
-              <img
-                src={imageSrc}
-                alt={product.name}
-                className="product-image"
-              />
-            </Link>
-          );
-        })}
-      </div>
+            return (
+              <Link
+                key={product.id}
+                to={`/products/${product.id}`}
+                className="home__product-card"
+              >
+                <img
+                  src={imageSrc}
+                  alt={product.name}
+                  className="home__product-image"
+                />
+              </Link>
+            );
+          })}
+        </div>
+      </main>
     </Layout>
   );
 };

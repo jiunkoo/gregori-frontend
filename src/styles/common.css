@@ -101,4 +101,19 @@
 
   --width-base: 30rem;
   --width-full: 100%;
+
+  --size-spinner: 3rem;
+
+  --height-image-xs: 18rem;
+  --height-image-sm: 19rem;
+  --height-image-md: 20rem;
+  --height-image-lg: 21rem;
+  --height-image-xl: 22rem;
+  --height-image-2xl: 23rem;
+  --height-image-3xl: 24rem;
+  --height-image-4xl: 26rem;
+  --height-image-5xl: 27rem;
+  --height-image-6xl: 28rem;
+  --height-image-7xl: 29rem;
+  --height-image-8xl: 30rem;
 }

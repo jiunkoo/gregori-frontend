@@ -1,407 +1,396 @@
-.orderdetail-container {
-  width: 100%;
+.orderdetail {
+  width: var(--width-full);
   position: relative;
   margin: 0 auto;
-  padding: 1.5625rem;
+  padding: var(--padding-lg);
 }
 
-.orderdetail-grade-section {
+.orderdetail__grade-section {
   position: relative;
   display: grid;
   grid-template-columns: 5fr 2.5fr 2.5fr;
   background: var(--color-black);
-  height: 12.5rem;
+  height: var(--height-grade-section);
 }
 
-.orderdetail-grade-item {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding: 1.25rem;
-  border-right: 0.0625rem solid var(--color-gray-inactive);
-}
-
-.orderdetail-grade-item-standard {
+.orderdetail__grade-item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  padding: var(--padding-lg);
+  border-right: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-grade-header {
+.orderdetail__grade-header {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: var(--spacing-sm);
 }
 
-.orderdetail-grade-label {
-  font-size: 1.5rem;
+.orderdetail__grade-label {
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-light);
   color: var(--color-white);
-  letter-spacing: 0.15rem;
+  letter-spacing: var(--letter-spacing-grade-value);
 }
 
-.orderdetail-grade-footer {
+.orderdetail__grade-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: var(--width-full);
 }
 
-.orderdetail-grade-value {
-  font-size: 4rem;
+.orderdetail__grade-value {
+  font-size: var(--font-size-grade-value);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
-  letter-spacing: 0.4rem;
+  letter-spacing: var(--letter-spacing-grade-value);
 }
 
-.orderdetail-grade-header-arrow {
-  width: 1.25rem;
-  height: 1.25rem;
+.orderdetail__grade-header-arrow {
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
 }
 
-.orderdetail-grade-benefit-button {
+.orderdetail__grade-benefit-button {
   background: transparent;
-  border: 0.0625rem solid var(--color-white);
-  padding: 0.5rem 1rem;
+  border: var(--border-width-base) solid var(--color-white);
+  padding: var(--spacing-xs) var(--padding-base);
   color: var(--color-white);
-  font-size: 1.25rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.orderdetail-grade-benefit-button:hover {
+.orderdetail__grade-benefit-button:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* 주문 상세 섹션 */
-.orderdetail-section {
+.orderdetail__section {
   background: var(--color-white);
   overflow: hidden;
-  margin: 2.5rem 0;
+  margin: var(--margin-section) 0;
 }
 
-.orderdetail-section-header {
-  padding: 1.25rem;
+.orderdetail__section-header {
+  padding: var(--padding-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 0.3125rem solid var(--color-black);
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  border-top: var(--border-width-thick) solid var(--color-black);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-section-title {
-  font-size: 1.5rem;
+.orderdetail__section-title {
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.0625rem;
+  letter-spacing: var(--letter-spacing-base);
+  margin: 0;
 }
 
-.orderdetail-progress {
+.orderdetail__section-divider {
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+}
+
+.orderdetail__progress {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem;
-  gap: 0.625rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  padding: var(--padding-lg);
+  gap: var(--spacing-sm);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-progress-item {
+.orderdetail__progress-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.625rem;
+  gap: var(--spacing-sm);
   flex: 1;
 }
 
-.orderdetail-progress-circle {
-  width: 7.5rem;
-  height: 7.5rem;
+.orderdetail__progress-circle {
+  width: var(--size-product-image);
+  height: var(--size-product-image);
   border-radius: 50%;
   background: var(--color-gray-inactive);
-  border: 0.0625rem solid var(--color-black);
+  border: var(--border-width-base) solid var(--color-black);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: 0.075rem;
+  letter-spacing: var(--letter-spacing-base);
 }
 
-.orderdetail-progress-item.active .orderdetail-progress-circle {
+.orderdetail__progress-item--active .orderdetail__progress-circle {
   background: var(--color-black);
   color: var(--color-white);
 }
 
-.orderdetail-progress-label {
-  font-size: 1.25rem;
+.orderdetail__progress-label {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
-  letter-spacing: 0.0375rem;
+  letter-spacing: var(--letter-spacing-base);
   text-align: center;
 }
 
-.orderdetail-order-header {
-  padding: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+.orderdetail__progress-arrow {
+  margin: 0 var(--margin-xs);
 }
 
-.orderdetail-order-date {
-  font-size: 1.25rem;
+.orderdetail__order-header {
+  padding: var(--padding-lg);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+}
+
+.orderdetail__order-date {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.orderdetail-order-date-value,
-.orderdetail-order-number {
+.orderdetail__order-date-value,
+.orderdetail__order-number {
   font-weight: var(--font-weight-bold);
 }
 
-.orderdetail-order-detail {
+.orderdetail__order-detail {
   display: flex;
   align-items: center;
-  padding: 1.25rem;
-  gap: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  padding: var(--padding-lg);
+  gap: var(--spacing-lg);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-order-product {
+.orderdetail__order-product {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: var(--spacing-lg);
   flex: 1;
 }
 
-.orderdetail-order-image {
-  width: 7.5rem;
-  height: 7.5rem;
+.orderdetail__order-image {
+  width: var(--size-product-image);
+  height: var(--size-product-image);
   background: var(--color-gray-card-bg);
   display: flex;
   justify-content: center;
   align-items: center;
-  object-fit: cover;
 }
 
-.orderdetail-order-info {
-  padding: 1.25rem 0;
+.orderdetail__order-info {
+  padding: var(--padding-lg) 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--gap-sm);
 }
 
-.orderdetail-order-brand {
-  font-size: 1.25rem;
+.orderdetail__order-brand {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-decoration: underline;
 }
 
-.orderdetail-order-name {
-  font-size: 1.5rem;
+.orderdetail__order-name {
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
 }
 
-.orderdetail-order-option {
-  font-size: 1.25rem;
+.orderdetail__order-option {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.orderdetail-order-price {
-  font-size: 1.25rem;
+.orderdetail__order-price {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
 }
 
-.orderdetail-order-quantity {
-  font-size: 1.25rem;
+.orderdetail__order-quantity {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-align: center;
   min-width: 3.75rem;
 }
 
-.orderdetail-order-shipping {
-  font-size: 1.25rem;
+.orderdetail__order-shipping {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-align: center;
   min-width: 6.25rem;
 }
 
-.orderdetail-order-status {
-  font-size: 1.25rem;
+.orderdetail__order-status {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-align: center;
   min-width: 6.25rem;
 }
 
-.orderdetail-order-delivery {
-  font-size: 1.25rem;
+.orderdetail__order-delivery {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-align: center;
-  min-width: 7.5rem;
+  min-width: var(--size-product-image);
 }
 
-.orderdetail-order-actions {
+.orderdetail__order-actions {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  min-width: 7.5rem;
+  gap: var(--spacing-sm);
+  min-width: var(--size-product-image);
 }
 
-.orderdetail-order-action-button {
-  width: 7.5rem;
-  height: 3.125rem;
-  border: 0.0625rem solid var(--color-black);
+.orderdetail__order-action-button {
+  width: var(--size-product-image);
+  height: var(--height-md);
+  border: var(--border-width-base) solid var(--color-black);
   background: var(--color-white);
   color: var(--color-black);
-  font-size: 1.25rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
+  cursor: pointer;
 }
 
-.orderdetail-order-action-button:hover {
+.orderdetail__order-action-button:hover {
   background: var(--color-gray-light);
 }
 
-.orderdetail-customer-info {
-  padding: 1.25rem;
+.orderdetail__customer-info {
+  padding: var(--padding-lg);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  gap: var(--spacing-lg);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-customer-item {
+.orderdetail__customer-item {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: var(--spacing-lg);
 }
 
-.orderdetail-customer-label {
-  font-size: 1.25rem;
+.orderdetail__customer-label {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
-  min-width: 7.5rem;
+  min-width: var(--size-product-image);
 }
 
-.orderdetail-customer-value {
-  font-size: 1.25rem;
+.orderdetail__customer-value {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.orderdetail-shipping-info {
-  padding: 1.25rem;
+.orderdetail__shipping-info {
+  padding: var(--padding-lg);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  gap: var(--spacing-lg);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-shipping-item {
+.orderdetail__shipping-item {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: var(--spacing-lg);
 }
 
-.orderdetail-shipping-label {
-  font-size: 1.25rem;
+.orderdetail__shipping-label {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
-  min-width: 7.5rem;
+  min-width: var(--size-product-image);
 }
 
-.orderdetail-shipping-value {
-  font-size: 1.25rem;
+.orderdetail__shipping-value {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   flex: 1;
 }
 
-.orderdetail-shipping-change-button {
+.orderdetail__shipping-change-button {
   width: 12.5rem;
-  height: 3.125rem;
-  border: 0.0625rem solid var(--color-black);
+  height: var(--height-md);
+  border: var(--border-width-base) solid var(--color-black);
   background: var(--color-white);
   color: var(--color-black);
-  font-size: 1.25rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.orderdetail-shipping-change-button:hover {
+.orderdetail__shipping-change-button:hover {
   background: var(--color-gray-light);
 }
 
-.orderdetail-payment-info {
-  padding: 1.25rem;
+.orderdetail__payment-info {
+  padding: var(--padding-lg);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  gap: var(--spacing-lg);
+  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
 }
 
-.orderdetail-payment-item {
+.orderdetail__payment-item {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: var(--spacing-lg);
 }
 
-.orderdetail-payment-label {
-  font-size: 1.25rem;
+.orderdetail__payment-label {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
-  min-width: 7.5rem;
+  min-width: var(--size-product-image);
 }
 
-.orderdetail-payment-value {
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-normal);
-  color: var(--color-black);
-}
-
-.orderdetail-notice {
-  padding: 1.25rem 0;
-}
-
-.orderdetail-notice-text {
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-normal);
-  color: var(--color-black);
-  line-height: 1.5;
-}
-
-.orderdetail-receipt {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 0;
-}
-
-.orderdetail-receipt-text {
-  font-size: 1.25rem;
+.orderdetail__payment-value {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.orderdetail-receipt-button {
+.orderdetail__notice {
+  padding: var(--padding-lg) 0;
+}
+
+.orderdetail__notice-text {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-black);
+  line-height: var(--line-height-base);
+}
+
+.orderdetail__receipt-button {
   width: 8.75rem;
-  height: 3.125rem;
+  height: var(--height-md);
   background: var(--color-black);
-  border: 0.0625rem solid var(--color-black);
+  border: var(--border-width-base) solid var(--color-black);
   color: var(--color-white);
-  font-size: 1.25rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.orderdetail-receipt-button:hover {
+.orderdetail__receipt-button:hover {
   background: var(--color-gray-600);
 }

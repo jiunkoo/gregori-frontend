@@ -1,33 +1,33 @@
 .login {
-  width: var(--width-base);
+  width: var(--spacing-width-base);
   margin: 0 auto;
-  padding: var(--padding-base);
+  padding: var(--spacing-base);
 }
 
 .login__title {
-  margin: var(--margin-xl) 0;
+  margin: var(--spacing-xl) 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: var(--letter-spacing-base);
+  letter-spacing: var(--spacing-base-small);
 }
 
 .login__form {
-  margin: var(--margin-base) 0;
+  margin: var(--spacing-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xs);
+  gap: var(--spacing-border-radius-base);
 }
 
 .login__field {
-  height: var(--height-base);
-  border: var(--border-width-thin) solid var(--color-black);
+  height: var(--spacing-section);
+  border: var(--spacing-border-width-thin) solid var(--color-black);
   display: flex;
   align-items: center;
 }
 
 .login__input {
-  width: var(--width-full);
+  width: var(--spacing-width-full);
   padding: 0 var(--spacing-md);
   font-size: var(--font-size-base);
   background: transparent;
@@ -36,9 +36,9 @@
 }
 
 .login__submit {
-  width: var(--width-full);
-  height: var(--height-lg);
-  margin-top: var(--margin-xs);
+  width: var(--spacing-width-full);
+  height: var(--spacing-height-lg);
+  margin-top: var(--spacing-xs);
   background: var(--color-black);
   border: none;
   cursor: pointer;
@@ -56,7 +56,7 @@
 }
 
 .login__options {
-  margin: var(--margin-base) 0;
+  margin: var(--spacing-base) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,16 +65,16 @@
 .login__auto-login {
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--spacing-border-radius-base);
   cursor: pointer;
 }
 
 .login__checkbox {
-  width: var(--height-sm);
-  height: var(--height-sm);
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
   padding: 0;
   background: var(--color-white);
-  border: var(--border-width-thin) solid var(--color-black);
+  border: var(--spacing-border-width-thin) solid var(--color-black);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@
 .login__help {
   display: flex;
   align-items: center;
-  gap: var(--gap-sm);
+  gap: var(--spacing-sm);
 }
 
 .login__help-link {
@@ -113,21 +113,21 @@
 }
 
 .login__divider {
-  width: var(--border-width-base);
-  height: var(--height-xs);
+  width: var(--spacing-base-small);
+  height: var(--spacing-base);
   background: var(--color-black);
 }
 
 .login__social {
-  margin: var(--margin-base) 0;
+  margin: var(--spacing-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-sm);
+  gap: var(--spacing-sm);
 }
 
 .login__social-button {
-  width: var(--width-full);
-  height: var(--height-md);
+  width: var(--spacing-width-full);
+  height: var(--spacing-height-md);
   border: none;
   cursor: pointer;
   display: flex;
@@ -149,7 +149,7 @@
 }
 
 .login__social-icon {
-  margin: 0 var(--margin-xs);
+  margin: 0 var(--spacing-xs);
 }
 
 .login__social-label {
@@ -163,10 +163,10 @@
 }
 
 .login__signup {
-  width: var(--width-full);
-  height: var(--height-lg);
-  margin: var(--margin-2xl) 0 var(--margin-base);
-  border: var(--border-width-thin) solid var(--color-gray-400);
+  width: var(--spacing-width-full);
+  height: var(--spacing-height-lg);
+  margin: var(--spacing-2xl) 0 var(--spacing-base);
+  border: var(--spacing-border-width-thin) solid var(--color-gray-400);
   background: transparent;
   cursor: pointer;
   display: flex;
@@ -178,11 +178,11 @@
 }
 
 .login__error {
-  margin-top: var(--margin-lg);
-  padding: var(--padding-md);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
   text-align: center;
   color: var(--color-red-error-600);
   background-color: var(--color-red-error-100);
-  border: var(--border-width-base) solid var(--color-red-error-300);
-  border-radius: var(--border-radius-base);
+  border: var(--spacing-base-small) solid var(--color-red-error-300);
+  border-radius: var(--spacing-border-radius-base);
 }

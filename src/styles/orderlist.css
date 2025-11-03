@@ -1,8 +1,8 @@
 .orderlist {
-  width: var(--width-full);
+  width: var(--spacing-width-full);
   position: relative;
   margin: 0 auto;
-  padding: var(--padding-lg);
+  padding: var(--spacing-lg);
 }
 
 .orderlist__loading {
@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: 5fr 2.5fr 2.5fr;
   background: var(--color-black);
-  height: var(--height-grade-section);
+  height: var(--spacing-height-grade-section);
 }
 
 .orderlist__grade-item {
@@ -36,8 +36,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: var(--padding-lg);
-  border-right: var(--border-width-base) solid var(--color-gray-200);
+  padding: var(--spacing-lg);
+  border-right: var(--spacing-base-small) solid var(--color-gray-200);
 }
 
 .orderlist__grade-header {
@@ -50,21 +50,21 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-light);
   color: var(--color-white);
-  letter-spacing: var(--letter-spacing-base);
+  letter-spacing: var(--spacing-base-small);
 }
 
 .orderlist__grade-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: var(--width-full);
+  width: var(--spacing-width-full);
 }
 
 .orderlist__grade-value {
   font-size: var(--font-size-grade-value);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
-  letter-spacing: var(--letter-spacing-grade-value);
+  letter-spacing: var(--spacing-letter-spacing-grade-value);
 }
 
 .orderlist__grade-header-arrow {
@@ -73,15 +73,15 @@
 }
 
 .orderlist__grade-benefit-button {
-  border: var(--border-width-base) solid var(--color-white);
-  padding: var(--spacing-xs) var(--padding-base);
+  border: var(--spacing-base-small) solid var(--color-white);
+  padding: var(--spacing-xs) var(--spacing-base);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-white);
   background: transparent;
   cursor: pointer;
   transition: background-color 0.2s;
-  border-radius: var(--border-radius-base);
+  border-radius: var(--spacing-border-radius-base);
 }
 
 .orderlist__grade-benefit-button:hover {
@@ -91,27 +91,27 @@
 .orderlist__section {
   background: var(--color-white);
   overflow: hidden;
-  margin: var(--margin-section) 0;
+  margin: var(--spacing-section) 0;
 }
 
 .orderlist__section-header {
-  padding: var(--padding-lg);
+  padding: var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: var(--border-width-thick) solid var(--color-black);
-  border-bottom: var(--border-width-base) solid var(--color-gray-200);
+  border-top: var(--spacing-border-width-thick) solid var(--color-black);
+  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
 }
 
 .orderlist__section-title {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-base);
+  letter-spacing: var(--spacing-base-small);
   margin: 0;
 }
 
 .orderlist__section-divider {
-  height: var(--border-width-base);
+  height: var(--spacing-base-small);
   background: var(--color-gray-200);
   margin: 0;
 }
@@ -119,10 +119,10 @@
 .orderlist__empty-text {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-base);
-  padding: var(--padding-lg);
+  letter-spacing: var(--spacing-base-small);
+  padding: var(--spacing-lg);
   text-align: center;
-  border-bottom: var(--border-width-base) solid var(--color-gray-200);
+  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
 }
 
 .orderlist__orders {
@@ -133,19 +133,19 @@
 .orderlist__order-item {
   display: flex;
   flex-direction: column;
-  border-bottom: var(--border-width-base) solid var(--color-gray-200);
+  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
 }
 
 .orderlist__order-info {
-  padding: var(--padding-lg) 0;
+  padding: var(--spacing-lg) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-sm);
+  gap: var(--spacing-sm);
 }
 
 .orderlist__order-header {
-  padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-200);
+  padding: var(--spacing-lg);
+  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
 }
 
 .orderlist__order-date {
@@ -162,9 +162,9 @@
 .orderlist__order-detail {
   display: flex;
   align-items: center;
-  padding: var(--padding-lg);
+  padding: var(--spacing-lg);
   gap: var(--spacing-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-200);
+  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s;
@@ -182,8 +182,8 @@
 }
 
 .orderlist__order-image {
-  width: var(--size-product-image);
-  height: var(--size-product-image);
+  width: var(--spacing-size-image);
+  height: var(--spacing-size-image);
   background: var(--color-gray-100);
   display: flex;
   justify-content: center;
@@ -191,10 +191,10 @@
 }
 
 .orderlist__order-info {
-  padding: var(--padding-lg) 0;
+  padding: var(--spacing-lg) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-sm);
+  gap: var(--spacing-sm);
 }
 
 .orderlist__order-brand {
@@ -251,26 +251,26 @@
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-align: center;
-  min-width: var(--size-product-image);
+  min-width: var(--spacing-size-image);
 }
 
 .orderlist__order-actions {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
-  min-width: var(--size-product-image);
+  min-width: var(--spacing-size-image);
 }
 
 .orderlist__order-action-button {
-  width: var(--size-product-image);
-  height: var(--height-md);
-  border: var(--border-width-base) solid var(--color-black);
+  width: var(--spacing-size-image);
+  height: var(--spacing-height-md);
+  border: var(--spacing-base-small) solid var(--color-black);
   background: var(--color-white);
   color: var(--color-black);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
-  border-radius: var(--border-radius-base);
+  border-radius: var(--spacing-border-radius-base);
 }
 
 .orderlist__order-action-button:hover {

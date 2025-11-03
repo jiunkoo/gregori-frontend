@@ -1,28 +1,28 @@
 .register-form {
-  width: var(--width-base);
+  width: var(--spacing-width-base);
   margin: 0 auto;
-  padding: var(--padding-base);
+  padding: var(--spacing-base);
 }
 
 .register-form__title {
-  margin: var(--margin-xl) 0;
+  margin: var(--spacing-xl) 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: var(--letter-spacing-base);
+  letter-spacing: var(--spacing-base-small);
 }
 
 .register-form__form {
-  margin: var(--margin-base) 0;
+  margin: var(--spacing-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-base);
+  gap: var(--spacing-base);
 }
 
 .register-form__group {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xs);
+  gap: var(--spacing-border-radius-base);
 }
 
 .register-form__label {
@@ -32,12 +32,12 @@
 }
 
 .register-form__input {
-  width: var(--width-full);
-  height: var(--height-base);
+  width: var(--spacing-width-full);
+  height: var(--spacing-section);
   padding: 0 var(--spacing-md);
   font-size: var(--font-size-base);
   background: transparent;
-  border: var(--border-width-thin) solid var(--color-black);
+  border: var(--spacing-border-width-thin) solid var(--color-black);
   outline: none;
 }
 
@@ -53,7 +53,7 @@
 .register-form__email-group {
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--spacing-border-radius-base);
 }
 
 .register-form__email-separator {
@@ -64,7 +64,7 @@
 
 .register-form__select {
   width: 15rem;
-  height: var(--height-base);
+  height: var(--spacing-section);
   padding: 0 var(--spacing-md);
   padding-right: var(--spacing-2xl);
   background-color: var(--color-white);
@@ -77,18 +77,18 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
-  border: var(--border-width-thin) solid var(--color-black);
+  border: var(--spacing-border-width-thin) solid var(--color-black);
   outline: none;
 }
 
 .register-form__phone-group {
   display: flex;
-  gap: var(--gap-sm);
+  gap: var(--spacing-sm);
   align-items: center;
 }
 
 .register-form__verify-button {
-  height: var(--height-base);
+  height: var(--spacing-section);
   padding: 0 var(--spacing-base);
   background-color: var(--color-black);
   color: var(--color-white);
@@ -111,26 +111,26 @@
 }
 
 .register-form__error {
-  margin: var(--margin-base) 0;
-  padding: var(--padding-md);
+  margin: var(--spacing-base) 0;
+  padding: var(--spacing-md);
   background-color: var(--color-red-error-100);
-  border: var(--border-width-base) solid var(--color-red-error-300);
-  border-radius: var(--border-radius-base);
+  border: var(--spacing-base-small) solid var(--color-red-error-300);
+  border-radius: var(--spacing-border-radius-base);
   color: var(--color-red-error-600);
   font-size: var(--font-size-sm);
   text-align: center;
 }
 
 .register-form__submit {
-  margin: var(--margin-2xl) 0 var(--margin-base);
+  margin: var(--spacing-2xl) 0 var(--spacing-base);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-base);
+  gap: var(--spacing-base);
 }
 
 .register-form__submit-button {
-  width: var(--width-full);
-  height: var(--height-lg);
+  width: var(--spacing-width-full);
+  height: var(--spacing-height-lg);
   background: var(--color-black);
   border: none;
   cursor: pointer;

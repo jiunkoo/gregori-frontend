@@ -1,7 +1,9 @@
 :root {
+  /* Font Family */
   --font-family-primary: "Roboto";
   --font-family-secondary: "Nanum Gothic";
 
+  /* Font Weight */
   --font-weight-thin: 100;
   --font-weight-extra-light: 200;
   --font-weight-light: 300;
@@ -12,94 +14,52 @@
   --font-weight-extra-bold: 800;
   --font-weight-black: 900;
 
-  --color-black: #000000;
-  --color-white: #ffffff;
-
-  --color-gray-100: #f3f2f2;
-  --color-gray-200: #e8e8e8;
-  --color-gray-300: #cccccc;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #1f2937;
-
-  --color-blue-500: #0078ff;
-  --color-blue-600: #2563eb;
-
-  --color-yellow-500: #fae407;
-
-  --color-red: #ff5252;
-  --color-red-error-100: #fee2e2;
-  --color-red-error-300: #f87171;
-  --color-red-error-600: #991b1b;
-
-  --icon-arrow-down: url("../components/icons/arrow-down.svg");
-
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 0.625rem;
-  --spacing-md: 0.75rem;
-  --spacing-base: 1rem;
-  --spacing-lg: 1.25rem;
-  --spacing-xl: 1.5rem;
-  --spacing-2xl: 4rem;
-
-  --padding-base: var(--spacing-base);
-  --padding-sm: var(--spacing-sm);
-  --padding-md: var(--spacing-md);
-  --padding-lg: var(--spacing-lg);
-  --padding-xl: var(--spacing-xl);
-
-  --margin-xs: var(--spacing-xs);
-  --margin-sm: var(--spacing-sm);
-  --margin-base: var(--spacing-base);
-  --margin-lg: var(--spacing-lg);
-  --margin-xl: var(--spacing-xl);
-  --margin-2xl: var(--spacing-2xl);
-
-  --gap-xs: var(--spacing-xs);
-  --gap-sm: var(--spacing-sm);
-  --gap-base: var(--spacing-base);
-
-  --letter-spacing-base: 0.0625rem;
-
-  --border-width-thin: 0.03125rem;
-  --border-width-base: 0.0625rem;
-  --border-width-thick: 0.3125rem;
-  --border-radius-base: 0.25rem;
-  --border-radius-lg: 0.75rem;
-  --border-radius-full: 9999px;
-
+  /* Font Size */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.5rem;
   --font-size-xl: 1.75rem;
   --font-size-2xl: 2rem;
-
-  --height-xs: 0.9375rem;
-  --height-sm: 1.25rem;
-  --height-base: 2.5rem;
-  --height-md: 3.125rem;
-  --height-lg: 3.75rem;
-  --height-payment-button: 5rem;
-
-  --width-base: 30rem;
-  --width-full: 100%;
-  --width-container-lg: 80rem;
-  --width-benefit-button: 4.375rem;
-  --width-payment-button: 25rem;
-  --width-payment-method-button: 13.125rem;
-  --width-miles-input: 13.125rem;
-
-  --size-spinner: 3rem;
-  --size-product-image: 7.5rem;
-  --padding-select: 0.9375rem;
-
-  --line-height-base: 1.4;
-
   --font-size-payment-button: 2.25rem;
-  --letter-spacing-payment-button: 0.0675rem;
+  --font-size-grade-value: 4rem;
 
+  /* Icons */
+  --icon-arrow-down: url("../components/icons/arrow-down.svg");
+
+  /* Spacing */
+  --spacing-border-width-thin: 0.03125rem;
+  --spacing-letter-spacing-xs: 0.03rem;
+  --spacing-base-small: 0.0625rem;
+  --spacing-letter-spacing-sm: 0.1rem;
+  --spacing-letter-spacing-md: 0.125rem;
+  --spacing-border-radius-base: 0.25rem;
+  --spacing-border-width-thick: 0.3125rem;
+  --spacing-letter-spacing-grade-value: 0.375rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.625rem;
+  --spacing-md: 0.75rem;
+  --spacing-base: 1rem;
+  --spacing-lg: 1.25rem;
+  --spacing-xl: 1.5rem;
+  --spacing-line-height-base: 1.4;
+  --spacing-width-button-sm: 1.875rem;
+  --spacing-section: 2.5rem;
+  --spacing-size-spinner: 3rem;
+  --spacing-height-md: 3.125rem;
+  --spacing-height-lg: 3.75rem;
+  --spacing-2xl: 4rem;
+  --spacing-size-medium: 5rem;
+  --spacing-size-image: 7.5rem;
+  --spacing-height-grade-section: 12.5rem;
+  --spacing-width-input: 13.125rem;
+  --spacing-width-payment-button: 25rem;
+  --spacing-width-base: 30rem;
+  --spacing-width-container-lg: 80rem;
+  --spacing-border-radius-full: 9999px;
+  --spacing-width-full: 100%;
+
+  /* Height */
   --height-image-xs: 18rem;
   --height-image-sm: 19rem;
   --height-image-md: 20rem;
@@ -113,42 +73,29 @@
   --height-image-7xl: 29rem;
   --height-image-8xl: 30rem;
 
-  --height-grade-section: 12.5rem;
-  --font-size-grade-value: 4rem;
-  --letter-spacing-grade-value: 0.375rem;
-  --margin-section: 2.5rem;
-  --width-order-date: 7.5rem;
-  --size-order-image: 5rem;
-  --size-wishlist-image: 7.5rem;
+  /* Colors - Base */
+  --color-black: #000000;
+  --color-white: #ffffff;
 
-  /* Product Detail specific values */
-  --padding-product-detail: 1.5625rem;
-  --padding-info-section: 2rem;
-  --width-nav-button: 1.875rem;
-  --height-nav-button: 2.5rem;
-  --gap-stars: 0.25rem;
-  --padding-coupon-button: 0.5rem 0.5rem 0.5rem 1rem;
-  --padding-coupon-download: 0.125rem 0.5rem 0.125rem 0.25rem;
-  --padding-option-header: 0.625rem 1rem;
-  --letter-spacing-option: 0.1rem;
-  --padding-option-item: 0.9375rem 1rem;
-  --width-cart-button: 1.875rem;
-  --height-cart-button: 1.875rem;
-  --letter-spacing-cart: 0.1rem;
-  --gap-total-price: 0.25rem;
+  /* Colors - Gray */
+  --color-gray-100: #f3f2f2;
+  --color-gray-200: #e8e8e8;
+  --color-gray-300: #cccccc;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #1f2937;
 
-  /* Font sizes */
-  --font-size-product-title: 2.25rem;
-  --font-size-product-md: 1.25rem;
-  --font-size-product-xs: 0.75rem;
+  /* Colors - Blue */
+  --color-blue-500: #0078ff;
+  --color-blue-600: #2563eb;
 
-  /* Letter spacing */
-  --letter-spacing-product-label: 0.1rem;
-  --letter-spacing-product-quantity: 0.125rem;
-  --letter-spacing-product-total-label: 0.03rem;
-  --letter-spacing-product-total-amount: 0.045rem;
-  --letter-spacing-product-button: 0.0525rem;
+  /* Colors - Yellow */
+  --color-yellow-500: #fae407;
 
-  /* Border width */
-  --border-width-product-thin: 0.03125rem;
+  /* Colors - Red */
+  --color-red: #ff5252;
+  --color-red-error-100: #fee2e2;
+  --color-red-error-300: #f87171;
+  --color-red-error-600: #991b1b;
 }

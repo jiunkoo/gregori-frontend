@@ -1,31 +1,31 @@
 .register-agreement {
-  width: var(--width-base);
+  width: var(--spacing-width-base);
   margin: 0 auto;
-  padding: var(--padding-base);
+  padding: var(--spacing-base);
 }
 
 .register-agreement__title {
-  margin: var(--margin-xl) 0;
+  margin: var(--spacing-xl) 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: var(--letter-spacing-base);
+  letter-spacing: var(--spacing-base-small);
 }
 
 .register-agreement__all {
-  margin: var(--margin-base) 0;
+  margin: var(--spacing-base) 0;
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--spacing-border-radius-base);
   cursor: pointer;
 }
 
 .register-agreement__checkbox {
-  width: var(--height-sm);
-  height: var(--height-sm);
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
   padding: 0;
   background: var(--color-white);
-  border: var(--border-width-thin) solid var(--color-black);
+  border: var(--spacing-border-width-thin) solid var(--color-black);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -44,16 +44,16 @@
 }
 
 .register-agreement__items {
-  margin: var(--margin-base) 0;
+  margin: var(--spacing-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-base);
+  gap: var(--spacing-base);
 }
 
 .register-agreement__item {
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--spacing-border-radius-base);
   cursor: pointer;
 }
 
@@ -73,12 +73,12 @@
 }
 
 .register-agreement__submit {
-  margin: var(--margin-2xl) 0 var(--margin-base);
+  margin: var(--spacing-2xl) 0 var(--spacing-base);
 }
 
 .register-agreement__submit-button {
-  width: var(--width-full);
-  height: var(--height-lg);
+  width: var(--spacing-width-full);
+  height: var(--spacing-height-lg);
   background: var(--color-black);
   border: none;
   cursor: pointer;
@@ -96,11 +96,11 @@
 }
 
 .register-agreement__error {
-  margin: var(--margin-base) 0;
-  padding: var(--padding-md);
+  margin: var(--spacing-base) 0;
+  padding: var(--spacing-md);
   background-color: var(--color-red-error-100);
-  border: var(--border-width-base) solid var(--color-red-error-300);
-  border-radius: var(--border-radius-base);
+  border: var(--spacing-base-small) solid var(--color-red-error-300);
+  border-radius: var(--spacing-border-radius-base);
   color: var(--color-red-error-600);
   font-size: var(--font-size-sm);
   text-align: center;

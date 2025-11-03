@@ -1,51 +1,51 @@
 .login {
-  width: 40%;
+  width: var(--width-base);
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--padding-base);
 }
 
 .login__title {
-  margin: 1.5rem 0;
-  font-size: 1.5rem;
+  margin: var(--margin-xl) 0;
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: 0.125rem;
+  letter-spacing: var(--letter-spacing-base);
 }
 
 .login__form {
-  margin: 1rem 0;
+  margin: var(--margin-base) 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--gap-xs);
 }
 
 .login__field {
-  height: 2.5rem;
-  border: 0.03125rem solid var(--color-black);
+  height: var(--height-base);
+  border: var(--border-width-thin) solid var(--color-black);
   display: flex;
   align-items: center;
 }
 
 .login__input {
-  width: 100%;
-  padding: 0 0.9375rem;
-  font-size: 1rem;
+  width: var(--width-full);
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-base);
   background: transparent;
   border: none;
   outline: none;
 }
 
 .login__submit {
-  width: 100%;
-  height: 3.75rem;
-  margin-top: 0.5rem;
+  width: var(--width-full);
+  height: var(--height-lg);
+  margin-top: var(--margin-xs);
   background: var(--color-black);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75rem;
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
 }
@@ -56,7 +56,7 @@
 }
 
 .login__options {
-  margin: 1rem 0;
+  margin: var(--margin-base) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,16 +65,16 @@
 .login__auto-login {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--gap-xs);
   cursor: pointer;
 }
 
 .login__checkbox {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--height-sm);
+  height: var(--height-sm);
   padding: 0;
   background: var(--color-white);
-  border: 0.03125rem solid var(--color-black);
+  border: var(--border-width-thin) solid var(--color-black);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@
 }
 
 .login__auto-login-label {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
@@ -95,13 +95,13 @@
 .login__help {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: var(--gap-sm);
 }
 
 .login__help-link {
   background: transparent;
   border: none;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   cursor: pointer;
@@ -113,21 +113,21 @@
 }
 
 .login__divider {
-  width: 0.0625rem;
-  height: 0.9375rem;
+  width: var(--border-width-base);
+  height: var(--height-xs);
   background: var(--color-black);
 }
 
 .login__social {
-  margin: 1rem 0;
+  margin: var(--margin-base) 0;
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: var(--gap-sm);
 }
 
 .login__social-button {
-  width: 100%;
-  height: 3.125rem;
+  width: var(--width-full);
+  height: var(--height-md);
   border: none;
   cursor: pointer;
   display: flex;
@@ -149,11 +149,11 @@
 }
 
 .login__social-icon {
-  margin: 0 0.5rem;
+  margin: 0 var(--margin-xs);
 }
 
 .login__social-label {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
 }
@@ -163,26 +163,26 @@
 }
 
 .login__signup {
-  width: 100%;
-  height: 3.75rem;
-  margin: 4rem 0 1rem;
-  border: 0.03125rem solid var(--color-gray-medium);
+  width: var(--width-full);
+  height: var(--height-lg);
+  margin: var(--margin-2xl) 0 var(--margin-base);
+  border: var(--border-width-thin) solid var(--color-gray-medium);
   background: transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75rem;
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
 }
 
 .login__error {
-  margin-top: 1.25rem;
-  padding: 0.75rem;
+  margin-top: var(--margin-lg);
+  padding: var(--padding-md);
   text-align: center;
-  color: var(--color-red-error-text, red);
-  background-color: var(--color-red-error-bg, #fee);
-  border: 0.0625rem solid var(--color-red-error-border, #fcc);
-  border-radius: 0.25rem;
+  color: var(--color-red-error-text);
+  background-color: var(--color-red-error-bg);
+  border: var(--border-width-base) solid var(--color-red-error-border);
+  border-radius: var(--border-radius-base);
 }

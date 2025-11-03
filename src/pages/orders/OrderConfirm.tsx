@@ -68,7 +68,7 @@ interface OrderConfirmData {
   };
 }
 
-const OrderConfirm: React.FC = () => {
+const OrderConfirm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const orderConfirmData = location.state as OrderConfirmData;
@@ -97,73 +97,76 @@ const OrderConfirm: React.FC = () => {
 
   return (
     <Layout>
-      <div className="order-confirm-container">
+      <main className="order-confirm">
         {/* 진행 단계 */}
-        <div className="order-confirm-progress">
-          <span className="order-confirm-progress-item inactive">
+        <div className="order-confirm__progress">
+          <span className="order-confirm__progress-item order-confirm__progress-item--inactive">
             {ORDER_CONFIRM_CONSTANTS.PROGRESS.STEP_1}
           </span>
           <Icon
             name="arrowRight"
             size={20}
-            className="order-confirm-progress-divider"
+            className="order-confirm__progress-divider"
           />
-          <span className="order-confirm-progress-item inactive">
+          <span className="order-confirm__progress-item order-confirm__progress-item--inactive">
             {ORDER_CONFIRM_CONSTANTS.PROGRESS.STEP_2}
           </span>
           <Icon
             name="arrowRight"
             size={20}
-            className="order-confirm-progress-divider"
+            className="order-confirm__progress-divider"
           />
-          <span className="order-confirm-progress-item">
+          <span className="order-confirm__progress-item">
             {ORDER_CONFIRM_CONSTANTS.PROGRESS.STEP_3}
           </span>
         </div>
 
         {/* 1. 주문 상품 정보 */}
-        <div className="order-confirm-section">
-          <div className="order-confirm-section-header">
-            <div className="order-confirm-section-title">
+        <div className="order-confirm__section">
+          <div className="order-confirm__section-header">
+            <h2 className="order-confirm__section-title">
               {ORDER_CONFIRM_CONSTANTS.SECTION.PRODUCT_INFO}
-            </div>
+            </h2>
           </div>
 
-          <div className="order-confirm-products">
+          <div className="order-confirm__products">
             {orderConfirmData.orderData.items.map((item) => (
-              <div key={item.product.id} className="order-confirm-product-item">
-                <div className="order-confirm-product-image">
+              <div
+                key={item.product.id}
+                className="order-confirm__product-item"
+              >
+                <div className="order-confirm__product-image">
                   <Icon name="image" size={60} />
                 </div>
-                <div className="order-confirm-product-info">
-                  <div className="order-confirm-product-brand">
+                <div className="order-confirm__product-info">
+                  <div className="order-confirm__product-brand">
                     {item.product.sellerName}
                   </div>
-                  <div className="order-confirm-product-name">
+                  <div className="order-confirm__product-name">
                     {item.product.name}
                   </div>
-                  <div className="order-confirm-product-option">
+                  <div className="order-confirm__product-option">
                     {ORDER_CONFIRM_CONSTANTS.PRODUCT.OPTION}
                   </div>
-                  <div className="order-confirm-product-price">
+                  <div className="order-confirm__product-price">
                     {formatPrice(
                       Math.floor(item.product.price * 0.8 * item.quantity)
                     )}
                     {ORDER_CONFIRM_CONSTANTS.PRODUCT.CURRENCY}
                   </div>
                 </div>
-                <div className="order-confirm-product-quantity">
-                  <span className="order-confirm-product-quantity-number">
+                <div className="order-confirm__product-quantity">
+                  <span className="order-confirm__product-quantity-number">
                     {item.quantity}
                   </span>
-                  <span className="order-confirm-product-quantity-unit">
+                  <span className="order-confirm__product-quantity-unit">
                     {ORDER_CONFIRM_CONSTANTS.PRODUCT.QUANTITY_UNIT}
                   </span>
                 </div>
-                <div className="order-confirm-product-status">
-                  <div className="order-confirm-product-status-text">
+                <div className="order-confirm__product-status">
+                  <span className="order-confirm__product-status-text">
                     {ORDER_CONFIRM_CONSTANTS.PRODUCT.STATUS}
-                  </div>
+                  </span>
                 </div>
               </div>
             ))}
@@ -171,35 +174,35 @@ const OrderConfirm: React.FC = () => {
         </div>
 
         {/* 2. 주문자 정보 */}
-        <div className="order-confirm-section">
-          <div className="order-confirm-section-header">
-            <div className="order-confirm-section-title">
+        <div className="order-confirm__section">
+          <div className="order-confirm__section-header">
+            <h2 className="order-confirm__section-title">
               {ORDER_CONFIRM_CONSTANTS.SECTION.ORDERER_INFO}
-            </div>
+            </h2>
           </div>
 
-          <div className="order-confirm-user-info">
-            <div className="order-confirm-user-item">
-              <div className="order-confirm-user-label">
+          <div className="order-confirm__user-info">
+            <div className="order-confirm__user-item">
+              <div className="order-confirm__user-label">
                 {ORDER_CONFIRM_CONSTANTS.USER.NAME}
               </div>
-              <div className="order-confirm-user-value">
+              <div className="order-confirm__user-value">
                 {orderConfirmData.ordererInfo.name}
               </div>
             </div>
-            <div className="order-confirm-user-item">
-              <div className="order-confirm-user-label">
+            <div className="order-confirm__user-item">
+              <div className="order-confirm__user-label">
                 {ORDER_CONFIRM_CONSTANTS.USER.PHONE}
               </div>
-              <div className="order-confirm-user-value">
+              <div className="order-confirm__user-value">
                 {orderConfirmData.ordererInfo.phone}
               </div>
             </div>
-            <div className="order-confirm-user-item">
-              <div className="order-confirm-user-label">
+            <div className="order-confirm__user-item">
+              <div className="order-confirm__user-label">
                 {ORDER_CONFIRM_CONSTANTS.USER.EMAIL}
               </div>
-              <div className="order-confirm-user-value">
+              <div className="order-confirm__user-value">
                 {orderConfirmData.ordererInfo.email}
               </div>
             </div>
@@ -207,48 +210,48 @@ const OrderConfirm: React.FC = () => {
         </div>
 
         {/* 3. 배송지 정보 */}
-        <div className="order-confirm-section">
-          <div className="order-confirm-section-header">
-            <div className="order-confirm-section-title">
+        <div className="order-confirm__section">
+          <div className="order-confirm__section-header">
+            <h2 className="order-confirm__section-title">
               {ORDER_CONFIRM_CONSTANTS.SECTION.SHIPPING_INFO}
-            </div>
+            </h2>
           </div>
 
-          <div className="order-confirm-shipping-info">
-            <div className="order-confirm-shipping-item">
-              <div className="order-confirm-shipping-label">
+          <div className="order-confirm__shipping-info">
+            <div className="order-confirm__shipping-item">
+              <div className="order-confirm__shipping-label">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.RECIPIENT}
               </div>
-              <div className="order-confirm-shipping-value">
+              <div className="order-confirm__shipping-value">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.RECIPIENT}
               </div>
             </div>
-            <div className="order-confirm-shipping-item">
-              <div className="order-confirm-shipping-label">
+            <div className="order-confirm__shipping-item">
+              <div className="order-confirm__shipping-label">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.PHONE}
               </div>
-              <div className="order-confirm-shipping-value">
+              <div className="order-confirm__shipping-value">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.PHONE}
               </div>
             </div>
-            <div className="order-confirm-shipping-item">
-              <div className="order-confirm-shipping-label">
+            <div className="order-confirm__shipping-item">
+              <div className="order-confirm__shipping-label">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.ADDRESS}
               </div>
-              <div className="order-confirm-shipping-value">
+              <div className="order-confirm__shipping-value">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.ADDRESS}
               </div>
-              <div className="order-confirm-shipping-edit">
-                <div className="order-confirm-shipping-edit-text">
+              <button type="button" className="order-confirm__shipping-edit">
+                <span className="order-confirm__shipping-edit-text">
                   {ORDER_CONFIRM_CONSTANTS.SHIPPING.CHANGE}
-                </div>
-              </div>
+                </span>
+              </button>
             </div>
-            <div className="order-confirm-shipping-item">
-              <div className="order-confirm-shipping-label">
+            <div className="order-confirm__shipping-item">
+              <div className="order-confirm__shipping-label">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.REQUEST}
               </div>
-              <div className="order-confirm-shipping-value">
+              <div className="order-confirm__shipping-value">
                 {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.REQUEST}
               </div>
             </div>
@@ -256,108 +259,111 @@ const OrderConfirm: React.FC = () => {
         </div>
 
         {/* 4. 결제 정보 */}
-        <div className="order-confirm-section">
-          <div className="order-confirm-section-header">
-            <div className="order-confirm-section-title">
+        <div className="order-confirm__section">
+          <div className="order-confirm__section-header">
+            <h2 className="order-confirm__section-title">
               {ORDER_CONFIRM_CONSTANTS.SECTION.PAYMENT_INFO}
-            </div>
+            </h2>
           </div>
 
-          <div className="order-confirm-payment-info">
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+          <div className="order-confirm__payment-info">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.METHOD}
               </div>
-              <div className="order-confirm-payment-value">
+              <div className="order-confirm__payment-value">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.METHOD}
               </div>
             </div>
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.STATUS}
               </div>
-              <div className="order-confirm-payment-value">
+              <div className="order-confirm__payment-value">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.STATUS}
               </div>
             </div>
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.ORDER_TIME}
               </div>
-              <div className="order-confirm-payment-value">
+              <div className="order-confirm__payment-value">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.ORDER_TIME}
               </div>
             </div>
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.COMPLETE_TIME}
               </div>
-              <div className="order-confirm-payment-value">
+              <div className="order-confirm__payment-value">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.COMPLETE_TIME}
               </div>
             </div>
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.SHIPPING_FEE}
               </div>
-              <div className="order-confirm-payment-value">
+              <div className="order-confirm__payment-value">
                 {formatPrice(orderConfirmData.amounts.shippingFee)}
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.CURRENCY}
               </div>
             </div>
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.TOTAL_AMOUNT}
               </div>
-              <div className="order-confirm-payment-value">
+              <div className="order-confirm__payment-value">
                 {formatPrice(orderConfirmData.amounts.finalAmount)}
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.CURRENCY}
               </div>
             </div>
-            <div className="order-confirm-payment-item">
-              <div className="order-confirm-payment-label">
+            <div className="order-confirm__payment-item">
+              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.RECEIPT}
               </div>
-              <div
-                className="order-confirm-payment-receipt-button"
+              <button
+                type="button"
+                className="order-confirm__payment-receipt-button"
                 onClick={handlePrintReceipt}
               >
-                <div className="order-confirm-payment-receipt-button-text">
+                <span className="order-confirm__payment-receipt-button-text">
                   {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.PRINT_RECEIPT}
-                </div>
-              </div>
+                </span>
+              </button>
             </div>
           </div>
 
-          <div className="order-confirm-notice">
-            <div className="order-confirm-notice-text">
+          <div className="order-confirm__notice">
+            <p className="order-confirm__notice-text">
               {ORDER_CONFIRM_CONSTANTS.NOTICE.OUT_OF_STOCK}
               <br />
               {ORDER_CONFIRM_CONSTANTS.NOTICE.DETAIL_IN_MYPAGE}
-            </div>
+            </p>
           </div>
         </div>
 
         {/* 5. 하단 버튼 */}
-        <div className="order-confirm-buttons">
-          <div
-            className="order-confirm-button order-confirm-button-secondary"
+        <div className="order-confirm__buttons">
+          <button
+            type="button"
+            className="order-confirm__button order-confirm__button--secondary"
             onClick={handleContinueShopping}
           >
-            <div className="order-confirm-button-text">
+            <span className="order-confirm__button-text">
               {ORDER_CONFIRM_CONSTANTS.BUTTONS.CONTINUE_SHOPPING}
-            </div>
-          </div>
-          <div
-            className="order-confirm-button order-confirm-button-primary"
+            </span>
+          </button>
+          <button
+            type="button"
+            className="order-confirm__button order-confirm__button--primary"
             onClick={handleOrderInquiry}
           >
-            <div className="order-confirm-button-text">
+            <span className="order-confirm__button-text">
               {ORDER_CONFIRM_CONSTANTS.BUTTONS.ORDER_INQUIRY}
-            </div>
-          </div>
+            </span>
+          </button>
         </div>
-      </div>
+      </main>
     </Layout>
   );
 };

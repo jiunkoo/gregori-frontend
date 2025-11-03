@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Icon from "@components/icons/SvgIcon";
+
 import { orderAPI } from "@api/order";
 import { OrderResponseDto, OrderDetailStatus } from "@models";
-import Layout from "@components/Layout";
+import { Icon, Layout } from "@components";
 import { MYPAGE_CONSTANTS, ORDERLIST_CONSTANTS } from "@constants";
 import "@styles/orderlist.css";
 
@@ -56,131 +56,135 @@ const OrderList = () => {
   if (loading) {
     return (
       <Layout showMyPageSidebar={true}>
-        <div className="orderlist-container">
-          <div className="flex justify-center items-center h-64">
-            <div className="text-lg">{ORDERLIST_CONSTANTS.LOADING.MESSAGE}</div>
+        <main className="orderlist">
+          <div className="orderlist__loading">
+            <div className="orderlist__loading-content">
+              <p className="orderlist__loading-text">
+                {ORDERLIST_CONSTANTS.LOADING.MESSAGE}
+              </p>
+            </div>
           </div>
-        </div>
+        </main>
       </Layout>
     );
   }
 
   return (
     <Layout showMyPageSidebar={true}>
-      <div className="orderlist-container">
-        <div className="orderlist-grade-section">
-          <div className="orderlist-grade-item orderlist-grade-item-standard">
-            <div className="orderlist-grade-header">
-              <div className="orderlist-grade-label">
+      <main className="orderlist">
+        <div className="orderlist__grade-section">
+          <div className="orderlist__grade-item">
+            <div className="orderlist__grade-header">
+              <div className="orderlist__grade-label">
                 {MYPAGE_CONSTANTS.GRADE.LABEL}
               </div>
               <Icon
                 name="arrowRight"
                 size={20}
-                className="orderlist-grade-header-arrow"
+                className="orderlist__grade-header-arrow"
                 color="white"
               />
             </div>
-            <div className="orderlist-grade-footer">
-              <div className="orderlist-grade-value">
+            <div className="orderlist__grade-footer">
+              <div className="orderlist__grade-value">
                 {MYPAGE_CONSTANTS.GRADE.VALUE}
               </div>
-              <div className="orderlist-grade-benefit-button">
+              <button type="button" className="orderlist__grade-benefit-button">
                 {MYPAGE_CONSTANTS.GRADE.BENEFIT_BUTTON}
-              </div>
+              </button>
             </div>
           </div>
-          <div className="orderlist-grade-item orderlist-grade-item-standard">
-            <div className="orderlist-grade-header">
-              <div className="orderlist-grade-label">
+          <div className="orderlist__grade-item">
+            <div className="orderlist__grade-header">
+              <div className="orderlist__grade-label">
                 {MYPAGE_CONSTANTS.GRADE.COUPON_LABEL}
               </div>
               <Icon
                 name="arrowRight"
                 size={20}
-                className="orderlist-grade-header-arrow"
+                className="orderlist__grade-header-arrow"
                 color="white"
               />
             </div>
-            <div className="orderlist-grade-footer">
-              <div className="orderlist-grade-value">4</div>
+            <div className="orderlist__grade-footer">
+              <div className="orderlist__grade-value">4</div>
             </div>
           </div>
-          <div className="orderlist-grade-item orderlist-grade-item-standard">
-            <div className="orderlist-grade-header">
-              <div className="orderlist-grade-label">
+          <div className="orderlist__grade-item">
+            <div className="orderlist__grade-header">
+              <div className="orderlist__grade-label">
                 {MYPAGE_CONSTANTS.GRADE.MILEAGE_LABEL}
               </div>
               <Icon
                 name="arrowRight"
                 size={20}
-                className="orderlist-grade-header-arrow"
+                className="orderlist__grade-header-arrow"
                 color="white"
               />
             </div>
-            <div className="orderlist-grade-footer">
-              <div className="orderlist-grade-value">0</div>
+            <div className="orderlist__grade-footer">
+              <div className="orderlist__grade-value">0</div>
             </div>
           </div>
         </div>
 
-        <div className="orderlist-section">
-          <div className="orderlist-section-header">
-            <div className="orderlist-section-title">
+        <div className="orderlist__section">
+          <div className="orderlist__section-header">
+            <h2 className="orderlist__section-title">
               {ORDERLIST_CONSTANTS.SECTION.TITLE}
-            </div>
+            </h2>
           </div>
 
-          <div className="orderlist-orders">
+          <div className="orderlist__orders">
             {orders.map((order) => (
-              <div key={order.id} className="orderlist-order-item">
-                <div className="orderlist-order-info">
-                  <div className="orderlist-order-date">
+              <div key={order.id} className="orderlist__order-item">
+                <div className="orderlist__order-info">
+                  <div className="orderlist__order-date">
                     {ORDERLIST_CONSTANTS.ORDER.DATE_LABEL}{" "}
-                    <span className="orderlist-order-date-value">
+                    <span className="orderlist__order-date-value">
                       {formatDate(order.createdAt)}
                     </span>{" "}
                     {ORDERLIST_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
-                    <span className="orderlist-order-number">{order.id}</span>
+                    <span className="orderlist__order-number">{order.id}</span>
                   </div>
                 </div>
 
                 <Link
                   to={`/orderdetail/${order.id}`}
-                  className="orderlist-order-detail"
+                  className="orderlist__order-detail"
                 >
                   {order.orderDetails.map((detail) => (
-                    <div key={detail.id} className="orderlist-order-product">
-                      <div className="orderlist-order-image">
+                    <div key={detail.id} className="orderlist__order-product">
+                      <div className="orderlist__order-image">
                         <Icon name="image" size={120} />
                       </div>
-                      <div className="orderlist-order-info">
-                        <div className="orderlist-order-brand">
+                      <div className="orderlist__order-info">
+                        <div className="orderlist__order-brand">
                           {ORDERLIST_CONSTANTS.PRODUCT.BRAND}
                         </div>
-                        <div className="orderlist-order-name">
+                        <div className="orderlist__order-name">
                           {detail.productName}
                         </div>
-                        <div className="orderlist-order-option">
+                        <div className="orderlist__order-option">
                           {ORDERLIST_CONSTANTS.PRODUCT.OPTION}
                         </div>
-                        <div className="orderlist-order-price">
+                        <div className="orderlist__order-price">
                           {formatPrice(detail.price)}원
                         </div>
                       </div>
 
-                      <div className="orderlist-order-quantity">
+                      <div className="orderlist__order-quantity">
                         {detail.quantity}
                         {ORDERLIST_CONSTANTS.PRODUCT.QUANTITY_UNIT}
                       </div>
-                      <div className="orderlist-order-shipping">
+                      <div className="orderlist__order-shipping">
                         {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
                         {ORDERLIST_CONSTANTS.SHIPPING.FEE}
                       </div>
-                      <div className="orderlist-order-status">
+                      <div className="orderlist__order-status">
                         {getStatusText(detail.status)}
                       </div>
-                      <div className="orderlist-order-delivery">
+                      <div className="orderlist__order-delivery">
                         {ORDERLIST_CONSTANTS.SHIPPING.EXPECTED_DATE}
                         <br />
                         {ORDERLIST_CONSTANTS.SHIPPING.STATUS}
@@ -188,11 +192,17 @@ const OrderList = () => {
                     </div>
                   ))}
 
-                  <div className="orderlist-order-actions">
-                    <button className="orderlist-order-action-button">
+                  <div className="orderlist__order-actions">
+                    <button
+                      type="button"
+                      className="orderlist__order-action-button"
+                    >
                       {ORDERLIST_CONSTANTS.BUTTONS.CANCEL}
                     </button>
-                    <button className="orderlist-order-action-button">
+                    <button
+                      type="button"
+                      className="orderlist__order-action-button"
+                    >
                       {ORDERLIST_CONSTANTS.BUTTONS.INQUIRY}
                     </button>
                   </div>
@@ -201,69 +211,75 @@ const OrderList = () => {
             ))}
           </div>
 
-          <div className="orderlist-order-item">
-            <div className="orderlist-order-header">
-              <div className="orderlist-order-date">
+          <div className="orderlist__order-item">
+            <div className="orderlist__order-header">
+              <div className="orderlist__order-date">
                 {ORDERLIST_CONSTANTS.ORDER.DATE_LABEL}{" "}
-                <span className="orderlist-order-date-value">
+                <span className="orderlist__order-date-value">
                   {ORDERLIST_CONSTANTS.ORDER.DUMMY_DATE}
                 </span>{" "}
                 {ORDERLIST_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
-                <span className="orderlist-order-number">
+                <span className="orderlist__order-number">
                   {ORDERLIST_CONSTANTS.ORDER.DUMMY_NUMBER}
                 </span>
               </div>
             </div>
 
-            <Link to="/orderdetail" className="orderlist-order-detail">
-              <div className="orderlist-order-product">
-                <div className="orderlist-order-image">
+            <Link to="/orderdetail" className="orderlist__order-detail">
+              <div className="orderlist__order-product">
+                <div className="orderlist__order-image">
                   <Icon name="image" size={60} />
                 </div>
-                <div className="orderlist-order-info">
-                  <div className="orderlist-order-brand">
+                <div className="orderlist__order-info">
+                  <div className="orderlist__order-brand">
                     {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.BRAND}
                   </div>
-                  <div className="orderlist-order-name">
+                  <div className="orderlist__order-name">
                     {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.NAME}
                   </div>
-                  <div className="orderlist-order-option">
+                  <div className="orderlist__order-option">
                     {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.OPTION}
                   </div>
-                  <div className="orderlist-order-price">
+                  <div className="orderlist__order-price">
                     {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.PRICE}
                   </div>
                 </div>
               </div>
 
-              <div className="orderlist-order-quantity">
+              <div className="orderlist__order-quantity">
                 {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.QUANTITY}
               </div>
-              <div className="orderlist-order-shipping">
+              <div className="orderlist__order-shipping">
                 {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
                 {ORDERLIST_CONSTANTS.SHIPPING.FEE}
               </div>
-              <div className="orderlist-order-status">
+              <div className="orderlist__order-status">
                 {ORDERLIST_CONSTANTS.STATUS.PAYMENT_COMPLETED}
               </div>
-              <div className="orderlist-order-delivery">
+              <div className="orderlist__order-delivery">
                 {ORDERLIST_CONSTANTS.SHIPPING.EXPECTED_DATE}
                 <br />
                 {ORDERLIST_CONSTANTS.SHIPPING.STATUS}
               </div>
 
-              <div className="orderlist-order-actions">
-                <button className="orderlist-order-action-button">
+              <div className="orderlist__order-actions">
+                <button
+                  type="button"
+                  className="orderlist__order-action-button"
+                >
                   {ORDERLIST_CONSTANTS.BUTTONS.CANCEL}
                 </button>
-                <button className="orderlist-order-action-button">
+                <button
+                  type="button"
+                  className="orderlist__order-action-button"
+                >
                   {ORDERLIST_CONSTANTS.BUTTONS.INQUIRY}
                 </button>
               </div>
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     </Layout>
   );
 };

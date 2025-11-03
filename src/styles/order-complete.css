@@ -1,11 +1,11 @@
 .order-complete {
   min-height: 100vh;
-  background: var(--color-gray-background);
+  background: var(--color-gray-100);
 }
 
 .order-complete__loading {
   min-height: 100vh;
-  background: var(--color-gray-background);
+  background: var(--color-gray-100);
   padding: var(--margin-2xl) 0;
 }
 
@@ -26,7 +26,7 @@
   justify-content: center;
   width: var(--size-spinner);
   height: var(--size-spinner);
-  background: var(--color-blue-link);
+  background: var(--color-blue-500);
   border-radius: var(--spacing-base);
   margin-bottom: var(--padding-base);
 }
@@ -67,7 +67,7 @@
 .order-complete__success-icon-wrapper {
   width: var(--size-order-image);
   height: var(--size-order-image);
-  background: var(--color-blue-link);
+  background: var(--color-blue-500);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -272,11 +272,11 @@
 }
 
 .order-complete__summary-total-value {
-  color: var(--color-blue-link);
+  color: var(--color-blue-500);
 }
 
 .order-complete__summary-value--free {
-  color: var(--color-blue-link);
+  color: var(--color-blue-500);
 }
 
 .order-complete__summary-buttons {
@@ -287,7 +287,7 @@
 
 .order-complete__button {
   width: var(--width-full);
-  background: var(--color-blue-link);
+  background: var(--color-blue-500);
   color: var(--color-white);
   padding: var(--spacing-md) var(--spacing-xl);
   border-radius: var(--spacing-md);
@@ -301,12 +301,12 @@
 }
 
 .order-complete__button:hover {
-  background: var(--color-blue-hover);
+  background: var(--color-blue-600);
 }
 
 .order-complete__button--secondary {
   background: var(--color-gray-100);
-  color: var(--color-gray-700);
+  color: var(--color-gray-600);
 }
 
 .order-complete__button--secondary:hover {
@@ -358,7 +358,7 @@
 }
 
 .order-complete__notice-number-text {
-  color: var(--color-blue-link);
+  color: var(--color-blue-500);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-sm);
 }

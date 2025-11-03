@@ -37,7 +37,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: var(--padding-lg);
-  border-right: var(--border-width-base) solid var(--color-gray-inactive);
+  border-right: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .orderlist__grade-header {
@@ -100,7 +100,7 @@
   align-items: center;
   justify-content: space-between;
   border-top: var(--border-width-thick) solid var(--color-black);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .orderlist__section-title {
@@ -112,7 +112,7 @@
 
 .orderlist__section-divider {
   height: var(--border-width-base);
-  background: var(--color-gray-inactive);
+  background: var(--color-gray-200);
   margin: 0;
 }
 
@@ -122,7 +122,7 @@
   letter-spacing: var(--letter-spacing-base);
   padding: var(--padding-lg);
   text-align: center;
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .orderlist__orders {
@@ -133,7 +133,7 @@
 .orderlist__order-item {
   display: flex;
   flex-direction: column;
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .orderlist__order-info {
@@ -145,7 +145,7 @@
 
 .orderlist__order-header {
   padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .orderlist__order-date {
@@ -164,14 +164,14 @@
   align-items: center;
   padding: var(--padding-lg);
   gap: var(--spacing-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s;
 }
 
 .orderlist__order-detail:hover {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray-100);
 }
 
 .orderlist__order-product {
@@ -184,7 +184,7 @@
 .orderlist__order-image {
   width: var(--size-product-image);
   height: var(--size-product-image);
-  background: var(--color-gray-card-bg);
+  background: var(--color-gray-100);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -274,5 +274,5 @@
 }
 
 .orderlist__order-action-button:hover {
-  background: var(--color-gray-light);
+  background: var(--color-gray-100);
 }

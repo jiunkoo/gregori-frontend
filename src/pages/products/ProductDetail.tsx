@@ -41,7 +41,7 @@ const DiscountItem = ({
       <Icon
         name={isChecked ? "checkboxChecked" : "checkbox"}
         size={28}
-        color={isChecked ? "var(--color-black)" : "var(--color-gray-medium)"}
+        color={isChecked ? "var(--color-black)" : "var(--color-gray-400)"}
       />
     </button>
     {hasDownload ? (

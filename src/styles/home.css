@@ -14,7 +14,7 @@
 .home__loading-spinner {
   width: var(--size-spinner);
   height: var(--size-spinner);
-  border: var(--border-width-base) solid var(--color-gray-light);
+  border: var(--border-width-base) solid var(--color-gray-100);
   border-top-color: var(--color-black);
   border-radius: var(--border-radius-base);
   animation: spin 1s linear infinite;
@@ -29,7 +29,7 @@
 .home__loading-text {
   margin-top: var(--margin-base);
   font-size: var(--font-size-base);
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
 }
 
 .home__products {

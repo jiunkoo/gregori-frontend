@@ -14,45 +14,24 @@
 
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-gray-light: #f2f2f2;
-  --color-gray-medium: #747474;
-  --color-blue-facebook: #0078ff;
-  --color-yellow-kakao: #fae407;
-
-  --color-gray-subtle: #4b5563;
-  --color-gray-border: #6b7280;
-  --color-gray-background: #f3f4f6;
-  --color-gray-disabled: #9ca3af;
-  --color-gray-dark: #1f2937;
-  --color-gray-lighter: #d1d5db;
-  --color-gray-inactive: #e8e8e8;
-  --color-blue-link: #0b87f0;
-  --color-blue-hover: #2563eb;
-  --color-red-error-bg: #fee2e2;
-  --color-red-error-border: #f87171;
-  --color-red-error-text: #991b1b;
-
-  --color-gray-dark-alt: #333333;
-  --color-gray-medium-alt: #666666;
-  --color-gray-light-alt: #f3f3f3;
-  --color-gray-card-bg: #f3f2f2;
 
   --color-gray-100: #f3f2f2;
   --color-gray-200: #e8e8e8;
   --color-gray-300: #cccccc;
-  --color-gray-400: #999999;
-  --color-gray-500: #666666;
-  --color-gray-600: #333333;
-  --color-gray-700: #33363f;
-  --color-gray-800: #747474;
-  --color-gray-900: #868686;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #1f2937;
+
+  --color-blue-500: #0078ff;
+  --color-blue-600: #2563eb;
+
+  --color-yellow-500: #fae407;
+
   --color-red: #ff5252;
-  --color-red-dark: #e53935;
-  --color-red-light: #ff6b6b;
-  --color-blue: #007bff;
-  --color-blue-light: #0b87f0;
-  --color-bg-light: #f5f5f5;
-  --color-border: #bababa;
+  --color-red-error-100: #fee2e2;
+  --color-red-error-300: #f87171;
+  --color-red-error-600: #991b1b;
 
   --icon-arrow-down: url("../components/icons/arrow-down.svg");
 

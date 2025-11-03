@@ -20,7 +20,7 @@
 }
 
 .order__progress-item--inactive {
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
   font-weight: var(--font-weight-normal);
 }
 
@@ -33,7 +33,7 @@
   align-items: center;
   padding: var(--padding-lg);
   border-top: var(--border-width-thick) solid var(--color-black);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order__section-title {
@@ -70,7 +70,7 @@
 .order__product-image {
   width: var(--size-product-image);
   height: var(--size-product-image);
-  background: var(--color-gray-card-bg);
+  background: var(--color-gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +113,7 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order__user-item {
@@ -223,7 +223,7 @@
   width: var(--width-full);
   height: var(--height-md);
   border: var(--border-width-base) solid var(--color-black);
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
   padding: 0 var(--padding-lg);
   font-size: var(--font-size-base);
 }
@@ -264,7 +264,7 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order__coupon-item {
@@ -293,7 +293,7 @@
 }
 
 .order__coupon-dropdown:disabled {
-  background: var(--color-gray-inactive);
+  background: var(--color-gray-200);
   cursor: not-allowed;
 }
 
@@ -303,7 +303,7 @@
 }
 
 .order__coupon-dropdown-text--disabled {
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
 }
 
 .order__miles-info {
@@ -330,8 +330,8 @@
 .order__miles-button {
   width: var(--size-product-image);
   height: var(--height-md);
-  background: var(--color-gray-inactive);
-  border: var(--border-width-base) solid var(--color-gray-medium);
+  background: var(--color-gray-200);
+  border: var(--border-width-base) solid var(--color-gray-400);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -342,7 +342,7 @@
 .order__miles-button-text {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
 }
 
 .order__miles-info-text {
@@ -352,7 +352,7 @@
 }
 
 .order__miles-info-text--gray {
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
 }
 
 .order__payment-detail {
@@ -360,7 +360,7 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order__payment-item {
@@ -408,7 +408,7 @@
   text-align: right;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
   padding: var(--padding-lg) var(--padding-lg) 0 var(--padding-lg);
   text-decoration: underline;
 }
@@ -418,7 +418,7 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order__payment-method-row {
@@ -476,8 +476,8 @@
   flex-direction: column;
   padding: var(--padding-lg);
   gap: var(--spacing-lg);
-  background: var(--color-gray-inactive);
-  border: var(--border-width-base) solid var(--color-gray-medium);
+  background: var(--color-gray-200);
+  border: var(--border-width-base) solid var(--color-gray-400);
 }
 
 .order__payment-benefit {
@@ -513,7 +513,7 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--padding-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order__agreement-item {
@@ -555,7 +555,7 @@
 }
 
 .order__agreement-link:hover {
-  color: var(--color-blue-light);
+  color: var(--color-blue-500);
 }
 
 .order__payment-button {

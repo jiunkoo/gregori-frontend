@@ -7,7 +7,7 @@
 .mypage-user-info {
   padding: 1.25rem;
   border-top: 0.3125rem solid var(--color-black);
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  border-bottom: 0.0625rem solid var(--color-gray-200);
 }
 
 .mypage-user-name {
@@ -21,7 +21,7 @@
   flex-direction: column;
   gap: 0.625rem;
   padding: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-inactive);
+  border-bottom: 0.0625rem solid var(--color-gray-200);
 }
 
 .mypage-nav-title {
@@ -37,5 +37,5 @@
 }
 
 .mypage-nav-item:hover {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray-100);
 }

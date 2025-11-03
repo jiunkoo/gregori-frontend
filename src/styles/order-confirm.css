@@ -20,7 +20,7 @@
 }
 
 .order-confirm__progress-item--inactive {
-  color: var(--color-gray-medium);
+  color: var(--color-gray-400);
   font-weight: var(--font-weight-normal);
 }
 
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   border-top: var(--border-width-thick) solid var(--color-black);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order-confirm__section-title {
@@ -66,7 +66,7 @@
 .order-confirm__product-image {
   width: var(--size-product-image);
   height: var(--size-product-image);
-  background: var(--color-gray-card-bg);
+  background: var(--color-gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +139,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order-confirm__user-item {
@@ -166,7 +166,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  border-bottom: var(--border-width-base) solid var(--color-gray-inactive);
+  border-bottom: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order-confirm__shipping-item {
@@ -196,7 +196,7 @@
 }
 
 .order-confirm__shipping-edit:hover {
-  background: var(--color-gray-background);
+  background: var(--color-gray-100);
 }
 
 .order-confirm__shipping-edit-text {
@@ -251,7 +251,7 @@
 
 .order-confirm__notice {
   padding: var(--padding-lg);
-  border-top: var(--border-width-base) solid var(--color-gray-inactive);
+  border-top: var(--border-width-base) solid var(--color-gray-200);
 }
 
 .order-confirm__notice-text {
@@ -281,11 +281,11 @@
 
 .order-confirm__button--secondary {
   background: var(--color-white);
-  border-color: var(--color-gray-medium);
+  border-color: var(--color-gray-400);
 }
 
 .order-confirm__button--secondary:hover {
-  background: var(--color-gray-background);
+  background: var(--color-gray-100);
 }
 
 .order-confirm__button--primary {

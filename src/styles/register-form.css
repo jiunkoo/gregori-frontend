@@ -28,7 +28,7 @@
 .register-form__label {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-gray-subtle);
+  color: var(--color-gray-600);
 }
 
 .register-form__input {
@@ -42,11 +42,11 @@
 }
 
 .register-form__input:focus {
-  box-shadow: 0 0 0 2px var(--color-gray-border);
+  box-shadow: 0 0 0 2px var(--color-gray-500);
 }
 
 .register-form__input:disabled {
-  background-color: var(--color-gray-background);
+  background-color: var(--color-gray-100);
   cursor: not-allowed;
 }
 
@@ -58,7 +58,7 @@
 
 .register-form__email-separator {
   padding: 0 var(--spacing-xs);
-  color: var(--color-gray-border);
+  color: var(--color-gray-500);
   font-size: var(--font-size-base);
 }
 
@@ -102,21 +102,21 @@
 }
 
 .register-form__verify-button:hover:not(:disabled) {
-  background-color: var(--color-gray-dark);
+  background-color: var(--color-gray-700);
 }
 
 .register-form__verify-button:disabled {
-  background-color: var(--color-gray-disabled);
+  background-color: var(--color-gray-400);
   cursor: not-allowed;
 }
 
 .register-form__error {
   margin: var(--margin-base) 0;
   padding: var(--padding-md);
-  background-color: var(--color-red-error-bg);
-  border: var(--border-width-base) solid var(--color-red-error-border);
+  background-color: var(--color-red-error-100);
+  border: var(--border-width-base) solid var(--color-red-error-300);
   border-radius: var(--border-radius-base);
-  color: var(--color-red-error-text);
+  color: var(--color-red-error-600);
   font-size: var(--font-size-sm);
   text-align: center;
 }
@@ -143,7 +143,7 @@
 }
 
 .register-form__submit-button:disabled {
-  background-color: var(--color-gray-disabled);
+  background-color: var(--color-gray-400);
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -153,7 +153,7 @@
 }
 
 .register-form__login-link p {
-  color: var(--color-gray-subtle);
+  color: var(--color-gray-600);
   font-size: var(--font-size-sm);
 }
 
@@ -164,5 +164,5 @@
 }
 
 .register-form__login-link-text:hover {
-  color: var(--color-gray-dark);
+  color: var(--color-gray-700);
 }

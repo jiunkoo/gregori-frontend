@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import { REGISTER_CONSTANTS } from "@constants";
 import { Icon } from "@components";
 import "@styles/register-agreement.css";
@@ -7,7 +8,7 @@ interface RegisterAgreementProps {
   onProceed: () => void;
 }
 
-const RegisterAgreement: React.FC<RegisterAgreementProps> = ({ onProceed }) => {
+const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
   const [agreements, setAgreements] = useState({
     all: false,
     age: false,
@@ -15,6 +16,12 @@ const RegisterAgreement: React.FC<RegisterAgreementProps> = ({ onProceed }) => {
     optional: false,
   });
   const [error, setError] = useState("");
+
+  const getCheckboxClassName = (checked: boolean) => {
+    const classes = ["register-agreement__checkbox"];
+    if (checked) classes.push("register-agreement__checkbox--checked");
+    return classes.join(" ");
+  };
 
   const handleAgreementChange = (type: string) => {
     if (type === "all") {
@@ -47,100 +54,101 @@ const RegisterAgreement: React.FC<RegisterAgreementProps> = ({ onProceed }) => {
   };
 
   return (
-    <div className="register-agreement-container">
-      <div className="register-agreement-title">
-        <h1 className="register-agreement-title-text">
-          {REGISTER_CONSTANTS.AGREEMENT.TITLE_LINE1}
-          <br />
-          {REGISTER_CONSTANTS.AGREEMENT.TITLE_LINE2}
-        </h1>
-      </div>
+    <main className="register-agreement">
+      <h1 className="register-agreement__title">
+        {REGISTER_CONSTANTS.AGREEMENT.TITLE_LINE1}
+        <br />
+        {REGISTER_CONSTANTS.AGREEMENT.TITLE_LINE2}
+      </h1>
 
       <div
-        className="register-agreement-all"
+        className="register-agreement__all"
         onClick={() => handleAgreementChange("all")}
       >
-        <div
-          className={`register-agreement-checkbox ${
-            agreements.all ? "checked" : ""
-          }`}
+        <button
+          type="button"
+          className={getCheckboxClassName(agreements.all)}
+          aria-label="전체 동의"
         >
           {agreements.all && <Icon name="check" size={12} color="white" />}
-        </div>
-        <div className="register-agreement-text">
+        </button>
+        <span className="register-agreement__text">
           {REGISTER_CONSTANTS.AGREEMENT.ALL_AGREEMENT}
-        </div>
+        </span>
       </div>
 
-      <div className="register-agreement-items">
+      <div className="register-agreement__items">
         <div
-          className="register-agreement-item"
+          className="register-agreement__item"
           onClick={() => handleAgreementChange("age")}
         >
-          <div
-            className={`register-agreement-checkbox ${
-              agreements.age ? "checked" : ""
-            }`}
+          <button
+            type="button"
+            className={getCheckboxClassName(agreements.age)}
+            aria-label="만 14세 이상"
           >
             {agreements.age && <Icon name="check" size={12} color="white" />}
-          </div>
-          <div className="register-agreement-text">
+          </button>
+          <span className="register-agreement__text">
             {REGISTER_CONSTANTS.AGREEMENT.AGE_REQUIREMENT}
-          </div>
+          </span>
         </div>
 
         <div
-          className="register-agreement-item"
+          className="register-agreement__item"
           onClick={() => handleAgreementChange("terms")}
         >
-          <div
-            className={`register-agreement-checkbox ${
-              agreements.terms ? "checked" : ""
-            }`}
+          <button
+            type="button"
+            className={getCheckboxClassName(agreements.terms)}
+            aria-label="이용약관 동의"
           >
             {agreements.terms && <Icon name="check" size={12} color="white" />}
-          </div>
-          <div className="register-agreement-text">
+          </button>
+          <span className="register-agreement__text">
             {REGISTER_CONSTANTS.AGREEMENT.TERMS_REQUIREMENT}{" "}
-            <span className="register-agreement-link">
+            <button type="button" className="register-agreement__link">
               {REGISTER_CONSTANTS.AGREEMENT.TERMS_DETAIL}
-            </span>
-          </div>
+            </button>
+          </span>
         </div>
 
         <div
-          className="register-agreement-item"
+          className="register-agreement__item"
           onClick={() => handleAgreementChange("optional")}
         >
-          <div
-            className={`register-agreement-checkbox ${
-              agreements.optional ? "checked" : ""
-            }`}
+          <button
+            type="button"
+            className={getCheckboxClassName(agreements.optional)}
+            aria-label="마케팅 수신 동의"
           >
             {agreements.optional && (
               <Icon name="check" size={12} color="white" />
             )}
-          </div>
-          <div className="register-agreement-text">
+          </button>
+          <span className="register-agreement__text">
             {REGISTER_CONSTANTS.AGREEMENT.MARKETING_OPTIONAL}
-          </div>
+          </span>
         </div>
       </div>
 
-      {error && <div className="register-agreement-error-message">{error}</div>}
+      {error && (
+        <div className="register-agreement__error" role="alert">
+          {error}
+        </div>
+      )}
 
-      <div className="register-agreement-submit-section">
+      <div className="register-agreement__submit">
         <button
-          className="register-agreement-submit-button"
+          type="button"
+          className="register-agreement__submit-button"
           onClick={handleProceedToRegister}
           disabled={!agreements.age || !agreements.terms}
         >
-          <span className="register-agreement-submit-text">
-            {REGISTER_CONSTANTS.AGREEMENT.PROCEED_BUTTON}
-          </span>
+          {REGISTER_CONSTANTS.AGREEMENT.PROCEED_BUTTON}
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 

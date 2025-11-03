@@ -1,102 +1,107 @@
-.register-agreement-container {
-  width: 40%;
-  position: relative;
+.register-agreement {
+  width: var(--width-base);
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--padding-base);
 }
 
-.register-agreement-title {
-  margin: 1.5rem 0;
-}
-
-.register-agreement-title-text {
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-black);
+.register-agreement__title {
+  margin: var(--margin-xl) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
   color: var(--color-black);
+  letter-spacing: var(--letter-spacing-base);
 }
 
-.register-agreement-all {
+.register-agreement__all {
+  margin: var(--margin-base) 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  gap: var(--gap-xs);
+  cursor: pointer;
 }
 
-.register-agreement-checkbox {
-  width: 1.25rem;
-  height: 1.25rem;
+.register-agreement__checkbox {
+  width: var(--height-sm);
+  height: var(--height-sm);
+  padding: 0;
   background: var(--color-white);
-  border: 0.03125rem solid var(--color-black);
+  border: var(--border-width-thin) solid var(--color-black);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.register-agreement-checkbox.checked {
+.register-agreement__checkbox--checked {
   background: var(--color-black);
   border-color: var(--color-black);
 }
 
-.register-agreement-text {
-  font-size: 0.875rem;
+.register-agreement__text {
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
 }
 
-.register-agreement-items {
+.register-agreement__items {
+  margin: var(--margin-base) 0;
+  display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: var(--gap-base);
 }
 
-.register-agreement-item {
+.register-agreement__item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 1rem;
-}
-
-.register-agreement-link {
-  text-decoration: underline;
+  gap: var(--gap-xs);
   cursor: pointer;
 }
 
-.register-agreement-link:hover {
+.register-agreement__link {
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.register-agreement__link:hover {
   color: var(--color-blue-link);
 }
 
-.register-agreement-submit-section {
-  margin: 1rem 0;
+.register-agreement__submit {
+  margin: var(--margin-2xl) 0 var(--margin-base);
 }
 
-.register-agreement-submit-button {
-  width: 100%;
-  height: 3.75rem;
-  margin: 16rem 0;
+.register-agreement__submit-button {
+  width: var(--width-full);
+  height: var(--height-lg);
   background: var(--color-black);
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.register-agreement-submit-button:disabled {
-  background: var(--color-gray-lighter);
-  cursor: not-allowed;
-}
-
-.register-agreement-submit-text {
-  font-size: 1.75rem;
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
 }
 
-.register-agreement-error-message {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
+.register-agreement__submit-button:disabled {
+  background: var(--color-gray-disabled);
+  cursor: not-allowed;
+}
+
+.register-agreement__error {
+  margin: var(--margin-base) 0;
+  padding: var(--padding-md);
   background-color: var(--color-red-error-bg);
-  border: 0.0625rem solid var(--color-red-error-border);
+  border: var(--border-width-base) solid var(--color-red-error-border);
+  border-radius: var(--border-radius-base);
   color: var(--color-red-error-text);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
+  text-align: center;
 }

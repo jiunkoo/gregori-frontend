@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { memberAPI } from "@api";
 import { REGISTER_CONSTANTS } from "@constants";
-import Icon from "@components/icons/SvgIcon";
 import "@styles/register-form.css";
 
-const RegisterForm: React.FC = () => {
+const RegisterForm = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -67,7 +67,7 @@ const RegisterForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
 
@@ -114,34 +114,36 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <div className="register-form-container">
-      <div className="register-form-title">
-        <h1>{REGISTER_CONSTANTS.FORM.TITLE}</h1>
-      </div>
+    <main className="register-form">
+      <h1 className="register-form__title">{REGISTER_CONSTANTS.FORM.TITLE}</h1>
 
-      {error && <div className="register-form-error-message">{error}</div>}
+      {error && (
+        <div className="register-form__error" role="alert">
+          {error}
+        </div>
+      )}
 
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="register-form-group">
-          <label className="register-form-label">
+      <form onSubmit={handleSubmit} className="register-form__form">
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.EMAIL_LABEL}
           </label>
-          <div className="register-form-email-group">
+          <div className="register-form__email-group">
             <input
               type="text"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="register-form-input"
+              className="register-form__input"
               placeholder={REGISTER_CONSTANTS.FORM.EMAIL_PLACEHOLDER}
               required
             />
-            <span className="register-form-email-separator">@</span>
+            <span className="register-form__email-separator">@</span>
             <select
               name="emailDomain"
               value={formData.emailDomain}
               onChange={handleInputChange}
-              className="register-form-select"
+              className="register-form__select"
             >
               <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.GMAIL}>
                 {REGISTER_CONSTANTS.EMAIL_DOMAINS.GMAIL}
@@ -159,8 +161,8 @@ const RegisterForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="register-form-group">
-          <label className="register-form-label">
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.PASSWORD_LABEL}
           </label>
           <input
@@ -168,14 +170,14 @@ const RegisterForm: React.FC = () => {
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            className="register-form-input"
+            className="register-form__input"
             placeholder={REGISTER_CONSTANTS.FORM.PASSWORD_PLACEHOLDER}
             required
           />
         </div>
 
-        <div className="register-form-group">
-          <label className="register-form-label">
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.CONFIRM_PASSWORD_LABEL}
           </label>
           <input
@@ -183,14 +185,14 @@ const RegisterForm: React.FC = () => {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleInputChange}
-            className="register-form-input"
+            className="register-form__input"
             placeholder={REGISTER_CONSTANTS.FORM.CONFIRM_PASSWORD_PLACEHOLDER}
             required
           />
         </div>
 
-        <div className="register-form-group">
-          <label className="register-form-label">
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.NAME_LABEL}
           </label>
           <input
@@ -198,23 +200,23 @@ const RegisterForm: React.FC = () => {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            className="register-form-input"
+            className="register-form__input"
             placeholder={REGISTER_CONSTANTS.FORM.NAME_PLACEHOLDER}
             required
           />
         </div>
 
-        <div className="register-form-group">
-          <label className="register-form-label">
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.PHONE_LABEL}
           </label>
-          <div className="register-form-phone-group">
+          <div className="register-form__phone-group">
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="register-form-input"
+              className="register-form__input"
               placeholder={REGISTER_CONSTANTS.FORM.PHONE_PLACEHOLDER}
               required
             />
@@ -222,7 +224,7 @@ const RegisterForm: React.FC = () => {
               type="button"
               onClick={handleSendVerification}
               disabled={isVerificationSent}
-              className="register-form-verify-button"
+              className="register-form__verify-button"
             >
               {isVerificationSent
                 ? REGISTER_CONSTANTS.VERIFICATION.SENT_BUTTON
@@ -231,16 +233,16 @@ const RegisterForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="register-form-group">
-          <label className="register-form-label">
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.VERIFICATION_LABEL}
           </label>
-          <div className="register-form-phone-group">
+          <div className="register-form__phone-group">
             <input
               type="text"
               value={verificationCode}
               onChange={(e) => setVerificationCode(e.target.value)}
-              className="register-form-input"
+              className="register-form__input"
               placeholder={REGISTER_CONSTANTS.FORM.VERIFICATION_PLACEHOLDER}
               disabled={!isVerificationSent}
             />
@@ -248,7 +250,7 @@ const RegisterForm: React.FC = () => {
               type="button"
               onClick={handleVerifyCode}
               disabled={isVerificationVerified || !isVerificationSent}
-              className="register-form-verify-button"
+              className="register-form__verify-button"
             >
               {isVerificationVerified
                 ? REGISTER_CONSTANTS.VERIFICATION.VERIFIED_BUTTON
@@ -256,31 +258,29 @@ const RegisterForm: React.FC = () => {
             </button>
           </div>
         </div>
-      </form>
 
-      <div className="register-form-submit-section">
-        <button
-          className="register-form-submit-button"
-          onClick={handleSubmit}
-          disabled={isLoading || !isVerificationVerified}
-        >
-          <span className="register-form-submit-text">
+        <div className="register-form__submit">
+          <button
+            type="submit"
+            className="register-form__submit-button"
+            disabled={isLoading || !isVerificationVerified}
+          >
             {isLoading
               ? REGISTER_CONSTANTS.FORM.SUBMIT_LOADING
               : REGISTER_CONSTANTS.FORM.SUBMIT_BUTTON}
-          </span>
-        </button>
-
-        <div className="register-form-login-link">
-          <p>
-            {REGISTER_CONSTANTS.FORM.ALREADY_ACCOUNT}{" "}
-            <Link to="/login" className="register-form-login-link-text">
-              {REGISTER_CONSTANTS.FORM.LOGIN_LINK}
-            </Link>
-          </p>
+          </button>
         </div>
+      </form>
+
+      <div className="register-form__login-link">
+        <p>
+          {REGISTER_CONSTANTS.FORM.ALREADY_ACCOUNT}{" "}
+          <Link to="/login" className="register-form__login-link-text">
+            {REGISTER_CONSTANTS.FORM.LOGIN_LINK}
+          </Link>
+        </p>
       </div>
-    </div>
+    </main>
   );
 };
 

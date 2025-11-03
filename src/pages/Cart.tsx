@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { ProductResponseDto } from "@models";
-import Icon from "@components/icons/SvgIcon";
-import Layout from "@components/Layout";
-import "@styles/cart.css";
+import { Icon, Layout } from "@components";
 import { CART_CONSTANTS } from "@constants";
+import "@styles/cart.css";
 
 interface CartItem {
   product: ProductResponseDto;
@@ -12,7 +12,7 @@ interface CartItem {
   checked?: boolean;
 }
 
-const Cart: React.FC = () => {
+const Cart = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -143,65 +143,71 @@ const Cart: React.FC = () => {
   if (loading) {
     return (
       <Layout>
-        <div className="cart-empty">
-          <div className="cart-empty-icon">
-            <Icon name="loading" size={48} />
+        <main className="cart">
+          <div className="cart__empty">
+            <div className="cart__empty-icon">
+              <Icon name="loading" size={48} />
+            </div>
+            <p>{CART_CONSTANTS.LOADING_TEXT}</p>
           </div>
-          <p>{CART_CONSTANTS.LOADING_TEXT}</p>
-        </div>
+        </main>
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <div className="cart-container">
-        <div className="cart-progress">
-          <span className="cart-progress-item">
+      <main className="cart">
+        <div className="cart__progress">
+          <span className="cart__progress-item">
             {CART_CONSTANTS.PROGRESS.STEP_1}
           </span>
           <Icon
             name="arrowRight"
             size={20}
-            className="cart-progress-divider"
+            className="cart__progress-divider"
             color="black"
           />
-          <span className="cart-progress-item inactive">
+          <span className="cart__progress-item cart__progress-item--inactive">
             {CART_CONSTANTS.PROGRESS.STEP_2}
           </span>
           <Icon
             name="arrowRight"
             size={20}
-            className="cart-progress-divider"
+            className="cart__progress-divider"
             color="black"
           />
-          <span className="cart-progress-item inactive">
+          <span className="cart__progress-item cart__progress-item--inactive">
             {CART_CONSTANTS.PROGRESS.STEP_3}
           </span>
         </div>
 
-        <div className="cart-main">
+        <div className="cart__main">
           {cartItems.length === 0 ? (
-            <div className="cart-empty">
-              <div className="cart-empty-icon">
+            <div className="cart__empty">
+              <div className="cart__empty-icon">
                 <Icon name="cart" size={48} />
               </div>
-              <h2 className="cart-empty-title">{CART_CONSTANTS.EMPTY.TITLE}</h2>
-              <p className="cart-empty-description">
+              <h2 className="cart__empty-title">
+                {CART_CONSTANTS.EMPTY.TITLE}
+              </h2>
+              <p className="cart__empty-description">
                 {CART_CONSTANTS.EMPTY.DESCRIPTION}
               </p>
-              <Link to="/products" className="cart-continue-button">
+              <Link to="/products" className="cart__continue-button">
                 <Icon name="shopping" size={24} />
                 {CART_CONSTANTS.EMPTY.CONTINUE}
               </Link>
             </div>
           ) : (
-            <div className="cart-section">
-              <div className="cart-line"></div>
-              <div className="cart-section-header">
+            <div className="cart__section">
+              <div className="cart__line"></div>
+              <div className="cart__section-header">
                 <button
-                  className="cart-checkbox-button"
+                  type="button"
+                  className="cart__checkbox-button"
                   onClick={toggleAllCheck}
+                  aria-label="전체 선택"
                 >
                   <Icon
                     name={
@@ -216,12 +222,13 @@ const Cart: React.FC = () => {
               </div>
 
               {cartItems.map((item) => (
-                <div key={item.product.id} className="cart-item">
-                  {/* 컬럼 1: 상품 정보 */}
-                  <div className="cart-item-product">
+                <div key={item.product.id} className="cart__item">
+                  <div className="cart__item-product">
                     <button
-                      className="cart-checkbox-button"
+                      type="button"
+                      className="cart__checkbox-button"
                       onClick={() => toggleItemCheck(item.product.id)}
+                      aria-label={`${item.product.name} 선택`}
                     >
                       <Icon
                         name={item.checked ? "checkboxChecked" : "checkbox"}
@@ -229,76 +236,81 @@ const Cart: React.FC = () => {
                       />
                     </button>
 
-                    <div className="cart-item-image">
+                    <div className="cart__item-image">
                       <Icon name="image" size={60} />
                     </div>
 
-                    <div className="cart-item-info">
-                      <div className="cart-item-brand">
+                    <div className="cart__item-info">
+                      <div className="cart__item-brand">
                         {item.product.sellerName}
                       </div>
-                      <div className="cart-item-name">{item.product.name}</div>
-                      <div className="cart-item-price">
+                      <div className="cart__item-name">{item.product.name}</div>
+                      <div className="cart__item-price">
                         {formatPrice(item.product.price)}
                         {CART_CONSTANTS.SUMMARY.CURRENCY}
                       </div>
-                      <div className="cart-item-discount">
+                      <div className="cart__item-discount">
                         {CART_CONSTANTS.ITEM.DISCOUNT_PREFIX}{" "}
                         {formatPrice(Math.floor(item.product.price * 0.8))}원
                       </div>
-                      <div className="cart-item-option">
+                      <div className="cart__item-option">
                         {CART_CONSTANTS.ITEM.OPTION_SAMPLE}
                       </div>
                     </div>
 
                     <button
-                      className="cart-item-remove"
+                      type="button"
+                      className="cart__item-remove"
                       onClick={() => removeItem(item.product.id)}
+                      aria-label={`${item.product.name} 삭제`}
                     >
                       <Icon name="remove" size={36} />
                     </button>
                   </div>
 
-                  {/* 컬럼 2: 수량 조절 */}
-                  <div className="cart-item-controls">
+                  <div className="cart__item-controls">
                     <button
-                      className="cart-quantity-button"
+                      type="button"
+                      className="cart__quantity-button"
                       onClick={() =>
                         updateQuantity(item.product.id, item.quantity - 1)
                       }
+                      aria-label="수량 감소"
                     >
                       <Icon name="minus" size={30} color="#33363F" />
                     </button>
-                    <div className="cart-quantity-display">{item.quantity}</div>
+                    <div className="cart__quantity-display">
+                      {item.quantity}
+                    </div>
                     <button
-                      className="cart-quantity-button"
+                      type="button"
+                      className="cart__quantity-button"
                       onClick={() =>
                         updateQuantity(item.product.id, item.quantity + 1)
                       }
+                      aria-label="수량 증가"
                     >
                       <Icon name="plus" size={30} color="#33363F" />
                     </button>
                   </div>
 
-                  {/* 컬럼 3: 총 가격 */}
-                  <div className="cart-item-price-total">
-                    <div className="cart-price-amount">
+                  <div className="cart__item-price-total">
+                    <div className="cart__price-amount">
                       {formatPrice(
                         Math.floor(item.product.price * 0.8 * item.quantity)
                       )}
                       {CART_CONSTANTS.SUMMARY.CURRENCY}
                     </div>
-                    <button className="cart-item-order-button">
+                    <button type="button" className="cart__item-order-button">
                       {CART_CONSTANTS.ITEM.ORDER_BUTTON}
                     </button>
                   </div>
 
-                  {/* 컬럼 4: 배송 정보 */}
-                  <div className="cart-item-shipping">
-                    <div className="cart-shipping-info">
+                  <div className="cart__item-shipping">
+                    <div className="cart__shipping-info">
                       {CART_CONSTANTS.SHIPPING.FEE_TEXT}
                     </div>
-                    <div className="cart-shipping-detail">
+                    <div className="cart__shipping-detail">
                       {CART_CONSTANTS.SHIPPING.DETAIL_LINE_1}
                       <br />
                       {CART_CONSTANTS.SHIPPING.DETAIL_LINE_2}
@@ -309,84 +321,88 @@ const Cart: React.FC = () => {
                 </div>
               ))}
 
-              <div className="cart-actions">
-                <button className="cart-action-button" onClick={clearCart}>
+              <div className="cart__actions">
+                <button
+                  type="button"
+                  className="cart__action-button"
+                  onClick={clearCart}
+                >
                   {CART_CONSTANTS.ACTIONS.REMOVE_SELECTED}
                 </button>
-                <button className="cart-action-button">
+                <button type="button" className="cart__action-button">
                   {CART_CONSTANTS.ACTIONS.REMOVE_SOLD_OUT}
                 </button>
-                <div className="cart-notice">
+                <div className="cart__notice">
                   {CART_CONSTANTS.ACTIONS.NOTICE}
                 </div>
               </div>
 
-              <div className="cart-line"></div>
-              <div className="cart-summary">
-                <div className="cart-summary-content">
-                  <div className="cart-summary-item">
-                    <span className="cart-summary-label">
+              <div className="cart__line"></div>
+              <div className="cart__summary">
+                <div className="cart__summary-content">
+                  <div className="cart__summary-item">
+                    <span className="cart__summary-label">
                       {CART_CONSTANTS.SUMMARY.TOTAL_ORDER_LABEL}
                     </span>
                     <div>
-                      <span className="cart-summary-amount">
+                      <span className="cart__summary-amount">
                         {formatPrice(getTotalPrice())}
                       </span>
-                      <span className="cart-summary-currency">
+                      <span className="cart__summary-currency">
                         {CART_CONSTANTS.SUMMARY.CURRENCY}
                       </span>
                     </div>
                   </div>
 
-                  <div className="cart-summary-operator">
+                  <div className="cart__summary-operator">
                     <Icon name="plusCircle" size={40} />
                   </div>
 
-                  <div className="cart-summary-item">
-                    <span className="cart-summary-label">
+                  <div className="cart__summary-item">
+                    <span className="cart__summary-label">
                       {CART_CONSTANTS.SUMMARY.SHIPPING_LABEL}
                     </span>
                     <div>
-                      <span className="cart-summary-amount">
+                      <span className="cart__summary-amount">
                         {CART_CONSTANTS.SUMMARY.SHIPPING_FEE_TEXT}
                       </span>
-                      <span className="cart-summary-currency">
+                      <span className="cart__summary-currency">
                         {CART_CONSTANTS.SUMMARY.CURRENCY}
                       </span>
                     </div>
                   </div>
 
-                  <div className="cart-summary-operator">
+                  <div className="cart__summary-operator">
                     <Icon name="minusCircle" size={40} />
                   </div>
 
-                  <div className="cart-summary-item">
-                    <span className="cart-summary-label">
+                  <div className="cart__summary-item">
+                    <span className="cart__summary-label">
                       {CART_CONSTANTS.SUMMARY.DISCOUNT_LABEL}
                     </span>
                     <div>
-                      <span className="cart-summary-amount discount">
+                      <span className="cart__summary-amount cart__summary-amount--discount">
                         {formatPrice(Math.floor(getTotalPrice() * 0.2))}
                       </span>
-                      <span className="cart-summary-currency discount">
+                      <span className="cart__summary-currency cart__summary-currency--discount">
                         {CART_CONSTANTS.SUMMARY.CURRENCY}
                       </span>
                     </div>
                   </div>
 
-                  <div className="cart-summary-operator">
+                  <div className="cart__summary-operator">
                     <Icon name="equalCircle" size={40} />
                   </div>
 
-                  <div className="cart-summary-item">
-                    <span className="cart-summary-label">
+                  <div className="cart__summary-item">
+                    <span className="cart__summary-label">
                       {CART_CONSTANTS.SUMMARY.TOTAL_PAYMENT_LABEL}
                     </span>
                     <div>
-                      <span className="cart-summary-amount">
+                      <span className="cart__summary-amount">
                         {formatPrice(Math.floor(getTotalPrice() * 0.8) + 6000)}
                       </span>
-                      <span className="cart-summary-currency">
+                      <span className="cart__summary-currency">
                         {CART_CONSTANTS.SUMMARY.CURRENCY}
                       </span>
                     </div>
@@ -394,15 +410,17 @@ const Cart: React.FC = () => {
                 </div>
               </div>
 
-              <div className="cart-order-buttons">
+              <div className="cart__order-buttons">
                 <button
-                  className="cart-order-button-secondary"
+                  type="button"
+                  className="cart__order-button cart__order-button--secondary"
                   onClick={() => navigate("/products")}
                 >
                   {CART_CONSTANTS.ORDER_BUTTONS.CONTINUE}
                 </button>
                 <button
-                  className="cart-order-button-primary"
+                  type="button"
+                  className="cart__order-button cart__order-button--primary"
                   onClick={handleCheckout}
                 >
                   {CART_CONSTANTS.ORDER_BUTTONS.CHECKOUT}
@@ -411,7 +429,7 @@ const Cart: React.FC = () => {
             </div>
           )}
         </div>
-      </div>
+      </main>
     </Layout>
   );
 };

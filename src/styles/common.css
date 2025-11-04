@@ -56,6 +56,36 @@
   --spacing-width-container-lg: 80rem;
   --spacing-width-full: 100%;
 
+  /* Token */
+  --token-xs-1: 0.03rem;
+  --token-xs-2: 0.0625rem;
+  --token-xs-3: 0.1rem;
+  --token-xs-4: 0.125rem;
+  --token-xs-5: 0.25rem;
+  --token-xs-6: 0.3125rem;
+  --token-xs-7: 0.375rem;
+  --token-xs-8: 0.5rem;
+  --token-xs-9: 0.625rem;
+  --token-sm-1: 0.75rem;
+  --token-base: 1rem;
+  --token-md-1: 1.25rem;
+  --token-md-2: 1.5rem;
+  --token-md-3: 1.875rem;
+  --token-md-4: 2rem;
+  --token-lg-1: 2.5rem;
+  --token-lg-2: 3rem;
+  --token-lg-3: 3.125rem;
+  --token-lg-4: 3.75rem;
+  --token-lg-5: 4rem;
+  --token-xl-1: 5rem;
+  --token-xl-2: 7.5rem;
+  --token-2xl-1: 12.5rem;
+  --token-2xl-2: 13.125rem;
+  --token-3xl-1: 25rem;
+  --token-3xl-2: 30rem;
+  --token-4xl: 80rem;
+  --token-full: 100%;
+
   /* Height */
   --height-image-xs: 18rem;
   --height-image-sm: 19rem;

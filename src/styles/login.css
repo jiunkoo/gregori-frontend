@@ -1,34 +1,34 @@
 .login {
-  width: var(--spacing-width-base);
+  width: var(--token-3xl-2);
   margin: 0 auto;
-  padding: var(--spacing-base);
+  padding: var(--token-base);
 }
 
 .login__title {
-  margin: var(--spacing-xl) 0;
+  margin: var(--token-md-2) 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: var(--spacing-base-small);
+  letter-spacing: var(--token-xs-2);
 }
 
 .login__form {
-  margin: var(--spacing-base) 0;
+  margin: var(--token-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-border-radius-base);
+  gap: var(--token-xs-5);
 }
 
 .login__field {
-  height: var(--spacing-section);
-  border: var(--spacing-letter-spacing-xs) solid var(--color-black);
+  height: var(--token-lg-1);
+  border: var(--token-xs-1) solid var(--color-black);
   display: flex;
   align-items: center;
 }
 
 .login__input {
-  width: var(--spacing-width-full);
-  padding: 0 var(--spacing-md);
+  width: var(--token-full);
+  padding: 0 var(--token-sm-1);
   font-size: var(--font-size-base);
   background: transparent;
   border: none;
@@ -36,9 +36,9 @@
 }
 
 .login__submit {
-  width: var(--spacing-width-full);
-  height: var(--spacing-height-lg);
-  margin-top: var(--spacing-xs);
+  width: var(--token-full);
+  height: var(--token-lg-4);
+  margin-top: var(--token-xs-8);
   background: var(--color-black);
   border: none;
   cursor: pointer;
@@ -56,7 +56,7 @@
 }
 
 .login__options {
-  margin: var(--spacing-base) 0;
+  margin: var(--token-base) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,16 +65,16 @@
 .login__auto-login {
   display: flex;
   align-items: center;
-  gap: var(--spacing-border-radius-base);
+  gap: var(--token-xs-5);
   cursor: pointer;
 }
 
 .login__checkbox {
-  width: var(--spacing-lg);
-  height: var(--spacing-lg);
+  width: var(--token-md-1);
+  height: var(--token-md-1);
   padding: 0;
   background: var(--color-white);
-  border: var(--spacing-letter-spacing-xs) solid var(--color-black);
+  border: var(--token-xs-1) solid var(--color-black);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@
 .login__help {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--token-xs-9);
 }
 
 .login__help-link {
@@ -113,21 +113,21 @@
 }
 
 .login__divider {
-  width: var(--spacing-base-small);
-  height: var(--spacing-base);
+  width: var(--token-xs-2);
+  height: var(--token-base);
   background: var(--color-black);
 }
 
 .login__social {
-  margin: var(--spacing-base) 0;
+  margin: var(--token-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--token-xs-9);
 }
 
 .login__social-button {
-  width: var(--spacing-width-full);
-  height: var(--spacing-height-md);
+  width: var(--token-full);
+  height: var(--token-lg-3);
   border: none;
   cursor: pointer;
   display: flex;
@@ -149,7 +149,7 @@
 }
 
 .login__social-icon {
-  margin: 0 var(--spacing-xs);
+  margin: 0 var(--token-xs-8);
 }
 
 .login__social-label {
@@ -163,10 +163,10 @@
 }
 
 .login__signup {
-  width: var(--spacing-width-full);
-  height: var(--spacing-height-lg);
-  margin: var(--spacing-2xl) 0 var(--spacing-base);
-  border: var(--spacing-letter-spacing-xs) solid var(--color-gray-400);
+  width: var(--token-full);
+  height: var(--token-lg-4);
+  margin: var(--token-lg-5) 0 var(--token-base);
+  border: var(--token-xs-1) solid var(--color-gray-400);
   background: transparent;
   cursor: pointer;
   display: flex;
@@ -178,11 +178,11 @@
 }
 
 .login__error {
-  margin-top: var(--spacing-lg);
-  padding: var(--spacing-md);
+  margin-top: var(--token-md-1);
+  padding: var(--token-sm-1);
   text-align: center;
   color: var(--color-red-error-600);
   background-color: var(--color-red-error-100);
-  border: var(--spacing-base-small) solid var(--color-red-error-300);
-  border-radius: var(--spacing-border-radius-base);
+  border: var(--token-xs-2) solid var(--color-red-error-300);
+  border-radius: var(--token-xs-5);
 }

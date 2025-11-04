@@ -1,8 +1,8 @@
 .orderlist {
-  width: var(--spacing-width-full);
+  width: var(--token-full);
   position: relative;
   margin: 0 auto;
-  padding: var(--spacing-lg);
+  padding: var(--token-md-1);
 }
 
 .orderlist__loading {
@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: 5fr 2.5fr 2.5fr;
   background: var(--color-black);
-  height: var(--spacing-height-grade-section);
+  height: var(--token-2xl-1);
 }
 
 .orderlist__grade-item {
@@ -36,52 +36,52 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: var(--spacing-lg);
-  border-right: var(--spacing-base-small) solid var(--color-gray-200);
+  padding: var(--token-md-1);
+  border-right: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderlist__grade-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--token-xs-9);
 }
 
 .orderlist__grade-label {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-light);
   color: var(--color-white);
-  letter-spacing: var(--spacing-base-small);
+  letter-spacing: var(--token-xs-2);
 }
 
 .orderlist__grade-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: var(--spacing-width-full);
+  width: var(--token-full);
 }
 
 .orderlist__grade-value {
   font-size: var(--font-size-grade-value);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
-  letter-spacing: var(--spacing-letter-spacing-grade-value);
+  letter-spacing: var(--token-xs-7);
 }
 
 .orderlist__grade-header-arrow {
-  width: var(--spacing-lg);
-  height: var(--spacing-lg);
+  width: var(--token-md-1);
+  height: var(--token-md-1);
 }
 
 .orderlist__grade-benefit-button {
-  border: var(--spacing-base-small) solid var(--color-white);
-  padding: var(--spacing-xs) var(--spacing-base);
+  border: var(--token-xs-2) solid var(--color-white);
+  padding: var(--token-xs-8) var(--token-base);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-white);
   background: transparent;
   cursor: pointer;
   transition: background-color 0.2s;
-  border-radius: var(--spacing-border-radius-base);
+  border-radius: var(--token-xs-5);
 }
 
 .orderlist__grade-benefit-button:hover {
@@ -91,27 +91,27 @@
 .orderlist__section {
   background: var(--color-white);
   overflow: hidden;
-  margin: var(--spacing-section) 0;
+  margin: var(--token-lg-1) 0;
 }
 
 .orderlist__section-header {
-  padding: var(--spacing-lg);
+  padding: var(--token-md-1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: var(--spacing-border-width-thick) solid var(--color-black);
-  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
+  border-top: var(--token-xs-6) solid var(--color-black);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderlist__section-title {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  letter-spacing: var(--spacing-base-small);
+  letter-spacing: var(--token-xs-2);
   margin: 0;
 }
 
 .orderlist__section-divider {
-  height: var(--spacing-base-small);
+  height: var(--token-xs-2);
   background: var(--color-gray-200);
   margin: 0;
 }
@@ -119,10 +119,10 @@
 .orderlist__empty-text {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
-  letter-spacing: var(--spacing-base-small);
-  padding: var(--spacing-lg);
+  letter-spacing: var(--token-xs-2);
+  padding: var(--token-md-1);
   text-align: center;
-  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderlist__orders {
@@ -133,19 +133,19 @@
 .orderlist__order-item {
   display: flex;
   flex-direction: column;
-  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderlist__order-info {
-  padding: var(--spacing-lg) 0;
+  padding: var(--token-md-1) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--token-xs-9);
 }
 
 .orderlist__order-header {
-  padding: var(--spacing-lg);
-  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
+  padding: var(--token-md-1);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderlist__order-date {
@@ -162,9 +162,9 @@
 .orderlist__order-detail {
   display: flex;
   align-items: center;
-  padding: var(--spacing-lg);
-  gap: var(--spacing-lg);
-  border-bottom: var(--spacing-base-small) solid var(--color-gray-200);
+  padding: var(--token-md-1);
+  gap: var(--token-md-1);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s;
@@ -177,13 +177,13 @@
 .orderlist__order-product {
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
+  gap: var(--token-md-1);
   flex: 1;
 }
 
 .orderlist__order-image {
-  width: var(--spacing-size-image);
-  height: var(--spacing-size-image);
+  width: var(--token-xl-2);
+  height: var(--token-xl-2);
   background: var(--color-gray-100);
   display: flex;
   justify-content: center;
@@ -191,10 +191,10 @@
 }
 
 .orderlist__order-info {
-  padding: var(--spacing-lg) 0;
+  padding: var(--token-md-1) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--token-xs-9);
 }
 
 .orderlist__order-brand {
@@ -251,26 +251,26 @@
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
   text-align: center;
-  min-width: var(--spacing-size-image);
+  min-width: var(--token-xl-2);
 }
 
 .orderlist__order-actions {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
-  min-width: var(--spacing-size-image);
+  gap: var(--token-xs-9);
+  min-width: var(--token-xl-2);
 }
 
 .orderlist__order-action-button {
-  width: var(--spacing-size-image);
-  height: var(--spacing-height-md);
-  border: var(--spacing-base-small) solid var(--color-black);
+  width: var(--token-xl-2);
+  height: var(--token-lg-3);
+  border: var(--token-xs-2) solid var(--color-black);
   background: var(--color-white);
   color: var(--color-black);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
-  border-radius: var(--spacing-border-radius-base);
+  border-radius: var(--token-xs-5);
 }
 
 .orderlist__order-action-button:hover {

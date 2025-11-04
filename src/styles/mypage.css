@@ -17,7 +17,7 @@
   align-items: center;
   gap: var(--spacing-lg);
   padding: var(--spacing-lg);
-  border-right: var(--spacing-border-width-thin) solid var(--color-gray-200);
+  border-right: var(--spacing-letter-spacing-xs) solid var(--color-gray-200);
 }
 
 .mypage__grade-item--standard {
@@ -55,7 +55,7 @@
 }
 
 .mypage__grade-benefit-button {
-  border: var(--spacing-border-width-thin) solid var(--color-white);
+  border: var(--spacing-letter-spacing-xs) solid var(--color-white);
   padding: var(--spacing-border-radius-base) var(--spacing-base);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
@@ -76,7 +76,7 @@
   align-items: center;
   justify-content: space-between;
   border-top: var(--spacing-border-width-thick) solid var(--color-black);
-  border-bottom: var(--spacing-border-width-thin) solid var(--color-gray-200);
+  border-bottom: var(--spacing-letter-spacing-xs) solid var(--color-gray-200);
 }
 
 .mypage__section-title {
@@ -104,7 +104,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
-  border-bottom: var(--spacing-border-width-thin) solid var(--color-gray-200);
+  border-bottom: var(--spacing-letter-spacing-xs) solid var(--color-gray-200);
 }
 
 .mypage__order-date {
@@ -155,7 +155,7 @@
     minmax(var(--spacing-size-image), 1fr)
   );
   gap: var(--spacing-lg);
-  border-bottom: var(--spacing-border-width-thin) solid var(--color-gray-200);
+  border-bottom: var(--spacing-letter-spacing-xs) solid var(--color-gray-200);
 }
 
 .mypage__wishlist-item {
@@ -178,5 +178,5 @@
   letter-spacing: var(--spacing-base-small);
   padding: var(--spacing-lg);
   text-align: center;
-  border-bottom: var(--spacing-border-width-thin) solid var(--color-gray-200);
+  border-bottom: var(--spacing-letter-spacing-xs) solid var(--color-gray-200);
 }

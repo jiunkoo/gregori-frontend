@@ -37,7 +37,7 @@
   padding: 0 var(--spacing-md);
   font-size: var(--font-size-base);
   background: transparent;
-  border: var(--spacing-border-width-thin) solid var(--color-black);
+  border: var(--spacing-letter-spacing-xs) solid var(--color-black);
   outline: none;
 }
 
@@ -77,7 +77,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
-  border: var(--spacing-border-width-thin) solid var(--color-black);
+  border: var(--spacing-letter-spacing-xs) solid var(--color-black);
   outline: none;
 }
 

@@ -258,7 +258,6 @@
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-black);
-  line-height: var(--spacing-line-height-base);
 }
 
 .order-confirm__buttons {

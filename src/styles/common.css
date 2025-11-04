@@ -28,7 +28,6 @@
   --icon-arrow-down: url("../components/icons/arrow-down.svg");
 
   /* Spacing */
-  --spacing-border-width-thin: 0.03125rem;
   --spacing-letter-spacing-xs: 0.03rem;
   --spacing-base-small: 0.0625rem;
   --spacing-letter-spacing-sm: 0.1rem;
@@ -42,7 +41,6 @@
   --spacing-base: 1rem;
   --spacing-lg: 1.25rem;
   --spacing-xl: 1.5rem;
-  --spacing-line-height-base: 1.4;
   --spacing-width-button-sm: 1.875rem;
   --spacing-section: 2.5rem;
   --spacing-size-spinner: 3rem;
@@ -56,7 +54,6 @@
   --spacing-width-payment-button: 25rem;
   --spacing-width-base: 30rem;
   --spacing-width-container-lg: 80rem;
-  --spacing-border-radius-full: 9999px;
   --spacing-width-full: 100%;
 
   /* Height */

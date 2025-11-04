@@ -535,7 +535,6 @@
 .order__agreement-text {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  line-height: var(--spacing-line-height-base);
 }
 
 .order__agreement-text--small {

@@ -21,7 +21,7 @@
 
 .login__field {
   height: var(--spacing-section);
-  border: var(--spacing-border-width-thin) solid var(--color-black);
+  border: var(--spacing-letter-spacing-xs) solid var(--color-black);
   display: flex;
   align-items: center;
 }
@@ -74,7 +74,7 @@
   height: var(--spacing-lg);
   padding: 0;
   background: var(--color-white);
-  border: var(--spacing-border-width-thin) solid var(--color-black);
+  border: var(--spacing-letter-spacing-xs) solid var(--color-black);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -166,7 +166,7 @@
   width: var(--spacing-width-full);
   height: var(--spacing-height-lg);
   margin: var(--spacing-2xl) 0 var(--spacing-base);
-  border: var(--spacing-border-width-thin) solid var(--color-gray-400);
+  border: var(--spacing-letter-spacing-xs) solid var(--color-gray-400);
   background: transparent;
   cursor: pointer;
   display: flex;

@@ -16,7 +16,6 @@
   height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-gray-100);
   border-top-color: var(--color-black);
-  border-radius: var(--token-xs-5);
   animation: spin 1s linear infinite;
 }
 
@@ -28,7 +27,7 @@
 
 .home__loading-text {
   margin-top: var(--token-base);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   color: var(--color-gray-400);
 }
 

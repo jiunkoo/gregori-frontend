@@ -1,14 +1,14 @@
 .best-sidebar {
-  width: 20rem;
-  padding: 1.5rem;
+  width: var(--token-2xl-4);
+  padding: var(--token-md-2);
   flex-shrink: 0;
 }
 
 .best-sidebar-title {
-  font-size: 2rem;
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-4);
+  font-weight: var(--font-weight-2xl);
   margin: 0;
-  padding: 1.25rem;
+  padding: var(--token-md-1);
   color: var(--color-black);
   border-top: 5px solid var(--color-black);
   border-bottom: 1px solid var(--color-gray-200);
@@ -28,16 +28,16 @@
 .category-item,
 .category-item-active {
   text-align: left;
-  font-size: 1.5rem;
+  font-size: var(--token-md-2);
   color: var(--color-black);
   cursor: pointer;
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-md);
 }
 
 .category-item-active {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-2xl);
 }
 
 .category-item:hover {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-2xl);
 }

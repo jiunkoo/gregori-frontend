@@ -2,6 +2,7 @@ import { type FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { memberAPI } from "@api";
+import { Icon } from "@components";
 import { REGISTER_CONSTANTS } from "@constants";
 import "@styles/register-form.css";
 
@@ -139,25 +140,30 @@ const RegisterForm = () => {
               required
             />
             <span className="register-form__email-separator">@</span>
-            <select
-              name="emailDomain"
-              value={formData.emailDomain}
-              onChange={handleInputChange}
-              className="register-form__select"
-            >
-              <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.GMAIL}>
-                {REGISTER_CONSTANTS.EMAIL_DOMAINS.GMAIL}
-              </option>
-              <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.NAVER}>
-                {REGISTER_CONSTANTS.EMAIL_DOMAINS.NAVER}
-              </option>
-              <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.DAUM}>
-                {REGISTER_CONSTANTS.EMAIL_DOMAINS.DAUM}
-              </option>
-              <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.YAHOO}>
-                {REGISTER_CONSTANTS.EMAIL_DOMAINS.YAHOO}
-              </option>
-            </select>
+            <div className="register-form__select-wrapper">
+              <select
+                name="emailDomain"
+                value={formData.emailDomain}
+                onChange={handleInputChange}
+                className="register-form__select"
+              >
+                <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.GMAIL}>
+                  {REGISTER_CONSTANTS.EMAIL_DOMAINS.GMAIL}
+                </option>
+                <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.NAVER}>
+                  {REGISTER_CONSTANTS.EMAIL_DOMAINS.NAVER}
+                </option>
+                <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.DAUM}>
+                  {REGISTER_CONSTANTS.EMAIL_DOMAINS.DAUM}
+                </option>
+                <option value={REGISTER_CONSTANTS.EMAIL_DOMAINS.YAHOO}>
+                  {REGISTER_CONSTANTS.EMAIL_DOMAINS.YAHOO}
+                </option>
+              </select>
+              <div className="register-form__select-icon">
+                <Icon name="arrowDown" size={16} />
+              </div>
+            </div>
           </div>
         </div>
 

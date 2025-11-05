@@ -1,39 +1,39 @@
 .mypage-sidebar {
-  width: 20rem;
-  padding: 1.5rem;
+  width: var(--token-2xl-4);
+  padding: var(--token-md-2);
   flex-shrink: 0;
 }
 
 .mypage-user-info {
-  padding: 1.25rem;
-  border-top: 0.3125rem solid var(--color-black);
-  border-bottom: 0.0625rem solid var(--color-gray-200);
+  padding: var(--token-md-1);
+  border-top: var(--token-xs-6) solid var(--color-black);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .mypage-user-name {
-  font-size: 2rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.0625rem;
+  font-size: var(--token-md-4);
+  font-weight: var(--font-weight-2xl);
+  letter-spacing: var(--token-xs-2);
 }
 
 .mypage-nav-section {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  padding: 1.25rem;
-  border-bottom: 0.0625rem solid var(--color-gray-200);
+  gap: var(--token-xs-8);
+  padding: var(--token-md-1);
+  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .mypage-nav-title {
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.0625rem;
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
+  letter-spacing: var(--token-xs-2);
 }
 
 .mypage-nav-item {
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-normal);
-  letter-spacing: 0.0625rem;
+  font-size: var(--token-md-1);
+  font-weight: var(--font-weight-md);
+  letter-spacing: var(--token-xs-2);
 }
 
 .mypage-nav-item:hover {

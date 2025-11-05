@@ -11,8 +11,8 @@
   justify-content: center;
   gap: var(--token-md-1);
   margin: var(--token-md-1) 0;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
 }
 
 .order__progress-item {
@@ -21,7 +21,7 @@
 
 .order__progress-item--inactive {
   color: var(--color-gray-400);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-md);
 }
 
 .order__section {
@@ -37,21 +37,21 @@
 }
 
 .order__section-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   letter-spacing: var(--token-xs-2);
   padding-right: var(--token-base);
   margin: 0;
 }
 
 .order__question-icon {
-  margin-left: var(--token-xs-9);
+  margin-left: var(--token-sm-1);
 }
 
 .order__section-required-text {
   margin-left: auto;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -84,27 +84,27 @@
 }
 
 .order__product-brand {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   text-decoration: underline;
 }
 
 .order__product-name {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
 }
 
 .order__product-option {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
 .order__product-price {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-red);
 }
 
@@ -123,15 +123,15 @@
 }
 
 .order__user-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   min-width: var(--token-xl-2);
 }
 
 .order__user-value {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  min-width: var(--token-2xl-2);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
+  min-width: var(--token-2xl-1);
 }
 
 .order__user-edit {
@@ -147,8 +147,8 @@
 }
 
 .order__user-edit-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -166,8 +166,8 @@
 }
 
 .order__shipping-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -194,8 +194,8 @@
 }
 
 .order__shipping-button-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -214,25 +214,25 @@
 }
 
 .order__shipping-label-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   min-width: var(--token-xl-2);
 }
 
 .order__shipping-input {
   width: var(--token-full);
-  height: var(--token-lg-3);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   color: var(--color-gray-400);
   padding: 0 var(--token-md-1);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .order__shipping-checkbox-group {
   display: flex;
   align-items: center;
-  gap: var(--token-xs-9);
-  margin-top: var(--token-xs-9);
+  gap: var(--token-sm-1);
+  margin-top: var(--token-sm-1);
 }
 
 .order__shipping-checkbox-button {
@@ -246,17 +246,17 @@
 }
 
 .order__shipping-checkbox-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
 .order__shipping-select {
   width: var(--token-full);
-  height: var(--token-lg-3);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   padding: 0 var(--token-base);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .order__coupon-section {
@@ -274,17 +274,17 @@
 }
 
 .order__coupon-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   min-width: var(--token-xl-2);
 }
 
 .order__coupon-dropdown {
   width: var(--token-full);
-  height: var(--token-lg-3);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   padding: 0 var(--token-md-1);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -298,8 +298,8 @@
 }
 
 .order__coupon-dropdown-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__coupon-dropdown-text--disabled {
@@ -313,23 +313,23 @@
 }
 
 .order__miles-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   min-width: var(--token-xl-2);
 }
 
 .order__miles-input {
-  width: var(--token-2xl-2);
-  height: var(--token-lg-3);
+  width: var(--token-2xl-1);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   padding: 0 var(--token-base);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .order__miles-button {
   width: var(--token-xl-2);
-  height: var(--token-lg-3);
+  height: var(--token-lg-2);
   background: var(--color-gray-200);
   border: var(--token-xs-2) solid var(--color-gray-400);
   display: flex;
@@ -340,14 +340,14 @@
 }
 
 .order__miles-button-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-gray-400);
 }
 
 .order__miles-info-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -370,12 +370,12 @@
 }
 
 .order__payment-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__payment-label--total {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-2xl);
 }
 
 .order__payment-amount {
@@ -385,19 +385,19 @@
 }
 
 .order__payment-amount-text {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-md);
 }
 
 .order__payment-amount-text--large {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-black);
+  font-size: var(--token-md-4);
+  font-weight: var(--font-weight-4xl);
   color: var(--color-red);
 }
 
 .order__payment-amount-currency {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__payment-amount-currency--large {
@@ -406,8 +406,8 @@
 
 .order__payment-notice {
   text-align: right;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-gray-400);
   padding: var(--token-md-1) var(--token-md-1) 0 var(--token-md-1);
   text-decoration: underline;
@@ -428,8 +428,8 @@
 }
 
 .order__payment-method-button {
-  width: var(--token-2xl-2);
-  height: var(--token-lg-3);
+  width: var(--token-2xl-1);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   display: flex;
   align-items: center;
@@ -445,8 +445,8 @@
 }
 
 .order__payment-method-button-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__payment-method-button--selected .order__payment-method-button-text {
@@ -455,10 +455,10 @@
 
 .order__payment-method-dropdown {
   width: var(--token-full);
-  height: var(--token-lg-3);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   padding: 0 var(--token-base);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -467,8 +467,8 @@
 }
 
 .order__payment-method-dropdown-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__payment-benefits {
@@ -499,13 +499,13 @@
 }
 
 .order__payment-benefit-button-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__payment-benefit-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__agreement {
@@ -533,13 +533,13 @@
 }
 
 .order__agreement-text {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
 }
 
 .order__agreement-text--small {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .order__agreement-link {
@@ -559,7 +559,7 @@
 
 .order__payment-button {
   width: var(--token-3xl-1);
-  height: var(--token-xl-1);
+  height: var(--token-lg-4);
   background: var(--color-black);
   border: none;
   display: flex;
@@ -568,7 +568,7 @@
   margin: var(--token-lg-1) auto;
   cursor: pointer;
   color: var(--color-white);
-  font-size: var(--font-size-payment-button);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-4);
+  font-weight: var(--font-weight-2xl);
   letter-spacing: var(--token-xs-2);
 }

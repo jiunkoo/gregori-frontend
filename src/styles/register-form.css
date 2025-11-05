@@ -6,8 +6,8 @@
 
 .register-form__title {
   margin: var(--token-md-2) 0;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
   letter-spacing: var(--token-xs-2);
 }
@@ -26,8 +26,8 @@
 }
 
 .register-form__label {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--token-sm-1);
+  font-weight: var(--font-weight-lg);
   color: var(--color-gray-600);
 }
 
@@ -35,7 +35,7 @@
   width: var(--token-full);
   height: var(--token-lg-1);
   padding: 0 var(--token-sm-1);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   background: transparent;
   border: var(--token-xs-1) solid var(--color-black);
   outline: none;
@@ -59,31 +59,43 @@
 .register-form__email-separator {
   padding: 0 var(--token-xs-8);
   color: var(--color-gray-500);
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
+}
+
+.register-form__select-wrapper {
+  position: relative;
 }
 
 .register-form__select {
-  width: 15rem;
-  height: var(--token-lg-1);
-  padding: 0 var(--token-sm-1);
-  padding-right: var(--token-lg-5);
-  background-color: var(--color-white);
-  background-image: var(--icon-arrow-down);
-  background-repeat: no-repeat;
-  background-position: right var(--token-sm-1) center;
-  background-size: 1rem 1rem;
-  font-size: var(--font-size-sm);
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  border: var(--token-xs-1) solid var(--color-black);
+  background-color: var(--color-white);
+  border: var(--token-xs-1) solid var(--color-gray-400);
+  padding: var(--token-sm-1) var(--token-base);
+  color: var(--color-black);
+  transition: background-color 0.2s;
+  width: var(--token-xl-3);
+  height: var(--token-lg-1);
   outline: none;
+}
+
+.register-form__select:hover {
+  background-color: var(--color-gray-100);
+}
+
+.register-form__select-icon {
+  position: absolute;
+  right: var(--token-xs-8);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  color: var(--color-gray-400);
 }
 
 .register-form__phone-group {
   display: flex;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
   align-items: center;
 }
 
@@ -92,8 +104,8 @@
   padding: 0 var(--token-base);
   background-color: var(--color-black);
   color: var(--color-white);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-sm-1);
+  font-weight: var(--font-weight-2xl);
   border: none;
   cursor: pointer;
   white-space: nowrap;
@@ -115,9 +127,8 @@
   padding: var(--token-sm-1);
   background-color: var(--color-red-error-100);
   border: var(--token-xs-2) solid var(--color-red-error-300);
-  border-radius: var(--token-xs-5);
   color: var(--color-red-error-600);
-  font-size: var(--font-size-sm);
+  font-size: var(--token-sm-1);
   text-align: center;
 }
 
@@ -137,8 +148,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-white);
 }
 
@@ -154,12 +165,12 @@
 
 .register-form__login-link p {
   color: var(--color-gray-600);
-  font-size: var(--font-size-sm);
+  font-size: var(--token-sm-1);
 }
 
 .register-form__login-link-text {
   color: var(--color-black);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-2xl);
   text-decoration: none;
 }
 

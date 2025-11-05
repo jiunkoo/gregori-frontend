@@ -10,8 +10,8 @@
   justify-content: center;
   gap: var(--token-md-1);
   margin: var(--token-md-1) 0;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
 }
 
 .cart__progress-item {
@@ -20,7 +20,7 @@
 
 .cart__progress-item--inactive {
   color: var(--color-gray-400);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-md);
 }
 
 .cart__progress-divider {
@@ -41,8 +41,8 @@
   display: flex;
   align-items: center;
   gap: var(--token-base);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   border-bottom: var(--token-xs-1) solid var(--color-gray-200);
   padding: var(--token-md-1);
 }
@@ -74,8 +74,8 @@
 }
 
 .cart__item-image {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: var(--token-xl-2);
+  height: var(--token-xl-2);
   background-color: var(--color-gray-100);
   display: flex;
   align-items: center;
@@ -86,29 +86,29 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
 }
 
 .cart__item-brand {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .cart__item-name {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
 }
 
 .cart__item-price {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .cart__item-discount {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   color: var(--color-red);
 }
 
 .cart__item-option {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .cart__item-remove {
@@ -125,12 +125,11 @@
   justify-content: center;
   border-right: var(--token-xs-1) solid var(--color-gray-200);
   padding: var(--token-md-1);
-  gap: var(--token-xs-9);
 }
 
 .cart__quantity-button {
-  width: 1.875rem;
-  height: 1.875rem;
+  width: var(--token-md-4);
+  height: var(--token-md-4);
   border: var(--token-xs-1) solid var(--color-gray-400);
   background: transparent;
   cursor: pointer;
@@ -141,14 +140,14 @@
 }
 
 .cart__quantity-display {
-  width: 3.75rem;
-  height: 1.875rem;
+  width: var(--token-lg-4);
+  height: var(--token-md-4);
   border: var(--token-xs-1) solid var(--color-gray-400);
   background-color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
 }
 
 .cart__item-price-total {
@@ -156,24 +155,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
   padding: var(--token-md-1);
   border-right: var(--token-xs-1) solid var(--color-gray-200);
 }
 
 .cart__price-amount {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
 }
 
 .cart__item-order-button {
-  width: 7.5rem;
+  width: var(--token-xl-2);
   height: var(--token-lg-1);
   background-color: var(--color-black);
   color: var(--color-white);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   border: none;
   cursor: pointer;
 }
@@ -189,13 +188,13 @@
 }
 
 .cart__shipping-info {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   text-align: center;
 }
 
 .cart__shipping-detail {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   color: var(--color-black);
   line-height: 1.5;
   margin-bottom: var(--token-base);
@@ -211,17 +210,17 @@
 }
 
 .cart__action-button {
-  width: 10rem;
+  width: var(--token-xl-3);
   height: var(--token-lg-1);
   border: var(--token-xs-1) solid var(--color-black);
   background: transparent;
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   cursor: pointer;
 }
 
 .cart__notice {
   margin-left: auto;
-  font-size: var(--font-size-sm);
+  font-size: var(--token-sm-1);
 }
 
 .cart__summary {
@@ -245,14 +244,14 @@
 }
 
 .cart__summary-label {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   color: var(--color-black);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-lg);
 }
 
 .cart__summary-amount {
-  font-size: 2.25rem;
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-5);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
 }
 
@@ -261,8 +260,8 @@
 }
 
 .cart__summary-currency {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-lg);
   color: var(--color-black);
 }
 
@@ -271,8 +270,8 @@
 }
 
 .cart__summary-operator {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
   display: flex;
   align-items: center;
@@ -287,10 +286,10 @@
 }
 
 .cart__order-button {
-  width: 17.5rem;
+  width: var(--token-2xl-3);
   height: var(--token-lg-4);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
   border: none;
   cursor: pointer;
 }
@@ -320,14 +319,14 @@
 }
 
 .cart__empty-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
   margin: var(--token-base) 0;
 }
 
 .cart__empty-description {
-  font-size: var(--font-size-base);
+  font-size: var(--token-base);
   color: var(--color-gray-400);
   margin-bottom: var(--token-md-1);
 }
@@ -339,8 +338,8 @@
   padding: var(--token-sm-1) var(--token-md-1);
   background-color: var(--color-black);
   color: var(--color-white);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   text-decoration: none;
   border: none;
   cursor: pointer;

@@ -30,12 +30,12 @@
 .mypage__grade-header {
   display: flex;
   align-items: center;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
 }
 
 .mypage__grade-label {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-light);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-sm);
   color: var(--color-white);
   letter-spacing: var(--token-xs-2);
 }
@@ -48,8 +48,8 @@
 }
 
 .mypage__grade-value {
-  font-size: var(--font-size-grade-value);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-lg-5);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-white);
   letter-spacing: var(--token-xs-7);
 }
@@ -57,8 +57,8 @@
 .mypage__grade-benefit-button {
   border: var(--token-xs-1) solid var(--color-white);
   padding: var(--token-xs-5) var(--token-base);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-white);
   background: transparent;
   cursor: pointer;
@@ -80,8 +80,8 @@
 }
 
 .mypage__section-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   letter-spacing: var(--token-xs-2);
 }
 
@@ -94,8 +94,8 @@
 }
 
 .mypage__section-more-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -108,8 +108,8 @@
 }
 
 .mypage__order-date {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   min-width: var(--token-xl-2);
 }
 
@@ -120,13 +120,13 @@
 }
 
 .mypage__order-product {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
 }
 
 .mypage__order-price {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   margin-left: auto;
 }
 
@@ -141,8 +141,8 @@
 
 .mypage__wishlist-tab-item {
   padding: var(--token-md-1);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
   letter-spacing: var(--token-xs-2);
 }
@@ -150,10 +150,7 @@
 .mypage__wishlist-grid {
   padding: var(--token-md-1);
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(var(--token-xl-2), 1fr)
-  );
+  grid-template-columns: repeat(auto-fill, minmax(var(--token-xl-2), 1fr));
   gap: var(--token-md-1);
   border-bottom: var(--token-xs-1) solid var(--color-gray-200);
 }
@@ -173,8 +170,8 @@
 }
 
 .mypage__wishlist-item-empty-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   letter-spacing: var(--token-xs-2);
   padding: var(--token-md-1);
   text-align: center;

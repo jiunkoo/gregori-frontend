@@ -6,8 +6,8 @@
 
 .register-agreement__title {
   margin: var(--token-md-2) 0;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
   letter-spacing: var(--token-xs-2);
 }
@@ -16,14 +16,13 @@
   margin: var(--token-base) 0;
   display: flex;
   align-items: center;
-  gap: var(--token-xs-5);
+  gap: var(--token-base);
   cursor: pointer;
 }
 
 .register-agreement__checkbox {
   width: var(--token-md-1);
   height: var(--token-md-1);
-  padding: 0;
   background: var(--color-white);
   border: var(--token-xs-1) solid var(--color-black);
   cursor: pointer;
@@ -38,8 +37,8 @@
 }
 
 .register-agreement__text {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-sm-1);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -53,7 +52,7 @@
 .register-agreement__item {
   display: flex;
   align-items: center;
-  gap: var(--token-xs-5);
+  gap: var(--token-base);
   cursor: pointer;
 }
 
@@ -85,8 +84,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-3);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-white);
 }
 
@@ -100,8 +99,7 @@
   padding: var(--token-sm-1);
   background-color: var(--color-red-error-100);
   border: var(--token-xs-2) solid var(--color-red-error-300);
-  border-radius: var(--token-xs-5);
   color: var(--color-red-error-600);
-  font-size: var(--font-size-sm);
+  font-size: var(--token-sm-1);
   text-align: center;
 }

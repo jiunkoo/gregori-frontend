@@ -25,12 +25,12 @@
 .orderdetail__grade-header {
   display: flex;
   align-items: center;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
 }
 
 .orderdetail__grade-label {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-light);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-sm);
   color: var(--color-white);
   letter-spacing: var(--token-xs-7);
 }
@@ -43,8 +43,8 @@
 }
 
 .orderdetail__grade-value {
-  font-size: var(--font-size-grade-value);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-lg-5);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-white);
   letter-spacing: var(--token-xs-7);
 }
@@ -59,8 +59,8 @@
   border: var(--token-xs-2) solid var(--color-white);
   padding: var(--token-xs-8) var(--token-base);
   color: var(--color-white);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -85,8 +85,8 @@
 }
 
 .orderdetail__section-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   letter-spacing: var(--token-xs-2);
   margin: 0;
 }
@@ -100,7 +100,6 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--token-md-1);
-  gap: var(--token-xs-9);
   border-bottom: var(--token-xs-2) solid var(--color-gray-200);
 }
 
@@ -108,7 +107,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
   flex: 1;
 }
 
@@ -121,8 +120,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-4);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
   letter-spacing: var(--token-xs-2);
 }
@@ -133,8 +132,8 @@
 }
 
 .orderdetail__progress-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   letter-spacing: var(--token-xs-2);
   text-align: center;
@@ -150,14 +149,14 @@
 }
 
 .orderdetail__order-date {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
 .orderdetail__order-date-value,
 .orderdetail__order-number {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-2xl);
 }
 
 .orderdetail__order-detail {
@@ -188,61 +187,61 @@
   padding: var(--token-md-1) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
 }
 
 .orderdetail__order-brand {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   text-decoration: underline;
 }
 
 .orderdetail__order-name {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-md-2);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
 }
 
 .orderdetail__order-option {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
 .orderdetail__order-price {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-2xl);
   color: var(--color-black);
 }
 
 .orderdetail__order-quantity {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   text-align: center;
-  min-width: 3.75rem;
+  min-width: var(--token-lg-4);
 }
 
 .orderdetail__order-shipping {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   text-align: center;
-  min-width: 6.25rem;
+  min-width: var(--token-xl-1);
 }
 
 .orderdetail__order-status {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   text-align: center;
-  min-width: 6.25rem;
+  min-width: var(--token-xl-1);
 }
 
 .orderdetail__order-delivery {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   text-align: center;
   min-width: var(--token-xl-2);
@@ -251,18 +250,18 @@
 .orderdetail__order-actions {
   display: flex;
   flex-direction: column;
-  gap: var(--token-xs-9);
+  gap: var(--token-sm-1);
   min-width: var(--token-xl-2);
 }
 
 .orderdetail__order-action-button {
   width: var(--token-xl-2);
-  height: var(--token-lg-3);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   background: var(--color-white);
   color: var(--color-black);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   cursor: pointer;
 }
 
@@ -285,15 +284,15 @@
 }
 
 .orderdetail__customer-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   min-width: var(--token-xl-2);
 }
 
 .orderdetail__customer-value {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -312,27 +311,27 @@
 }
 
 .orderdetail__shipping-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   min-width: var(--token-xl-2);
 }
 
 .orderdetail__shipping-value {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   flex: 1;
 }
 
 .orderdetail__shipping-change-button {
-  width: 12.5rem;
-  height: var(--token-lg-3);
+  width: var(--token-2xl-1);
+  height: var(--token-lg-2);
   border: var(--token-xs-2) solid var(--color-black);
   background: var(--color-white);
   color: var(--color-black);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -356,15 +355,15 @@
 }
 
 .orderdetail__payment-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
   min-width: var(--token-xl-2);
 }
 
 .orderdetail__payment-value {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -373,19 +372,19 @@
 }
 
 .orderdetail__notice-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
 .orderdetail__receipt-button {
-  width: 8.75rem;
-  height: var(--token-lg-3);
+  width: var(--token-xl-2);
+  height: var(--token-lg-2);
   background: var(--color-black);
   border: var(--token-xs-2) solid var(--color-black);
   color: var(--color-white);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-size: var(--token-base);
+  font-weight: var(--font-weight-md);
   cursor: pointer;
   transition: background-color 0.2s;
 }

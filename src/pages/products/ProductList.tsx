@@ -188,7 +188,7 @@ const ProductList = () => {
                   <option value={Sorter.NAME_ASC}>이름순</option>
                 </select>
                 <div className="product-list__sort-icon">
-                  <Icon name="dropdownArrow" size={16} />
+                  <Icon name="arrowDown" size={16} />
                 </div>
               </div>
             </div>

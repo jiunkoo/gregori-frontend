@@ -774,7 +774,7 @@ const Order = () => {
                   {ORDER_CONSTANTS.PAYMENT.BENEFITS.TOSS}
                 </span>
                 <Icon
-                  name="arrowRightSmall"
+                  name="arrowRight"
                   size={10}
                   className="order__payment-benefit-arrow"
                   color="black"
@@ -790,7 +790,7 @@ const Order = () => {
                   {ORDER_CONSTANTS.PAYMENT.BENEFITS.KAKAO}
                 </span>
                 <Icon
-                  name="arrowRightSmall"
+                  name="arrowRight"
                   size={10}
                   className="order__payment-benefit-arrow"
                   color="black"

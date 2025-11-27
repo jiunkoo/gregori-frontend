@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { authAPI, memberAPI } from "@api";
@@ -7,14 +7,38 @@ import { LOGIN_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
 import "@styles/login.css";
 
+const REMEMBERED_EMAIL = "rememberedEmail";
+
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const { setUser, setError: setAuthError } = useAuthStore();
+
+  useEffect(() => {
+    const savedEmail = localStorage.getItem(REMEMBERED_EMAIL);
+    if (savedEmail) {
+      setFormData((prev) => ({
+        ...prev,
+        email: savedEmail,
+      }));
+      setAutoLogin(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!formData.password) {
+      setShowPassword(false);
+    }
+  }, [formData.password]);
+
+  const isFormValid = useMemo(() => {
+    return formData.email.trim().length > 0 && formData.password.length > 0;
+  }, [formData]);
 
   const getCheckboxClassName = () => {
     const classes = ["login__checkbox"];
@@ -29,10 +53,16 @@ const Login = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
+    setAuthError(null);
     setIsLoading(true);
 
     try {
-      await authAPI.signIn(formData);
+      const trimmedFormData = {
+        ...formData,
+        email: formData.email.trim(),
+      };
+
+      await authAPI.signIn(trimmedFormData);
 
       try {
         const userInfo = await memberAPI.getMember();
@@ -45,6 +75,12 @@ const Login = () => {
           name: LOGIN_CONSTANTS.DEFAULT_USER_NAME,
           authority: "GENERAL_MEMBER" as any,
         });
+      }
+
+      if (autoLogin) {
+        localStorage.setItem(REMEMBERED_EMAIL, trimmedFormData.email);
+      } else {
+        localStorage.removeItem(REMEMBERED_EMAIL);
       }
 
       navigate("/");
@@ -99,19 +135,38 @@ const Login = () => {
           </label>
 
           <label className="login__field">
-            <input
-              type="password"
-              className="login__input"
-              placeholder={LOGIN_CONSTANTS.PASSWORD_PLACEHOLDER}
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              required
-            />
+            <div className="login__input-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="login__input"
+                placeholder={LOGIN_CONSTANTS.PASSWORD_PLACEHOLDER}
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                required
+              />
+              {formData.password && (
+                <button
+                  type="button"
+                  className="login__eye-button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  aria-label={
+                    showPassword ? "비밀번호 숨기기" : "비밀번호 보기"
+                  }
+                >
+                  <Icon name={showPassword ? "eye" : "eyeHide"} size={20} />
+                </button>
+              )}
+            </div>
           </label>
 
-          <button type="submit" className="login__submit" disabled={isLoading}>
+          <button
+            type="submit"
+            className="login__submit"
+            disabled={!isFormValid || isLoading}
+            aria-busy={isLoading}
+          >
             {isLoading
               ? LOGIN_CONSTANTS.BUTTON_LOADING_TEXT
               : LOGIN_CONSTANTS.BUTTON_TEXT}

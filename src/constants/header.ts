@@ -15,15 +15,17 @@ export const HEADER_CONSTANTS = {
   },
 
   NAV_MENU: [
-    { label: "인기", path: "/products" },
     { label: "가전제품", path: "/products?category=digital" },
     { label: "의류", path: "/products?category=clothing" },
   ],
 
+  LOGOUT: {
+    BUTTON_TEXT: "로그아웃",
+    ERROR_MESSAGE: "로그아웃 API 호출 실패:",
+  },
+
   ACTIONS: [
     { name: "user", text: "마이페이지", path: "/mypage" },
-    { name: "heart", text: "찜목록", path: "" },
-    { name: "cart", text: "장바구니", path: "/cart" },
     { name: "login", text: "로그인", path: "/login" },
   ],
 };

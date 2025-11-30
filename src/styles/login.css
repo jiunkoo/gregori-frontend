@@ -16,7 +16,7 @@
   margin: var(--token-base) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--token-xs-5);
+  gap: var(--token-xs-8);
 }
 
 .login__field {
@@ -144,50 +144,6 @@
   width: var(--token-xs-2);
   height: var(--token-base);
   background: var(--color-black);
-}
-
-.login__social {
-  margin: var(--token-base) 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--token-sm-1);
-}
-
-.login__social-button {
-  width: var(--token-full);
-  height: var(--token-lg-2);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.login__social-button--facebook {
-  background: var(--color-blue-500);
-}
-
-.login__social-button--kakao {
-  background: var(--color-yellow-500);
-}
-
-.login__social-button--google {
-  background: var(--color-gray-100);
-}
-
-.login__social-icon {
-  margin: 0 var(--token-xs-8);
-}
-
-.login__social-label {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-2xl);
-  color: var(--color-black);
-}
-
-.login__social-button--facebook .login__social-label {
-  color: var(--color-white);
 }
 
 .login__signup {

@@ -13,7 +13,6 @@ import ProductDetail from "@pages/products/ProductDetail";
 import OrderListPage from "@pages/orders/OrderList";
 import OrderDetail from "@pages/orders/OrderDetail";
 import MyPage from "@pages/MyPage";
-import Cart from "@pages/Cart";
 import OrderComplete from "@pages/orders/OrderComplete";
 import OrderConfirm from "@pages/orders/OrderConfirm";
 import Order from "@pages/orders/Order";
@@ -66,7 +65,6 @@ const App: React.FC = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
         <Route path="/order-complete" element={<OrderComplete />} />

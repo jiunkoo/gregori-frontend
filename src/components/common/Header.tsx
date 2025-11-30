@@ -21,23 +21,6 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <div className="header-banner">
-        <div className="header-banner-text">
-          {HEADER_CONSTANTS.BANNER.PREFIX}
-          &nbsp;
-          <span className="header-banner-discount">
-            {HEADER_CONSTANTS.BANNER.DISCOUNT}
-          </span>
-          &nbsp;
-          {HEADER_CONSTANTS.BANNER.SUFFIX}
-          <Icon
-            name="arrowRight"
-            size={20}
-            className="header-banner-icon-arrow-right"
-          />
-        </div>
-      </div>
-
       <div className="header-main">
         <Link to="/" className="header-logo">
           <div className="header-logo-text">{HEADER_CONSTANTS.LOGO.TEXT}</div>
@@ -70,10 +53,8 @@ const Header: React.FC<HeaderProps> = ({
 
         <div className="header-actions">
           {HEADER_CONSTANTS.ACTIONS.map((action) => {
-            // 로그인 상태에 따라 로그인/로그아웃 버튼 처리
             if (action.name === "login") {
               if (isAuthenticated) {
-                // 로그아웃 버튼
                 return (
                   <button
                     key="logout"
@@ -81,7 +62,10 @@ const Header: React.FC<HeaderProps> = ({
                       try {
                         await authAPI.signOut();
                       } catch (error) {
-                        console.error("로그아웃 API 호출 실패:", error);
+                        console.error(
+                          HEADER_CONSTANTS.LOGOUT.ERROR_MESSAGE,
+                          error
+                        );
                       } finally {
                         await logout();
                         navigate("/");
@@ -99,11 +83,12 @@ const Header: React.FC<HeaderProps> = ({
                       size={24}
                       className="header-action-icon"
                     />
-                    <span className="header-action-text">로그아웃</span>
+                    <span className="header-action-text">
+                      {HEADER_CONSTANTS.LOGOUT.BUTTON_TEXT}
+                    </span>
                   </button>
                 );
               } else {
-                // 로그인 버튼
                 return (
                   <Link
                     key={action.name}

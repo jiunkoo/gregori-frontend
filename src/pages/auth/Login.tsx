@@ -46,10 +46,6 @@ const Login = () => {
     return classes.join(" ");
   };
 
-  const getSocialButtonClassName = (type: "facebook" | "kakao" | "google") => {
-    return `login__social-button login__social-button--${type}`;
-  };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
@@ -93,27 +89,6 @@ const Login = () => {
       setIsLoading(false);
     }
   };
-
-  const socialButtons = [
-    {
-      type: "facebook" as const,
-      iconName: "facebook",
-      color: "white",
-      text: LOGIN_CONSTANTS.SOCIAL_LOGIN.FACEBOOK,
-    },
-    {
-      type: "kakao" as const,
-      iconName: "kakao",
-      color: "#3A1C1E",
-      text: LOGIN_CONSTANTS.SOCIAL_LOGIN.KAKAO,
-    },
-    {
-      type: "google" as const,
-      iconName: "googleSocial",
-      color: "white",
-      text: LOGIN_CONSTANTS.SOCIAL_LOGIN.GOOGLE,
-    },
-  ];
 
   return (
     <Layout showNav={false}>
@@ -197,24 +172,6 @@ const Login = () => {
               {LOGIN_CONSTANTS.FIND_PASSWORD_TEXT}
             </button>
           </nav>
-        </div>
-
-        <div className="login__social">
-          {socialButtons.map((button) => (
-            <button
-              key={button.type}
-              type="button"
-              className={getSocialButtonClassName(button.type)}
-            >
-              <Icon
-                name={button.iconName}
-                size={28}
-                className="login__social-icon"
-                color={button.color}
-              />
-              <span className="login__social-label">{button.text}</span>
-            </button>
-          ))}
         </div>
 
         <button

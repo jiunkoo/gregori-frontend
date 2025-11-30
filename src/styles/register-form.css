@@ -93,35 +93,6 @@
   color: var(--color-gray-400);
 }
 
-.register-form__phone-group {
-  display: flex;
-  gap: var(--token-sm-1);
-  align-items: center;
-}
-
-.register-form__verify-button {
-  height: var(--token-lg-1);
-  padding: 0 var(--token-base);
-  background-color: var(--color-black);
-  color: var(--color-white);
-  font-size: var(--token-sm-1);
-  font-weight: var(--font-weight-2xl);
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s;
-  box-sizing: border-box;
-}
-
-.register-form__verify-button:hover:not(:disabled) {
-  background-color: var(--color-gray-700);
-}
-
-.register-form__verify-button:disabled {
-  background-color: var(--color-gray-400);
-  cursor: not-allowed;
-}
-
 .register-form__error {
   margin: var(--token-base) 0;
   padding: var(--token-sm-1);

@@ -127,6 +127,21 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit} className="register-form__form">
         <div className="register-form__group">
           <label className="register-form__label">
+            {REGISTER_CONSTANTS.FORM.NAME_LABEL}
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="register-form__input"
+            placeholder={REGISTER_CONSTANTS.FORM.NAME_PLACEHOLDER}
+            required
+          />
+        </div>
+
+        <div className="register-form__group">
+          <label className="register-form__label">
             {REGISTER_CONSTANTS.FORM.EMAIL_LABEL}
           </label>
           <div className="register-form__email-group">
@@ -195,74 +210,6 @@ const RegisterForm = () => {
             placeholder={REGISTER_CONSTANTS.FORM.CONFIRM_PASSWORD_PLACEHOLDER}
             required
           />
-        </div>
-
-        <div className="register-form__group">
-          <label className="register-form__label">
-            {REGISTER_CONSTANTS.FORM.NAME_LABEL}
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className="register-form__input"
-            placeholder={REGISTER_CONSTANTS.FORM.NAME_PLACEHOLDER}
-            required
-          />
-        </div>
-
-        <div className="register-form__group">
-          <label className="register-form__label">
-            {REGISTER_CONSTANTS.FORM.PHONE_LABEL}
-          </label>
-          <div className="register-form__phone-group">
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="register-form__input"
-              placeholder={REGISTER_CONSTANTS.FORM.PHONE_PLACEHOLDER}
-              required
-            />
-            <button
-              type="button"
-              onClick={handleSendVerification}
-              disabled={isVerificationSent}
-              className="register-form__verify-button"
-            >
-              {isVerificationSent
-                ? REGISTER_CONSTANTS.VERIFICATION.SENT_BUTTON
-                : REGISTER_CONSTANTS.VERIFICATION.SEND_BUTTON}
-            </button>
-          </div>
-        </div>
-
-        <div className="register-form__group">
-          <label className="register-form__label">
-            {REGISTER_CONSTANTS.FORM.VERIFICATION_LABEL}
-          </label>
-          <div className="register-form__phone-group">
-            <input
-              type="text"
-              value={verificationCode}
-              onChange={(e) => setVerificationCode(e.target.value)}
-              className="register-form__input"
-              placeholder={REGISTER_CONSTANTS.FORM.VERIFICATION_PLACEHOLDER}
-              disabled={!isVerificationSent}
-            />
-            <button
-              type="button"
-              onClick={handleVerifyCode}
-              disabled={isVerificationVerified || !isVerificationSent}
-              className="register-form__verify-button"
-            >
-              {isVerificationVerified
-                ? REGISTER_CONSTANTS.VERIFICATION.VERIFIED_BUTTON
-                : REGISTER_CONSTANTS.VERIFICATION.VERIFY_BUTTON}
-            </button>
-          </div>
         </div>
 
         <div className="register-form__submit">

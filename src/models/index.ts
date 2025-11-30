@@ -43,7 +43,6 @@ export interface MemberPasswordUpdateDto {
 // 상품 관련 타입
 export interface ProductCreateDto {
   name: string;
-  description: string;
   price: number;
   stock: number;
   categoryId: number;
@@ -51,7 +50,6 @@ export interface ProductCreateDto {
 
 export interface ProductUpdateDto {
   name: string;
-  description: string;
   price: number;
   stock: number;
   categoryId: number;
@@ -60,7 +58,6 @@ export interface ProductUpdateDto {
 export interface ProductResponseDto {
   id: number;
   name: string;
-  description: string;
   price: number;
   stock: number;
   categoryId: number;

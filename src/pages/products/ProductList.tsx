@@ -22,9 +22,9 @@ const ProductList = () => {
 
   const getCategoryId = (categoryName: string): number | undefined => {
     const categoryMap: { [key: string]: number | undefined } = {
-      digital: 1, // 가전제품
-      clothing: 2, // 의류
-      popular: undefined, // 인기 (모든 카테고리)
+      digital: 1,
+      clothing: 2,
+      popular: undefined,
     };
     return categoryMap[categoryName];
   };
@@ -62,14 +62,8 @@ const ProductList = () => {
 
   const getCategoryName = (categoryId: number): string => {
     const categoryMap: { [key: number]: string } = {
-      1: "전자제품",
-      2: "패션",
-      3: "홈&리빙",
-      4: "식품",
-      5: "뷰티",
-      6: "스포츠",
-      7: "도서",
-      8: "장난감",
+      1: "가전제품",
+      2: "의류",
     };
     return categoryMap[categoryId] || "기타";
   };
@@ -78,41 +72,12 @@ const ProductList = () => {
     return new Intl.NumberFormat("ko-KR").format(price);
   };
 
-  if (loading) {
-    return (
-      <Layout>
-        <main className="product-list">
-          <div className="product-list__loading">
-            <div className="product-list__loading-container">
-              <div className="product-list__loading-icon-wrapper">
-                <Icon
-                  name="loading"
-                  size={32}
-                  className="product-list__loading-icon"
-                />
-              </div>
-              <p className="product-list__loading-text">
-                상품 목록을 불러오는 중...
-              </p>
-            </div>
-          </div>
-        </main>
-      </Layout>
-    );
-  }
-
   if (error) {
     return (
       <Layout>
         <main className="product-list">
           <div className="product-list__error">
-            <div className="product-list__error-icon-wrapper">
-              <Icon
-                name="error"
-                size={32}
-                className="product-list__error-icon"
-              />
-            </div>
+            <Icon name="error" size={32} className="product-list__error-icon" />
             <p className="product-list__error-text">{error}</p>
           </div>
         </main>
@@ -123,73 +88,6 @@ const ProductList = () => {
   return (
     <Layout>
       <main className="product-list">
-        <div className="product-list__header">
-          <div className="product-list__header-content">
-            <div className="product-list__header-info">
-              <h1 className="product-list__title">
-                {searchQuery
-                  ? `"${searchQuery}" 검색 결과`
-                  : categoryFilter
-                  ? `${getCategoryName(getCategoryId(categoryFilter) || 0)}`
-                  : "상품 목록"}
-              </h1>
-              <p className="product-list__count">
-                총 {products.length}개의 상품
-                {searchQuery && (
-                  <span className="product-list__search-term">
-                    {" "}
-                    (검색어: "{searchQuery}")
-                  </span>
-                )}
-              </p>
-            </div>
-
-            <div className="product-list__controls">
-              <div className="product-list__view-toggle">
-                <button
-                  type="button"
-                  className={`product-list__view-button ${
-                    viewMode === "grid"
-                      ? "product-list__view-button--active"
-                      : ""
-                  }`}
-                  onClick={() => setViewMode("grid")}
-                >
-                  <Icon name="grid" size={20} />
-                </button>
-                <button
-                  type="button"
-                  className={`product-list__view-button ${
-                    viewMode === "list"
-                      ? "product-list__view-button--active"
-                      : ""
-                  }`}
-                  onClick={() => setViewMode("list")}
-                >
-                  <Icon name="list" size={20} />
-                </button>
-              </div>
-
-              <div className="product-list__sort-wrapper">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as Sorter)}
-                  className="product-list__sort-select"
-                >
-                  <option value={Sorter.CREATED_AT_DESC}>최신순</option>
-                  <option value={Sorter.CREATED_AT_ASC}>오래된순</option>
-                  <option value={Sorter.PRICE_DESC}>가격 높은순</option>
-                  <option value={Sorter.PRICE_ASC}>가격 낮은순</option>
-                  <option value={Sorter.NAME_ASC}>이름순</option>
-                </select>
-                <div className="product-list__sort-icon">
-                  <Icon name="arrowDown" size={16} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="product-list__content">
           {products.length === 0 ? (
             <div className="product-list__empty">
@@ -213,108 +111,81 @@ const ProductList = () => {
             </div>
           ) : viewMode === "grid" ? (
             <div className="product-list__grid">
-              {products.map((product) => (
-                <Link
-                  key={product.id}
-                  to={`/products/${product.id}`}
-                  className="product-list__card"
-                >
-                  <div className="product-list__card-image">
-                    <div className="product-list__card-image-placeholder">
-                      <Icon
-                        name="image"
-                        size={48}
-                        className="product-list__card-image-icon"
+              {products.map((product) => {
+                return (
+                  <Link
+                    key={product.id}
+                    to={`/products/${product.id}`}
+                    className="product-list__card"
+                  >
+                    <div className="product-list__card-image">
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
                       />
-                      <span className="product-list__card-image-text">
-                        이미지 준비중
-                      </span>
                     </div>
-                  </div>
-                  <div className="product-list__card-content">
-                    <div className="product-list__card-header">
-                      <span className="product-list__card-category">
-                        {product.categoryName}
-                      </span>
-                      <div className="product-list__card-stock">
-                        <Icon name="check" size={16} />
-                        <span className="product-list__card-stock-text">
-                          재고: {product.stock}개
-                        </span>
+                    <div className="product-list__card-content">
+                      <div className="product-list__card-brand">
+                        {product.sellerName}
+                      </div>
+                      <h3 className="product-list__card-title">
+                        {product.name}
+                      </h3>
+                      <div className="product-list__card-price">
+                        ₩{formatPrice(product.price)}
+                      </div>
+                      <div className="product-list__card-delivery">
+                        무료배송
                       </div>
                     </div>
-                    <h3 className="product-list__card-title">{product.name}</h3>
-                    <p className="product-list__card-description">
-                      {product.description}
-                    </p>
-                    <div className="product-list__card-footer">
-                      <span className="product-list__card-price">
-                        ₩{formatPrice(product.price)}
-                      </span>
-                      <span className="product-list__card-seller">
-                        {product.sellerName}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           ) : (
             <div className="product-list__list">
-              {products.map((product) => (
-                <Link
-                  key={product.id}
-                  to={`/products/${product.id}`}
-                  className="product-list__list-item"
-                >
-                  <div className="product-list__list-image">
-                    <div className="product-list__list-image-placeholder">
-                      <Icon
-                        name="image"
-                        size={32}
-                        className="product-list__list-image-icon"
+              {products.map((product) => {
+                return (
+                  <Link
+                    key={product.id}
+                    to={`/products/${product.id}`}
+                    className="product-list__list-item"
+                  >
+                    <div className="product-list__list-image">
+                      <img
+                        src={imageSrc}
+                        alt={product.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
                       />
-                      <span className="product-list__list-image-text">
-                        이미지 준비중
-                      </span>
                     </div>
-                  </div>
-                  <div className="product-list__list-content">
-                    <div className="product-list__list-header">
+                    <div className="product-list__list-content">
                       <div className="product-list__list-info">
-                        <div className="product-list__list-meta">
-                          <span className="product-list__list-category">
-                            {product.categoryName}
-                          </span>
-                          <span className="product-list__list-separator">
-                            •
-                          </span>
-                          <span className="product-list__list-seller">
-                            {product.sellerName}
-                          </span>
+                        <div className="product-list__list-brand">
+                          {product.sellerName}
                         </div>
                         <h3 className="product-list__list-title">
                           {product.name}
                         </h3>
-                        <p className="product-list__list-description">
-                          {product.description}
-                        </p>
-                      </div>
-                      <div className="product-list__list-footer">
                         <div className="product-list__list-price">
                           ₩{formatPrice(product.price)}
                         </div>
-                        <div className="product-list__list-stock">
-                          <Icon name="check" size={16} />
-                          <span className="product-list__list-stock-text">
-                            재고: {product.stock}개
-                          </span>
+                        <div className="product-list__list-delivery">
+                          무료배송
                         </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>

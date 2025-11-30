@@ -130,25 +130,45 @@ const Icon: React.FC<IconProps> = ({
     // 로그인 아이콘
     login: (
       <svg
-        height="200px"
-        width="200px"
+        viewBox="0 0 16 16"
         version="1.1"
-        id="_x32_"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 512 512"
-        xmlSpace="preserve"
+        fill="currentColor"
         style={iconStyle}
       >
-        <g>
-          <polygon
-            points="237.61,331.547 271.554,365.5 347.11,289.946 381.054,256 347.11,222.054 271.554,146.5 237.61,180.453 289.164,232 0,232 0,280 289.164,280 "
-            fill="currentColor"
-          ></polygon>
-          <polygon
-            points="464,0 416,0 192,0 144,0 96,0 96,48 96,80 96,160 144,160 160,160 160,64 448,64 448,448 160,448 160,352 144,352 96,352 96,432 96,464 96,512 144,512 192,512 416,512 464,512 512,512 512,464 512,416 512,96 512,48 512,0 "
-            fill="currentColor"
-          ></polygon>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <rect width="16" height="16" id="icon-bound" fill="none"></rect>
+          <path d="M14,14l0,-12l-6,0l0,-2l8,0l0,16l-8,0l0,-2l6,0Zm-6.998,-0.998l4.998,-5.002l-5,-5l-1.416,1.416l2.588,2.584l-8.172,0l0,2l8.172,0l-2.586,2.586l1.416,1.416Z"></path>
+        </g>
+      </svg>
+    ),
+
+    // 로그아웃 아이콘
+    logout: (
+      <svg
+        viewBox="0 0 16 16"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        fill="currentColor"
+        style={iconStyle}
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <rect width="16" height="16" id="icon-bound" fill="none"></rect>
+          <path d="M14,14l0,-12l-6,0l0,-2l8,0l0,16l-8,0l0,-2l6,0Zm-9.002,-0.998l-4.998,-5.002l5,-5l1.416,1.416l-2.588,2.584l8.172,0l0,2l-8.172,0l2.586,2.586l-1.416,1.416Z"></path>
         </g>
       </svg>
     ),

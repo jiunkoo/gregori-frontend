@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Icon from "@components/icons/SvgIcon";
 import { HEADER_CONSTANTS } from "@constants/header";
+import { useAuthStore } from "@stores";
+import { authAPI } from "@api";
 import "@styles/header.css";
 
 interface HeaderProps {
@@ -14,6 +16,8 @@ const Header: React.FC<HeaderProps> = ({
   showNav = false,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuthStore();
 
   return (
     <>
@@ -66,6 +70,57 @@ const Header: React.FC<HeaderProps> = ({
 
         <div className="header-actions">
           {HEADER_CONSTANTS.ACTIONS.map((action) => {
+            // 로그인 상태에 따라 로그인/로그아웃 버튼 처리
+            if (action.name === "login") {
+              if (isAuthenticated) {
+                // 로그아웃 버튼
+                return (
+                  <button
+                    key="logout"
+                    onClick={async () => {
+                      try {
+                        await authAPI.signOut();
+                      } catch (error) {
+                        console.error("로그아웃 API 호출 실패:", error);
+                      } finally {
+                        await logout();
+                        navigate("/");
+                      }
+                    }}
+                    className="header-action-item"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Icon
+                      name="logout"
+                      size={24}
+                      className="header-action-icon"
+                    />
+                    <span className="header-action-text">로그아웃</span>
+                  </button>
+                );
+              } else {
+                // 로그인 버튼
+                return (
+                  <Link
+                    key={action.name}
+                    to={action.path}
+                    className="header-action-item"
+                  >
+                    <Icon
+                      name={action.name}
+                      size={24}
+                      className="header-action-icon"
+                    />
+                    <span className="header-action-text">{action.text}</span>
+                  </Link>
+                );
+              }
+            }
+
             if (action.path) {
               return (
                 <Link

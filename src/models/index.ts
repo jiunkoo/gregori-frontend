@@ -12,9 +12,9 @@ export interface SessionMember {
 }
 
 export enum Authority {
-  GENERAL_MEMBER = 'GENERAL_MEMBER',
-  SELLING_MEMBER = 'SELLING_MEMBER',
-  ADMIN_MEMBER = 'ADMIN_MEMBER'
+  GENERAL_MEMBER = "GENERAL_MEMBER",
+  SELLING_MEMBER = "SELLING_MEMBER",
+  ADMIN_MEMBER = "ADMIN_MEMBER",
 }
 
 // 회원 관련 타입
@@ -67,17 +67,18 @@ export interface ProductResponseDto {
   sellerId: number;
   sellerName: string;
   categoryName: string;
+  imageUrl?: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export enum Sorter {
-  CREATED_AT_DESC = 'CREATED_AT_DESC',
-  CREATED_AT_ASC = 'CREATED_AT_ASC',
-  PRICE_DESC = 'PRICE_DESC',
-  PRICE_ASC = 'PRICE_ASC',
-  NAME_ASC = 'NAME_ASC',
-  NAME_DESC = 'NAME_DESC'
+  CREATED_AT_DESC = "CREATED_AT_DESC",
+  CREATED_AT_ASC = "CREATED_AT_ASC",
+  PRICE_DESC = "PRICE_DESC",
+  PRICE_ASC = "PRICE_ASC",
+  NAME_ASC = "NAME_ASC",
+  NAME_DESC = "NAME_DESC",
 }
 
 // 카테고리 관련 타입
@@ -131,11 +132,11 @@ export interface OrderDetailStatusUpdateDto {
 }
 
 export enum OrderDetailStatus {
-  PAYMENT_PENDING = 'PAYMENT_PENDING',
-  PAYMENT_COMPLETED = 'PAYMENT_COMPLETED',
-  SHIPPING = 'SHIPPING',
-  DELIVERED = 'DELIVERED',
-  PAYMENT_CANCELED = 'PAYMENT_CANCELED'
+  PAYMENT_PENDING = "PAYMENT_PENDING",
+  PAYMENT_COMPLETED = "PAYMENT_COMPLETED",
+  SHIPPING = "SHIPPING",
+  DELIVERED = "DELIVERED",
+  PAYMENT_CANCELED = "PAYMENT_CANCELED",
 }
 
 // 판매자 관련 타입

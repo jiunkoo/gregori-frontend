@@ -6,6 +6,8 @@ import { ProductResponseDto } from "@models";
 import { Layout } from "@components";
 import "@styles/home.css";
 
+const API_BASE_URL = "http://localhost:8080";
+
 const DUMMY_PRODUCTS: ProductResponseDto[] = [
   {
     id: 1,
@@ -177,11 +179,33 @@ const Home = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const data = await productAPI.getProducts({
-        sorter: "CREATED_AT_DESC" as any,
-        page: 1,
-      });
-      setProducts(data.length > 0 ? data : DUMMY_PRODUCTS);
+
+      // 가전제품(카테고리 1)과 의류(카테고리 2) 상품 가져오기
+      const [digitalProducts, clothingProducts] = await Promise.all([
+        productAPI.getProducts({
+          categoryId: 1, // 가전제품
+          sorter: "CREATED_AT_DESC" as any,
+          page: 1,
+        }),
+        productAPI.getProducts({
+          categoryId: 2, // 의류
+          sorter: "CREATED_AT_DESC" as any,
+          page: 1,
+        }),
+      ]);
+
+      // 두 카테고리 상품 합치기
+      const allProducts = [...digitalProducts, ...clothingProducts];
+
+      // 랜덤으로 섞기
+      const shuffled = allProducts.sort(() => Math.random() - 0.5);
+
+      // 5개만 선택
+      const selectedProducts = shuffled.slice(0, 5);
+
+      setProducts(
+        selectedProducts.length > 0 ? selectedProducts : DUMMY_PRODUCTS
+      );
     } catch (error) {
       console.error("상품 로딩 실패:", error);
       setProducts(DUMMY_PRODUCTS);
@@ -212,17 +236,11 @@ const Home = () => {
     >
       <main className="home">
         <div className="home__products">
-          {products.map((product, index) => {
-            const images = [
-              "/images/products/pasta1_tomato1.jpg",
-              "/images/products/pasta2_cream1.jpg",
-              "/images/products/pasta3_oil1.jpg",
-              "/images/products/pasta3_oil2.jpg",
-              "/images/products/pasta4_meat1.jpg",
-              "/images/products/pasta4_meat2.jpg",
-              "/images/main_pasta.jpg",
-            ];
-            const imageSrc = images[index % images.length];
+          {products.map((product) => {
+            // 백엔드에서 받은 이미지 URL 사용, 없으면 기본 이미지
+            const imageSrc = product.imageUrl
+              ? `${API_BASE_URL}${product.imageUrl}`
+              : "/images/main_pasta.jpg";
 
             return (
               <Link

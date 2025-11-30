@@ -16,14 +16,8 @@ export const HEADER_CONSTANTS = {
 
   NAV_MENU: [
     { label: "인기", path: "/products" },
-    { label: "치킨", path: "/products?category=chicken" },
-    { label: "피자", path: "/products?category=pizza" },
-    { label: "한식", path: "/products?category=korean" },
-    { label: "중식", path: "/products?category=chinese" },
-    { label: "양식", path: "/products?category=western" },
-    { label: "일식", path: "/products?category=japanese" },
-    { label: "분식", path: "/products?category=bunsik" },
-    { label: "카페", path: "/products?category=cafe" },
+    { label: "가전제품", path: "/products?category=digital" },
+    { label: "의류", path: "/products?category=clothing" },
   ],
 
   ACTIONS: [

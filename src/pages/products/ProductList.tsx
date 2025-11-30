@@ -21,15 +21,10 @@ const ProductList = () => {
   );
 
   const getCategoryId = (categoryName: string): number | undefined => {
-    const categoryMap: { [key: string]: number } = {
-      electronics: 1,
-      fashion: 2,
-      home: 3,
-      food: 4,
-      beauty: 5,
-      sports: 6,
-      books: 7,
-      toys: 8,
+    const categoryMap: { [key: string]: number | undefined } = {
+      digital: 1, // 가전제품
+      clothing: 2, // 의류
+      popular: undefined, // 인기 (모든 카테고리)
     };
     return categoryMap[categoryName];
   };

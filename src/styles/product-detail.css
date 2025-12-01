@@ -200,7 +200,7 @@
 .product-detail__price-section {
   display: flex;
   justify-content: space-between;
-  margin-bottom: var(--token-xs-8);
+  margin: var(--token-md-1) 0 var(--token-md-1) 0;
 }
 
 .product-detail__price {
@@ -358,9 +358,9 @@
 }
 
 .product-detail__shipping {
+  border-top: var(--token-xs-2) solid var(--color-gray-200);
   border-bottom: var(--token-xs-2) solid var(--color-gray-200);
-  padding-bottom: var(--token-md-1);
-  margin-bottom: var(--token-md-1);
+  padding-top: var(--token-md-1);
 }
 
 .product-detail__shipping-title {

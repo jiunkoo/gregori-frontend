@@ -13,7 +13,6 @@ import ProductDetail from "@pages/products/ProductDetail";
 import OrderListPage from "@pages/orders/OrderList";
 import OrderDetail from "@pages/orders/OrderDetail";
 import MyPage from "@pages/MyPage";
-import OrderComplete from "@pages/orders/OrderComplete";
 import OrderConfirm from "@pages/orders/OrderConfirm";
 import Order from "@pages/orders/Order";
 import { useAuthStore } from "@stores/authStore";
@@ -67,7 +66,6 @@ const App: React.FC = () => {
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/order" element={<Order />} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
-        <Route path="/order-complete" element={<OrderComplete />} />
         <Route path="/mypage" element={<MyPage />} />
 
         {/* 마이페이지 - 주문 목록 / 주문 상세 (인증 필요) */}

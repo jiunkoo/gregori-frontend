@@ -1,5 +1,5 @@
 .order-confirm {
-  width: 100%;
+  width: var(--token-full);
   position: relative;
   margin: 0 auto;
   padding: var(--token-md-1);
@@ -73,8 +73,8 @@
 }
 
 .order-confirm__product-image-src {
-  width: 100%;
-  height: 100%;
+  width: var(--token-full);
+  height: var(--token-full);
   object-fit: cover;
 }
 
@@ -95,12 +95,6 @@
 .order-confirm__product-name {
   font-size: var(--token-md-2);
   font-weight: var(--font-weight-2xl);
-  color: var(--color-black);
-}
-
-.order-confirm__product-option {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -167,49 +161,6 @@
   color: var(--color-black);
 }
 
-.order-confirm__shipping-info {
-  padding: var(--token-md-1);
-  display: flex;
-  flex-direction: column;
-  gap: var(--token-md-1);
-  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
-}
-
-.order-confirm__shipping-item {
-  display: flex;
-  align-items: center;
-  gap: var(--token-md-1);
-}
-
-.order-confirm__shipping-label {
-  min-width: var(--token-xl-2);
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
-.order-confirm__shipping-value {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-}
-
-.order-confirm__shipping-edit {
-  border: var(--token-xs-2) solid var(--color-black);
-  padding: var(--token-sm-1) var(--token-md-1);
-  background: transparent;
-  cursor: pointer;
-}
-
-.order-confirm__shipping-edit:hover {
-  background: var(--color-gray-100);
-}
-
-.order-confirm__shipping-edit-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
 .order-confirm__payment-info {
   padding: var(--token-md-1);
   display: flex;
@@ -234,23 +185,6 @@
   font-size: var(--token-base);
   font-weight: var(--font-weight-md);
   color: var(--color-black);
-}
-
-.order-confirm__payment-receipt-button {
-  background: var(--color-black);
-  border: var(--token-xs-2) solid var(--color-black);
-  padding: var(--token-sm-1) var(--token-md-1);
-  cursor: pointer;
-}
-
-.order-confirm__payment-receipt-button:hover {
-  background: var(--color-gray-600);
-}
-
-.order-confirm__payment-receipt-button-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-white);
 }
 
 .order-confirm__notice {

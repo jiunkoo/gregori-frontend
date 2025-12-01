@@ -1,5 +1,5 @@
 .order {
-  width: 100%;
+  width: var(--token-full);
   position: relative;
   margin: 0 auto;
   padding: var(--token-md-1);
@@ -77,8 +77,8 @@
 }
 
 .order__product-image-src {
-  width: 100%;
-  height: 100%;
+  width: var(--token-full);
+  height: var(--token-full);
   object-fit: cover;
 }
 
@@ -99,12 +99,6 @@
 .order__product-name {
   font-size: var(--token-md-2);
   font-weight: var(--font-weight-2xl);
-  color: var(--color-black);
-}
-
-.order__product-option {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
   color: var(--color-black);
 }
 
@@ -138,227 +132,6 @@
   font-size: var(--token-base);
   font-weight: var(--font-weight-md);
   min-width: var(--token-2xl-1);
-}
-
-.order__user-edit {
-  width: var(--token-lg-4);
-  height: var(--token-lg-1);
-  border: var(--token-xs-2) solid var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.order__user-edit-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
-.order__shipping-options {
-  display: flex;
-  padding: var(--token-md-1);
-  gap: var(--token-md-1);
-  margin-bottom: var(--token-md-1);
-}
-
-.order__shipping-option {
-  display: flex;
-  align-items: center;
-  gap: var(--token-xs-8);
-}
-
-.order__shipping-label {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
-.order__shipping-radio-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.order__shipping-button {
-  width: var(--token-xl-2);
-  height: var(--token-lg-1);
-  background: var(--color-white);
-  border: var(--token-xs-2) solid var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-.order__shipping-button-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
-.order__shipping-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--token-md-1);
-  padding: var(--token-md-1);
-}
-
-.order__shipping-input-group {
-  display: flex;
-  align-items: center;
-  gap: var(--token-xs-8);
-  width: var(--token-full);
-}
-
-.order__shipping-label-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  min-width: var(--token-xl-2);
-}
-
-.order__shipping-input {
-  width: var(--token-full);
-  height: var(--token-lg-2);
-  border: var(--token-xs-2) solid var(--color-black);
-  color: var(--color-gray-400);
-  padding: 0 var(--token-md-1);
-  font-size: var(--token-base);
-}
-
-.order__shipping-checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: var(--token-sm-1);
-  margin-top: var(--token-sm-1);
-}
-
-.order__shipping-checkbox-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.order__shipping-checkbox-label {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
-.order__shipping-select {
-  width: var(--token-full);
-  height: var(--token-lg-2);
-  border: var(--token-xs-2) solid var(--color-black);
-  padding: 0 var(--token-base);
-  font-size: var(--token-base);
-}
-
-.order__coupon-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--token-md-1);
-  padding: var(--token-md-1);
-  border-bottom: var(--token-xs-2) solid var(--color-gray-200);
-}
-
-.order__coupon-item {
-  display: flex;
-  align-items: center;
-  gap: var(--token-md-1);
-}
-
-.order__coupon-label {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  min-width: var(--token-xl-2);
-}
-
-.order__coupon-dropdown {
-  width: var(--token-full);
-  height: var(--token-lg-2);
-  border: var(--token-xs-2) solid var(--color-black);
-  padding: 0 var(--token-md-1);
-  font-size: var(--token-base);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  background: var(--color-white);
-}
-
-.order__coupon-dropdown:disabled {
-  background: var(--color-gray-200);
-  cursor: not-allowed;
-}
-
-.order__coupon-dropdown-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-}
-
-.order__coupon-dropdown-text--disabled {
-  color: var(--color-gray-400);
-}
-
-.order__miles-info {
-  display: flex;
-  align-items: center;
-  gap: var(--token-md-1);
-}
-
-.order__miles-label {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-  min-width: var(--token-xl-2);
-}
-
-.order__miles-input {
-  width: var(--token-2xl-1);
-  height: var(--token-lg-2);
-  border: var(--token-xs-2) solid var(--color-black);
-  padding: 0 var(--token-base);
-  font-size: var(--token-base);
-}
-
-.order__miles-button {
-  width: var(--token-xl-2);
-  height: var(--token-lg-2);
-  background: var(--color-gray-200);
-  border: var(--token-xs-2) solid var(--color-gray-400);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-.order__miles-button-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-gray-400);
-}
-
-.order__miles-info-text {
-  font-size: var(--token-base);
-  font-weight: var(--font-weight-md);
-  color: var(--color-black);
-}
-
-.order__miles-info-text--gray {
-  color: var(--color-gray-400);
 }
 
 .order__payment-detail {

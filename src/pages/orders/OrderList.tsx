@@ -11,11 +11,10 @@ import {
 import { Icon, Layout } from "@components";
 import { MYPAGE_CONSTANTS, ORDERLIST_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
-import "@styles/orderlist.css";
+import "@styles/order-list.css";
 
 const OrderList = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);
-  const [loading, setLoading] = useState(true);
   const [productsById, setProductsById] = useState<
     Record<number, ProductResponseDto>
   >({});
@@ -27,7 +26,6 @@ const OrderList = () => {
   }, [page]);
 
   const fetchOrders = async () => {
-    setLoading(true);
     try {
       const data = await orderAPI.getOrders(page);
       setOrders(data);
@@ -35,7 +33,7 @@ const OrderList = () => {
     } catch (error) {
       console.error(ORDERLIST_CONSTANTS.LOADING.ERROR, error);
     } finally {
-      setLoading(false);
+      // no-op: loading UI 제거
     }
   };
 
@@ -116,58 +114,42 @@ const OrderList = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <Layout showMyPageSidebar={true}>
-        <main className="orderlist">
-          <div className="orderlist__loading">
-            <div className="orderlist__loading-content">
-              <p className="orderlist__loading-text">
-                {ORDERLIST_CONSTANTS.LOADING.MESSAGE}
-              </p>
-            </div>
-          </div>
-        </main>
-      </Layout>
-    );
-  }
-
   const authorityLabel = user?.authority ?? "GUEST";
 
   return (
     <Layout showMyPageSidebar={true}>
-      <main className="orderlist">
-        <div className="orderlist__grade-section">
-          <div className="orderlist__grade-item">
-            <div className="orderlist__grade-header">
-              <div className="orderlist__grade-label">
+      <main className="order-list">
+        <div className="order-list__grade-section">
+          <div className="order-list__grade-item">
+            <div className="order-list__grade-header">
+              <div className="order-list__grade-label">
                 {MYPAGE_CONSTANTS.GRADE.LABEL}
               </div>
             </div>
-            <div className="orderlist__grade-footer">
-              <div className="orderlist__grade-value">{authorityLabel}</div>
+            <div className="order-list__grade-footer">
+              <div className="order-list__grade-value">{authorityLabel}</div>
             </div>
           </div>
         </div>
 
-        <div className="orderlist__section">
-          <div className="orderlist__section-header">
-            <h2 className="orderlist__section-title">
+        <div className="order-list__section">
+          <div className="order-list__section-header">
+            <h2 className="order-list__section-title">
               {ORDERLIST_CONSTANTS.SECTION.TITLE}
             </h2>
           </div>
 
-          <div className="orderlist__orders">
+          <div className="order-list__orders">
             {orders.map((order) => (
-              <div key={order.id} className="orderlist__order-item">
-                <div className="orderlist__order-info">
-                  <div className="orderlist__order-date">
+              <div key={order.id} className="order-list__order-item">
+                <div className="order-list__order-info">
+                  <div className="order-list__order-date">
                     {ORDERLIST_CONSTANTS.ORDER.DATE_LABEL}{" "}
-                    <span className="orderlist__order-date-value">
+                    <span className="order-list__order-date-value">
                       {formatDate(order.createdAt)}
                     </span>{" "}
                     {ORDERLIST_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
-                    <span className="orderlist__order-number">
+                    <span className="order-list__order-number">
                       {order.orderNumber}
                     </span>
                   </div>
@@ -175,7 +157,7 @@ const OrderList = () => {
 
                 <Link
                   to={`/orderdetail/${order.id}`}
-                  className="orderlist__order-detail"
+                  className="order-list__order-detail"
                 >
                   {order.orderDetails.map((detail) => {
                     const product = productsById[detail.productId];
@@ -184,40 +166,43 @@ const OrderList = () => {
                     const imageUrl = product?.imageUrl;
 
                     return (
-                      <div key={detail.id} className="orderlist__order-product">
-                        <div className="orderlist__order-image">
+                      <div
+                        key={detail.id}
+                        className="order-list__order-product"
+                      >
+                        <div className="order-list__order-image">
                           {imageUrl ? (
                             <img
                               src={imageUrl}
                               alt={detail.productName}
-                              className="orderlist__order-image-src"
+                              className="order-list__order-image-src"
                             />
                           ) : (
                             <Icon name="image" size={120} />
                           )}
                         </div>
-                        <div className="orderlist__order-info">
-                          <div className="orderlist__order-brand">{brand}</div>
-                          <div className="orderlist__order-name">
+                        <div className="order-list__order-info">
+                          <div className="order-list__order-brand">{brand}</div>
+                          <div className="order-list__order-name">
                             {detail.productName}
                           </div>
-                          <div className="orderlist__order-price">
+                          <div className="order-list__order-price">
                             {formatPrice(detail.productPrice)}원
                           </div>
                         </div>
 
-                        <div className="orderlist__order-quantity">
+                        <div className="order-list__order-quantity">
                           {detail.productCount}
                           {ORDERLIST_CONSTANTS.PRODUCT.QUANTITY_UNIT}
                         </div>
-                        <div className="orderlist__order-shipping">
+                        <div className="order-list__order-shipping">
                           {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
                           {formatPrice(order.deliveryCost)}원
                         </div>
-                        <div className="orderlist__order-status">
+                        <div className="order-list__order-status">
                           {getStatusText(detail.status)}
                         </div>
-                        <div className="orderlist__order-delivery">
+                        <div className="order-list__order-delivery">
                           {formatExpectedDate(order.createdAt)}
                           <br />
                           {ORDERLIST_CONSTANTS.SHIPPING.STATUS}

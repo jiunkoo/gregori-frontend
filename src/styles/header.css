@@ -1,5 +1,5 @@
 .header-main {
-  width: 100%;
+  width: var(--token-full);
   background: var(--color-white);
   position: relative;
   display: flex;
@@ -10,11 +10,10 @@
 
 .header-logo {
   text-decoration: none;
-  transition: opacity 0.2s;
 }
 
 .header-logo:hover {
-  opacity: 0.7;
+  opacity: var(--opacity-75);
 }
 
 .header-logo-text {
@@ -25,7 +24,7 @@
 
 .header-search-container {
   margin: var(--token-md-1);
-  width: 50%;
+  width: var(--token-half);
   border: var(--token-xs-2) solid var(--color-black);
 }
 
@@ -35,7 +34,7 @@
 }
 
 .header-search-input {
-  width: 100%;
+  width: var(--token-full);
   font-size: var(--token-base);
   background-color: var(--color-white);
   color: var(--color-black);
@@ -65,7 +64,6 @@
   width: var(--token-md-2);
   height: var(--token-md-2);
   color: var(--color-black);
-  transition: color 0.2s;
 }
 
 .header-actions {
@@ -80,13 +78,12 @@
   align-items: center;
   gap: var(--token-xs-8);
   cursor: pointer;
-  transition: opacity 0.2s;
   text-decoration: none;
   color: inherit;
 }
 
 .header-action-item:hover {
-  opacity: 0.7;
+  opacity: var(--opacity-75);
 }
 
 .header-action-icon {
@@ -121,7 +118,6 @@
   font-weight: var(--font-weight-md);
   letter-spacing: var(--token-xs-1);
   text-decoration: none;
-  transition: font-weight 0.2s;
 }
 
 .header-nav-link-active {

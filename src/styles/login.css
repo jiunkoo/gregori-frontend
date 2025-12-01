@@ -28,7 +28,7 @@
 
 .login__input-wrapper {
   position: relative;
-  width: 100%;
+  width: var(--token-full);
   display: flex;
   align-items: center;
 }
@@ -79,7 +79,7 @@
 }
 
 .login__submit:disabled {
-  opacity: 0.6;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 

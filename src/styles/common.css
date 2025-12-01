@@ -13,6 +13,11 @@
   --font-weight-3xl: 800;
   --font-weight-4xl: 900;
 
+  /* Opacity */
+  --opacity-25: 0.25;
+  --opacity-50: 0.5;
+  --opacity-75: 0.75;
+
   /* Token */
   --token-xs-1: 0.025rem;
   --token-xs-2: 0.05rem;
@@ -43,6 +48,9 @@
   --token-3xl-1: 25rem;
   --token-3xl-2: 30rem;
   --token-4xl: 80rem;
+  --token-one-third: 35%;
+  --token-half: 50%;
+  --token-two-thirds: 65%;
   --token-full: 100%;
 
   /* Height */

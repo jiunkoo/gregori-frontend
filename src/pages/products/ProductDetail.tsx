@@ -15,7 +15,6 @@ const ProductDetail = () => {
 
   const [product, setProduct] = useState<ProductResponseDto | null>(null);
   const [quantity, setQuantity] = useState(1);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (productId) {
@@ -26,7 +25,6 @@ const ProductDetail = () => {
   const fetchProduct = async () => {
     if (!productId) return;
 
-    setLoading(true);
     try {
       const data = await productAPI.getProduct(parseInt(productId));
       setProduct(data);
@@ -34,7 +32,7 @@ const ProductDetail = () => {
       console.error(PRODUCT_DETAIL_CONSTANTS.ERROR.FETCH_FAILED, error);
       setProduct(null);
     } finally {
-      setLoading(false);
+      // no-op: loading UI 제거
     }
   };
 
@@ -69,21 +67,6 @@ const ProductDetail = () => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("ko-KR").format(price);
   };
-
-  if (loading) {
-    return (
-      <Layout>
-        <main className="product-detail">
-          <div className="product-detail__loading">
-            <div className="product-detail__loading-spinner"></div>
-            <p className="product-detail__loading-text">
-              {PRODUCT_DETAIL_CONSTANTS.LOADING.MESSAGE}
-            </p>
-          </div>
-        </main>
-      </Layout>
-    );
-  }
 
   if (!product) {
     return (

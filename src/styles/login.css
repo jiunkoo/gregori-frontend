@@ -27,14 +27,13 @@
 }
 
 .login__input-wrapper {
-  position: relative;
   width: var(--token-full);
   display: flex;
   align-items: center;
 }
 
 .login__input {
-  width: var(--token-full);
+  flex: 1;
   padding: 0 var(--token-sm-1);
   font-size: var(--token-base);
   background: transparent;
@@ -42,16 +41,10 @@
   outline: none;
 }
 
-.login__input-wrapper .login__input {
-  padding-right: var(--token-lg-2);
-}
-
 .login__eye-button {
-  position: absolute;
-  right: var(--token-sm-1);
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 0 var(--token-sm-1) 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

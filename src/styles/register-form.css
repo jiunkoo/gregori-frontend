@@ -63,17 +63,22 @@
 }
 
 .register-form__select-wrapper {
-  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: var(--token-xs-1) solid var(--color-gray-400);
+  background-color: var(--color-white);
+  height: var(--token-lg-1);
 }
 
 .register-form__select {
   appearance: none;
-  background-color: var(--color-white);
-  border: var(--token-xs-1) solid var(--color-gray-400);
-  padding: var(--token-sm-1) var(--token-base);
+  background-color: transparent;
+  border: none;
+  padding: 0 var(--token-base);
   color: var(--color-black);
   width: var(--token-xl-3);
-  height: var(--token-lg-1);
+  height: 100%;
   outline: none;
 }
 
@@ -82,13 +87,10 @@
 }
 
 .register-form__select-icon {
-  position: absolute;
-  right: var(--token-xs-8);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0 var(--token-xs-8) 0 0;
   color: var(--color-gray-400);
 }
 

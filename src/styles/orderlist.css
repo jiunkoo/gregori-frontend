@@ -37,7 +37,6 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: var(--token-md-1);
-  border-right: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderlist__grade-header {
@@ -187,6 +186,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.orderlist__order-image-src {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .orderlist__order-info {

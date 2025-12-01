@@ -9,7 +9,7 @@ const MyPageSidebar: React.FC = () => {
         <div className="mypage-user-name">{MYPAGE_CONSTANTS.USER.NAME}</div>
       </div>
 
-      {/* 나의 쇼핑 정보 */}
+      {/* 나의 쇼핑 정보 - 주문배송조회만 표시 */}
       <div className="mypage-nav-section">
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.SHOPPING_INFO}
@@ -17,50 +17,15 @@ const MyPageSidebar: React.FC = () => {
         <div className="mypage-nav-item">
           {MYPAGE_CONSTANTS.NAV_ITEMS.ORDER_DELIVERY}
         </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.CANCEL_EXCHANGE_RETURN}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.PRODUCT_REVIEW}
-        </div>
       </div>
 
-      {/* 나의 계정 설정 */}
+      {/* 나의 계정 설정 - 회원정보수정만 표시 */}
       <div className="mypage-nav-section">
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.ACCOUNT_SETTINGS}
         </div>
         <div className="mypage-nav-item">
           {MYPAGE_CONSTANTS.NAV_ITEMS.MEMBER_INFO_EDIT}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.MEMBERSHIP_GRADE}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.COUPON}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.MILEAGE}
-        </div>
-      </div>
-
-      {/* 고객센터 */}
-      <div className="mypage-nav-section">
-        <div className="mypage-nav-title">
-          {MYPAGE_CONSTANTS.NAVIGATION.CUSTOMER_SERVICE}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.INQUIRY}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.PRODUCT_QA}
-        </div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.NOTICE}
-        </div>
-        <div className="mypage-nav-item">{MYPAGE_CONSTANTS.NAV_ITEMS.FAQ}</div>
-        <div className="mypage-nav-item">
-          {MYPAGE_CONSTANTS.NAV_ITEMS.CUSTOMER_VOICE}
         </div>
       </div>
     </div>

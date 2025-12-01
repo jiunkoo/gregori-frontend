@@ -53,11 +53,14 @@ const ProductDetail = () => {
 
     if (!product) return;
 
-    navigate(PRODUCT_DETAIL_CONSTANTS.ORDER_CONFIRM.ROUTE, {
+    navigate("/order", {
       state: {
-        productName: product.name,
-        quantity,
-        price: product.price,
+        items: [
+          {
+            product,
+            quantity,
+          },
+        ],
         totalAmount: product.price * quantity,
       },
     });
@@ -109,15 +112,29 @@ const ProductDetail = () => {
     );
   }
 
+  const imageSectionStyle = product.imageUrl
+    ? {
+        backgroundImage: `url(${product.imageUrl})`,
+      }
+    : undefined;
+
   return (
     <Layout>
       <main className="product-detail">
         <div className="product-detail__main">
-          <div className="product-detail__image-section">
+          <div
+            className="product-detail__image-section"
+            style={imageSectionStyle}
+          >
             <button type="button" className="product-detail__nav-button">
               <Icon name="arrowLeft" size={20} />
             </button>
             <div className="product-detail__image-content">
+              {!product.imageUrl && (
+                <div className="product-detail__image-placeholder">
+                  {PRODUCT_DETAIL_CONSTANTS.IMAGE.PLACEHOLDER_TEXT}
+                </div>
+              )}
               <div className="product-detail__image-dots">
                 <div className="product-detail__dot product-detail__dot--active"></div>
                 <div className="product-detail__dot"></div>
@@ -216,13 +233,6 @@ const ProductDetail = () => {
             </div>
 
             <div className="product-detail__order-buttons">
-              <button
-                type="button"
-                className="product-detail__order-button"
-                disabled={product.stock <= 0}
-              >
-                {PRODUCT_DETAIL_CONSTANTS.CART.ADD_TO_CART}
-              </button>
               <button
                 type="button"
                 className="product-detail__order-button product-detail__order-button--primary"

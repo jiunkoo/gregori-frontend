@@ -29,6 +29,7 @@ export interface MemberResponseDto {
   email: string;
   name: string;
   isDeleted: boolean;
+  authority: Authority;
 }
 
 export interface MemberNameUpdateDto {
@@ -107,19 +108,24 @@ export interface OrderDetailRequestDto {
 export interface OrderResponseDto {
   id: number;
   memberId: number;
-  memberName: string;
+  orderNumber: string;
+  paymentMethod: string;
+  paymentAmount: number;
+  deliveryCost: number;
+  status: OrderDetailStatus;
   orderDetails: OrderDetailResponseDto[];
-  totalAmount: number;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface OrderDetailResponseDto {
   id: number;
+  orderId: number;
   productId: number;
+  productSellerId: number;
   productName: string;
-  quantity: number;
-  price: number;
+  productPrice: number;
+  productCount: number;
   status: OrderDetailStatus;
 }
 

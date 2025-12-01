@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "@components/Layout";
 import Icon from "@components/icons/SvgIcon";
@@ -12,10 +11,10 @@ interface CartItem {
     id: number;
     name: string;
     price: number;
-    description: string;
     sellerName: string;
     categoryId: number;
     stock: number;
+    imageUrl?: string;
     createdAt: string;
     updatedAt: string;
   };
@@ -31,7 +30,6 @@ interface OrderConfirmData {
   orderData: OrderData;
   ordererInfo: {
     name: string;
-    phone: string;
     email: string;
   };
   shippingInfo: {
@@ -91,10 +89,6 @@ const OrderConfirm = () => {
     navigate("/orders");
   };
 
-  const handlePrintReceipt = () => {
-    window.print();
-  };
-
   return (
     <Layout>
       <main className="order-confirm">
@@ -136,7 +130,15 @@ const OrderConfirm = () => {
                 className="order-confirm__product-item"
               >
                 <div className="order-confirm__product-image">
-                  <Icon name="image" size={60} />
+                  {item.product.imageUrl ? (
+                    <img
+                      src={item.product.imageUrl}
+                      alt={item.product.name}
+                      className="order-confirm__product-image-src"
+                    />
+                  ) : (
+                    <Icon name="image" size={60} />
+                  )}
                 </div>
                 <div className="order-confirm__product-info">
                   <div className="order-confirm__product-brand">
@@ -145,13 +147,8 @@ const OrderConfirm = () => {
                   <div className="order-confirm__product-name">
                     {item.product.name}
                   </div>
-                  <div className="order-confirm__product-option">
-                    {ORDER_CONFIRM_CONSTANTS.PRODUCT.OPTION}
-                  </div>
                   <div className="order-confirm__product-price">
-                    {formatPrice(
-                      Math.floor(item.product.price * 0.8 * item.quantity)
-                    )}
+                    {formatPrice(item.product.price * item.quantity)}
                     {ORDER_CONFIRM_CONSTANTS.PRODUCT.CURRENCY}
                   </div>
                 </div>
@@ -192,14 +189,6 @@ const OrderConfirm = () => {
             </div>
             <div className="order-confirm__user-item">
               <div className="order-confirm__user-label">
-                {ORDER_CONFIRM_CONSTANTS.USER.PHONE}
-              </div>
-              <div className="order-confirm__user-value">
-                {orderConfirmData.ordererInfo.phone}
-              </div>
-            </div>
-            <div className="order-confirm__user-item">
-              <div className="order-confirm__user-label">
                 {ORDER_CONFIRM_CONSTANTS.USER.EMAIL}
               </div>
               <div className="order-confirm__user-value">
@@ -209,56 +198,7 @@ const OrderConfirm = () => {
           </div>
         </div>
 
-        {/* 3. 배송지 정보 */}
-        <div className="order-confirm__section">
-          <div className="order-confirm__section-header">
-            <h2 className="order-confirm__section-title">
-              {ORDER_CONFIRM_CONSTANTS.SECTION.SHIPPING_INFO}
-            </h2>
-          </div>
-
-          <div className="order-confirm__shipping-info">
-            <div className="order-confirm__shipping-item">
-              <div className="order-confirm__shipping-label">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.RECIPIENT}
-              </div>
-              <div className="order-confirm__shipping-value">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.RECIPIENT}
-              </div>
-            </div>
-            <div className="order-confirm__shipping-item">
-              <div className="order-confirm__shipping-label">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.PHONE}
-              </div>
-              <div className="order-confirm__shipping-value">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.PHONE}
-              </div>
-            </div>
-            <div className="order-confirm__shipping-item">
-              <div className="order-confirm__shipping-label">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.ADDRESS}
-              </div>
-              <div className="order-confirm__shipping-value">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.ADDRESS}
-              </div>
-              <button type="button" className="order-confirm__shipping-edit">
-                <span className="order-confirm__shipping-edit-text">
-                  {ORDER_CONFIRM_CONSTANTS.SHIPPING.CHANGE}
-                </span>
-              </button>
-            </div>
-            <div className="order-confirm__shipping-item">
-              <div className="order-confirm__shipping-label">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.LABELS.REQUEST}
-              </div>
-              <div className="order-confirm__shipping-value">
-                {ORDER_CONFIRM_CONSTANTS.SHIPPING.VALUES.REQUEST}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. 결제 정보 */}
+        {/* 3. 결제 정보 */}
         <div className="order-confirm__section">
           <div className="order-confirm__section-header">
             <h2 className="order-confirm__section-title">
@@ -293,14 +233,6 @@ const OrderConfirm = () => {
             </div>
             <div className="order-confirm__payment-item">
               <div className="order-confirm__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.COMPLETE_TIME}
-              </div>
-              <div className="order-confirm__payment-value">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.COMPLETE_TIME}
-              </div>
-            </div>
-            <div className="order-confirm__payment-item">
-              <div className="order-confirm__payment-label">
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.SHIPPING_FEE}
               </div>
               <div className="order-confirm__payment-value">
@@ -316,20 +248,6 @@ const OrderConfirm = () => {
                 {formatPrice(orderConfirmData.amounts.finalAmount)}
                 {ORDER_CONFIRM_CONSTANTS.PAYMENT.CURRENCY}
               </div>
-            </div>
-            <div className="order-confirm__payment-item">
-              <div className="order-confirm__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.RECEIPT}
-              </div>
-              <button
-                type="button"
-                className="order-confirm__payment-receipt-button"
-                onClick={handlePrintReceipt}
-              >
-                <span className="order-confirm__payment-receipt-button-text">
-                  {ORDER_CONFIRM_CONSTANTS.PAYMENT.VALUES.PRINT_RECEIPT}
-                </span>
-              </button>
             </div>
           </div>
 

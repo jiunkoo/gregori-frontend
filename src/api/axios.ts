@@ -46,10 +46,8 @@ api.interceptors.response.use(
       data: error.response?.data,
     });
 
-    if (error.response?.status === 401) {
-      // 인증 실패 시 로그인 페이지로 리다이렉트
-      window.location.href = "/login";
-    }
+    // 401(Unauthorized)인 경우에도 전역 리다이렉트는 하지 않고,
+    // 각 화면에서 필요에 따라 처리하도록 에러만 전달한다.
     return Promise.reject(error);
   }
 );

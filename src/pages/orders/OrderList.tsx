@@ -2,15 +2,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { orderAPI } from "@api/order";
-import { OrderResponseDto, OrderDetailStatus } from "@models";
+import { productAPI } from "@api/product";
+import {
+  OrderResponseDto,
+  OrderDetailStatus,
+  ProductResponseDto,
+} from "@models";
 import { Icon, Layout } from "@components";
 import { MYPAGE_CONSTANTS, ORDERLIST_CONSTANTS } from "@constants";
+import { useAuthStore } from "@stores";
 import "@styles/orderlist.css";
 
 const OrderList = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [productsById, setProductsById] = useState<
+    Record<number, ProductResponseDto>
+  >({});
   const [page] = useState(1);
+  const { user } = useAuthStore();
 
   useEffect(() => {
     fetchOrders();
@@ -21,6 +31,7 @@ const OrderList = () => {
     try {
       const data = await orderAPI.getOrders(page);
       setOrders(data);
+      await fetchProductsForOrders(data);
     } catch (error) {
       console.error(ORDERLIST_CONSTANTS.LOADING.ERROR, error);
     } finally {
@@ -32,8 +43,33 @@ const OrderList = () => {
     return new Intl.NumberFormat("ko-KR").format(price);
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("ko-KR");
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return "-";
+    const clean = dateString.split("[")[0];
+    const date = new Date(clean);
+    if (Number.isNaN(date.getTime())) return "-";
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    return `${year}-${month}-${day}`;
+  };
+
+  const formatExpectedDate = (dateString?: string) => {
+    if (!dateString) return "-";
+    const clean = dateString.split("[")[0];
+    const date = new Date(clean);
+    if (Number.isNaN(date.getTime())) return "-";
+
+    // 주문일자로부터 3일 후
+    date.setDate(date.getDate() + 3);
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    return `${year}-${month}-${day}`;
   };
 
   const getStatusText = (status: OrderDetailStatus) => {
@@ -53,6 +89,33 @@ const OrderList = () => {
     }
   };
 
+  const fetchProductsForOrders = async (orderList: OrderResponseDto[]) => {
+    const ids = new Set<number>();
+    orderList.forEach((order) => {
+      order.orderDetails.forEach((detail) => {
+        ids.add(detail.productId);
+      });
+    });
+
+    const missingIds = Array.from(ids).filter((id) => !productsById[id]);
+    if (missingIds.length === 0) return;
+
+    try {
+      const products = await Promise.all(
+        missingIds.map((id) => productAPI.getProduct(id))
+      );
+      setProductsById((prev) => {
+        const next = { ...prev };
+        products.forEach((product) => {
+          next[product.id] = product;
+        });
+        return next;
+      });
+    } catch (error) {
+      console.error("상품 정보 조회 실패:", error);
+    }
+  };
+
   if (loading) {
     return (
       <Layout showMyPageSidebar={true}>
@@ -69,6 +132,8 @@ const OrderList = () => {
     );
   }
 
+  const authorityLabel = user?.authority ?? "GUEST";
+
   return (
     <Layout showMyPageSidebar={true}>
       <main className="orderlist">
@@ -78,52 +143,9 @@ const OrderList = () => {
               <div className="orderlist__grade-label">
                 {MYPAGE_CONSTANTS.GRADE.LABEL}
               </div>
-              <Icon
-                name="arrowRight"
-                size={20}
-                className="orderlist__grade-header-arrow"
-                color="white"
-              />
             </div>
             <div className="orderlist__grade-footer">
-              <div className="orderlist__grade-value">
-                {MYPAGE_CONSTANTS.GRADE.VALUE}
-              </div>
-              <button type="button" className="orderlist__grade-benefit-button">
-                {MYPAGE_CONSTANTS.GRADE.BENEFIT_BUTTON}
-              </button>
-            </div>
-          </div>
-          <div className="orderlist__grade-item">
-            <div className="orderlist__grade-header">
-              <div className="orderlist__grade-label">
-                {MYPAGE_CONSTANTS.GRADE.COUPON_LABEL}
-              </div>
-              <Icon
-                name="arrowRight"
-                size={20}
-                className="orderlist__grade-header-arrow"
-                color="white"
-              />
-            </div>
-            <div className="orderlist__grade-footer">
-              <div className="orderlist__grade-value">4</div>
-            </div>
-          </div>
-          <div className="orderlist__grade-item">
-            <div className="orderlist__grade-header">
-              <div className="orderlist__grade-label">
-                {MYPAGE_CONSTANTS.GRADE.MILEAGE_LABEL}
-              </div>
-              <Icon
-                name="arrowRight"
-                size={20}
-                className="orderlist__grade-header-arrow"
-                color="white"
-              />
-            </div>
-            <div className="orderlist__grade-footer">
-              <div className="orderlist__grade-value">0</div>
+              <div className="orderlist__grade-value">{authorityLabel}</div>
             </div>
           </div>
         </div>
@@ -145,7 +167,9 @@ const OrderList = () => {
                       {formatDate(order.createdAt)}
                     </span>{" "}
                     {ORDERLIST_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
-                    <span className="orderlist__order-number">{order.id}</span>
+                    <span className="orderlist__order-number">
+                      {order.orderNumber}
+                    </span>
                   </div>
                 </div>
 
@@ -153,130 +177,57 @@ const OrderList = () => {
                   to={`/orderdetail/${order.id}`}
                   className="orderlist__order-detail"
                 >
-                  {order.orderDetails.map((detail) => (
-                    <div key={detail.id} className="orderlist__order-product">
-                      <div className="orderlist__order-image">
-                        <Icon name="image" size={120} />
-                      </div>
-                      <div className="orderlist__order-info">
-                        <div className="orderlist__order-brand">
-                          {ORDERLIST_CONSTANTS.PRODUCT.BRAND}
-                        </div>
-                        <div className="orderlist__order-name">
-                          {detail.productName}
-                        </div>
-                        <div className="orderlist__order-option">
-                          {ORDERLIST_CONSTANTS.PRODUCT.OPTION}
-                        </div>
-                        <div className="orderlist__order-price">
-                          {formatPrice(detail.price)}원
-                        </div>
-                      </div>
+                  {order.orderDetails.map((detail) => {
+                    const product = productsById[detail.productId];
+                    const brand =
+                      product?.sellerName ?? ORDERLIST_CONSTANTS.PRODUCT.BRAND;
+                    const imageUrl = product?.imageUrl;
 
-                      <div className="orderlist__order-quantity">
-                        {detail.quantity}
-                        {ORDERLIST_CONSTANTS.PRODUCT.QUANTITY_UNIT}
-                      </div>
-                      <div className="orderlist__order-shipping">
-                        {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
-                        {ORDERLIST_CONSTANTS.SHIPPING.FEE}
-                      </div>
-                      <div className="orderlist__order-status">
-                        {getStatusText(detail.status)}
-                      </div>
-                      <div className="orderlist__order-delivery">
-                        {ORDERLIST_CONSTANTS.SHIPPING.EXPECTED_DATE}
-                        <br />
-                        {ORDERLIST_CONSTANTS.SHIPPING.STATUS}
-                      </div>
-                    </div>
-                  ))}
+                    return (
+                      <div key={detail.id} className="orderlist__order-product">
+                        <div className="orderlist__order-image">
+                          {imageUrl ? (
+                            <img
+                              src={imageUrl}
+                              alt={detail.productName}
+                              className="orderlist__order-image-src"
+                            />
+                          ) : (
+                            <Icon name="image" size={120} />
+                          )}
+                        </div>
+                        <div className="orderlist__order-info">
+                          <div className="orderlist__order-brand">{brand}</div>
+                          <div className="orderlist__order-name">
+                            {detail.productName}
+                          </div>
+                          <div className="orderlist__order-price">
+                            {formatPrice(detail.productPrice)}원
+                          </div>
+                        </div>
 
-                  <div className="orderlist__order-actions">
-                    <button
-                      type="button"
-                      className="orderlist__order-action-button"
-                    >
-                      {ORDERLIST_CONSTANTS.BUTTONS.CANCEL}
-                    </button>
-                    <button
-                      type="button"
-                      className="orderlist__order-action-button"
-                    >
-                      {ORDERLIST_CONSTANTS.BUTTONS.INQUIRY}
-                    </button>
-                  </div>
+                        <div className="orderlist__order-quantity">
+                          {detail.productCount}
+                          {ORDERLIST_CONSTANTS.PRODUCT.QUANTITY_UNIT}
+                        </div>
+                        <div className="orderlist__order-shipping">
+                          {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
+                          {formatPrice(order.deliveryCost)}원
+                        </div>
+                        <div className="orderlist__order-status">
+                          {getStatusText(detail.status)}
+                        </div>
+                        <div className="orderlist__order-delivery">
+                          {formatExpectedDate(order.createdAt)}
+                          <br />
+                          {ORDERLIST_CONSTANTS.SHIPPING.STATUS}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </Link>
               </div>
             ))}
-          </div>
-
-          <div className="orderlist__order-item">
-            <div className="orderlist__order-header">
-              <div className="orderlist__order-date">
-                {ORDERLIST_CONSTANTS.ORDER.DATE_LABEL}{" "}
-                <span className="orderlist__order-date-value">
-                  {ORDERLIST_CONSTANTS.ORDER.DUMMY_DATE}
-                </span>{" "}
-                {ORDERLIST_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
-                <span className="orderlist__order-number">
-                  {ORDERLIST_CONSTANTS.ORDER.DUMMY_NUMBER}
-                </span>
-              </div>
-            </div>
-
-            <Link to="/orderdetail" className="orderlist__order-detail">
-              <div className="orderlist__order-product">
-                <div className="orderlist__order-image">
-                  <Icon name="image" size={60} />
-                </div>
-                <div className="orderlist__order-info">
-                  <div className="orderlist__order-brand">
-                    {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.BRAND}
-                  </div>
-                  <div className="orderlist__order-name">
-                    {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.NAME}
-                  </div>
-                  <div className="orderlist__order-option">
-                    {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.OPTION}
-                  </div>
-                  <div className="orderlist__order-price">
-                    {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.PRICE}
-                  </div>
-                </div>
-              </div>
-
-              <div className="orderlist__order-quantity">
-                {ORDERLIST_CONSTANTS.DUMMY_PRODUCT.QUANTITY}
-              </div>
-              <div className="orderlist__order-shipping">
-                {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
-                {ORDERLIST_CONSTANTS.SHIPPING.FEE}
-              </div>
-              <div className="orderlist__order-status">
-                {ORDERLIST_CONSTANTS.STATUS.PAYMENT_COMPLETED}
-              </div>
-              <div className="orderlist__order-delivery">
-                {ORDERLIST_CONSTANTS.SHIPPING.EXPECTED_DATE}
-                <br />
-                {ORDERLIST_CONSTANTS.SHIPPING.STATUS}
-              </div>
-
-              <div className="orderlist__order-actions">
-                <button
-                  type="button"
-                  className="orderlist__order-action-button"
-                >
-                  {ORDERLIST_CONSTANTS.BUTTONS.CANCEL}
-                </button>
-                <button
-                  type="button"
-                  className="orderlist__order-action-button"
-                >
-                  {ORDERLIST_CONSTANTS.BUTTONS.INQUIRY}
-                </button>
-              </div>
-            </Link>
           </div>
         </div>
       </main>

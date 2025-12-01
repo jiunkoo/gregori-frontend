@@ -17,7 +17,6 @@
   align-items: center;
   gap: var(--token-md-1);
   padding: var(--token-md-1);
-  border-right: var(--token-xs-1) solid var(--color-gray-200);
 }
 
 .mypage__grade-item--standard {

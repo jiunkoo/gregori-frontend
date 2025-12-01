@@ -9,20 +9,11 @@ export const ORDERLIST_CONSTANTS = {
   ORDER: {
     DATE_LABEL: "주문일자",
     NUMBER_LABEL: "주문번호",
-    DUMMY_DATE: "2023-01-01",
-    DUMMY_NUMBER: "ORD20230101-1111111",
   },
   PRODUCT: {
     BRAND: "브랜드",
     OPTION: "옵션: [사이즈] M, [색상] Navy",
     QUANTITY_UNIT: "개",
-  },
-  DUMMY_PRODUCT: {
-    BRAND: "Apple",
-    NAME: "DIGITAL WATCH",
-    PRICE: "324,240원",
-    QUANTITY: "1개",
-    OPTION: "옵션: [사이즈] M, [색상] Navy",
   },
   SHIPPING: {
     LABEL: "배송비",

@@ -23,7 +23,7 @@ export const MYPAGE_CONSTANTS = {
     CUSTOMER_VOICE: "고객의 소리",
   },
   GRADE: {
-    LABEL: "멤버십 등급",
+    LABEL: "권한",
     VALUE: "GREEN",
     BENEFIT_BUTTON: "할인 혜택 보기",
     COUPON_LABEL: "사용가능쿠폰",

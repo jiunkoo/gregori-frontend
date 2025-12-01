@@ -138,6 +138,12 @@
   justify-content: center;
 }
 
+.mypage__order-image-src {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .mypage__wishlist-tab-item {
   padding: var(--token-md-1);
   font-size: var(--token-base);

@@ -209,14 +209,9 @@ const ProductDetail = () => {
                   </button>
                 </div>
                 <span className="product-detail__cart-price">
-                  {formatPrice(product.price)}
+                  {formatPrice(product.price * quantity)}
                   {PRODUCT_DETAIL_CONSTANTS.PRICE.CURRENCY}
                 </span>
-                <Icon
-                  name="remove"
-                  size={28}
-                  className="product-detail__cart-remove"
-                />
               </div>
             </div>
             <div className="product-detail__line"></div>

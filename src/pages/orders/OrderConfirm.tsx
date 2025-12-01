@@ -86,7 +86,7 @@ const OrderConfirm = () => {
   };
 
   const handleOrderInquiry = () => {
-    navigate("/orders");
+    navigate("/orderlist");
   };
 
   return (

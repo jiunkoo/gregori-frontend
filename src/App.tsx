@@ -69,18 +69,17 @@ const App: React.FC = () => {
         <Route path="/order-confirm" element={<OrderConfirm />} />
         <Route path="/order-complete" element={<OrderComplete />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/orderlist" element={<OrderListPage />} />
-        <Route path="/orderdetail" element={<OrderDetail />} />
 
-        {/* 인증이 필요한 라우트 */}
+        {/* 마이페이지 - 주문 목록 / 주문 상세 (인증 필요) */}
         <Route
-          path="/orders"
+          path="/orderlist"
           element={
             <ProtectedRoute>
               <OrderListPage />
             </ProtectedRoute>
           }
         />
+        <Route path="/orderdetail/:orderId" element={<OrderDetail />} />
 
         {/* 404 페이지 */}
         <Route path="*" element={<Navigate to="/" replace />} />

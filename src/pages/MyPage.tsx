@@ -5,12 +5,16 @@ import { Icon, Layout } from "@components";
 import { MYPAGE_CONSTANTS, ORDERLIST_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
-import { OrderResponseDto } from "@models";
+import { OrderResponseDto, ProductResponseDto } from "@models";
+import { productAPI } from "@api/product";
 import "@styles/mypage.css";
 
 const MyPage = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [productsById, setProductsById] = useState<
+    Record<number, ProductResponseDto>
+  >({});
   const { user } = useAuthStore();
 
   useEffect(() => {
@@ -19,6 +23,28 @@ const MyPage = () => {
       try {
         const data = await orderAPI.getOrders(1);
         setOrders(data);
+
+        // 최근 주문의 상품 이미지용 데이터 로드
+        const ids = new Set<number>();
+        data.forEach((order) => {
+          order.orderDetails.forEach((detail) => {
+            ids.add(detail.productId);
+          });
+        });
+
+        const missingIds = Array.from(ids).filter((id) => !productsById[id]);
+        if (missingIds.length > 0) {
+          const products = await Promise.all(
+            missingIds.map((id) => productAPI.getProduct(id))
+          );
+          setProductsById((prev) => {
+            const next = { ...prev };
+            products.forEach((product) => {
+              next[product.id] = product;
+            });
+            return next;
+          });
+        }
       } catch (error) {
         console.error(ORDERLIST_CONSTANTS.LOADING.ERROR, error);
       } finally {
@@ -44,10 +70,10 @@ const MyPage = () => {
     if (Number.isNaN(date.getTime())) return "-";
 
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
 
-    // 예: 2025-12-1 형태로 출력
+    // 예: 2025-12-01 형태로 출력
     return `${year}-${month}-${day}`;
   };
 
@@ -106,6 +132,8 @@ const MyPage = () => {
               if (!firstDetail) return null;
 
               const hasMore = order.orderDetails.length > 1;
+              const product = productsById[firstDetail.productId];
+              const imageUrl = product?.imageUrl;
 
               return (
                 <div key={order.id} className="mypage__order-item">
@@ -113,7 +141,15 @@ const MyPage = () => {
                     {order.createdAt ? formatDate(order.createdAt) : "-"}
                   </div>
                   <div className="mypage__order-image">
-                    <Icon name="image" size={40} />
+                    {imageUrl ? (
+                      <img
+                        src={imageUrl}
+                        alt={firstDetail.productName}
+                        className="mypage__order-image-src"
+                      />
+                    ) : (
+                      <Icon name="image" size={40} />
+                    )}
                   </div>
                   <div className="mypage__order-info">
                     <div className="mypage__order-product">

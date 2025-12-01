@@ -19,7 +19,6 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: var(--token-md-1);
-  border-right: var(--token-xs-2) solid var(--color-gray-200);
 }
 
 .orderdetail__grade-header {
@@ -32,7 +31,7 @@
   font-size: var(--token-md-2);
   font-weight: var(--font-weight-sm);
   color: var(--color-white);
-  letter-spacing: var(--token-xs-7);
+  letter-spacing: var(--token-xs-2);
 }
 
 .orderdetail__grade-footer {
@@ -118,6 +117,7 @@
   background: var(--color-gray-200);
   border: var(--token-xs-2) solid var(--color-black);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: var(--token-md-4);
@@ -137,6 +137,10 @@
   color: var(--color-black);
   letter-spacing: var(--token-xs-2);
   text-align: center;
+}
+
+.orderdetail__progress-item--active .orderdetail__progress-label {
+  color: var(--color-white);
 }
 
 .orderdetail__progress-arrow {
@@ -172,6 +176,7 @@
   align-items: center;
   gap: var(--token-md-1);
   flex: 1;
+  min-width: var(--token-2xl-4);
 }
 
 .orderdetail__order-image {

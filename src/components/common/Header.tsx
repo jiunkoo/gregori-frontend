@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Icon from "@components/icons/SvgIcon";
 import { HEADER_CONSTANTS } from "@constants/header";
 import { useAuthStore } from "@stores";
@@ -17,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, logout } = useAuthStore();
 
   return (
@@ -140,17 +141,22 @@ const Header: React.FC<HeaderProps> = ({
       {showNav && (
         <div className="header-nav">
           <nav className="header-nav-list">
-            {HEADER_CONSTANTS.NAV_MENU.map((item, index) => (
-              <Link
-                key={item.label}
-                to={item.path}
-                className={`header-nav-link ${
-                  index === 0 ? "header-nav-link-active" : ""
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {HEADER_CONSTANTS.NAV_MENU.map((item) => {
+              const isActive =
+                location.pathname + location.search === item.path;
+
+              return (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  className={`header-nav-link ${
+                    isActive ? "header-nav-link-active" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}

@@ -78,7 +78,7 @@
   padding: 0 var(--token-base);
   color: var(--color-black);
   width: var(--token-xl-3);
-  height: 100%;
+  height: var(--token-full);
   outline: none;
 }
 

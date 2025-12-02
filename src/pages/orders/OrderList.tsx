@@ -9,8 +9,7 @@ import {
   ProductResponseDto,
 } from "@models";
 import { Icon, Layout } from "@components";
-import { MYPAGE_CONSTANTS, ORDERLIST_CONSTANTS } from "@constants";
-import { useAuthStore } from "@stores";
+import { ORDERLIST_CONSTANTS } from "@constants";
 import "@styles/order-list.css";
 
 const OrderList = () => {
@@ -19,7 +18,6 @@ const OrderList = () => {
     Record<number, ProductResponseDto>
   >({});
   const [page] = useState(1);
-  const { user } = useAuthStore();
 
   useEffect(() => {
     fetchOrders();
@@ -112,24 +110,9 @@ const OrderList = () => {
     }
   };
 
-  const authorityLabel = user?.authority ?? "GUEST";
-
   return (
     <Layout showMyPageSidebar={true}>
       <main className="order-list">
-        <div className="order-list__grade-section">
-          <div className="order-list__grade-item">
-            <div className="order-list__grade-header">
-              <div className="order-list__grade-label">
-                {MYPAGE_CONSTANTS.GRADE.LABEL}
-              </div>
-            </div>
-            <div className="order-list__grade-footer">
-              <div className="order-list__grade-value">{authorityLabel}</div>
-            </div>
-          </div>
-        </div>
-
         <div className="order-list__section">
           <div className="order-list__section-header">
             <h2 className="order-list__section-title">

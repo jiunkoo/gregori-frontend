@@ -1,7 +1,7 @@
 .mypage {
   width: var(--token-full);
   margin: 0 auto;
-  padding: var(--token-md-1);
+  padding: var(--token-md-2);
 }
 
 .mypage__grade-section {

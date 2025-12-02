@@ -15,6 +15,7 @@ import OrderDetail from "@pages/orders/OrderDetail";
 import MyPage from "@pages/MyPage";
 import OrderConfirm from "@pages/orders/OrderConfirm";
 import Order from "@pages/orders/Order";
+import MyPageProfileEdit from "@pages/MyPageProfileEdit";
 import { useAuthStore } from "@stores/authStore";
 import { memberAPI } from "@api/member";
 
@@ -57,9 +58,38 @@ const App: React.FC = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/order-confirm" element={<OrderConfirm />} />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route
+          path="/order"
+          element={
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-confirm"
+          element={
+            <ProtectedRoute>
+              <OrderConfirm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mypage"
+          element={
+            <ProtectedRoute>
+              <MyPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mypage/profile"
+          element={
+            <ProtectedRoute>
+              <MyPageProfileEdit />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/orderlist"
           element={
@@ -68,7 +98,14 @@ const App: React.FC = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/orderdetail/:orderId" element={<OrderDetail />} />
+        <Route
+          path="/orderdetail/:orderId"
+          element={
+            <ProtectedRoute>
+              <OrderDetail />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

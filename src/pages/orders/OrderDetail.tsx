@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import Icon from "@components/icons/SvgIcon";
 import Layout from "@components/Layout";
 import {
-  MYPAGE_CONSTANTS,
   ORDERDETAIL_CONSTANTS,
   ORDERLIST_CONSTANTS,
   ORDER_CONFIRM_CONSTANTS,
@@ -23,7 +22,6 @@ import "@styles/order-detail.css";
 const OrderDetail = () => {
   const { orderId } = useParams<{ orderId: string }>();
   const { user } = useAuthStore();
-  const authorityLabel = user?.authority ?? "GUEST";
 
   const [order, setOrder] = useState<OrderResponseDto | null>(null);
   const [productsById, setProductsById] = useState<
@@ -148,19 +146,6 @@ const OrderDetail = () => {
   return (
     <Layout showMyPageSidebar={true}>
       <main className="order-detail">
-        <div className="order-detail__grade-section">
-          <div className="order-detail__grade-item">
-            <div className="order-detail__grade-header">
-              <div className="order-detail__grade-label">
-                {MYPAGE_CONSTANTS.GRADE.LABEL}
-              </div>
-            </div>
-            <div className="order-detail__grade-footer">
-              <div className="order-detail__grade-value">{authorityLabel}</div>
-            </div>
-          </div>
-        </div>
-
         <div className="order-detail__section">
           <div className="order-detail__section-header">
             <h2 className="order-detail__section-title">
@@ -170,13 +155,13 @@ const OrderDetail = () => {
 
           <div className="order-detail__progress">
             {progressSteps.map((step, index) => {
-              const isActive = index === 1;
+              const isActive = step.number === 1;
               return (
                 <Fragment key={step.label}>
                   <div
                     className={
-                      "orderdetail__progress-item" +
-                      (isActive ? " orderdetail__progress-item--active" : "")
+                      "order-detail__progress-item" +
+                      (isActive ? " order-detail__progress-item--active" : "")
                     }
                   >
                     <div className="order-detail__progress-circle">

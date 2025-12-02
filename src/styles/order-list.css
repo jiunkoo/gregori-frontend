@@ -2,7 +2,7 @@
   width: var(--token-full);
   position: relative;
   margin: 0 auto;
-  padding: var(--token-md-1);
+  padding: var(--token-md-2);
 }
 
 .order-list__grade-section {
@@ -51,7 +51,6 @@
 .order-list__section {
   background: var(--color-white);
   overflow: hidden;
-  margin: var(--token-lg-1) 0;
 }
 
 .order-list__section-header {

@@ -2,7 +2,7 @@
   width: var(--token-full);
   position: relative;
   margin: 0 auto;
-  padding: var(--token-md-1);
+  padding: var(--token-md-2);
 }
 
 .order-detail__grade-section {
@@ -71,6 +71,10 @@
   justify-content: space-between;
   border-top: var(--token-xs-6) solid var(--color-black);
   border-bottom: var(--token-xs-2) solid var(--color-gray-200);
+}
+
+.order-detail__section:first-of-type {
+  margin-top: 0;
 }
 
 .order-detail__section-title {

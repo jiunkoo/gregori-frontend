@@ -1,6 +1,6 @@
 .mypage-sidebar {
   width: var(--token-2xl-4);
-  padding: var(--token-md-2);
+  padding: var(--token-md-2) 0 var(--token-md-2) var(--token-md-2);
   flex-shrink: 0;
 }
 
@@ -34,8 +34,17 @@
   font-size: var(--token-md-1);
   font-weight: var(--font-weight-md);
   letter-spacing: var(--token-xs-2);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: var(--token-xs-8) 0;
 }
 
 .mypage-nav-item:hover {
+  background-color: var(--color-gray-100);
+}
+
+.mypage-nav-item--active {
+  font-weight: var(--font-weight-2xl);
   background-color: var(--color-gray-100);
 }

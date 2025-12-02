@@ -1,10 +1,4 @@
 export const HEADER_CONSTANTS = {
-  BANNER: {
-    PREFIX: "GREGORI 신규 회원",
-    DISCOUNT: "20%",
-    SUFFIX: "파격 할인 쿠폰",
-  },
-
   LOGO: {
     TEXT: "GREGORI",
   },

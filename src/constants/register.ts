@@ -24,15 +24,8 @@ export const REGISTER_CONSTANTS = {
     VERIFICATION_LABEL: "인증번호",
     VERIFICATION_PLACEHOLDER: "인증번호",
     SUBMIT_BUTTON: "회원가입",
-    SUBMIT_LOADING: "처리중...",
     ALREADY_ACCOUNT: "이미 계정이 있으신가요?",
     LOGIN_LINK: "로그인하기",
-  },
-  VERIFICATION: {
-    SEND_BUTTON: "인증번호 전송",
-    SENT_BUTTON: "전송완료",
-    VERIFY_BUTTON: "인증번호 확인",
-    VERIFIED_BUTTON: "인증완료",
   },
   ERROR: {
     REQUIRED_AGREEMENT: "필수 약관에 동의해주세요.",

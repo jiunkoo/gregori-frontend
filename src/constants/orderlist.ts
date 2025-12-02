@@ -1,8 +1,4 @@
 export const ORDERLIST_CONSTANTS = {
-  LOADING: {
-    MESSAGE: "로딩 중...",
-    ERROR: "주문 조회 실패:",
-  },
   SECTION: {
     TITLE: "주문 상품 정보",
   },
@@ -12,13 +8,10 @@ export const ORDERLIST_CONSTANTS = {
   },
   PRODUCT: {
     BRAND: "브랜드",
-    OPTION: "옵션: [사이즈] M, [색상] Navy",
     QUANTITY_UNIT: "개",
   },
   SHIPPING: {
     LABEL: "배송비",
-    FEE: "3,000원",
-    EXPECTED_DATE: "2023.01.31 이내",
     STATUS: "출고 예정",
   },
   STATUS: {

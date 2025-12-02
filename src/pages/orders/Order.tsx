@@ -24,15 +24,13 @@ const Order = () => {
   const orderData = location.state as OrderData | undefined;
   const { user } = useAuthStore();
 
-  // 주문자 정보 상태
   const [ordererInfo] = useState({
     name: "Koubit",
     email: "j*******@g*******.com",
   });
 
-  // 배송지 정보 상태
   const [shippingInfo] = useState({
-    type: "default", // 'default', 'new'
+    type: "default",
     name: "",
     recipient: "",
     address: "",
@@ -43,7 +41,6 @@ const Order = () => {
     setAsDefault: false,
   });
 
-  // 쿠폰/마일리지 상태
   const [couponInfo] = useState({
     bonusCoupon: "사용 가능 쿠폰 3장 / 보유 4장",
     brandCoupon: "적용 가능한 쿠폰이 없습니다.",
@@ -51,7 +48,6 @@ const Order = () => {
     milesUsed: 0,
   });
 
-  // 주문동의 상태
   const [agreements, setAgreements] = useState({
     all: false,
     personalInfo: false,
@@ -59,16 +55,13 @@ const Order = () => {
     payment: false,
   });
 
-  // 금액 계산
   const calculateAmounts = () => {
-    // 주문 상품 기준 총 상품 금액
     const totalProductAmount =
       orderData?.items.reduce(
         (sum, item) => sum + item.product.price * item.quantity,
         0
       ) || 0;
 
-    // 현재는 추가 할인/쿠폰/마일리지 없이 상품 금액 + 배송비만 사용
     const discountAmount = 0;
     const shippingFee = 6000;
     const couponDiscount = 0;
@@ -93,7 +86,6 @@ const Order = () => {
     return new Intl.NumberFormat("ko-KR").format(price);
   };
 
-  // 주문 정보가 없으면 홈으로 리다이렉트
   if (!orderData || !orderData.items || orderData.items.length === 0) {
     navigate("/");
     return null;
@@ -105,14 +97,12 @@ const Order = () => {
       return;
     }
 
-    // 사용자 정보가 없는 경우 주문 생성 불가
     if (!user) {
       console.error("주문 생성 실패: 사용자 정보가 없습니다.");
       return;
     }
 
     try {
-      // 백엔드로 주문 생성 요청
       const createdOrder = await orderAPI.createOrder({
         memberId: user.id,
         paymentMethod: FIXED_PAYMENT_METHOD,
@@ -125,7 +115,6 @@ const Order = () => {
           })) ?? [],
       });
 
-      // 주문 확인 페이지로 이동 (백엔드에서 받은 주문 정보 포함)
       navigate("/order-confirm", {
         state: {
           orderData,
@@ -140,7 +129,6 @@ const Order = () => {
       });
     } catch (error) {
       console.error("주문 생성 실패:", error);
-      // TODO: 사용자에게 에러 안내 토스트/모달 등을 표시할 수 있음
     }
   };
 

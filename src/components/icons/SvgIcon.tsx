@@ -23,7 +23,6 @@ const Icon: React.FC<IconProps> = ({
   };
 
   const icons: { [key: string]: React.JSX.Element } = {
-    // 검색 아이콘
     search: (
       <svg
         fill="none"
@@ -40,7 +39,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 사용자 아이콘 (마이페이지)
     user: (
       <svg
         viewBox="0 0 20 20"
@@ -72,7 +70,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 하트 아이콘 (찜목록)
     heart: (
       <svg
         viewBox="0 0 16 16"
@@ -95,7 +92,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 장바구니 아이콘
     cart: (
       <svg
         version="1.1"
@@ -127,7 +123,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 로그인 아이콘
     login: (
       <svg
         viewBox="0 0 16 16"
@@ -150,7 +145,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 로그아웃 아이콘
     logout: (
       <svg
         viewBox="0 0 16 16"
@@ -173,7 +167,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 왼쪽 화살표 아이콘
     arrowLeft: (
       <svg
         viewBox="0 0 16 16"
@@ -207,7 +200,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 오른쪽 화살표 아이콘
     arrowRight: (
       <svg
         viewBox="0 0 16 16"
@@ -241,7 +233,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 아래쪽 화살표
     arrowDown: (
       <svg
         viewBox="0 -4.5 20 20"
@@ -281,7 +272,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 눈 아이콘 (보임)
     eye: (
       <svg
         fill="none"
@@ -297,7 +287,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 눈 아이콘 (숨김)
     eyeHide: (
       <svg
         fill="none"
@@ -320,7 +309,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Google 아이콘
     google: (
       <svg viewBox="0 0 24 24" style={iconStyle}>
         <path
@@ -342,7 +330,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 이미지 아이콘
     image: (
       <svg
         fill="none"
@@ -359,7 +346,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 체크 아이콘
     check: (
       <svg
         fill="none"
@@ -376,7 +362,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 삭제 아이콘 (원형 X)
     remove: (
       <svg
         fill="currentColor"
@@ -402,7 +387,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 플러스 아이콘
     plus: (
       <svg
         fill="none"
@@ -419,7 +403,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 마이너스 아이콘
     minus: (
       <svg
         fill="none"
@@ -436,7 +419,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 별 아이콘
     star: (
       <svg
         fill="currentColor"
@@ -453,7 +435,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 물음표 아이콘
     question: (
       <svg
         fill="currentColor"
@@ -474,7 +455,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Facebook 아이콘
     facebook: (
       <svg viewBox="0 0 11 25" fill="none" style={iconStyle}>
         <path
@@ -484,7 +464,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Kakao 아이콘
     kakao: (
       <svg viewBox="0 0 28 32" fill="none" style={iconStyle}>
         <path
@@ -494,7 +473,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Google 아이콘 (소셜 로그인용)
     googleSocial: (
       <svg viewBox="0 0 25 28" fill="none" style={iconStyle}>
         <g clipPath="url(#clip0_google)">
@@ -523,7 +501,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 다운로드 아이콘 (쿠폰 받기용)
     download: (
       <svg
         fill="none"
@@ -546,7 +523,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 체크박스 아이콘 (비체크 상태)
     checkbox: (
       <svg
         width="30"
@@ -570,7 +546,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 체크박스 아이콘 (체크 상태)
     checkboxChecked: (
       <svg
         width="30"
@@ -601,7 +576,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Plus Circle 아이콘
     plusCircle: (
       <svg
         fill="currentColor"
@@ -627,7 +601,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Minus Circle 아이콘
     minusCircle: (
       <svg
         viewBox="0 0 24 24"
@@ -652,7 +625,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // Equal Circle 아이콘
     equalCircle: (
       <svg
         viewBox="0 0 24 24"
@@ -677,7 +649,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 라디오 버튼 (비선택)
     radio: (
       <svg
         viewBox="0 0 30 30"
@@ -696,7 +667,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 라디오 버튼 (선택)
     radioSelected: (
       <svg
         viewBox="0 0 30 30"
@@ -716,40 +686,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 로딩 스피너 아이콘
-    loading: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{
-          ...iconStyle,
-          animation: "spin 1s linear infinite",
-        }}
-      >
-        <style>
-          {`
-            @keyframes spin {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-            }
-          `}
-        </style>
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeDasharray="32"
-          strokeDashoffset="24"
-          fill="none"
-        />
-      </svg>
-    ),
-
-    // 쇼핑 아이콘 (쇼핑백)
     shopping: (
       <svg
         fill="none"
@@ -766,7 +702,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 그리드 뷰 아이콘
     grid: (
       <svg
         fill="none"
@@ -783,7 +718,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 리스트 뷰 아이콘
     list: (
       <svg
         fill="none"
@@ -800,7 +734,6 @@ const Icon: React.FC<IconProps> = ({
       </svg>
     ),
 
-    // 에러 아이콘
     error: (
       <svg
         fill="none"

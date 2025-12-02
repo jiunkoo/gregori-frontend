@@ -31,9 +31,8 @@ const OrderList = () => {
       setOrders(data);
       await fetchProductsForOrders(data);
     } catch (error) {
-      console.error(ORDERLIST_CONSTANTS.LOADING.ERROR, error);
+      console.error("주문 조회 실패:", error);
     } finally {
-      // no-op: loading UI 제거
     }
   };
 
@@ -60,7 +59,6 @@ const OrderList = () => {
     const date = new Date(clean);
     if (Number.isNaN(date.getTime())) return "-";
 
-    // 주문일자로부터 3일 후
     date.setDate(date.getDate() + 3);
 
     const year = date.getFullYear();

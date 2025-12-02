@@ -18,7 +18,6 @@ import Order from "@pages/orders/Order";
 import { useAuthStore } from "@stores/authStore";
 import { memberAPI } from "@api/member";
 
-// 인증이 필요한 라우트를 위한 래퍼 컴포넌트
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -31,25 +30,19 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   return <>{children}</>;
 };
 
-// 앱 시작 시 로그인 상태를 확인하는 컴포넌트
 const AuthInitializer: React.FC = () => {
-  const { setUser, setLoading } = useAuthStore();
+  const { setUser } = useAuthStore();
 
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        setLoading(true);
         const userInfo = await memberAPI.getMember();
         setUser(userInfo);
-      } catch (error) {
-        console.log("로그인되지 않은 상태");
-      } finally {
-        setLoading(false);
-      }
+      } catch {}
     };
 
     checkAuthStatus();
-  }, [setUser, setLoading]);
+  }, [setUser]);
 
   return null;
 };
@@ -67,8 +60,6 @@ const App: React.FC = () => {
         <Route path="/order" element={<Order />} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
         <Route path="/mypage" element={<MyPage />} />
-
-        {/* 마이페이지 - 주문 목록 / 주문 상세 (인증 필요) */}
         <Route
           path="/orderlist"
           element={
@@ -78,8 +69,6 @@ const App: React.FC = () => {
           }
         />
         <Route path="/orderdetail/:orderId" element={<OrderDetail />} />
-
-        {/* 404 페이지 */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

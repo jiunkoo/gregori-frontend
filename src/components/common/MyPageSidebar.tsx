@@ -9,7 +9,6 @@ const MyPageSidebar: React.FC = () => {
         <div className="mypage-user-name">{MYPAGE_CONSTANTS.USER.NAME}</div>
       </div>
 
-      {/* 나의 쇼핑 정보 - 주문배송조회만 표시 */}
       <div className="mypage-nav-section">
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.SHOPPING_INFO}
@@ -19,7 +18,6 @@ const MyPageSidebar: React.FC = () => {
         </div>
       </div>
 
-      {/* 나의 계정 설정 - 회원정보수정만 표시 */}
       <div className="mypage-nav-section">
         <div className="mypage-nav-title">
           {MYPAGE_CONSTANTS.NAVIGATION.ACCOUNT_SETTINGS}

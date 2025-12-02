@@ -9,7 +9,6 @@ import "@styles/product-list.css";
 const ProductList = () => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductResponseDto[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<Sorter>(Sorter.CREATED_AT_DESC);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -32,7 +31,6 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        setLoading(true);
         const productList = await productAPI.getProducts({
           sorter: sortBy,
           keyword: searchQuery || undefined,
@@ -46,7 +44,6 @@ const ProductList = () => {
           err.response?.data?.message || "상품 목록을 불러오는데 실패했습니다."
         );
       } finally {
-        setLoading(false);
       }
     };
 

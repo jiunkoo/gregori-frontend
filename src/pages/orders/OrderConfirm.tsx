@@ -71,7 +71,6 @@ const OrderConfirm = () => {
   const navigate = useNavigate();
   const orderConfirmData = location.state as OrderConfirmData;
 
-  // 주문 정보가 없으면 홈으로 리다이렉트
   if (!orderConfirmData) {
     navigate("/");
     return null;
@@ -92,7 +91,6 @@ const OrderConfirm = () => {
   return (
     <Layout>
       <main className="order-confirm">
-        {/* 진행 단계 */}
         <div className="order-confirm__progress">
           <span className="order-confirm__progress-item order-confirm__progress-item--inactive">
             {ORDER_CONFIRM_CONSTANTS.PROGRESS.STEP_1}
@@ -115,7 +113,6 @@ const OrderConfirm = () => {
           </span>
         </div>
 
-        {/* 1. 주문 상품 정보 */}
         <div className="order-confirm__section">
           <div className="order-confirm__section-header">
             <h2 className="order-confirm__section-title">
@@ -170,7 +167,6 @@ const OrderConfirm = () => {
           </div>
         </div>
 
-        {/* 2. 주문자 정보 */}
         <div className="order-confirm__section">
           <div className="order-confirm__section-header">
             <h2 className="order-confirm__section-title">
@@ -198,7 +194,6 @@ const OrderConfirm = () => {
           </div>
         </div>
 
-        {/* 3. 결제 정보 */}
         <div className="order-confirm__section">
           <div className="order-confirm__section-header">
             <h2 className="order-confirm__section-title">
@@ -260,7 +255,6 @@ const OrderConfirm = () => {
           </div>
         </div>
 
-        {/* 5. 하단 버튼 */}
         <div className="order-confirm__buttons">
           <button
             type="button"

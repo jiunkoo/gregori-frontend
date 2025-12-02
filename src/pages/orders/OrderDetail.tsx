@@ -29,18 +29,15 @@ const OrderDetail = () => {
   const [productsById, setProductsById] = useState<
     Record<number, ProductResponseDto>
   >({});
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrder = async () => {
       if (!orderId) return;
 
-      setLoading(true);
       try {
         const orderData = await orderAPI.getOrder(Number(orderId));
         setOrder(orderData);
 
-        // 주문상품 정보용 상품 상세 조회 (orderlist와 동일한 방식)
         const ids = new Set<number>();
         orderData.orderDetails.forEach((detail) => {
           ids.add(detail.productId);
@@ -62,12 +59,10 @@ const OrderDetail = () => {
       } catch (error) {
         console.error("주문 상세 조회 실패:", error);
       } finally {
-        setLoading(false);
       }
     };
 
     fetchOrder();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderId]);
 
   const formatPrice = (price: number) => {
@@ -124,26 +119,12 @@ const OrderDetail = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <Layout showMyPageSidebar={true}>
-        <main className="order-detail">
-          <div className="order-detail__loading">
-            <p className="order-detail__loading-text">
-              {ORDERLIST_CONSTANTS.LOADING.MESSAGE}
-            </p>
-          </div>
-        </main>
-      </Layout>
-    );
-  }
-
   if (!order) {
     return (
       <Layout showMyPageSidebar={true}>
         <main className="order-detail">
-          <div className="order-detail__loading">
-            <p className="order-detail__loading-text">
+          <div className="order-detail__message">
+            <p className="order-detail__message-text">
               주문 정보를 찾을 수 없습니다.
             </p>
           </div>
@@ -167,7 +148,6 @@ const OrderDetail = () => {
   return (
     <Layout showMyPageSidebar={true}>
       <main className="order-detail">
-        {/* 상단 멤버십 영역 (MyPage/OrderList와 동일) - 권한 옆 화살표 제거 */}
         <div className="order-detail__grade-section">
           <div className="order-detail__grade-item">
             <div className="order-detail__grade-header">
@@ -181,7 +161,6 @@ const OrderDetail = () => {
           </div>
         </div>
 
-        {/* 1. 주문 상세 내역 - 기존 정적 진행 상태 유지 */}
         <div className="order-detail__section">
           <div className="order-detail__section-header">
             <h2 className="order-detail__section-title">
@@ -221,7 +200,6 @@ const OrderDetail = () => {
           </div>
         </div>
 
-        {/* 2. 주문 상품 정보 (OrderList와 동일한 데이터 사용) */}
         <div className="order-detail__section">
           <div className="order-detail__section-header">
             <h2 className="order-detail__section-title">
@@ -289,7 +267,6 @@ const OrderDetail = () => {
           })}
         </div>
 
-        {/* 3. 주문자 정보 (OrderConfirm과 동일한 레이블 사용) */}
         <div className="order-detail__section">
           <div className="order-detail__section-header">
             <h2 className="order-detail__section-title">
@@ -317,7 +294,6 @@ const OrderDetail = () => {
           </div>
         </div>
 
-        {/* 4. 결제 정보 (OrderConfirm과 동일한 구조 / 실제 데이터 사용) */}
         <div className="order-detail__section">
           <div className="order-detail__section-header">
             <h2 className="order-detail__section-title">

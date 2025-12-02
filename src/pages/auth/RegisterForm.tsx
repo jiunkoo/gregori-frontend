@@ -8,7 +8,6 @@ import "@styles/register-form.css";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const [formData, setFormData] = useState({
@@ -41,13 +40,10 @@ const RegisterForm = () => {
     }
 
     try {
-      setIsLoading(true);
       setIsVerificationSent(true);
       setError("");
     } catch (error) {
       setError(REGISTER_CONSTANTS.ERROR.VERIFICATION_SEND_FAILED);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -58,13 +54,10 @@ const RegisterForm = () => {
     }
 
     try {
-      setIsLoading(true);
       setIsVerificationVerified(true);
       setError("");
     } catch (error) {
       setError(REGISTER_CONSTANTS.ERROR.VERIFICATION_FAILED);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -93,7 +86,6 @@ const RegisterForm = () => {
     }
 
     try {
-      setIsLoading(true);
       const fullEmail = `${formData.email}@${formData.emailDomain}`;
       await memberAPI.register({
         email: fullEmail,
@@ -109,8 +101,6 @@ const RegisterForm = () => {
         error.response?.data?.message ||
           REGISTER_CONSTANTS.ERROR.REGISTER_FAILED
       );
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -216,11 +206,9 @@ const RegisterForm = () => {
           <button
             type="submit"
             className="register-form__submit-button"
-            disabled={isLoading || !isVerificationVerified}
+            disabled={!isVerificationVerified}
           >
-            {isLoading
-              ? REGISTER_CONSTANTS.FORM.SUBMIT_LOADING
-              : REGISTER_CONSTANTS.FORM.SUBMIT_BUTTON}
+            {REGISTER_CONSTANTS.FORM.SUBMIT_BUTTON}
           </button>
         </div>
       </form>

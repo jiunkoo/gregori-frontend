@@ -11,7 +11,6 @@ import "@styles/mypage.css";
 
 const MyPage = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);
-  const [loading, setLoading] = useState(true);
   const [productsById, setProductsById] = useState<
     Record<number, ProductResponseDto>
   >({});
@@ -19,12 +18,10 @@ const MyPage = () => {
 
   useEffect(() => {
     const fetchRecentOrders = async () => {
-      setLoading(true);
       try {
         const data = await orderAPI.getOrders(1);
         setOrders(data);
 
-        // 최근 주문의 상품 이미지용 데이터 로드
         const ids = new Set<number>();
         data.forEach((order) => {
           order.orderDetails.forEach((detail) => {
@@ -46,9 +43,8 @@ const MyPage = () => {
           });
         }
       } catch (error) {
-        console.error(ORDERLIST_CONSTANTS.LOADING.ERROR, error);
+        console.error("주문 조회 실패:", error);
       } finally {
-        setLoading(false);
       }
     };
 
@@ -62,8 +58,6 @@ const MyPage = () => {
   const formatDate = (dateString?: string) => {
     if (!dateString) return "-";
 
-    // 백엔드에서 ZonedDateTime을 "2025-12-01T12:00:00+09:00[Asia/Seoul]" 형태로 내려줄 수 있으므로
-    // 브라우저가 인식하지 못하는 타임존 정보([Asia/Seoul])는 제거한다.
     const clean = dateString.split("[")[0];
     const date = new Date(clean);
 
@@ -73,7 +67,6 @@ const MyPage = () => {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
 
-    // 예: 2025-12-01 형태로 출력
     return `${year}-${month}-${day}`;
   };
 
@@ -114,13 +107,7 @@ const MyPage = () => {
             </Link>
           </div>
 
-          {loading ? (
-            <div className="mypage__order-item">
-              <div className="mypage__order-date">
-                {ORDERLIST_CONSTANTS.LOADING.MESSAGE}
-              </div>
-            </div>
-          ) : recentOrders.length === 0 ? (
+          {recentOrders.length === 0 ? (
             <div className="mypage__order-item">
               <div className="mypage__order-date">
                 최근 주문 내역이 없습니다.

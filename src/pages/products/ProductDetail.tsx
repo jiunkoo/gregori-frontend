@@ -31,8 +31,6 @@ const ProductDetail = () => {
     } catch (error) {
       console.error(PRODUCT_DETAIL_CONSTANTS.ERROR.FETCH_FAILED, error);
       setProduct(null);
-    } finally {
-      // no-op: loading UI 제거
     }
   };
 

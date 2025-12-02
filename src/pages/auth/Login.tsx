@@ -12,7 +12,6 @@ const REMEMBERED_EMAIL = "rememberedEmail";
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -50,7 +49,6 @@ const Login = () => {
     e.preventDefault();
     setError("");
     setAuthError(null);
-    setIsLoading(true);
 
     try {
       const trimmedFormData = {
@@ -85,8 +83,6 @@ const Login = () => {
       setAuthError(
         err.response?.data?.message || LOGIN_CONSTANTS.ERROR_MESSAGE
       );
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -139,12 +135,9 @@ const Login = () => {
           <button
             type="submit"
             className="login__submit"
-            disabled={!isFormValid || isLoading}
-            aria-busy={isLoading}
+            disabled={!isFormValid}
           >
-            {isLoading
-              ? LOGIN_CONSTANTS.BUTTON_LOADING_TEXT
-              : LOGIN_CONSTANTS.BUTTON_TEXT}
+            {LOGIN_CONSTANTS.BUTTON_TEXT}
           </button>
         </form>
 

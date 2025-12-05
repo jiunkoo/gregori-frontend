@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
+import { MYPAGE_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
 import "@styles/mypage-profile-edit.css";
@@ -27,7 +28,7 @@ const MyPageProfileEdit: React.FC = () => {
 
     const trimmedName = name.trim();
     if (!trimmedName) {
-      setLocalError("이름을 입력해주세요.");
+      setLocalError(MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.NAME_REQUIRED);
       return;
     }
 
@@ -35,9 +36,11 @@ const MyPageProfileEdit: React.FC = () => {
       setSavingName(true);
       await memberAPI.updateName({ name: trimmedName });
       setUser({ ...user, name: trimmedName });
-      setMessage("이름이 성공적으로 변경되었습니다.");
+      setMessage(MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.NAME_SUCCESS);
     } catch (error: any) {
-      const msg = error?.response?.data?.message ?? "이름 변경에 실패했습니다.";
+      const msg =
+        error?.response?.data?.message ??
+        MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.NAME_FAILURE;
       setLocalError(msg);
       setError(msg);
     } finally {
@@ -52,7 +55,9 @@ const MyPageProfileEdit: React.FC = () => {
       <main className="mypage-profile-edit">
         <div className="mypage-profile-edit__section">
           <div className="mypage-profile-edit__section-header">
-            <div className="mypage-profile-edit__section-title">기본 정보</div>
+            <div className="mypage-profile-edit__section-title">
+              {MYPAGE_CONSTANTS.PROFILE_EDIT.TITLE}
+            </div>
           </div>
 
           <form
@@ -60,7 +65,9 @@ const MyPageProfileEdit: React.FC = () => {
             onSubmit={handleNameSubmit}
           >
             <div className="mypage-profile-edit__form-group">
-              <label className="mypage-profile-edit__form-label">이메일</label>
+              <label className="mypage-profile-edit__form-label">
+                {MYPAGE_CONSTANTS.PROFILE_EDIT.LABELS.EMAIL}
+              </label>
               <div className="mypage-profile-edit__form-email">
                 <input
                   type="email"
@@ -69,12 +76,14 @@ const MyPageProfileEdit: React.FC = () => {
                   disabled
                 />
                 <span className="mypage-profile-edit__form-email-note">
-                  *이메일은 변경할 수 없습니다.
+                  {MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.EMAIL_NOTE}
                 </span>
               </div>
             </div>
             <div className="mypage-profile-edit__form-group">
-              <label className="mypage-profile-edit__form-label">이름</label>
+              <label className="mypage-profile-edit__form-label">
+                {MYPAGE_CONSTANTS.PROFILE_EDIT.LABELS.NAME}
+              </label>
               <input
                 type="text"
                 className="mypage-profile-edit__form-input"
@@ -88,7 +97,7 @@ const MyPageProfileEdit: React.FC = () => {
                 className="mypage-profile-edit__button mypage-profile-edit__button--primary"
                 disabled={savingName}
               >
-                회원 정보 수정
+                {MYPAGE_CONSTANTS.PROFILE_EDIT.BUTTONS.SUBMIT}
               </button>
               <button
                 type="button"
@@ -99,7 +108,7 @@ const MyPageProfileEdit: React.FC = () => {
                   setMessage("");
                 }}
               >
-                수정 취소
+                {MYPAGE_CONSTANTS.PROFILE_EDIT.BUTTONS.CANCEL}
               </button>
             </div>
           </form>

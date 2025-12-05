@@ -123,7 +123,7 @@ const OrderDetail = () => {
         <main className="order-detail">
           <div className="order-detail__message">
             <p className="order-detail__message-text">
-              주문 정보를 찾을 수 없습니다.
+              {ORDERDETAIL_CONSTANTS.ERROR.NOT_FOUND}
             </p>
           </div>
         </main>

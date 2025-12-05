@@ -225,7 +225,7 @@ const Order = () => {
               ))
             ) : (
               <div className="order__products-empty">
-                주문할 상품이 없습니다.
+                {ORDER_CONSTANTS.EMPTY.NO_ITEMS}
               </div>
             )}
           </div>

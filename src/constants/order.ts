@@ -38,4 +38,7 @@ export const ORDER_CONSTANTS = {
   WARNINGS: {
     AGREEMENT_REQUIRED: "모든 약관에 동의해주세요.",
   },
+  EMPTY: {
+    NO_ITEMS: "주문할 상품이 없습니다.",
+  },
 };

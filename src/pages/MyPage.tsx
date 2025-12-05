@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Icon, Layout } from "@components";
-import { MYPAGE_CONSTANTS, ORDERLIST_CONSTANTS } from "@constants";
+import { MYPAGE_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
 import { OrderResponseDto, ProductResponseDto } from "@models";
@@ -71,7 +71,8 @@ const MyPage = () => {
   };
 
   const recentOrders = orders.slice(0, 3);
-  const authorityLabel = user?.authority ?? "GUEST";
+  const authorityLabel =
+    user?.authority ?? MYPAGE_CONSTANTS.USER_FALLBACK.AUTHORITY_GUEST;
 
   return (
     <Layout showMyPageSidebar={true}>
@@ -110,7 +111,7 @@ const MyPage = () => {
           {recentOrders.length === 0 ? (
             <div className="mypage__order-item">
               <div className="mypage__order-date">
-                최근 주문 내역이 없습니다.
+                {MYPAGE_CONSTANTS.RECENT_ORDERS.EMPTY_TEXT}
               </div>
             </div>
           ) : (
@@ -141,11 +142,16 @@ const MyPage = () => {
                   <div className="mypage__order-info">
                     <div className="mypage__order-product">
                       {firstDetail.productName}
-                      {hasMore ? ` 외 ${order.orderDetails.length - 1}건` : ""}
+                      {hasMore
+                        ? `${MYPAGE_CONSTANTS.RECENT_ORDERS.MORE_PREFIX}${
+                            order.orderDetails.length - 1
+                          }${MYPAGE_CONSTANTS.RECENT_ORDERS.MORE_SUFFIX}`
+                        : ""}
                     </div>
                   </div>
                   <div className="mypage__order-price">
-                    {formatPrice(order.paymentAmount)}원
+                    {formatPrice(order.paymentAmount)}
+                    {MYPAGE_CONSTANTS.RECENT_ORDERS.CURRENCY}
                   </div>
                 </div>
               );

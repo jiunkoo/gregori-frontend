@@ -4,6 +4,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { productAPI } from "@api/product";
 import { ProductResponseDto, Sorter } from "@models";
 import { Icon, Layout } from "@components";
+import { PRODUCT_LIST_CONSTANTS } from "@constants";
 import "@styles/product-list.css";
 
 const ProductList = () => {
@@ -41,7 +42,8 @@ const ProductList = () => {
         setProducts(productList);
       } catch (err: any) {
         setError(
-          err.response?.data?.message || "상품 목록을 불러오는데 실패했습니다."
+          err.response?.data?.message ||
+            PRODUCT_LIST_CONSTANTS.ERROR.FETCH_FAILED
         );
       } finally {
       }
@@ -56,14 +58,6 @@ const ProductList = () => {
     setSearchQuery(search);
     setCategoryFilter(category);
   }, [searchParams]);
-
-  const getCategoryName = (categoryId: number): string => {
-    const categoryMap: { [key: number]: string } = {
-      1: "가전제품",
-      2: "의류",
-    };
-    return categoryMap[categoryId] || "기타";
-  };
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("ko-KR").format(price);
@@ -97,12 +91,12 @@ const ProductList = () => {
               </div>
               <p className="product-list__empty-text">
                 {searchQuery
-                  ? `"${searchQuery}"에 대한 검색 결과가 없습니다.`
-                  : "등록된 상품이 없습니다."}
+                  ? `${PRODUCT_LIST_CONSTANTS.EMPTY.NO_RESULTS_PREFIX}${searchQuery}${PRODUCT_LIST_CONSTANTS.EMPTY.NO_RESULTS_SUFFIX}`
+                  : PRODUCT_LIST_CONSTANTS.EMPTY.NO_PRODUCTS}
               </p>
               {searchQuery && (
                 <Link to="/products" className="product-list__empty-link">
-                  전체 상품 보기
+                  {PRODUCT_LIST_CONSTANTS.EMPTY.VIEW_ALL}
                 </Link>
               )}
             </div>
@@ -134,10 +128,11 @@ const ProductList = () => {
                         {product.name}
                       </h3>
                       <div className="product-list__card-price">
-                        ₩{formatPrice(product.price)}
+                        {PRODUCT_LIST_CONSTANTS.PRICE.CURRENCY_SYMBOL}
+                        {formatPrice(product.price)}
                       </div>
                       <div className="product-list__card-delivery">
-                        무료배송
+                        {PRODUCT_LIST_CONSTANTS.SHIPPING.FREE}
                       </div>
                     </div>
                   </Link>
@@ -155,7 +150,7 @@ const ProductList = () => {
                   >
                     <div className="product-list__list-image">
                       <img
-                        src={imageSrc}
+                        src={product.imageUrl}
                         alt={product.name}
                         style={{
                           width: "100%",
@@ -173,10 +168,11 @@ const ProductList = () => {
                           {product.name}
                         </h3>
                         <div className="product-list__list-price">
-                          ₩{formatPrice(product.price)}
+                          {PRODUCT_LIST_CONSTANTS.PRICE.CURRENCY_SYMBOL}
+                          {formatPrice(product.price)}
                         </div>
                         <div className="product-list__list-delivery">
-                          무료배송
+                          {PRODUCT_LIST_CONSTANTS.SHIPPING.FREE}
                         </div>
                       </div>
                     </div>

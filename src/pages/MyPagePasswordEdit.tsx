@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
+import { MYPAGE_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
 import "@styles/mypage-password-edit.css";
@@ -28,12 +29,12 @@ const MyPagePasswordEdit: React.FC = () => {
     setMessage("");
 
     if (!currentPassword || !newPassword || !confirmPassword) {
-      setLocalError("현재 비밀번호와 새 비밀번호를 모두 입력해주세요.");
+      setLocalError(MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.REQUIRED);
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      setLocalError("새 비밀번호가 일치하지 않습니다.");
+      setLocalError(MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.MISMATCH);
       return;
     }
 
@@ -43,13 +44,14 @@ const MyPagePasswordEdit: React.FC = () => {
         currentPassword,
         newPassword,
       });
-      setMessage("비밀번호가 성공적으로 변경되었습니다.");
+      setMessage(MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.SUCCESS);
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
     } catch (error: any) {
       const msg =
-        error?.response?.data?.message ?? "비밀번호 변경에 실패했습니다.";
+        error?.response?.data?.message ??
+        MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.FAILURE;
       setLocalError(msg);
       setError(msg);
     } finally {
@@ -65,7 +67,7 @@ const MyPagePasswordEdit: React.FC = () => {
         <div className="mypage-password-edit__section">
           <div className="mypage-password-edit__section-header">
             <div className="mypage-password-edit__section-title">
-              비밀번호 변경
+              {MYPAGE_CONSTANTS.PASSWORD_EDIT.TITLE}
             </div>
           </div>
 
@@ -75,7 +77,7 @@ const MyPagePasswordEdit: React.FC = () => {
           >
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                현재 비밀번호
+                {MYPAGE_CONSTANTS.PASSWORD_EDIT.LABELS.CURRENT_PASSWORD}
               </label>
               <input
                 type="password"
@@ -86,7 +88,7 @@ const MyPagePasswordEdit: React.FC = () => {
             </div>
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                새 비밀번호
+                {MYPAGE_CONSTANTS.PASSWORD_EDIT.LABELS.NEW_PASSWORD}
               </label>
               <input
                 type="password"
@@ -97,7 +99,7 @@ const MyPagePasswordEdit: React.FC = () => {
             </div>
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                새 비밀번호 확인
+                {MYPAGE_CONSTANTS.PASSWORD_EDIT.LABELS.CONFIRM_PASSWORD}
               </label>
               <input
                 type="password"
@@ -112,7 +114,7 @@ const MyPagePasswordEdit: React.FC = () => {
                 className="mypage-password-edit__button mypage-password-edit__button--primary"
                 disabled={savingPassword}
               >
-                비밀번호 변경
+                {MYPAGE_CONSTANTS.PASSWORD_EDIT.BUTTONS.SUBMIT}
               </button>
               <button
                 type="button"
@@ -125,7 +127,7 @@ const MyPagePasswordEdit: React.FC = () => {
                   setMessage("");
                 }}
               >
-                변경 취소
+                {MYPAGE_CONSTANTS.PASSWORD_EDIT.BUTTONS.CANCEL}
               </button>
             </div>
           </form>

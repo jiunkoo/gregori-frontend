@@ -14,4 +14,7 @@ export const ORDERDETAIL_CONSTANTS = {
     SHIPPING: "배송중",
     DELIVERED: "배송완료",
   },
+  ERROR: {
+    NOT_FOUND: "주문 정보를 찾을 수 없습니다.",
+  },
 };

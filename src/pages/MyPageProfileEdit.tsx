@@ -4,20 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { Layout, Icon } from "@components";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
-import "@styles/mypage.css";
+import "@styles/mypage-profile-edit.css";
 
 const MyPageProfileEdit: React.FC = () => {
   const navigate = useNavigate();
   const { user, setUser, setError } = useAuthStore();
 
   const [name, setName] = useState(user?.name ?? "");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [localError, setLocalError] = useState("");
   const [savingName, setSavingName] = useState(false);
-  const [savingPassword, setSavingPassword] = useState(false);
 
   if (!user) {
     navigate("/login");
@@ -49,148 +45,84 @@ const MyPageProfileEdit: React.FC = () => {
     }
   };
 
-  const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLocalError("");
-    setMessage("");
-
-    if (!currentPassword || !newPassword || !confirmPassword) {
-      setLocalError("현재 비밀번호와 새 비밀번호를 모두 입력해주세요.");
-      return;
-    }
-
-    if (newPassword !== confirmPassword) {
-      setLocalError("새 비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-    try {
-      setSavingPassword(true);
-      await memberAPI.updatePassword({
-        currentPassword,
-        newPassword,
-      });
-      setMessage("비밀번호가 성공적으로 변경되었습니다.");
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmPassword("");
-    } catch (error: any) {
-      const msg =
-        error?.response?.data?.message ?? "비밀번호 변경에 실패했습니다.";
-      setLocalError(msg);
-      setError(msg);
-    } finally {
-      setSavingPassword(false);
-    }
-  };
-
   const hasFeedback = !!localError || !!message;
 
   return (
     <Layout showMyPageSidebar={true}>
-      <main className="mypage">
-        <div className="mypage__section">
-          <div className="mypage__section-header">
-            <div className="mypage__section-title">기본 정보</div>
+      <main className="mypage-profile-edit">
+        <div className="mypage-profile-edit__section">
+          <div className="mypage-profile-edit__section-header">
+            <div className="mypage-profile-edit__section-title">기본 정보</div>
           </div>
 
-          <form className="mypage__form" onSubmit={handleNameSubmit}>
-            <div className="mypage__form-group">
-              <label className="mypage__form-label">이메일</label>
-              <div className="mypage__form-value">{user.email}</div>
+          <form
+            className="mypage-profile-edit__form"
+            onSubmit={handleNameSubmit}
+          >
+            <div className="mypage-profile-edit__form-group">
+              <label className="mypage-profile-edit__form-label">이메일</label>
+              <div className="mypage-profile-edit__form-email">
+                <input
+                  type="email"
+                  className="mypage-profile-edit__form-input"
+                  value={user.email}
+                  disabled
+                />
+                <span className="mypage-profile-edit__form-email-note">
+                  *이메일은 변경할 수 없습니다.
+                </span>
+              </div>
             </div>
-            <div className="mypage__form-group">
-              <label className="mypage__form-label">이름</label>
+            <div className="mypage-profile-edit__form-group">
+              <label className="mypage-profile-edit__form-label">이름</label>
               <input
                 type="text"
-                className="mypage__form-input"
+                className="mypage-profile-edit__form-input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="mypage__form-actions">
+            <div className="mypage-profile-edit__form-actions">
               <button
                 type="submit"
-                className="mypage__button mypage__button--primary"
+                className="mypage-profile-edit__button mypage-profile-edit__button--primary"
                 disabled={savingName}
               >
-                이름 저장
+                회원 정보 수정
               </button>
               <button
                 type="button"
-                className="mypage__button"
+                className="mypage-profile-edit__button mypage-profile-edit__button--secondary"
                 onClick={() => {
                   setName(user.name);
                   setLocalError("");
                   setMessage("");
                 }}
               >
-                되돌리기
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div className="mypage__section">
-          <div className="mypage__section-header">
-            <div className="mypage__section-title">비밀번호 변경</div>
-          </div>
-
-          <form className="mypage__form" onSubmit={handlePasswordSubmit}>
-            <div className="mypage__form-group">
-              <label className="mypage__form-label">현재 비밀번호</label>
-              <input
-                type="password"
-                className="mypage__form-input"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-              />
-            </div>
-            <div className="mypage__form-group">
-              <label className="mypage__form-label">새 비밀번호</label>
-              <input
-                type="password"
-                className="mypage__form-input"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-            </div>
-            <div className="mypage__form-group">
-              <label className="mypage__form-label">새 비밀번호 확인</label>
-              <input
-                type="password"
-                className="mypage__form-input"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-            <div className="mypage__form-actions">
-              <button
-                type="submit"
-                className="mypage__button mypage__button--primary"
-                disabled={savingPassword}
-              >
-                비밀번호 변경
+                수정 취소
               </button>
             </div>
           </form>
         </div>
 
         {hasFeedback && (
-          <div className="mypage__section">
-            <div className="mypage__feedback">
+          <div className="mypage-profile-edit__section">
+            <div className="mypage-profile-edit__feedback">
               {localError && (
-                <div className="mypage__feedback-error" role="alert">
+                <div
+                  className="mypage-profile-edit__feedback-error"
+                  role="alert"
+                >
                   <Icon
                     name="error"
                     size={20}
-                    className="mypage__feedback-icon"
+                    className="mypage-profile-edit__feedback-icon"
                   />
                   <span>{localError}</span>
                 </div>
               )}
               {message && !localError && (
-                <div className="mypage__feedback-success">
+                <div className="mypage-profile-edit__feedback-success">
                   <span>{message}</span>
                 </div>
               )}

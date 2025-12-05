@@ -16,6 +16,7 @@ import MyPage from "@pages/MyPage";
 import OrderConfirm from "@pages/orders/OrderConfirm";
 import Order from "@pages/orders/Order";
 import MyPageProfileEdit from "@pages/MyPageProfileEdit";
+import MyPagePasswordEdit from "@pages/MyPagePasswordEdit";
 import { useAuthStore } from "@stores/authStore";
 import { memberAPI } from "@api/member";
 
@@ -93,6 +94,14 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <MyPageProfileEdit />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mypage/password"
+          element={
+            <ProtectedRoute>
+              <MyPagePasswordEdit />
             </ProtectedRoute>
           }
         />

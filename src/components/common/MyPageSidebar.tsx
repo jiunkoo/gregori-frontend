@@ -36,6 +36,14 @@ const MyPageSidebar: React.FC = () => {
         >
           {MYPAGE_CONSTANTS.NAV_ITEMS.MEMBER_INFO_EDIT}
         </NavLink>
+        <NavLink
+          to="/mypage/password"
+          className={({ isActive }) =>
+            "mypage-nav-item" + (isActive ? " mypage-nav-item--active" : "")
+          }
+        >
+          {MYPAGE_CONSTANTS.NAV_ITEMS.PASSWORD_EDIT}
+        </NavLink>
       </div>
     </div>
   );

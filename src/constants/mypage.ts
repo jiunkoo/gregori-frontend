@@ -9,6 +9,7 @@ export const MYPAGE_CONSTANTS = {
   NAV_ITEMS: {
     ORDER_DELIVERY: "주문배송조회",
     MEMBER_INFO_EDIT: "회원정보수정",
+    PASSWORD_EDIT: "비밀번호 변경",
   },
   GRADE: {
     LABEL: "권한",

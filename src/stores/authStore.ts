@@ -6,11 +6,13 @@ interface AuthState {
   user: SessionMember | null;
   isAuthenticated: boolean;
   error: string | null;
+  isAuthChecked: boolean;
 }
 
 interface AuthActions {
   setUser: (user: SessionMember | null) => void;
   setError: (error: string | null) => void;
+  setAuthChecked: (checked: boolean) => void;
   logout: () => void;
   hasAuthority: (authority: Authority) => boolean;
 }
@@ -21,9 +23,18 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   user: null,
   isAuthenticated: false,
   error: null,
+  isAuthChecked: false,
 
-  setUser: (user) => set({ user, isAuthenticated: !!user }),
+  setUser: (user) =>
+    set({
+      user,
+      isAuthenticated: !!user,
+      isAuthChecked: true,
+    }),
+
   setError: (error) => set({ error }),
+
+  setAuthChecked: (checked) => set({ isAuthChecked: checked }),
 
   logout: async () => {
     try {
@@ -31,7 +42,12 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     } catch (error) {
       console.error("로그아웃 API 호출 실패:", error);
     } finally {
-      set({ user: null, isAuthenticated: false, error: null });
+      set({
+        user: null,
+        isAuthenticated: false,
+        error: null,
+        isAuthChecked: true,
+      });
     }
   },
 
@@ -48,7 +64,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
           user.authority === Authority.ADMIN_MEMBER
         );
       case Authority.GENERAL_MEMBER:
-        return true; // 모든 인증된 사용자는 일반 회원 권한을 가짐
+        return true;
       default:
         return false;
     }

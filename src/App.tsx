@@ -22,7 +22,11 @@ import { memberAPI } from "@api/member";
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, isAuthChecked } = useAuthStore();
+
+  if (!isAuthChecked) {
+    return null;
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -32,18 +36,20 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
 };
 
 const AuthInitializer: React.FC = () => {
-  const { setUser } = useAuthStore();
+  const { setUser, setAuthChecked } = useAuthStore();
 
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
         const userInfo = await memberAPI.getMember();
         setUser(userInfo);
-      } catch {}
+      } catch {
+        setAuthChecked(true);
+      }
     };
 
     checkAuthStatus();
-  }, [setUser]);
+  }, [setUser, setAuthChecked]);
 
   return null;
 };

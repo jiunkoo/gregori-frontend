@@ -18,7 +18,11 @@ const Header: React.FC<HeaderProps> = ({
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const { isAuthenticated, logout } = useAuthStore();
+  const { isAuthenticated, isAuthChecked, logout } = useAuthStore();
+
+  if (!isAuthChecked) {
+    return null;
+  }
 
   return (
     <>

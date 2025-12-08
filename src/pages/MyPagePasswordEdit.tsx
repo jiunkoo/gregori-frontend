@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
-import { MYPAGE_CONSTANTS } from "@constants";
+import { MYPAGE_PASSWORD_EDIT_CONSTANTS } from "@constants/mypage-password-edit";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
 import "@styles/mypage-password-edit.css";
@@ -17,6 +17,9 @@ const MyPagePasswordEdit: React.FC = () => {
   const [message, setMessage] = useState("");
   const [localError, setLocalError] = useState("");
   const [savingPassword, setSavingPassword] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   if (!user) {
     navigate("/login");
@@ -29,12 +32,12 @@ const MyPagePasswordEdit: React.FC = () => {
     setMessage("");
 
     if (!currentPassword || !newPassword || !confirmPassword) {
-      setLocalError(MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.REQUIRED);
+      setLocalError(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.REQUIRED);
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      setLocalError(MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.MISMATCH);
+      setLocalError(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.MISMATCH);
       return;
     }
 
@@ -44,14 +47,14 @@ const MyPagePasswordEdit: React.FC = () => {
         currentPassword,
         newPassword,
       });
-      setMessage(MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.SUCCESS);
+      setMessage(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.SUCCESS);
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
     } catch (error: any) {
       const msg =
         error?.response?.data?.message ??
-        MYPAGE_CONSTANTS.PASSWORD_EDIT.MESSAGES.FAILURE;
+        MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.FAILURE;
       setLocalError(msg);
       setError(msg);
     } finally {
@@ -67,7 +70,7 @@ const MyPagePasswordEdit: React.FC = () => {
         <div className="mypage-password-edit__section">
           <div className="mypage-password-edit__section-header">
             <div className="mypage-password-edit__section-title">
-              {MYPAGE_CONSTANTS.PASSWORD_EDIT.TITLE}
+              {MYPAGE_PASSWORD_EDIT_CONSTANTS.TITLE}
             </div>
           </div>
 
@@ -77,36 +80,93 @@ const MyPagePasswordEdit: React.FC = () => {
           >
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                {MYPAGE_CONSTANTS.PASSWORD_EDIT.LABELS.CURRENT_PASSWORD}
+                {MYPAGE_PASSWORD_EDIT_CONSTANTS.LABELS.CURRENT_PASSWORD}
               </label>
-              <input
-                type="password"
-                className="mypage-password-edit__form-input"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-              />
+              <div className="mypage-password-edit__input-wrapper">
+                <input
+                  type={showCurrentPassword ? "text" : "password"}
+                  className="mypage-password-edit__form-input"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+                {currentPassword && (
+                  <button
+                    type="button"
+                    className="mypage-password-edit__eye-button"
+                    onClick={() => setShowCurrentPassword((prev) => !prev)}
+                    aria-label={
+                      showCurrentPassword
+                        ? MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.CURRENT_HIDE
+                        : MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.CURRENT_SHOW
+                    }
+                  >
+                    <Icon
+                      name={showCurrentPassword ? "eye" : "eyeHide"}
+                      size={20}
+                    />
+                  </button>
+                )}
+              </div>
             </div>
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                {MYPAGE_CONSTANTS.PASSWORD_EDIT.LABELS.NEW_PASSWORD}
+                {MYPAGE_PASSWORD_EDIT_CONSTANTS.LABELS.NEW_PASSWORD}
               </label>
-              <input
-                type="password"
-                className="mypage-password-edit__form-input"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
+              <div className="mypage-password-edit__input-wrapper">
+                <input
+                  type={showNewPassword ? "text" : "password"}
+                  className="mypage-password-edit__form-input"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                {newPassword && (
+                  <button
+                    type="button"
+                    className="mypage-password-edit__eye-button"
+                    onClick={() => setShowNewPassword((prev) => !prev)}
+                    aria-label={
+                      showNewPassword
+                        ? MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.NEW_HIDE
+                        : MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.NEW_SHOW
+                    }
+                  >
+                    <Icon
+                      name={showNewPassword ? "eye" : "eyeHide"}
+                      size={20}
+                    />
+                  </button>
+                )}
+              </div>
             </div>
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                {MYPAGE_CONSTANTS.PASSWORD_EDIT.LABELS.CONFIRM_PASSWORD}
+                {MYPAGE_PASSWORD_EDIT_CONSTANTS.LABELS.CONFIRM_PASSWORD}
               </label>
-              <input
-                type="password"
-                className="mypage-password-edit__form-input"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
+              <div className="mypage-password-edit__input-wrapper">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="mypage-password-edit__form-input"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                {confirmPassword && (
+                  <button
+                    type="button"
+                    className="mypage-password-edit__eye-button"
+                    onClick={() => setShowConfirmPassword((prev) => !prev)}
+                    aria-label={
+                      showConfirmPassword
+                        ? MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.CONFIRM_HIDE
+                        : MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.CONFIRM_SHOW
+                    }
+                  >
+                    <Icon
+                      name={showConfirmPassword ? "eye" : "eyeHide"}
+                      size={20}
+                    />
+                  </button>
+                )}
+              </div>
             </div>
             <div className="mypage-password-edit__form-actions">
               <button
@@ -114,7 +174,7 @@ const MyPagePasswordEdit: React.FC = () => {
                 className="mypage-password-edit__button mypage-password-edit__button--primary"
                 disabled={savingPassword}
               >
-                {MYPAGE_CONSTANTS.PASSWORD_EDIT.BUTTONS.SUBMIT}
+                {MYPAGE_PASSWORD_EDIT_CONSTANTS.BUTTONS.SUBMIT}
               </button>
               <button
                 type="button"
@@ -127,7 +187,7 @@ const MyPagePasswordEdit: React.FC = () => {
                   setMessage("");
                 }}
               >
-                {MYPAGE_CONSTANTS.PASSWORD_EDIT.BUTTONS.CANCEL}
+                {MYPAGE_PASSWORD_EDIT_CONSTANTS.BUTTONS.CANCEL}
               </button>
             </div>
           </form>

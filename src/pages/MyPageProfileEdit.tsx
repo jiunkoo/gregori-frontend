@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
-import { MYPAGE_CONSTANTS } from "@constants";
+import { MYPAGE_PROFILE_EDIT_CONSTANTS } from "@constants/mypage-profile-edit";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
 import "@styles/mypage-profile-edit.css";
@@ -28,7 +28,7 @@ const MyPageProfileEdit: React.FC = () => {
 
     const trimmedName = name.trim();
     if (!trimmedName) {
-      setLocalError(MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.NAME_REQUIRED);
+      setLocalError(MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_REQUIRED);
       return;
     }
 
@@ -36,11 +36,11 @@ const MyPageProfileEdit: React.FC = () => {
       setSavingName(true);
       await memberAPI.updateName({ name: trimmedName });
       setUser({ ...user, name: trimmedName });
-      setMessage(MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.NAME_SUCCESS);
+      setMessage(MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_SUCCESS);
     } catch (error: any) {
       const msg =
         error?.response?.data?.message ??
-        MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.NAME_FAILURE;
+        MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_FAILURE;
       setLocalError(msg);
       setError(msg);
     } finally {
@@ -56,7 +56,7 @@ const MyPageProfileEdit: React.FC = () => {
         <div className="mypage-profile-edit__section">
           <div className="mypage-profile-edit__section-header">
             <div className="mypage-profile-edit__section-title">
-              {MYPAGE_CONSTANTS.PROFILE_EDIT.TITLE}
+              {MYPAGE_PROFILE_EDIT_CONSTANTS.TITLE}
             </div>
           </div>
 
@@ -66,7 +66,7 @@ const MyPageProfileEdit: React.FC = () => {
           >
             <div className="mypage-profile-edit__form-group">
               <label className="mypage-profile-edit__form-label">
-                {MYPAGE_CONSTANTS.PROFILE_EDIT.LABELS.EMAIL}
+                {MYPAGE_PROFILE_EDIT_CONSTANTS.LABELS.EMAIL}
               </label>
               <div className="mypage-profile-edit__form-email">
                 <input
@@ -76,13 +76,13 @@ const MyPageProfileEdit: React.FC = () => {
                   disabled
                 />
                 <span className="mypage-profile-edit__form-email-note">
-                  {MYPAGE_CONSTANTS.PROFILE_EDIT.MESSAGES.EMAIL_NOTE}
+                  {MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.EMAIL_NOTE}
                 </span>
               </div>
             </div>
             <div className="mypage-profile-edit__form-group">
               <label className="mypage-profile-edit__form-label">
-                {MYPAGE_CONSTANTS.PROFILE_EDIT.LABELS.NAME}
+                {MYPAGE_PROFILE_EDIT_CONSTANTS.LABELS.NAME}
               </label>
               <input
                 type="text"
@@ -97,7 +97,7 @@ const MyPageProfileEdit: React.FC = () => {
                 className="mypage-profile-edit__button mypage-profile-edit__button--primary"
                 disabled={savingName}
               >
-                {MYPAGE_CONSTANTS.PROFILE_EDIT.BUTTONS.SUBMIT}
+                {MYPAGE_PROFILE_EDIT_CONSTANTS.BUTTONS.SUBMIT}
               </button>
               <button
                 type="button"
@@ -108,7 +108,7 @@ const MyPageProfileEdit: React.FC = () => {
                   setMessage("");
                 }}
               >
-                {MYPAGE_CONSTANTS.PROFILE_EDIT.BUTTONS.CANCEL}
+                {MYPAGE_PROFILE_EDIT_CONSTANTS.BUTTONS.CANCEL}
               </button>
             </div>
           </form>

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MYPAGE_CONSTANTS } from "@constants";
 import { orderAPI } from "@api/order";
+import { useAuthStore } from "@stores";
 import "@styles/mypage-sidebar.css";
 
 const MyPageSidebar: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuthStore();
   const [hasOrders, setHasOrders] = useState<boolean | null>(null);
   const [isCheckingOrders, setIsCheckingOrders] = useState(false);
 
@@ -46,10 +48,13 @@ const MyPageSidebar: React.FC = () => {
     }
   };
 
+  const displayName =
+    (user?.name && user.name.trim()) || MYPAGE_CONSTANTS.USER.NAME;
+
   return (
     <div className="mypage-sidebar">
       <div className="mypage-user-info">
-        <div className="mypage-user-name">{MYPAGE_CONSTANTS.USER.NAME}</div>
+        <div className="mypage-user-name">{displayName}</div>
       </div>
 
       <div className="mypage-nav-section">

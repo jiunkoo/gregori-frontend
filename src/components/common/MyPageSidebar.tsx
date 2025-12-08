@@ -1,9 +1,51 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MYPAGE_CONSTANTS } from "@constants";
+import { orderAPI } from "@api/order";
 import "@styles/mypage-sidebar.css";
 
 const MyPageSidebar: React.FC = () => {
+  const navigate = useNavigate();
+  const [hasOrders, setHasOrders] = useState<boolean | null>(null);
+  const [isCheckingOrders, setIsCheckingOrders] = useState(false);
+
+  const handleOrderDeliveryClick = async (
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+
+    if (isCheckingOrders) return;
+
+    try {
+      setIsCheckingOrders(true);
+
+      if (hasOrders !== null) {
+        if (hasOrders) {
+          navigate("/orderlist");
+        } else {
+          window.alert("주문한 상품이 없습니다.");
+        }
+        return;
+      }
+
+      const data = await orderAPI.getOrders(1);
+      const exists = data.length > 0;
+      setHasOrders(exists);
+
+      if (!exists) {
+        window.alert("주문한 상품이 없습니다.");
+        return;
+      }
+
+      navigate("/orderlist");
+    } catch (error) {
+      console.error("주문 목록 확인 실패:", error);
+      window.alert("주문 정보를 확인하는 중 오류가 발생했습니다.");
+    } finally {
+      setIsCheckingOrders(false);
+    }
+  };
+
   return (
     <div className="mypage-sidebar">
       <div className="mypage-user-info">
@@ -16,8 +58,10 @@ const MyPageSidebar: React.FC = () => {
         </div>
         <NavLink
           to="/orderlist"
+          onClick={handleOrderDeliveryClick}
           className={({ isActive }) =>
-            "mypage-nav-item" + (isActive ? " mypage-nav-item--active" : "")
+            "mypage-nav-item mypage-nav-item--order-delivery" +
+            (isActive ? " mypage-nav-item--active" : "")
           }
         >
           {MYPAGE_CONSTANTS.NAV_ITEMS.ORDER_DELIVERY}

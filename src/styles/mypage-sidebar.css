@@ -40,11 +40,6 @@
   padding: var(--token-xs-8) 0;
 }
 
-.mypage-nav-item:hover {
-  background-color: var(--color-gray-100);
-}
-
 .mypage-nav-item--active {
   font-weight: var(--font-weight-2xl);
-  background-color: var(--color-gray-100);
 }

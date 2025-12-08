@@ -82,6 +82,15 @@
   color: inherit;
 }
 
+.mypage__section-more--disabled {
+  cursor: default;
+  color: var(--color-gray-400);
+}
+
+.mypage__section-more--disabled .mypage__section-more-text {
+  color: var(--color-gray-400);
+}
+
 .mypage__section-more-text {
   font-size: var(--token-base);
   font-weight: var(--font-weight-md);

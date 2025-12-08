@@ -13,6 +13,11 @@ export const MYPAGE_CONSTANTS = {
   },
   GRADE: {
     LABEL: "권한",
+    LABELS: {
+      GENERAL_MEMBER: "일반회원",
+      SELLING_MEMBER: "판매회원",
+      ADMIN_MEMBER: "관리자",
+    },
   },
   SECTION: {
     RECENT_ORDER: "최근 주문",

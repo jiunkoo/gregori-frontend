@@ -5,7 +5,7 @@ import { Icon, Layout } from "@components";
 import { MYPAGE_CONSTANTS } from "@constants";
 import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
-import { OrderResponseDto, ProductResponseDto } from "@models";
+import { Authority, OrderResponseDto, ProductResponseDto } from "@models";
 import { productAPI } from "@api/product";
 import "@styles/mypage.css";
 
@@ -71,8 +71,22 @@ const MyPage = () => {
   };
 
   const recentOrders = orders.slice(0, 3);
-  const authorityLabel =
-    user?.authority ?? MYPAGE_CONSTANTS.USER_FALLBACK.AUTHORITY_GUEST;
+  const hasRecentOrders = recentOrders.length > 0;
+
+  const getAuthorityLabel = (authority?: Authority) => {
+    switch (authority) {
+      case Authority.GENERAL_MEMBER:
+        return MYPAGE_CONSTANTS.GRADE.LABELS.GENERAL_MEMBER;
+      case Authority.SELLING_MEMBER:
+        return MYPAGE_CONSTANTS.GRADE.LABELS.SELLING_MEMBER;
+      case Authority.ADMIN_MEMBER:
+        return MYPAGE_CONSTANTS.GRADE.LABELS.ADMIN_MEMBER;
+      default:
+        return MYPAGE_CONSTANTS.USER_FALLBACK.AUTHORITY_GUEST;
+    }
+  };
+
+  const authorityLabel = getAuthorityLabel(user?.authority);
 
   return (
     <Layout showMyPageSidebar={true}>
@@ -95,17 +109,31 @@ const MyPage = () => {
             <div className="mypage__section-title">
               {MYPAGE_CONSTANTS.SECTION.RECENT_ORDER}
             </div>
-            <Link to="/orderlist" className="mypage__section-more">
-              <span className="mypage__section-more-text">
-                {MYPAGE_CONSTANTS.SECTION.MORE}
-              </span>
-              <Icon
-                name="arrowRight"
-                size={16}
-                className="mypage__section-more-arrow"
-                color="black"
-              />
-            </Link>
+            {hasRecentOrders ? (
+              <Link to="/orderlist" className="mypage__section-more">
+                <span className="mypage__section-more-text">
+                  {MYPAGE_CONSTANTS.SECTION.MORE}
+                </span>
+                <Icon
+                  name="arrowRight"
+                  size={16}
+                  className="mypage__section-more-arrow"
+                  color="black"
+                />
+              </Link>
+            ) : (
+              <div className="mypage__section-more mypage__section-more--disabled">
+                <span className="mypage__section-more-text">
+                  {MYPAGE_CONSTANTS.SECTION.MORE}
+                </span>
+                <Icon
+                  name="arrowRight"
+                  size={16}
+                  className="mypage__section-more-arrow"
+                  color="black"
+                />
+              </div>
+            )}
           </div>
 
           {recentOrders.length === 0 ? (

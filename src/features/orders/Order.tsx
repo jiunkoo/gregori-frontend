@@ -3,10 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { ProductResponseDto } from "@models";
 import { Icon, Layout } from "@components";
-import { ORDER_CONSTANTS } from "@constants";
+import { ORDER_CONSTANTS } from "@/features/orders/order.constants";
 import { orderAPI } from "@api/order";
 import { useAuthStore } from "@stores/authStore";
-import "@styles/order.css";
+import "@/features/orders/order.css";
 
 interface CartItem {
   product: ProductResponseDto;

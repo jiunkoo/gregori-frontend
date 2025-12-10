@@ -1,8 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import Layout from "@components/Layout";
-import Icon from "@components/icons/SvgIcon";
-import { ORDER_CONFIRM_CONSTANTS } from "@constants";
-import "@styles/order-confirm.css";
+import { Layout, Icon } from "@components";
+import { ORDER_CONFIRM_CONSTANTS } from "@/features/orders/order-confirm.constants";
+import "@/features/orders/order-confirm.css";
 
 interface CartItem {
   product: {

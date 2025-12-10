@@ -4,15 +4,15 @@ import { Link, useSearchParams } from "react-router-dom";
 import { productAPI } from "@api/product";
 import { ProductResponseDto, Sorter } from "@models";
 import { Icon, Layout } from "@components";
-import { PRODUCT_LIST_CONSTANTS } from "@constants";
-import "@styles/product-list.css";
+import { PRODUCT_LIST_CONSTANTS } from "@/features/products/productList.constants";
+import "@/features/products/product-list.css";
 
 const ProductList = () => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductResponseDto[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState<Sorter>(Sorter.CREATED_AT_DESC);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [sortBy] = useState<Sorter>(Sorter.CREATED_AT_DESC);
+  const [viewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState(
     searchParams.get("search") || ""
   );

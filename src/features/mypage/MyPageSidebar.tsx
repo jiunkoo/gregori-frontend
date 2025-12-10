@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { MYPAGE_CONSTANTS } from "@constants";
+import { MYPAGE_CONSTANTS } from "@/features/mypage/mypage.constants";
 import { orderAPI } from "@api/order";
 import { useAuthStore } from "@stores";
-import "@styles/mypage-sidebar.css";
+import "@/features/mypage/mypage-sidebar.css";
 
 const MyPageSidebar: React.FC = () => {
   const navigate = useNavigate();

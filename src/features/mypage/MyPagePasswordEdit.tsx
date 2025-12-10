@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
-import { MYPAGE_PASSWORD_EDIT_CONSTANTS } from "@constants/mypage-password-edit";
+import { MYPAGE_PASSWORD_EDIT_CONSTANTS } from "@/features/mypage/mypage-password-edit.constants";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
-import "@styles/mypage-password-edit.css";
+import "@/features/mypage/mypage-password-edit.css";
 
 const MyPagePasswordEdit: React.FC = () => {
   const navigate = useNavigate();

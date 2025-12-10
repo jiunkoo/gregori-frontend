@@ -21,7 +21,6 @@ export const PRODUCT_DETAIL_CONSTANTS = {
     DELIVERY_TIME: "3일",
     DELIVERY_TIME_TEXT: "이내 출고 (주말, 공휴일 제외)",
   },
-
   CART: {
     ORDER_NOW: "바로 주문하기",
     TOTAL_LABEL: "총 상품 금액",
@@ -31,11 +30,10 @@ export const PRODUCT_DETAIL_CONSTANTS = {
   },
 } as const;
 
-// 색상 상수
 export const COLORS = {
   WISHLIST_ACTIVE: "#FF5252",
-  CHECKBOX_INACTIVE: "#BABABA",
+  CHECKBOX_INACTIVE: "BABABA",
   CHECKBOX_ACTIVE: "black",
-  DETAILS_LINK: "#747474",
-  ICON_DEFAULT: "#33363F",
+  DETAILS_LINK: "747474",
+  ICON_DEFAULT: "33363F",
 } as const;

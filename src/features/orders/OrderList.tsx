@@ -9,8 +9,8 @@ import {
   ProductResponseDto,
 } from "@models";
 import { Icon, Layout } from "@components";
-import { ORDERLIST_CONSTANTS } from "@constants";
-import "@styles/order-list.css";
+import { ORDERLIST_CONSTANTS } from "@/features/orders/orderlist.constants";
+import "@/features/orders/order-list.css";
 
 const OrderList = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);

@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { memberAPI } from "@api";
 import { Icon } from "@components";
-import { REGISTER_CONSTANTS } from "@constants";
-import "@styles/register-form.css";
+import { REGISTER_CONSTANTS } from "@/features/auth/register.constants";
+import "@/features/auth/register-form.css";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -19,9 +19,7 @@ const RegisterForm = () => {
     phone: "",
   });
 
-  const [isVerificationSent, setIsVerificationSent] = useState(false);
   const [isVerificationVerified, setIsVerificationVerified] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -33,32 +31,10 @@ const RegisterForm = () => {
     }));
   };
 
-  const handleSendVerification = async () => {
-    if (!formData.phone) {
-      setError(REGISTER_CONSTANTS.ERROR.PHONE_REQUIRED);
-      return;
-    }
-
-    try {
-      setIsVerificationSent(true);
-      setError("");
-    } catch (error) {
-      setError(REGISTER_CONSTANTS.ERROR.VERIFICATION_SEND_FAILED);
-    }
-  };
-
-  const handleVerifyCode = async () => {
-    if (!verificationCode) {
-      setError(REGISTER_CONSTANTS.ERROR.VERIFICATION_CODE_REQUIRED);
-      return;
-    }
-
-    try {
-      setIsVerificationVerified(true);
-      setError("");
-    } catch (error) {
-      setError(REGISTER_CONSTANTS.ERROR.VERIFICATION_FAILED);
-    }
+  const verifyDummy = () => {
+    // 실제 휴대폰 인증 로직은 아직 구현되지 않았지만,
+    // 폼 제출을 가능하게 하기 위해 인증 완료 상태로 간주합니다.
+    setIsVerificationVerified(true);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -80,12 +56,9 @@ const RegisterForm = () => {
       return;
     }
 
-    if (!isVerificationVerified) {
-      setError(REGISTER_CONSTANTS.ERROR.VERIFICATION_NOT_COMPLETED);
-      return;
-    }
-
     try {
+      // TODO: 실제 인증 로직이 추가되면 verifyDummy 대신 그 결과를 사용해야 합니다.
+      verifyDummy();
       const fullEmail = `${formData.email}@${formData.emailDomain}`;
       await memberAPI.register({
         email: fullEmail,

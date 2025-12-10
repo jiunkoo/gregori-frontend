@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { REGISTER_CONSTANTS } from "@constants";
+import { REGISTER_CONSTANTS } from "@/features/auth/register.constants";
 import { Icon } from "@components";
-import "@styles/register-agreement.css";
+import "@/features/auth/register-agreement.css";
 
 interface RegisterAgreementProps {
   onProceed: () => void;

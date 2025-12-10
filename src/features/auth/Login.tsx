@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { authAPI, memberAPI } from "@api";
 import { Layout, Icon } from "@components";
-import { LOGIN_CONSTANTS } from "@constants";
+import { LOGIN_CONSTANTS } from "@/features/auth/login.constants";
 import { useAuthStore } from "@stores";
-import "@styles/login.css";
+import "@/features/auth/login.css";
 
 const REMEMBERED_EMAIL = "rememberedEmail";
 

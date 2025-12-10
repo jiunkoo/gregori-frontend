@@ -1,13 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Icon from "@components/icons/SvgIcon";
-import Layout from "@components/Layout";
-import {
-  ORDERDETAIL_CONSTANTS,
-  ORDERLIST_CONSTANTS,
-  ORDER_CONFIRM_CONSTANTS,
-} from "@constants";
+import { Icon, Layout } from "@components";
+import { ORDERDETAIL_CONSTANTS } from "@/features/orders/orderdetail.constants";
+import { ORDERLIST_CONSTANTS } from "@/features/orders/orderlist.constants";
+import { ORDER_CONFIRM_CONSTANTS } from "@/features/orders/order-confirm.constants";
 import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
 import { productAPI } from "@api/product";
@@ -17,7 +14,7 @@ import {
   OrderResponseDto,
   ProductResponseDto,
 } from "@models";
-import "@styles/order-detail.css";
+import "@/features/orders/order-detail.css";
 
 const OrderDetail = () => {
   const { orderId } = useParams<{ orderId: string }>();

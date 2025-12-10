@@ -5,18 +5,18 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Home from "@pages/Home";
-import Login from "@pages/auth/Login";
-import Register from "@pages/auth/Register";
-import ProductList from "@pages/products/ProductList";
-import ProductDetail from "@pages/products/ProductDetail";
-import OrderListPage from "@pages/orders/OrderList";
-import OrderDetail from "@pages/orders/OrderDetail";
-import MyPage from "@pages/MyPage";
-import OrderConfirm from "@pages/orders/OrderConfirm";
-import Order from "@pages/orders/Order";
-import MyPageProfileEdit from "@pages/MyPageProfileEdit";
-import MyPagePasswordEdit from "@pages/MyPagePasswordEdit";
+import Home from "@/features/Home";
+import Login from "@/features/auth/Login";
+import Register from "@/features/auth/Register";
+import ProductList from "@/features/products/ProductList";
+import ProductDetail from "@/features/products/ProductDetail";
+import OrderListPage from "@/features/orders/OrderList";
+import OrderDetail from "@/features/orders/OrderDetail";
+import MyPage from "@/features/mypage/MyPage";
+import OrderConfirm from "@/features/orders/OrderConfirm";
+import Order from "@/features/orders/Order";
+import MyPageProfileEdit from "@/features/mypage/MyPageProfileEdit";
+import MyPagePasswordEdit from "@/features/mypage/MyPagePasswordEdit";
 import { useAuthStore } from "@stores/authStore";
 import { memberAPI } from "@api/member";
 

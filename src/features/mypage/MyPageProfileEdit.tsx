@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
-import { MYPAGE_PROFILE_EDIT_CONSTANTS } from "@constants/mypage-profile-edit";
+import { MYPAGE_PROFILE_EDIT_CONSTANTS } from "@/features/mypage/mypage-profile-edit.constants";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
-import "@styles/mypage-profile-edit.css";
+import "@/features/mypage/mypage-profile-edit.css";
 
 const MyPageProfileEdit: React.FC = () => {
   const navigate = useNavigate();

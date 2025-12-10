@@ -5,8 +5,11 @@ import { productAPI } from "@api/product";
 import { useAuthStore } from "@stores/authStore";
 import { ProductResponseDto } from "@models";
 import { Icon, Layout } from "@components";
-import { PRODUCT_DETAIL_CONSTANTS, COLORS } from "@constants";
-import "@styles/product-detail.css";
+import {
+  PRODUCT_DETAIL_CONSTANTS,
+  COLORS,
+} from "@/features/products/productDetail.constants";
+import "@/features/products/product-detail.css";
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();

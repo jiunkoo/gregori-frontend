@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Icon from "@components/icons/SvgIcon";
-import { HEADER_CONSTANTS } from "@constants/header";
+import { Icon } from "@components";
+import { HEADER_CONSTANTS } from "@/features/header.constants";
 import { useAuthStore } from "@stores";
 import { authAPI } from "@api";
-import "@styles/header.css";
+import "@/features/header.css";
 
 interface HeaderProps {
   showSearch?: boolean;

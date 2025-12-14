@@ -2,9 +2,6 @@ import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Icon, Layout } from "@components";
-import { ORDERDETAIL_CONSTANTS } from "@/features/orders/OrderDetail.constants";
-import { ORDERLIST_CONSTANTS } from "@/features/orders/OrderList.constants";
-import { ORDER_CONFIRM_CONSTANTS } from "@/features/orders/OrderConfirm.constants";
 import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
 import { productAPI } from "@api/product";
@@ -14,6 +11,10 @@ import {
   OrderResponseDto,
   ProductResponseDto,
 } from "@models";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+import { ORDERDETAIL_CONSTANTS } from "@/features/orders/OrderDetail.constants";
 import "@/features/orders/OrderDetail.css";
 
 const OrderDetail = () => {
@@ -29,32 +30,43 @@ const OrderDetail = () => {
     const fetchOrder = async () => {
       if (!orderId) return;
 
-      try {
-        const orderData = await orderAPI.getOrder(Number(orderId));
-        setOrder(orderData);
+      const orderResult = await toResult(orderAPI.getOrder(Number(orderId)));
 
-        const ids = new Set<number>();
-        orderData.orderDetails.forEach((detail) => {
-          ids.add(detail.productId);
-        });
-
-        const missingIds = Array.from(ids).filter((id) => !productsById[id]);
-        if (missingIds.length === 0) return;
-
-        const products = await Promise.all(
-          missingIds.map((id) => productAPI.getProduct(id))
+      if (!orderResult.ok) {
+        const message = getApiErrorMessage(
+          orderResult.error,
+          ORDERDETAIL_CONSTANTS.ERROR.FETCH_FAILED
         );
-        setProductsById((prev) => {
-          const next = { ...prev };
-          products.forEach((product) => {
-            next[product.id] = product;
-          });
-          return next;
-        });
-      } catch (error) {
-        console.error("주문 상세 조회 실패:", error);
-      } finally {
+        window.alert(message);
+        return;
       }
+
+      const orderData = orderResult.value;
+      setOrder(orderData);
+
+      const ids = new Set<number>();
+      orderData.orderDetails.forEach((detail) => {
+        ids.add(detail.productId);
+      });
+
+      const missingIds = Array.from(ids).filter((id) => !productsById[id]);
+      if (missingIds.length === 0) return;
+
+      const products = await Promise.all(
+        missingIds.map(async (id) => {
+          const result = await toResult(productAPI.getProduct(id));
+          return result.ok ? result.value : null;
+        })
+      );
+
+      setProductsById((prev) => {
+        const next = { ...prev };
+        products.forEach((product) => {
+          if (!product) return;
+          next[product.id] = product;
+        });
+        return next;
+      });
     };
 
     fetchOrder();
@@ -100,15 +112,15 @@ const OrderDetail = () => {
   const getStatusText = (status: OrderDetailStatus) => {
     switch (status) {
       case OrderDetailStatus.PAYMENT_PENDING:
-        return ORDERLIST_CONSTANTS.STATUS.PAYMENT_PENDING;
+        return ORDERDETAIL_CONSTANTS.STATUS.PAYMENT_PENDING;
       case OrderDetailStatus.PAYMENT_COMPLETED:
-        return ORDERLIST_CONSTANTS.STATUS.PAYMENT_COMPLETED;
+        return ORDERDETAIL_CONSTANTS.STATUS.PAYMENT_COMPLETED;
       case OrderDetailStatus.SHIPPING:
-        return ORDERLIST_CONSTANTS.STATUS.SHIPPING;
+        return ORDERDETAIL_CONSTANTS.STATUS.SHIPPING;
       case OrderDetailStatus.DELIVERED:
-        return ORDERLIST_CONSTANTS.STATUS.DELIVERED;
+        return ORDERDETAIL_CONSTANTS.STATUS.DELIVERED;
       case OrderDetailStatus.PAYMENT_CANCELED:
-        return ORDERLIST_CONSTANTS.STATUS.PAYMENT_CANCELED;
+        return ORDERDETAIL_CONSTANTS.STATUS.PAYMENT_CANCELED;
       default:
         return status;
     }
@@ -191,11 +203,11 @@ const OrderDetail = () => {
 
           <div className="order-detail__order-header">
             <div className="order-detail__order-date">
-              {ORDERLIST_CONSTANTS.ORDER.DATE_LABEL}{" "}
+              {ORDERDETAIL_CONSTANTS.ORDER.DATE_LABEL}{" "}
               <span className="order-detail__order-date-value">
                 {formatDate(order.createdAt)}
               </span>{" "}
-              {ORDERLIST_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
+              {ORDERDETAIL_CONSTANTS.ORDER.NUMBER_LABEL}{" "}
               <span className="order-detail__order-number">
                 {order.orderNumber}
               </span>
@@ -205,7 +217,7 @@ const OrderDetail = () => {
           {order.orderDetails.map((detail) => {
             const product = productsById[detail.productId];
             const brand =
-              product?.sellerName ?? ORDERLIST_CONSTANTS.PRODUCT.BRAND;
+              product?.sellerName ?? ORDERDETAIL_CONSTANTS.PRODUCT.BRAND;
             const imageUrl = product?.imageUrl;
 
             return (
@@ -234,10 +246,10 @@ const OrderDetail = () => {
 
                   <div className="order-detail__order-quantity">
                     {detail.productCount}
-                    {ORDERLIST_CONSTANTS.PRODUCT.QUANTITY_UNIT}
+                    {ORDERDETAIL_CONSTANTS.PRODUCT.QUANTITY_UNIT}
                   </div>
                   <div className="order-detail__order-shipping">
-                    {ORDERLIST_CONSTANTS.SHIPPING.LABEL} <br />
+                    {ORDERDETAIL_CONSTANTS.SHIPPING.LABEL} <br />
                     {formatPrice(order.deliveryCost)}원
                   </div>
                   <div className="order-detail__order-status">
@@ -259,7 +271,7 @@ const OrderDetail = () => {
           <div className="order-detail__customer-info">
             <div className="order-detail__customer-item">
               <div className="order-detail__customer-label">
-                {ORDER_CONFIRM_CONSTANTS.USER.NAME}
+                {ORDERDETAIL_CONSTANTS.USER.NAME}
               </div>
               <div className="order-detail__customer-value">
                 {user?.name ?? "-"}
@@ -267,7 +279,7 @@ const OrderDetail = () => {
             </div>
             <div className="order-detail__customer-item">
               <div className="order-detail__customer-label">
-                {ORDER_CONFIRM_CONSTANTS.USER.EMAIL}
+                {ORDERDETAIL_CONSTANTS.USER.EMAIL}
               </div>
               <div className="order-detail__customer-value">
                 {user?.email ?? "-"}
@@ -287,7 +299,7 @@ const OrderDetail = () => {
           <div className="order-detail__payment-info">
             <div className="order-detail__payment-item">
               <div className="order-detail__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.METHOD}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.LABELS.METHOD}
               </div>
               <div className="order-detail__payment-value">
                 {order.paymentMethod}
@@ -295,7 +307,7 @@ const OrderDetail = () => {
             </div>
             <div className="order-detail__payment-item">
               <div className="order-detail__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.STATUS}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.LABELS.STATUS}
               </div>
               <div className="order-detail__payment-value">
                 {getStatusText(primaryStatus)}
@@ -303,7 +315,7 @@ const OrderDetail = () => {
             </div>
             <div className="order-detail__payment-item">
               <div className="order-detail__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.ORDER_TIME}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.LABELS.ORDER_TIME}
               </div>
               <div className="order-detail__payment-value">
                 {formatDateTime(order.createdAt)}
@@ -311,20 +323,20 @@ const OrderDetail = () => {
             </div>
             <div className="order-detail__payment-item">
               <div className="order-detail__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.SHIPPING_FEE}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.LABELS.SHIPPING_FEE}
               </div>
               <div className="order-detail__payment-value">
                 {formatPrice(order.deliveryCost)}
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.CURRENCY}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.CURRENCY}
               </div>
             </div>
             <div className="order-detail__payment-item">
               <div className="order-detail__payment-label">
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.LABELS.TOTAL_AMOUNT}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.LABELS.TOTAL_AMOUNT}
               </div>
               <div className="order-detail__payment-value">
                 {formatPrice(order.paymentAmount)}
-                {ORDER_CONFIRM_CONSTANTS.PAYMENT.CURRENCY}
+                {ORDERDETAIL_CONSTANTS.PAYMENT.CURRENCY}
               </div>
             </div>
           </div>

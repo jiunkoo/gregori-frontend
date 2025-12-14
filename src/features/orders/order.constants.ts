@@ -38,7 +38,17 @@ export const ORDER_CONSTANTS = {
   WARNINGS: {
     AGREEMENT_REQUIRED: "모든 약관에 동의해주세요.",
   },
+  AGREEMENT_ARIA: {
+    ALL: "전체 동의",
+    PERSONAL_INFO: "개인정보 처리 동의",
+    THIRD_PARTY: "제3자 정보제공 동의",
+    PAYMENT: "결제대행 서비스 이용약관 동의",
+  },
   EMPTY: {
     NO_ITEMS: "주문할 상품이 없습니다.",
+  },
+  ERROR: {
+    CREATE_FAILED: "주문 생성에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    USER_REQUIRED: "주문을 진행하려면 로그인이 필요합니다.",
   },
 };

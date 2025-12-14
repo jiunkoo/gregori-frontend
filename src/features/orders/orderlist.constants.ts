@@ -25,4 +25,8 @@ export const ORDERLIST_CONSTANTS = {
     CANCEL: "취소 접수",
     INQUIRY: "1:1 문의",
   },
+  ERROR: {
+    FETCH_FAILED: "주문 목록을 불러오는 중 오류가 발생했습니다.",
+    PRODUCT_FETCH_FAILED: "상품 정보를 불러오는 중 오류가 발생했습니다.",
+  },
 };

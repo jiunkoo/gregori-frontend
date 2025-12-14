@@ -3,9 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { ProductResponseDto } from "@models";
 import { Icon, Layout } from "@components";
-import { ORDER_CONSTANTS } from "@/features/orders/Order.constants";
 import { orderAPI } from "@api/order";
 import { useAuthStore } from "@stores/authStore";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+import { ORDER_CONSTANTS } from "@/features/orders/Order.constants";
 import "@/features/orders/Order.css";
 
 interface CartItem {
@@ -98,12 +101,12 @@ const Order = () => {
     }
 
     if (!user) {
-      console.error("주문 생성 실패: 사용자 정보가 없습니다.");
+      window.alert(ORDER_CONSTANTS.ERROR.USER_REQUIRED);
       return;
     }
 
-    try {
-      const createdOrder = await orderAPI.createOrder({
+    const createResult = await toResult(
+      orderAPI.createOrder({
         memberId: user.id,
         paymentMethod: FIXED_PAYMENT_METHOD,
         paymentAmount: amounts.finalAmount,
@@ -113,23 +116,32 @@ const Order = () => {
             productId: item.product.id,
             productCount: item.quantity,
           })) ?? [],
-      });
+      })
+    );
 
-      navigate("/order-confirm", {
-        state: {
-          orderData,
-          ordererInfo,
-          shippingInfo,
-          couponInfo,
-          paymentMethod: FIXED_PAYMENT_METHOD,
-          agreements,
-          amounts,
-          orderCreatedAt: createdOrder.createdAt,
-        },
-      });
-    } catch (error) {
-      console.error("주문 생성 실패:", error);
+    if (!createResult.ok) {
+      const message = getApiErrorMessage(
+        createResult.error,
+        ORDER_CONSTANTS.ERROR.CREATE_FAILED
+      );
+      window.alert(message);
+      return;
     }
+
+    const createdOrder = createResult.value;
+
+    navigate("/order-confirm", {
+      state: {
+        orderData,
+        ordererInfo,
+        shippingInfo,
+        couponInfo,
+        paymentMethod: FIXED_PAYMENT_METHOD,
+        agreements,
+        amounts,
+        orderCreatedAt: createdOrder.createdAt,
+      },
+    });
   };
 
   const handleAgreementChange = (
@@ -322,7 +334,7 @@ const Order = () => {
                 type="button"
                 className={getCheckboxClassName(agreements.all)}
                 onClick={() => handleAgreementChange("all", !agreements.all)}
-                aria-label="전체 동의"
+                aria-label={ORDER_CONSTANTS.AGREEMENT_ARIA.ALL}
               >
                 <Icon
                   name={agreements.all ? "checkboxChecked" : "checkbox"}
@@ -343,7 +355,7 @@ const Order = () => {
                     !agreements.personalInfo
                   )
                 }
-                aria-label="개인정보 처리 동의"
+                aria-label={ORDER_CONSTANTS.AGREEMENT_ARIA.PERSONAL_INFO}
               >
                 <Icon
                   name={
@@ -366,7 +378,7 @@ const Order = () => {
                 onClick={() =>
                   handleAgreementChange("thirdParty", !agreements.thirdParty)
                 }
-                aria-label="제3자 정보제공 동의"
+                aria-label={ORDER_CONSTANTS.AGREEMENT_ARIA.THIRD_PARTY}
               >
                 <Icon
                   name={agreements.thirdParty ? "checkboxChecked" : "checkbox"}
@@ -387,7 +399,7 @@ const Order = () => {
                 onClick={() =>
                   handleAgreementChange("payment", !agreements.payment)
                 }
-                aria-label="결제대행 서비스 이용약관 동의"
+                aria-label={ORDER_CONSTANTS.AGREEMENT_ARIA.PAYMENT}
               >
                 <Icon
                   name={agreements.payment ? "checkboxChecked" : "checkbox"}

@@ -9,6 +9,9 @@ import {
   ProductResponseDto,
 } from "@models";
 import { Icon, Layout } from "@components";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
 import { ORDERLIST_CONSTANTS } from "@/features/orders/OrderList.constants";
 import "@/features/orders/OrderList.css";
 
@@ -24,14 +27,20 @@ const OrderList = () => {
   }, [page]);
 
   const fetchOrders = async () => {
-    try {
-      const data = await orderAPI.getOrders(page);
-      setOrders(data);
-      await fetchProductsForOrders(data);
-    } catch (error) {
-      console.error("주문 조회 실패:", error);
-    } finally {
+    const ordersResult = await toResult(orderAPI.getOrders(page));
+
+    if (!ordersResult.ok) {
+      const message = getApiErrorMessage(
+        ordersResult.error,
+        ORDERLIST_CONSTANTS.ERROR.FETCH_FAILED
+      );
+      window.alert(message);
+      return;
     }
+
+    const data = ordersResult.value;
+    setOrders(data);
+    await fetchProductsForOrders(data);
   };
 
   const formatPrice = (price: number) => {
@@ -94,20 +103,29 @@ const OrderList = () => {
     const missingIds = Array.from(ids).filter((id) => !productsById[id]);
     if (missingIds.length === 0) return;
 
-    try {
-      const products = await Promise.all(
-        missingIds.map((id) => productAPI.getProduct(id))
-      );
-      setProductsById((prev) => {
-        const next = { ...prev };
-        products.forEach((product) => {
-          next[product.id] = product;
-        });
-        return next;
-      });
-    } catch (error) {
-      console.error("상품 정보 조회 실패:", error);
+    const products = await Promise.all(
+      missingIds.map(async (id) => {
+        const result = await toResult(productAPI.getProduct(id));
+        return result.ok ? result.value : null;
+      })
+    );
+
+    const validProducts = products.filter(
+      (product): product is ProductResponseDto => product !== null
+    );
+
+    if (validProducts.length === 0) {
+      window.alert(ORDERLIST_CONSTANTS.ERROR.PRODUCT_FETCH_FAILED);
+      return;
     }
+
+    setProductsById((prev) => {
+      const next = { ...prev };
+      validProducts.forEach((product) => {
+        next[product.id] = product;
+      });
+      return next;
+    });
   };
 
   return (

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { Icon } from "@components";
-import { HEADER_CONSTANTS } from "@/features/Header.constants";
-import { useAuthStore } from "@stores";
 import { authAPI } from "@api";
+import { useAuthStore } from "@stores";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+import { HEADER_CONSTANTS } from "@/features/Header.constants";
 import "@/features/Header.css";
 
 interface HeaderProps {
@@ -18,7 +22,22 @@ const Header: React.FC<HeaderProps> = ({
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const { isAuthenticated, isAuthChecked, logout } = useAuthStore();
+  const { isAuthenticated, isAuthChecked, logout, setError } = useAuthStore();
+
+  const handleLogout = async () => {
+    const result = await toResult(authAPI.signOut());
+
+    if (!result.ok) {
+      const message = getApiErrorMessage(
+        result.error,
+        HEADER_CONSTANTS.LOGOUT.ERROR_MESSAGE
+      );
+      setError(message);
+    }
+
+    await logout();
+    navigate("/");
+  };
 
   if (!isAuthChecked) {
     return null;
@@ -49,7 +68,11 @@ const Header: React.FC<HeaderProps> = ({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="header-search-input"
               />
-              <button type="submit" className="header-search-button">
+              <button
+                type="submit"
+                className="header-search-button"
+                aria-label={HEADER_CONSTANTS.SEARCH.BUTTON_ARIA_LABEL}
+              >
                 <Icon name="search" size={24} className="header-search-icon" />
               </button>
             </div>
@@ -63,19 +86,7 @@ const Header: React.FC<HeaderProps> = ({
                 return (
                   <button
                     key="logout"
-                    onClick={async () => {
-                      try {
-                        await authAPI.signOut();
-                      } catch (error) {
-                        console.error(
-                          HEADER_CONSTANTS.LOGOUT.ERROR_MESSAGE,
-                          error
-                        );
-                      } finally {
-                        await logout();
-                        navigate("/");
-                      }
-                    }}
+                    onClick={handleLogout}
                     className="header-action-item"
                     style={{
                       background: "none",

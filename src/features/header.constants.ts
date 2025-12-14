@@ -6,6 +6,7 @@ export const HEADER_CONSTANTS = {
   SEARCH: {
     PLACEHOLDER_WITH_NAV: "상품을 검색해보세요...",
     PLACEHOLDER_WITHOUT_NAV: "검색",
+    BUTTON_ARIA_LABEL: "상품 검색",
   },
 
   NAV_MENU: [
@@ -15,7 +16,7 @@ export const HEADER_CONSTANTS = {
 
   LOGOUT: {
     BUTTON_TEXT: "로그아웃",
-    ERROR_MESSAGE: "로그아웃 API 호출 실패:",
+    ERROR_MESSAGE: "로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.",
   },
 
   ACTIONS: [

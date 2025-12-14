@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({
   if (showMyPageSidebar) {
     return (
       <div className="layout-container">
-        <Header showNav={false} showSearch={false} />
+        <Header showNav={false} />
         <div className="layout-content-with-sidebar">
           <MyPageSidebar />
           <div className="layout-content">{children}</div>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import { REGISTER_CONSTANTS } from "@/features/auth/Register.constants";
 import { Icon } from "@components";
+
+import { REGISTER_AGREEMENT_CONSTANTS } from "@/features/auth/RegisterAgreement.constants";
 import "@/features/auth/RegisterAgreement.css";
 
 interface RegisterAgreementProps {
@@ -47,7 +48,7 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
 
   const handleProceedToRegister = () => {
     if (!agreements.age || !agreements.terms) {
-      setError(REGISTER_CONSTANTS.ERROR.REQUIRED_AGREEMENT);
+      setError(REGISTER_AGREEMENT_CONSTANTS.ERROR.REQUIRED_AGREEMENT);
       return;
     }
     onProceed();
@@ -56,9 +57,9 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
   return (
     <main className="register-agreement">
       <h1 className="register-agreement__title">
-        {REGISTER_CONSTANTS.AGREEMENT.TITLE_LINE1}
+        {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.TITLE_LINE1}
         <br />
-        {REGISTER_CONSTANTS.AGREEMENT.TITLE_LINE2}
+        {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.TITLE_LINE2}
       </h1>
 
       <div
@@ -68,12 +69,14 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
         <button
           type="button"
           className={getCheckboxClassName(agreements.all)}
-          aria-label="전체 동의"
+          aria-label={
+            REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.ALL_AGREEMENT_ARIA_LABEL
+          }
         >
           {agreements.all && <Icon name="check" size={12} color="white" />}
         </button>
         <span className="register-agreement__text">
-          {REGISTER_CONSTANTS.AGREEMENT.ALL_AGREEMENT}
+          {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.ALL_AGREEMENT}
         </span>
       </div>
 
@@ -85,12 +88,14 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
           <button
             type="button"
             className={getCheckboxClassName(agreements.age)}
-            aria-label="만 14세 이상"
+            aria-label={
+              REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.AGE_REQUIREMENT_ARIA_LABEL
+            }
           >
             {agreements.age && <Icon name="check" size={12} color="white" />}
           </button>
           <span className="register-agreement__text">
-            {REGISTER_CONSTANTS.AGREEMENT.AGE_REQUIREMENT}
+            {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.AGE_REQUIREMENT}
           </span>
         </div>
 
@@ -101,14 +106,16 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
           <button
             type="button"
             className={getCheckboxClassName(agreements.terms)}
-            aria-label="이용약관 동의"
+            aria-label={
+              REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.TERMS_REQUIREMENT
+            }
           >
             {agreements.terms && <Icon name="check" size={12} color="white" />}
           </button>
           <span className="register-agreement__text">
-            {REGISTER_CONSTANTS.AGREEMENT.TERMS_REQUIREMENT}{" "}
+            {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.TERMS_REQUIREMENT}{" "}
             <button type="button" className="register-agreement__link">
-              {REGISTER_CONSTANTS.AGREEMENT.TERMS_DETAIL}
+              {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.TERMS_DETAIL}
             </button>
           </span>
         </div>
@@ -120,14 +127,17 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
           <button
             type="button"
             className={getCheckboxClassName(agreements.optional)}
-            aria-label="마케팅 수신 동의"
+            aria-label={
+              REGISTER_AGREEMENT_CONSTANTS.AGREEMENT
+                .MARKETING_OPTIONAL_ARIA_LABEL
+            }
           >
             {agreements.optional && (
               <Icon name="check" size={12} color="white" />
             )}
           </button>
           <span className="register-agreement__text">
-            {REGISTER_CONSTANTS.AGREEMENT.MARKETING_OPTIONAL}
+            {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.MARKETING_OPTIONAL}
           </span>
         </div>
       </div>
@@ -145,7 +155,7 @@ const RegisterAgreement = ({ onProceed }: RegisterAgreementProps) => {
           onClick={handleProceedToRegister}
           disabled={!agreements.age || !agreements.terms}
         >
-          {REGISTER_CONSTANTS.AGREEMENT.PROCEED_BUTTON}
+          {REGISTER_AGREEMENT_CONSTANTS.AGREEMENT.PROCEED_BUTTON}
         </button>
       </div>
     </main>

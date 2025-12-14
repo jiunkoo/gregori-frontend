@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 import { authAPI, memberAPI } from "@api";
 import { Layout, Icon } from "@components";
-import { LOGIN_CONSTANTS } from "@/features/auth/Login.constants";
 import { useAuthStore } from "@stores";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+import { LOGIN_CONSTANTS } from "@/features/auth/Login.constants";
 import "@/features/auth/Login.css";
 
 const REMEMBERED_EMAIL = "rememberedEmail";
@@ -50,40 +53,41 @@ const Login = () => {
     setError("");
     setAuthError(null);
 
-    try {
-      const trimmedFormData = {
-        ...formData,
-        email: formData.email.trim(),
-      };
+    const trimmed = {
+      ...formData,
+      email: formData.email.trim(),
+    };
 
-      await authAPI.signIn(trimmedFormData);
-
-      try {
-        const userInfo = await memberAPI.getMember();
-        setUser(userInfo);
-      } catch (userErr: any) {
-        console.error("사용자 정보 조회 실패:", userErr);
-        setUser({
-          id: 0,
-          email: formData.email,
-          name: LOGIN_CONSTANTS.DEFAULT_USER_NAME,
-          authority: "GENERAL_MEMBER" as any,
-        });
-      }
-
-      if (autoLogin) {
-        localStorage.setItem(REMEMBERED_EMAIL, trimmedFormData.email);
-      } else {
-        localStorage.removeItem(REMEMBERED_EMAIL);
-      }
-
-      navigate("/");
-    } catch (err: any) {
-      setError(err.response?.data?.message || LOGIN_CONSTANTS.ERROR_MESSAGE);
-      setAuthError(
-        err.response?.data?.message || LOGIN_CONSTANTS.ERROR_MESSAGE
+    const signInResult = await toResult(authAPI.signIn(trimmed));
+    if (!signInResult.ok) {
+      const msg = getApiErrorMessage(
+        signInResult.error,
+        LOGIN_CONSTANTS.ERROR_MESSAGE
       );
+      setError(msg);
+      setAuthError(msg);
+      return;
     }
+
+    const userInfoResult = await toResult(memberAPI.getMember());
+    const user = userInfoResult.ok
+      ? userInfoResult.value
+      : {
+          id: 0,
+          email: trimmed.email,
+          name: LOGIN_CONSTANTS.DEFAULT_USER_NAME,
+          authority: "GENERAL_MEMBER" as const,
+        };
+
+    setUser(user);
+
+    if (autoLogin) {
+      localStorage.setItem(REMEMBERED_EMAIL, trimmed.email);
+    } else {
+      localStorage.removeItem(REMEMBERED_EMAIL);
+    }
+
+    navigate("/");
   };
 
   return (
@@ -123,7 +127,9 @@ const Login = () => {
                   className="login__eye-button"
                   onClick={() => setShowPassword((prev) => !prev)}
                   aria-label={
-                    showPassword ? "비밀번호 숨기기" : "비밀번호 보기"
+                    showPassword
+                      ? LOGIN_CONSTANTS.PASSWORD_HIDE_ARIA_LABEL
+                      : LOGIN_CONSTANTS.PASSWORD_SHOW_ARIA_LABEL
                   }
                 >
                   <Icon name={showPassword ? "eye" : "eyeHide"} size={20} />
@@ -147,7 +153,7 @@ const Login = () => {
               type="button"
               className={getCheckboxClassName()}
               onClick={() => setAutoLogin(!autoLogin)}
-              aria-label="자동 로그인"
+              aria-label={LOGIN_CONSTANTS.AUTO_LOGIN_ARIA_LABEL}
             >
               {autoLogin && <Icon name="check" size={12} color="white" />}
             </button>

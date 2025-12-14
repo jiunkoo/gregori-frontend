@@ -4,9 +4,12 @@ export const LOGIN_CONSTANTS = {
   PASSWORD_PLACEHOLDER: "비밀번호",
   BUTTON_TEXT: "로그인",
   AUTO_LOGIN_TEXT: "자동 로그인",
+  AUTO_LOGIN_ARIA_LABEL: "자동 로그인",
   FIND_EMAIL_TEXT: "이메일 찾기",
   FIND_PASSWORD_TEXT: "비밀번호 찾기",
   SIGNUP_TEXT: "가입하기",
   ERROR_MESSAGE: "로그인에 실패했습니다.",
   DEFAULT_USER_NAME: "사용자",
+  PASSWORD_SHOW_ARIA_LABEL: "비밀번호 보기",
+  PASSWORD_HIDE_ARIA_LABEL: "비밀번호 숨기기",
 };

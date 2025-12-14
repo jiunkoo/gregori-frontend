@@ -5,6 +5,8 @@ import { productAPI } from "@api/product";
 import { useAuthStore } from "@stores/authStore";
 import { ProductResponseDto } from "@models";
 import { Icon, Layout } from "@components";
+
+import { toResult } from "@/utils/result";
 import {
   PRODUCT_DETAIL_CONSTANTS,
   COLORS,
@@ -28,13 +30,16 @@ const ProductDetail = () => {
   const fetchProduct = async () => {
     if (!productId) return;
 
-    try {
-      const data = await productAPI.getProduct(parseInt(productId));
-      setProduct(data);
-    } catch (error) {
-      console.error(PRODUCT_DETAIL_CONSTANTS.ERROR.FETCH_FAILED, error);
+    const result = await toResult(
+      productAPI.getProduct(parseInt(productId, 10))
+    );
+
+    if (!result.ok) {
       setProduct(null);
+      return;
     }
+
+    setProduct(result.value);
   };
 
   const handleQuantityChange = (value: number) => {

@@ -4,6 +4,9 @@ import { Link, useSearchParams } from "react-router-dom";
 import { productAPI } from "@api/product";
 import { ProductResponseDto, Sorter } from "@models";
 import { Icon, Layout } from "@components";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
 import { PRODUCT_LIST_CONSTANTS } from "@/features/products/ProductList.constants";
 import "@/features/products/ProductList.css";
 
@@ -31,22 +34,27 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const productList = await productAPI.getProducts({
+      const result = await toResult(
+        productAPI.getProducts({
           sorter: sortBy,
           keyword: searchQuery || undefined,
           categoryId: categoryFilter
             ? getCategoryId(categoryFilter)
             : undefined,
-        });
-        setProducts(productList);
-      } catch (err: any) {
-        setError(
-          err.response?.data?.message ||
-            PRODUCT_LIST_CONSTANTS.ERROR.FETCH_FAILED
+        })
+      );
+
+      if (!result.ok) {
+        const message = getApiErrorMessage(
+          result.error,
+          PRODUCT_LIST_CONSTANTS.ERROR.FETCH_FAILED
         );
-      } finally {
+        setError(message);
+        return;
       }
+
+      setProducts(result.value);
+      setError(null);
     };
 
     fetchProducts();

@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
-import { MYPAGE_PASSWORD_EDIT_CONSTANTS } from "@/features/mypage/MyPagePasswordEdit.constants";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+import { MYPAGE_PASSWORD_EDIT_CONSTANTS } from "@/features/mypage/MyPagePasswordEdit.constants";
 import "@/features/mypage/MyPagePasswordEdit.css";
 
 const MyPagePasswordEdit: React.FC = () => {
@@ -41,25 +44,31 @@ const MyPagePasswordEdit: React.FC = () => {
       return;
     }
 
-    try {
-      setSavingPassword(true);
-      await memberAPI.updatePassword({
+    setSavingPassword(true);
+
+    const updateResult = await toResult(
+      memberAPI.updatePassword({
         currentPassword,
         newPassword,
-      });
-      setMessage(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.SUCCESS);
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmPassword("");
-    } catch (error: any) {
-      const msg =
-        error?.response?.data?.message ??
-        MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.FAILURE;
+      })
+    );
+
+    setSavingPassword(false);
+
+    if (!updateResult.ok) {
+      const msg = getApiErrorMessage(
+        updateResult.error,
+        MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.FAILURE
+      );
       setLocalError(msg);
       setError(msg);
-    } finally {
-      setSavingPassword(false);
+      return;
     }
+
+    setMessage(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.SUCCESS);
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
   };
 
   const hasFeedback = !!localError || !!message;

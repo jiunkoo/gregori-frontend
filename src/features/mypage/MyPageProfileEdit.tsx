@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Layout, Icon } from "@components";
-import { MYPAGE_PROFILE_EDIT_CONSTANTS } from "@/features/mypage/MyPageProfileEdit.constants";
 import { useAuthStore } from "@stores";
 import { memberAPI } from "@api/member";
+
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+import { MYPAGE_PROFILE_EDIT_CONSTANTS } from "@/features/mypage/MyPageProfileEdit.constants";
 import "@/features/mypage/MyPageProfileEdit.css";
 
 const MyPageProfileEdit: React.FC = () => {
@@ -32,20 +35,26 @@ const MyPageProfileEdit: React.FC = () => {
       return;
     }
 
-    try {
-      setSavingName(true);
-      await memberAPI.updateName({ name: trimmedName });
-      setUser({ ...user, name: trimmedName });
-      setMessage(MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_SUCCESS);
-    } catch (error: any) {
-      const msg =
-        error?.response?.data?.message ??
-        MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_FAILURE;
+    setSavingName(true);
+
+    const updateResult = await toResult(
+      memberAPI.updateName({ name: trimmedName })
+    );
+
+    setSavingName(false);
+
+    if (!updateResult.ok) {
+      const msg = getApiErrorMessage(
+        updateResult.error,
+        MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_FAILURE
+      );
       setLocalError(msg);
       setError(msg);
-    } finally {
-      setSavingName(false);
+      return;
     }
+
+    setUser({ ...user, name: trimmedName });
+    setMessage(MYPAGE_PROFILE_EDIT_CONSTANTS.MESSAGES.NAME_SUCCESS);
   };
 
   const hasFeedback = !!localError || !!message;

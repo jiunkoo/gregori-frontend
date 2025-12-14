@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { MYPAGE_CONSTANTS } from "@/features/mypage/MyPage.constants";
+
 import { orderAPI } from "@api/order";
 import { useAuthStore } from "@stores";
+
+import { toResult } from "@/utils/result";
+import { MYPAGE_SIDEBAR_CONSTANTS } from "@/features/mypage/MyPageSidebar.constants";
 import "@/features/mypage/MyPageSidebar.css";
 
 const MyPageSidebar: React.FC = () => {
@@ -18,38 +21,41 @@ const MyPageSidebar: React.FC = () => {
 
     if (isCheckingOrders) return;
 
-    try {
-      setIsCheckingOrders(true);
+    setIsCheckingOrders(true);
 
-      if (hasOrders !== null) {
-        if (hasOrders) {
-          navigate("/orderlist");
-        } else {
-          window.alert("주문한 상품이 없습니다.");
-        }
-        return;
+    if (hasOrders !== null) {
+      if (hasOrders) {
+        navigate("/orderlist");
+      } else {
+        window.alert(MYPAGE_SIDEBAR_CONSTANTS.ORDER_CHECK.NO_ORDERS_MESSAGE);
       }
-
-      const data = await orderAPI.getOrders(1);
-      const exists = data.length > 0;
-      setHasOrders(exists);
-
-      if (!exists) {
-        window.alert("주문한 상품이 없습니다.");
-        return;
-      }
-
-      navigate("/orderlist");
-    } catch (error) {
-      console.error("주문 목록 확인 실패:", error);
-      window.alert("주문 정보를 확인하는 중 오류가 발생했습니다.");
-    } finally {
       setIsCheckingOrders(false);
+      return;
     }
+
+    const ordersResult = await toResult(orderAPI.getOrders(1));
+
+    setIsCheckingOrders(false);
+
+    if (!ordersResult.ok) {
+      window.alert(MYPAGE_SIDEBAR_CONSTANTS.ORDER_CHECK.ERROR_MESSAGE);
+      return;
+    }
+
+    const data = ordersResult.value;
+    const exists = data.length > 0;
+    setHasOrders(exists);
+
+    if (!exists) {
+      window.alert(MYPAGE_SIDEBAR_CONSTANTS.ORDER_CHECK.NO_ORDERS_MESSAGE);
+      return;
+    }
+
+    navigate("/orderlist");
   };
 
   const displayName =
-    (user?.name && user.name.trim()) || MYPAGE_CONSTANTS.USER.NAME;
+    (user?.name && user.name.trim()) || MYPAGE_SIDEBAR_CONSTANTS.USER.NAME;
 
   return (
     <div className="mypage-sidebar">
@@ -59,7 +65,7 @@ const MyPageSidebar: React.FC = () => {
 
       <div className="mypage-nav-section">
         <div className="mypage-nav-title">
-          {MYPAGE_CONSTANTS.NAVIGATION.SHOPPING_INFO}
+          {MYPAGE_SIDEBAR_CONSTANTS.NAVIGATION.SHOPPING_INFO}
         </div>
         <NavLink
           to="/orderlist"
@@ -69,13 +75,13 @@ const MyPageSidebar: React.FC = () => {
             (isActive ? " mypage-nav-item--active" : "")
           }
         >
-          {MYPAGE_CONSTANTS.NAV_ITEMS.ORDER_DELIVERY}
+          {MYPAGE_SIDEBAR_CONSTANTS.NAV_ITEMS.ORDER_DELIVERY}
         </NavLink>
       </div>
 
       <div className="mypage-nav-section">
         <div className="mypage-nav-title">
-          {MYPAGE_CONSTANTS.NAVIGATION.ACCOUNT_SETTINGS}
+          {MYPAGE_SIDEBAR_CONSTANTS.NAVIGATION.ACCOUNT_SETTINGS}
         </div>
         <NavLink
           to="/mypage/profile"
@@ -83,7 +89,7 @@ const MyPageSidebar: React.FC = () => {
             "mypage-nav-item" + (isActive ? " mypage-nav-item--active" : "")
           }
         >
-          {MYPAGE_CONSTANTS.NAV_ITEMS.MEMBER_INFO_EDIT}
+          {MYPAGE_SIDEBAR_CONSTANTS.NAV_ITEMS.MEMBER_INFO_EDIT}
         </NavLink>
         <NavLink
           to="/mypage/password"
@@ -91,7 +97,7 @@ const MyPageSidebar: React.FC = () => {
             "mypage-nav-item" + (isActive ? " mypage-nav-item--active" : "")
           }
         >
-          {MYPAGE_CONSTANTS.NAV_ITEMS.PASSWORD_EDIT}
+          {MYPAGE_SIDEBAR_CONSTANTS.NAV_ITEMS.PASSWORD_EDIT}
         </NavLink>
       </div>
     </div>

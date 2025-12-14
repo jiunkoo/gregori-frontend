@@ -1,16 +1,4 @@
 export const MYPAGE_CONSTANTS = {
-  USER: {
-    NAME: "KOUBIT",
-  },
-  NAVIGATION: {
-    SHOPPING_INFO: "나의 쇼핑 정보",
-    ACCOUNT_SETTINGS: "나의 계정 설정",
-  },
-  NAV_ITEMS: {
-    ORDER_DELIVERY: "주문배송조회",
-    MEMBER_INFO_EDIT: "회원정보수정",
-    PASSWORD_EDIT: "비밀번호 변경",
-  },
   GRADE: {
     LABEL: "권한",
     LABELS: {

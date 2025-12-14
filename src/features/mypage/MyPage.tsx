@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Icon, Layout } from "@components";
-import { MYPAGE_CONSTANTS } from "@/features/mypage/MyPage.constants";
-import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
-import { Authority, OrderResponseDto, ProductResponseDto } from "@models";
 import { productAPI } from "@api/product";
+import { Icon, Layout } from "@components";
+import { useAuthStore } from "@stores";
+
+import { Authority, OrderResponseDto, ProductResponseDto } from "@models";
+import { toResult } from "@/utils/result";
+import { MYPAGE_CONSTANTS } from "@/features/mypage/MyPage.constants";
 import "@/features/mypage/MyPage.css";
 
 const MyPage = () => {
@@ -18,34 +20,41 @@ const MyPage = () => {
 
   useEffect(() => {
     const fetchRecentOrders = async () => {
-      try {
-        const data = await orderAPI.getOrders(1);
-        setOrders(data);
-
-        const ids = new Set<number>();
-        data.forEach((order) => {
-          order.orderDetails.forEach((detail) => {
-            ids.add(detail.productId);
-          });
-        });
-
-        const missingIds = Array.from(ids).filter((id) => !productsById[id]);
-        if (missingIds.length > 0) {
-          const products = await Promise.all(
-            missingIds.map((id) => productAPI.getProduct(id))
-          );
-          setProductsById((prev) => {
-            const next = { ...prev };
-            products.forEach((product) => {
-              next[product.id] = product;
-            });
-            return next;
-          });
-        }
-      } catch (error) {
-        console.error("주문 조회 실패:", error);
-      } finally {
+      const ordersResult = await toResult(orderAPI.getOrders(1));
+      if (!ordersResult.ok) {
+        return;
       }
+
+      const data = ordersResult.value;
+      setOrders(data);
+
+      const ids = new Set<number>();
+      data.forEach((order) => {
+        order.orderDetails.forEach((detail) => {
+          ids.add(detail.productId);
+        });
+      });
+
+      const missingIds = Array.from(ids).filter((id) => !productsById[id]);
+      if (missingIds.length === 0) {
+        return;
+      }
+
+      const products = await Promise.all(
+        missingIds.map(async (id) => {
+          const result = await toResult(productAPI.getProduct(id));
+          return result.ok ? result.value : null;
+        })
+      );
+
+      setProductsById((prev) => {
+        const next = { ...prev };
+        products.forEach((product) => {
+          if (!product) return;
+          next[product.id] = product;
+        });
+        return next;
+      });
     };
 
     fetchRecentOrders();

@@ -20,6 +20,8 @@ import MyPagePasswordEdit from "@/features/mypage/MyPagePasswordEdit";
 import { useAuthStore } from "@stores/authStore";
 import { memberAPI } from "@api/member";
 
+import { toResult } from "@/utils/result";
+
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -41,12 +43,14 @@ const AuthInitializer: React.FC = () => {
 
   useEffect(() => {
     const checkAuthStatus = async () => {
-      try {
-        const userInfo = await memberAPI.getMember();
-        setUser(userInfo);
-      } catch {
+      const result = await toResult(memberAPI.getMember());
+
+      if (!result.ok) {
         setAuthChecked(true);
+        return;
       }
+
+      setUser(result.value);
     };
 
     checkAuthStatus();

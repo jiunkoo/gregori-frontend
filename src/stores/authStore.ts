@@ -2,6 +2,9 @@ import { create } from "zustand";
 import { SessionMember, Authority } from "@models";
 import { memberAPI } from "@api/member";
 
+import { toResult } from "@/utils/result";
+import { getApiErrorMessage } from "@/utils/error";
+
 interface AuthState {
   user: SessionMember | null;
   isAuthenticated: boolean;
@@ -37,18 +40,22 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   setAuthChecked: (checked) => set({ isAuthChecked: checked }),
 
   logout: async () => {
-    try {
-      await memberAPI.deleteMember();
-    } catch (error) {
-      console.error("로그아웃 API 호출 실패:", error);
-    } finally {
-      set({
-        user: null,
-        isAuthenticated: false,
-        error: null,
-        isAuthChecked: true,
-      });
+    const result = await toResult(memberAPI.deleteMember());
+
+    if (!result.ok) {
+      const message = getApiErrorMessage(
+        result.error,
+        "로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요."
+      );
+      set({ error: message });
     }
+
+    set({
+      user: null,
+      isAuthenticated: false,
+      error: null,
+      isAuthChecked: true,
+    });
   },
 
   hasAuthority: (authority) => {

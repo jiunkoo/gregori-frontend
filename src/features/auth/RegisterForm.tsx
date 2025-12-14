@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { memberAPI } from "@api";
 import { Icon } from "@components";
-import { REGISTER_CONSTANTS } from "@/features/auth/register.constants";
-import "@/features/auth/register-form.css";
+import { REGISTER_CONSTANTS } from "@/features/auth/Register.constants";
+import "@/features/auth/RegisterForm.css";
 
 const RegisterForm = () => {
   const navigate = useNavigate();

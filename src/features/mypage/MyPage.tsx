@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Icon, Layout } from "@components";
-import { MYPAGE_CONSTANTS } from "@/features/mypage/mypage.constants";
+import { MYPAGE_CONSTANTS } from "@/features/mypage/MyPage.constants";
 import { useAuthStore } from "@stores";
 import { orderAPI } from "@api/order";
 import { Authority, OrderResponseDto, ProductResponseDto } from "@models";
 import { productAPI } from "@api/product";
-import "@/features/mypage/mypage.css";
+import "@/features/mypage/MyPage.css";
 
 const MyPage = () => {
   const [orders, setOrders] = useState<OrderResponseDto[]>([]);

@@ -8,8 +8,8 @@ import { Icon, Layout } from "@components";
 import {
   PRODUCT_DETAIL_CONSTANTS,
   COLORS,
-} from "@/features/products/productDetail.constants";
-import "@/features/products/product-detail.css";
+} from "@/features/products/ProductDetail.constants";
+import "@/features/products/ProductDetail.css";
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();

@@ -4,8 +4,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { productAPI } from "@api/product";
 import { ProductResponseDto, Sorter } from "@models";
 import { Icon, Layout } from "@components";
-import { PRODUCT_LIST_CONSTANTS } from "@/features/products/productList.constants";
-import "@/features/products/product-list.css";
+import { PRODUCT_LIST_CONSTANTS } from "@/features/products/ProductList.constants";
+import "@/features/products/ProductList.css";
 
 const ProductList = () => {
   const [searchParams] = useSearchParams();

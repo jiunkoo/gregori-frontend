@@ -1,9 +1,8 @@
 :root {
-  /* Font Family */
+  /* Fonts */
   --font-family-primary: "Roboto";
   --font-family-secondary: "Nanum Gothic";
 
-  /* Font Weight */
   --font-weight-xs: 100;
   --font-weight-sm: 300;
   --font-weight-md: 400;
@@ -18,7 +17,7 @@
   --opacity-50: 0.5;
   --opacity-75: 0.75;
 
-  /* Token */
+  /* Tokens */
   --token-xs-1: 0.025rem;
   --token-xs-2: 0.05rem;
   --token-xs-3: 0.1rem;

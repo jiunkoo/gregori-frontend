@@ -62,7 +62,7 @@ const Order = () => {
     const totalProductAmount =
       orderData?.items.reduce(
         (sum, item) => sum + item.product.price * item.quantity,
-        0
+        0,
       ) || 0;
 
     const discountAmount = 0;
@@ -116,19 +116,20 @@ const Order = () => {
             productId: item.product.id,
             productCount: item.quantity,
           })) ?? [],
-      })
+      }),
     );
 
     if (!createResult.ok) {
       const message = getApiErrorMessage(
         createResult.error,
-        ORDER_CONSTANTS.ERROR.CREATE_FAILED
+        ORDER_CONSTANTS.ERROR.CREATE_FAILED,
       );
       window.alert(message);
       return;
     }
 
     const createdOrder = createResult.value;
+    const orderCreatedAt = createdOrder?.createdAt ?? new Date().toISOString();
 
     navigate("/order-confirm", {
       state: {
@@ -139,14 +140,14 @@ const Order = () => {
         paymentMethod: FIXED_PAYMENT_METHOD,
         agreements,
         amounts,
-        orderCreatedAt: createdOrder.createdAt,
+        orderCreatedAt,
       },
     });
   };
 
   const handleAgreementChange = (
     type: keyof typeof agreements,
-    checked: boolean
+    checked: boolean,
   ) => {
     if (type === "all") {
       setAgreements({
@@ -352,7 +353,7 @@ const Order = () => {
                 onClick={() =>
                   handleAgreementChange(
                     "personalInfo",
-                    !agreements.personalInfo
+                    !agreements.personalInfo,
                   )
                 }
                 aria-label={ORDER_CONSTANTS.AGREEMENT_ARIA.PERSONAL_INFO}

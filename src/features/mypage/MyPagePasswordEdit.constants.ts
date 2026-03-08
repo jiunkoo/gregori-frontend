@@ -1,7 +1,7 @@
 export const MYPAGE_PASSWORD_EDIT_CONSTANTS = {
   TITLE: "비밀번호 변경",
   LABELS: {
-    CURRENT_PASSWORD: "현재 비밀번호",
+    OLD_PASSWORD: "현재 비밀번호",
     NEW_PASSWORD: "새 비밀번호",
     CONFIRM_PASSWORD: "새 비밀번호 확인",
   },
@@ -16,8 +16,8 @@ export const MYPAGE_PASSWORD_EDIT_CONSTANTS = {
     CANCEL: "변경 취소",
   },
   VISIBILITY: {
-    CURRENT_HIDE: "현재 비밀번호 숨기기",
-    CURRENT_SHOW: "현재 비밀번호 보기",
+    OLD_HIDE: "현재 비밀번호 숨기기",
+    OLD_SHOW: "현재 비밀번호 보기",
     NEW_HIDE: "새 비밀번호 숨기기",
     NEW_SHOW: "새 비밀번호 보기",
     CONFIRM_HIDE: "새 비밀번호 확인 숨기기",

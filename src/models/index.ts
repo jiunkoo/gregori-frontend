@@ -37,7 +37,7 @@ export interface MemberNameUpdateDto {
 }
 
 export interface MemberPasswordUpdateDto {
-  currentPassword: string;
+  oldPassword: string;
   newPassword: string;
 }
 

@@ -14,13 +14,13 @@ const MyPagePasswordEdit: React.FC = () => {
   const navigate = useNavigate();
   const { user, setError } = useAuthStore();
 
-  const [currentPassword, setCurrentPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [localError, setLocalError] = useState("");
   const [savingPassword, setSavingPassword] = useState(false);
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -34,21 +34,26 @@ const MyPagePasswordEdit: React.FC = () => {
     setLocalError("");
     setMessage("");
 
-    if (!currentPassword || !newPassword || !confirmPassword) {
+    const trimmedOld = oldPassword.trim();
+    const trimmedNew = newPassword.trim();
+    const trimmedConfirm = confirmPassword.trim();
+
+    if (!trimmedOld || !trimmedNew || !trimmedConfirm) {
       setLocalError(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.REQUIRED);
       return;
     }
 
-    if (newPassword !== confirmPassword) {
+    if (trimmedNew !== trimmedConfirm) {
       setLocalError(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.MISMATCH);
       return;
     }
 
     setSavingPassword(true);
 
+    // 비밀번호는 사용자 입력값 그대로 전송 (trim 시 DB와 비교 시 일치하지 않을 수 있음)
     const updateResult = await toResult(
       memberAPI.updatePassword({
-        currentPassword,
+        oldPassword,
         newPassword,
       })
     );
@@ -66,7 +71,7 @@ const MyPagePasswordEdit: React.FC = () => {
     }
 
     setMessage(MYPAGE_PASSWORD_EDIT_CONSTANTS.MESSAGES.SUCCESS);
-    setCurrentPassword("");
+    setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
   };
@@ -89,28 +94,28 @@ const MyPagePasswordEdit: React.FC = () => {
           >
             <div className="mypage-password-edit__form-group">
               <label className="mypage-password-edit__form-label">
-                {MYPAGE_PASSWORD_EDIT_CONSTANTS.LABELS.CURRENT_PASSWORD}
+                {MYPAGE_PASSWORD_EDIT_CONSTANTS.LABELS.OLD_PASSWORD}
               </label>
               <div className="mypage-password-edit__input-wrapper">
                 <input
-                  type={showCurrentPassword ? "text" : "password"}
+                  type={showOldPassword ? "text" : "password"}
                   className="mypage-password-edit__form-input"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
                 />
-                {currentPassword && (
+                {oldPassword && (
                   <button
                     type="button"
                     className="mypage-password-edit__eye-button"
-                    onClick={() => setShowCurrentPassword((prev) => !prev)}
+                    onClick={() => setShowOldPassword((prev) => !prev)}
                     aria-label={
-                      showCurrentPassword
-                        ? MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.CURRENT_HIDE
-                        : MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.CURRENT_SHOW
+                      showOldPassword
+                        ? MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.OLD_HIDE
+                        : MYPAGE_PASSWORD_EDIT_CONSTANTS.VISIBILITY.OLD_SHOW
                     }
                   >
                     <Icon
-                      name={showCurrentPassword ? "eye" : "eyeHide"}
+                      name={showOldPassword ? "eye" : "eyeHide"}
                       size={20}
                     />
                   </button>
@@ -189,7 +194,7 @@ const MyPagePasswordEdit: React.FC = () => {
                 type="button"
                 className="mypage-password-edit__button mypage-password-edit__button--secondary"
                 onClick={() => {
-                  setCurrentPassword("");
+                  setOldPassword("");
                   setNewPassword("");
                   setConfirmPassword("");
                   setLocalError("");
